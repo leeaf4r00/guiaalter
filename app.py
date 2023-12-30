@@ -1,16 +1,20 @@
-from flask import Flask, render_template, request, redirect, url_for, g
+from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-DATABASE = "data/database.db"  # Caminho para o banco de dados
+
+# Configurações
+app.config['DATABASE_PATH'] = "data/database.db"
+app.config['SECRET_KEY'] = os.environ.get(
+    'FLASK_SECRET_KEY', 'sua_chave_secreta')
 
 # Função para conectar ao banco de dados SQLite
 
 
 def get_db_connection():
-    conn = sqlite3.connect(DATABASE)
+    conn = sqlite3.connect(app.config['DATABASE_PATH'])
     conn.row_factory = sqlite3.Row
 
     with conn:
@@ -80,8 +84,8 @@ def login():
                 'SELECT password FROM users WHERE username = ?', (username,))
             result = cursor.fetchone()
             if result and check_password_hash(result[0], password):
-                # Se a autenticação for bem-sucedida, definir a variável de sessão 'is_admin' como True
-                g.is_admin = True
+                # Se a autenticação for bem-sucedida, armazenar na sessão
+                session['is_admin'] = True
                 return redirect(url_for('index'))
             else:
                 return render_template('login.html', error='Credenciais inválidas. Tente novamente.')
@@ -92,10 +96,11 @@ def login():
 
 @app.route('/sobrenos')
 def sobrenos():
-    # Adicione a função get_images conforme a necessidade
     img_paths_sobrenos = get_images('img')
     return render_template('sobrenos.html', img_paths=img_paths_sobrenos)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=os.environ.get("FLASK_DEBUG", False),
+            use_reloader=True, host='0.0.0.0', port=port)
