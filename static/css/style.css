@@ -1,79 +1,12 @@
-/* Reset de estilos para garantir consistência entre navegadores */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Adicione este conteúdo ao seu arquivo CSS */
 
-/* Estilo global da página */
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-}
-
-/* Estilo do cabeçalho (header) */
-.header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-}
-
-.header a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-/* Estilo do conteúdo principal */
-.main-content {
-    padding: 20px 0;
-}
-
-/* Estilo da barra de navegação (navbar) */
-.navbar {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-}
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
-
-.navbar li {
-    margin: 0 15px;
-}
-
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Estilo do rodapé (footer) */
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.footer ul {
-    list-style: none;
-}
-
-.footer a {
-    color: #fff;
-    text-decoration: none;
-}
-
-/* Estilos adicionais conforme necessário */
+/* Animações usando a biblioteca animate.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
 /* Seção de destaque de passeios */
 .highlighted-tours {
     margin-top: 20px;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 .highlighted-tours h2 {
@@ -88,6 +21,7 @@ body {
 /* Seção de novos passeios */
 .new-tours {
     margin-top: 20px;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 .new-tours h2 {
@@ -102,6 +36,7 @@ body {
 /* Seção de depoimentos de clientes */
 .client-testimonials {
     margin-top: 20px;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 .client-testimonials h2 {
@@ -112,6 +47,7 @@ body {
 .call-to-action {
     margin-top: 20px;
     text-align: center;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 .call-to-action h2 {
@@ -125,43 +61,26 @@ body {
 .call-to-action .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #333;
+    background-color: #ff9900; /* Amarelo atraente */
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
     margin-top: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.call-to-action .cta-button:hover {
+    background-color: #e68a00; /* Amarelo mais escuro ao passar o mouse */
 }
 
 /* Seção de mapa de localização */
 .location-map {
     margin-top: 20px;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 .location-map h2 {
     color: #333;
 }
 
-/* Estilos para dispositivos móveis */
-@media screen and (max-width: 767px) {
-    .header a {
-        margin-left: 10px;
-    }
-
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .navbar ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .navbar li {
-        margin: 10px 0;
-    }
-
-    .footer {
-        padding: 20px 10px;
-    }
-}

@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacotes de Passeio de Barco</title>
+    <style>
+        /* Adicione estilos adicionais conforme necessário */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        li:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Bem-vindo aos Pacotes de Passeio de Barco</h1>
@@ -28,5 +49,43 @@
     </ul>
 
     <script src="main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Função para adicionar passeios dinamicamente a uma lista
+            function addToursToList(listId, tours) {
+                const list = document.getElementById(listId);
+
+                tours.forEach(tour => {
+                    const liElement = document.createElement("li");
+                    liElement.textContent = tour.nome;
+                    list.appendChild(liElement);
+                });
+            }
+
+            // Exemplo de passeios (substitua com seus dados reais)
+            const pacotes = {
+                customizados: [
+                    { nome: "Passeio Personalizado 1", descricao: "Descrição do Passeio 1" },
+                    { nome: "Passeio Personalizado 2", descricao: "Descrição do Passeio 2" },
+                    { nome: "Passeio Personalizado 3", descricao: "Descrição do Passeio 3" },
+                ],
+                roteiros: [
+                    { nome: "Passeio com Roteiro 1", descricao: "Descrição do Passeio 1" },
+                    { nome: "Passeio com Roteiro 2", descricao: "Descrição do Passeio 2" },
+                    { nome: "Passeio com Roteiro 3", descricao: "Descrição do Passeio 3" },
+                ],
+                noturnos: [
+                    { nome: "Passeio Noturno 1", descricao: "Descrição do Passeio 1" },
+                    { nome: "Passeio Noturno 2", descricao: "Descrição do Passeio 2" },
+                    { nome: "Passeio Noturno 3", descricao: "Descrição do Passeio 3" },
+                ],
+            };
+
+            // Adiciona os passeios às listas
+            addToursToList("customTours", pacotes.customizados);
+            addToursToList("predefinedTours", pacotes.roteiros);
+            addToursToList("nightTours", pacotes.noturnos);
+        });
+    </script>
 </body>
 </html>
