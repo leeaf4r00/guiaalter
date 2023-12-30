@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Administrativa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Seu Aplicativo</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('index') }}">Página Inicial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Sair</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Bem-vindo, {{ username }}!</h2>
+        <p>Você está na página administrativa.</p>
+        <p>Adicione aqui o conteúdo que deseja exibir para usuários autenticados com permissões de administrador.</p>
+    </div>
+
+</body>
+
+</html>

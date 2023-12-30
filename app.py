@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import os
 import sqlite3
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 
 app = Flask(__name__)
 
@@ -10,37 +11,29 @@ app.config['DATABASE_PATH'] = "data/database.db"
 app.config['SECRET_KEY'] = os.environ.get(
     'FLASK_SECRET_KEY', 'sua_chave_secreta')
 
+# Configuração do sistema de login
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+
+# Classe de usuário para Flask-Login
+
+
+class User(UserMixin):
+    pass
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    user = User()
+    user.id = user_id
+    return user
+
 # Função para conectar ao banco de dados SQLite
 
 
 def get_db_connection():
     conn = sqlite3.connect(app.config['DATABASE_PATH'])
     conn.row_factory = sqlite3.Row
-
-    with conn:
-        cursor = conn.cursor()
-
-        # Verifica se a tabela 'users' existe
-        cursor.execute(
-            "SELECT name FROM sqlite_master WHERE type='table' AND name='users'")
-        table_exists = cursor.fetchone()
-
-        if not table_exists:
-            # Cria a tabela 'users' se não existir
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS users (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    username TEXT NOT NULL,
-                    password TEXT NOT NULL
-                )
-            ''')
-
-            # Adiciona um usuário inicial
-            hashed_password = generate_password_hash(
-                '@$RA!8421789Ra33', method='sha256', salt_length=16)
-            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)",
-                           ('rafaelfernandes', hashed_password))
-
     return conn
 
 # Função para contar o número de usuários no banco de dados
@@ -81,11 +74,13 @@ def login():
         with get_db_connection() as connection:
             cursor = connection.cursor()
             cursor.execute(
-                'SELECT password FROM users WHERE username = ?', (username,))
+                'SELECT id, password FROM users WHERE username = ?', (username,))
             result = cursor.fetchone()
-            if result and check_password_hash(result[0], password):
-                # Se a autenticação for bem-sucedida, armazenar na sessão
-                session['is_admin'] = True
+            if result and check_password_hash(result[1], password):
+                # Se a autenticação for bem-sucedida, realizar login com Flask-Login
+                user = User()
+                user.id = result[0]
+                login_user(user)
                 return redirect(url_for('index'))
             else:
                 return render_template('login.html', error='Credenciais inválidas. Tente novamente.')
@@ -98,6 +93,23 @@ def login():
 def sobrenos():
     img_paths_sobrenos = get_images('img')
     return render_template('sobrenos.html', img_paths=img_paths_sobrenos)
+
+# Rota para realizar logout
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+# Rota protegida que requer autenticação
+
+
+@app.route('/admin')
+@login_required
+def admin():
+    return render_template('admin.html', username=current_user.id)
 
 
 if __name__ == '__main__':
