@@ -4,7 +4,7 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-DATABASE = "database.db"
+DATABASE = "data/database.db"  # Caminho para o banco de dados
 
 # Função para conectar ao banco de dados SQLite
 
@@ -12,6 +12,31 @@ DATABASE = "database.db"
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
+
+    with conn:
+        cursor = conn.cursor()
+
+        # Verifica se a tabela 'users' existe
+        cursor.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name='users'")
+        table_exists = cursor.fetchone()
+
+        if not table_exists:
+            # Cria a tabela 'users' se não existir
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT NOT NULL,
+                    password TEXT NOT NULL
+                )
+            ''')
+
+            # Adiciona um usuário inicial
+            hashed_password = generate_password_hash(
+                '@$RA!8421789Ra33', method='sha256', salt_length=16)
+            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)",
+                           ('rafaelfernandes', hashed_password))
+
     return conn
 
 # Função para contar o número de usuários no banco de dados
@@ -23,6 +48,15 @@ def count_users():
         cursor.execute('SELECT COUNT(*) FROM users')
         result = cursor.fetchone()
         return result[0] if result else 0
+
+# Função para obter as imagens da pasta 'img'
+
+
+def get_images(folder):
+    folder_path = os.path.join('static', 'img', folder)
+    images = [os.path.join(folder_path, f) for f in os.listdir(
+        folder_path) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+    return images
 
 # Rota para a página inicial
 
