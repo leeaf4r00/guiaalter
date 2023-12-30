@@ -3,51 +3,163 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Guia de Alter</title>
+    <title>Seu Site - Passeios em Alter do Chão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <div class="container">
-            <h1>Guia de Alter</h1>
-            <nav>
-                <ul>
-                    <li><a href="#pacotes">Pacotes</a></li>
-                    <li><a href="#hospedagem">Hospedagem</a></li>
-                    <li><a href="#passeios">Passeios</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="logo">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Seu Site"
+                            class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4 site-name">
+                    <h1>Seu Site</h1>
+                    <p>Descubra a beleza de Alter do Chão</p>
+                </div>
+                <div class="col-md-4 header-buttons">
+                    {% if 'user_id' in session %}
+                    <a href="/logout">Logout</a>
+                    {% else %}
+                    <a href="/login">Login</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </header>
 
-    <section id="pacotes" class="container">
-        <h2>Pacotes</h2>
-        <p>Descubra nossos incríveis pacotes para Alter do Chão!</p>
-    </section>
-
-    <section id="hospedagem" class="container">
-        <h2>Hospedagem</h2>
-        <p>Explore nossas opções de hospedagem em Alter do Chão.</p>
-    </section>
-
-    <section id="passeios" class="container">
-        <h2>Passeios</h2>
-        <p>Descubra as belezas naturais de Alter do Chão com nossos passeios de barco.</p>
-    </section>
-
-    <section id="contato" class="container">
-        <h2>Contato</h2>
-        <p>Entre em contato conosco para mais informações.</p>
-    </section>
-
-    <footer>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container">
-            <p>&copy; 2023 Guia de Alter. Todos os direitos reservados.</p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tours">Passeios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hotels">Hotéis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vehicles">Veículos/Embarcações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/packages">Pacotes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us">Sobre nós</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main-content">
+        <div class="slideshow">
+            <!-- Slideshow com fotos dos principais passeios -->
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='img/alter1.jpg') }}" alt="Passeio 1" class="img-fluid">
+            </div>
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='img/alter2.jpg') }}" alt="Passeio 2" class="img-fluid">
+            </div>
+            <!-- Adicione mais imagens conforme necessário -->
+        </div>
+
+        <div class="highlighted-tours">
+            <div class="container">
+                <h2>Passeios em Destaque</h2>
+                <!-- Lista de passeios destacados -->
+                <ul>
+                    <li>Passeio de Barco pelo Rio Tapajós</li>
+                    <li>Trilha na Floresta Amazônica</li>
+                    <!-- Adicione mais passeios destacados -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="new-tours">
+            <div class="container">
+                <h2>Novos Passeios</h2>
+                <!-- Lista de novos passeios adicionados -->
+                <ul>
+                    <li>Passeio de Canoa pelos Igapós</li>
+                    <li>Visita à Comunidade Tradicional</li>
+                    <!-- Adicione mais novos passeios -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="client-testimonials">
+            <div class="container">
+                <h2>Depoimentos de Clientes</h2>
+                <!-- Seção para depoimentos/avaliações de clientes -->
+                <p>"Adorei a experiência! Os guias são incríveis e as paisagens são deslumbrantes."</p>
+                <!-- Adicione mais depoimentos conforme necessário -->
+            </div>
+        </div>
+
+        <div class="call-to-action">
+            <div class="container">
+                <h2>Pronto para explorar Alter do Chão?</h2>
+                <p>Agende agora seu passeio e descubra a beleza única desta região!</p>
+                <a href="/contact" class="cta-button">Agendar Passeio</a>
+            </div>
+        </div>
+
+        <div class="location-map">
+            <div class="container">
+                <h2>Localização</h2>
+                <!-- Mapa do local com indicação dos pontos de passeio -->
+                <img src="{{ url_for('static', filename='img/mapa.png') }}" alt="Mapa de Alter do Chão"
+                    class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-links">
+                    <ul>
+                        <li><a href="/privacy-policy">Política de Privacidade</a></li>
+                        <li><a href="/terms-of-use">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 contact-info">
+                    <h3>Entre em Contato</h3>
+                    <p>Endereço: Rua Principal, Alter do Chão</p>
+                    <p>Telefone: (55) 93991160523</p>
+                    <p>Email: tapajospassagens@.com</p>
+                </div>
+                <div class="col-md-4 whatsapp-contact">
+                    <h3>Contato via WhatsApp</h3>
+                    <!-- Botão/link para contato via WhatsApp -->
+                    <a href="https://wa.me/5593991160523" target="_blank">Enviar Mensagem</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
