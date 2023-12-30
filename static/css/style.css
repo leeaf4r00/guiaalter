@@ -1,0 +1,167 @@
+/* Reset de estilos para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo global da página */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Estilo do cabeçalho (header) */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Estilo do conteúdo principal */
+.main-content {
+    padding: 20px 0;
+}
+
+/* Estilo da barra de navegação (navbar) */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Estilo do rodapé (footer) */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos adicionais conforme necessário */
+
+/* Seção de destaque de passeios */
+.highlighted-tours {
+    margin-top: 20px;
+}
+
+.highlighted-tours h2 {
+    color: #333;
+}
+
+.highlighted-tours ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+/* Seção de novos passeios */
+.new-tours {
+    margin-top: 20px;
+}
+
+.new-tours h2 {
+    color: #333;
+}
+
+.new-tours ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+/* Seção de depoimentos de clientes */
+.client-testimonials {
+    margin-top: 20px;
+}
+
+.client-testimonials h2 {
+    color: #333;
+}
+
+/* Seção de chamada para ação */
+.call-to-action {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.call-to-action h2 {
+    color: #333;
+}
+
+.call-to-action p {
+    margin-top: 10px;
+}
+
+.call-to-action .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Seção de mapa de localização */
+.location-map {
+    margin-top: 20px;
+}
+
+.location-map h2 {
+    color: #333;
+}
+
+/* Estilos para dispositivos móveis */
+@media screen and (max-width: 767px) {
+    .header a {
+        margin-left: 10px;
+    }
+
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar li {
+        margin: 10px 0;
+    }
+
+    .footer {
+        padding: 20px 10px;
+    }
+}
