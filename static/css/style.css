@@ -1,57 +1,34 @@
-/* Adicione este conteúdo ao seu arquivo CSS */
+/* Reset CSS - Normalize.css é um exemplo de reset CSS */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 
-/* Animações usando a biblioteca animate.css */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+/* Variáveis CSS */
+:root {
+    --main-color: #333;
+    --callout-color: #ff9900;
+}
 
 /* Seção de destaque de passeios */
-.highlighted-tours {
+.section {
     margin-top: 20px;
     animation: fadeInUp 1s ease-in-out;
 }
 
-.highlighted-tours h2 {
-    color: #333;
+.section h2 {
+    color: var(--main-color);
 }
 
-.highlighted-tours ul {
+.section ul {
     list-style: none;
     margin-top: 10px;
-}
-
-/* Seção de novos passeios */
-.new-tours {
-    margin-top: 20px;
-    animation: fadeInUp 1s ease-in-out;
-}
-
-.new-tours h2 {
-    color: #333;
-}
-
-.new-tours ul {
-    list-style: none;
-    margin-top: 10px;
-}
-
-/* Seção de depoimentos de clientes */
-.client-testimonials {
-    margin-top: 20px;
-    animation: fadeInUp 1s ease-in-out;
-}
-
-.client-testimonials h2 {
-    color: #333;
 }
 
 /* Seção de chamada para ação */
 .call-to-action {
-    margin-top: 20px;
     text-align: center;
-    animation: fadeInUp 1s ease-in-out;
 }
 
 .call-to-action h2 {
-    color: #333;
+    color: var(--main-color);
 }
 
 .call-to-action p {
@@ -61,7 +38,7 @@
 .call-to-action .cta-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ff9900; /* Amarelo atraente */
+    background-color: var(--callout-color);
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -71,7 +48,7 @@
 }
 
 .call-to-action .cta-button:hover {
-    background-color: #e68a00; /* Amarelo mais escuro ao passar o mouse */
+    background-color: #e68a00;
 }
 
 /* Seção de mapa de localização */
@@ -81,6 +58,5 @@
 }
 
 .location-map h2 {
-    color: #333;
+    color: var(--main-color);
 }
-

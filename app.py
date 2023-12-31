@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import os
 import sqlite3
@@ -55,6 +55,13 @@ def get_images(folder):
         folder_path) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
     return images
 
+# Rota para servir arquivos estáticos do diretório 'static'
+
+
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(app.static_folder, filename)
+
 # Rota para a página inicial
 
 
@@ -85,6 +92,13 @@ def login():
             else:
                 return render_template('login.html', error='Credenciais inválidas. Tente novamente.')
     return render_template('login.html')
+
+# Rota para a página de pacotes
+
+
+@app.route('/pacotes')
+def pacotes():
+    return render_template('pacotes.html')
 
 # Rota para a página "Sobre Nós"
 
