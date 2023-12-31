@@ -44,6 +44,8 @@ def login():
 def pacotes():
     return render_template('pacotes.html')
 
+# Rota para a página de contato
+
 
 @routes.route('/contato')
 def contato():
@@ -72,3 +74,10 @@ def logout():
 @login_required
 def admin():
     return render_template('admin.html', username=current_user.id)
+
+# Handler para erro 404 - Página não encontrada
+
+
+@routes.app_errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
