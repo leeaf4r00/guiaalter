@@ -86,6 +86,13 @@ def login():
                 return render_template('login.html', error='Credenciais inválidas. Tente novamente.')
     return render_template('login.html')
 
+# Rota para a página de pacotes
+
+
+@app.route('/pacotes')
+def pacotes():
+    return render_template('pacotes.html')
+
 # Rota para a página "Sobre Nós"
 
 
