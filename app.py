@@ -32,4 +32,6 @@ def load_user(user_id):
 app.register_blueprint(routes)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=os.environ.get("FLASK_DEBUG", False),
+            use_reloader=True, host='0.0.0.0', port=port)
