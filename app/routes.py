@@ -44,6 +44,11 @@ def login():
 def pacotes():
     return render_template('pacotes.html')
 
+
+@routes.route('/contato')
+def pacotes():
+    return render_template('contato.html')
+
 # Rota para a página "Sobre Nós"
 
 
