@@ -25,6 +25,13 @@
         li:hover {
             background-color: #0056b3;
         }
+
+        .package-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +64,21 @@
 
                 tours.forEach(tour => {
                     const liElement = document.createElement("li");
-                    liElement.textContent = tour.nome;
+
+                    const imageElement = document.createElement("img");
+                    imageElement.src = tour.imagem;
+                    imageElement.alt = tour.nome;
+                    imageElement.className = "package-image";
+                    liElement.appendChild(imageElement);
+
+                    const nameElement = document.createElement("p");
+                    nameElement.textContent = tour.nome;
+                    liElement.appendChild(nameElement);
+
+                    const descriptionElement = document.createElement("p");
+                    descriptionElement.textContent = tour.descricao;
+                    liElement.appendChild(descriptionElement);
+
                     list.appendChild(liElement);
                 });
             }
@@ -65,19 +86,19 @@
             // Exemplo de passeios (substitua com seus dados reais)
             const pacotes = {
                 customizados: [
-                    { nome: "Passeio Personalizado 1", descricao: "Descrição do Passeio 1" },
-                    { nome: "Passeio Personalizado 2", descricao: "Descrição do Passeio 2" },
-                    { nome: "Passeio Personalizado 3", descricao: "Descrição do Passeio 3" },
+                    { nome: "Passeio Personalizado 1", descricao: "Descrição do Passeio 1", imagem: "caminho/para/imagens/passeio1.jpg" },
+                    { nome: "Passeio Personalizado 2", descricao: "Descrição do Passeio 2", imagem: "caminho/para/imagens/passeio2.jpg" },
+                    { nome: "Passeio Personalizado 3", descricao: "Descrição do Passeio 3", imagem: "caminho/para/imagens/passeio3.jpg" },
                 ],
                 roteiros: [
-                    { nome: "Passeio com Roteiro 1", descricao: "Descrição do Passeio 1" },
-                    { nome: "Passeio com Roteiro 2", descricao: "Descrição do Passeio 2" },
-                    { nome: "Passeio com Roteiro 3", descricao: "Descrição do Passeio 3" },
+                    { nome: "Passeio com Roteiro 1", descricao: "Descrição do Passeio 1", imagem: "caminho/para/imagens/roteiro1.jpg" },
+                    { nome: "Passeio com Roteiro 2", descricao: "Descrição do Passeio 2", imagem: "caminho/para/imagens/roteiro2.jpg" },
+                    { nome: "Passeio com Roteiro 3", descricao: "Descrição do Passeio 3", imagem: "caminho/para/imagens/roteiro3.jpg" },
                 ],
                 noturnos: [
-                    { nome: "Passeio Noturno 1", descricao: "Descrição do Passeio 1" },
-                    { nome: "Passeio Noturno 2", descricao: "Descrição do Passeio 2" },
-                    { nome: "Passeio Noturno 3", descricao: "Descrição do Passeio 3" },
+                    { nome: "Passeio Noturno 1", descricao: "Descrição do Passeio 1", imagem: "caminho/para/imagens/noturno1.jpg" },
+                    { nome: "Passeio Noturno 2", descricao: "Descrição do Passeio 2", imagem: "caminho/para/imagens/noturno2.jpg" },
+                    { nome: "Passeio Noturno 3", descricao: "Descrição do Passeio 3", imagem: "caminho/para/imagens/noturno3.jpg" },
                 ],
             };
 
