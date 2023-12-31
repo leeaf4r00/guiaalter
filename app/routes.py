@@ -46,7 +46,7 @@ def pacotes():
 
 
 @routes.route('/contato')
-def pacotes():
+def contato():
     return render_template('contato.html')
 
 # Rota para a página "Sobre Nós"
