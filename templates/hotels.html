@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotéis - Guia de Alter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hotel-card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hotel-img {
+            object-fit: cover;
+            height: 200px;
+        }
+
+        .hotel-title {
+            color: #007bff;
+        }
+
+        .hotel-description {
+            color: #555;
+        }
+
+        .footer {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Nossos Hotéis</h1>
+
+        <!-- Exemplo de um card de hotel -->
+        <div class="card hotel-card">
+            <img src="caminho_para_imagem_do_hotel.jpg" class="card-img-top hotel-img" alt="Nome do Hotel">
+            <div class="card-body">
+                <h5 class="card-title hotel-title">Nome do Hotel</h5>
+                <p class="card-text hotel-description">Descrição breve do hotel. Informações como localização,
+                    comodidades, etc.</p>
+                <a href="#" class="btn btn-primary">Ver Mais</a>
+            </div>
+        </div>
+
+        <!-- Repita o card acima para cada hotel -->
+
+    </div>
+
+    <div class="footer">
+        © 2024 Guia de Alter. Todos os direitos reservados.
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -8,6 +8,14 @@ def get_db_connection():
     return conn
 
 
+def create_user(username, hashed_password):
+    with get_db_connection() as connection:
+        cursor = connection.cursor()
+        cursor.execute(
+            'INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
+        connection.commit()
+
+
 def count_users():
     with get_db_connection() as connection:
         cursor = connection.cursor()

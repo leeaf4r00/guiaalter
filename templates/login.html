@@ -62,14 +62,27 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Script para autenticação do usuário -->
-    <script src="{{ url_for('static', filename='js/user.js') }}?v=1"></script>
-
     <script>
-        // Adiciona um ouvinte de evento para o login bem-sucedido
-        document.addEventListener('loginSuccess', function () {
-            // Redireciona para a página adm.html após um login bem-sucedido
-            window.location.href = "{{ url_for('adm') }}";
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            fetch('{{ url_for("routes.login") }}', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Disparar evento loginSuccess
+                        document.dispatchEvent(new Event('loginSuccess'));
+                    } else {
+                        // Mostrar mensagem de erro
+                        alert('Credenciais inválidas. Tente novamente.');
+                    }
+                });
         });
     </script>
 </body>

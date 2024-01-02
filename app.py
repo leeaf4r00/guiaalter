@@ -1,7 +1,8 @@
 import os
 from app.routes import routes
 from flask import Flask
-from flask_login import LoginManager, UserMixin
+from flask_login import LoginManager, UserMixin, login_required
+from app.user import get_user_by_username  # Ajuste aqui para o caminho correto
 
 app = Flask(__name__)
 
@@ -18,17 +19,19 @@ login_manager.login_view = 'login'
 
 
 class User(UserMixin):
-    pass
+    def __init__(self, user_id):
+        self.id = user_id
 
 
 @login_manager.user_loader
 def load_user(user_id):
-    user = User()
-    user.id = user_id
-    return user
+    user_data = get_user_by_username(user_id)
+    if user_data:
+        return User(user_id=user_data[0])
+    return None
 
 
-# Importa as rotas
+# Importa e registra as rotas
 app.register_blueprint(routes)
 
 if __name__ == '__main__':
