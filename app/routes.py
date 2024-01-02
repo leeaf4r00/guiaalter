@@ -50,6 +50,11 @@ def pacotes():
     return render_template('pacotes.html')
 
 
+@routes.route('/buffets')
+def buffets():
+    return render_template('buffets.html')
+
+
 @routes.route('/hotels')
 def hotels():
     return render_template('hotels.html')

@@ -16,9 +16,10 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .partner-image {
-            object-fit: cover;
-            height: 200px;
+        .logo {
+            width: 450px;
+            height: 450px;
+            object-fit: contain;
         }
 
         .partner-title {
@@ -41,8 +42,10 @@
         <h1 class="text-center mb-4">Nossos Parceiros de Buffet</h1>
 
         <!-- Card do Espaço Ruby -->
-        <div class="card partner-card">
-            <img src="static/img/logoruby.png" class="card-img-top partner-image" alt="Espaço Ruby">
+        <div class="card partner-card text-center">
+            <div class="my-3">
+                <img src="static/img/logoruby.png" class="logo mx-auto d-block" alt="Espaço Ruby">
+            </div>
             <div class="card-body">
                 <h5 class="card-title partner-title">Espaço Ruby</h5>
                 <p class="card-text">O Espaço Ruby é conhecido por sua excelência em serviços de buffet e eventos. Veja
