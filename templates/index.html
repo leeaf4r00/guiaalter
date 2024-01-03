@@ -5,53 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guia de passeios, buffets, hotéis e mais em Alter do Chão">
+    <meta name="keywords" content="alter do chão, passeios, buffets, hotéis">
     <title>Guia de Alter - Passeios em Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .logo {
-            text-align: center;
-        }
-
-        .logo img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .site-name h1,
-        .site-name p {
-            text-align: center;
-        }
-
-        .header,
-        .footer {
-            margin-bottom: 20px;
-        }
-
-        .main-content {
-            background: url("{{ url_for('static', filename='img/alterdochao.jpg') }}") no-repeat center center;
-            background-size: cover;
-            position: relative;
-            z-index: 1;
-        }
-
-        .content-overlay {
-            position: relative;
-            background: rgba(255, 255, 255, 0.5);
-            z-index: 2;
-        }
-
-        .iframe-container {
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 
 <body>
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Seu Site">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Guia de Alter">
             </div>
             <div class="site-name">
                 <h1>Guia de Alter</h1>
@@ -67,30 +32,14 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/passeios">Passeios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/buffets">Buffets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/hotels">Hotéis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/veiculos">Veículos/Embarcações</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pacotes">Pacotes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contato">Contato</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sobrenos">Sobre nós</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/passeios">Passeios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/buffets">Buffets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/hotels">Hotéis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/veiculos">Veículos/Embarcações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pacotes">Pacotes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sobrenos">Sobre nós</a></li>
                 </ul>
             </div>
         </div>
