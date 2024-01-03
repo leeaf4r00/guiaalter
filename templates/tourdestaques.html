@@ -10,19 +10,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .tour-box {
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             overflow: hidden;
-            margin: 10px;
-        }
-
-        .carousel-inner {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .carousel-item {
-            flex: 0 0 33.33%;
+            margin-bottom: 20px;
         }
 
         @media (max-width: 768px) {
@@ -94,6 +85,7 @@
                     </div>
                 </div>
 
+
                 <!-- Tour 3: Igarapé do Macaco -->
                 <div class="col-md-4">
                     <div class="tour-box">
@@ -114,6 +106,55 @@
                             </div>
                         </div>
                         <a href="templates/tours/igarapedomacaco.html">Igarapé do Macaco</a>
+                    </div>
+                </div>
+
+                <!-- Tour 4: Igarapé do Camarão -->
+                <div class="col-md-4">
+                    <div class="tour-box">
+                        <div id="carouselIgarapeCamarao" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/igarapecamarao.jpg') }}"
+                                        class="d-block w-100" alt="Igarapé do Camarão">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="templates/tours/igarapedocamarao.html">Igarapé do Camarão</a>
+                    </div>
+                </div>
+
+                <!-- Tour 5: Floresta Encantada -->
+                <div class="col-md-4">
+                    <div class="tour-box">
+                        <div id="carouselFlorestaEncantada" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/florestaencantada.jpg') }}"
+                                        class="d-block w-100" alt="Floresta Encantada">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="templates/tours/florestaencantada.html">Floresta Encantada</a>
+                    </div>
+                </div>
+
+                <!-- Tour 6: Alter do Chão Tour -->
+                <div class="col-md-4">
+                    <div class="tour-box">
+                        <div id="carouselAlterDoChao" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}"
+                                        class="d-block w-100" alt="Alter do Chão">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/alterdochao2.jpg') }}"
+                                        class="d-block w-100" alt="Alter do Chão">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="templates/tours/alterdochaotour.html">Alter do Chão Tour</a>
                     </div>
                 </div>
 
