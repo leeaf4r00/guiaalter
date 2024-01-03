@@ -11,13 +11,14 @@
     --footer-text-color: #fff;
 }
 
+/* Estilos Gerais */
 body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: 'Arial', sans-serif;
 }
 
-/* Header */
+/* Estilos do Header */
 .header {
     background-color: var(--footer-background-color);
     color: var(--footer-text-color);
@@ -30,13 +31,13 @@ body {
     height: auto;
 }
 
-/* Navbar */
+/* Estilos da Navbar */
 .navbar {
     background-color: var(--main-color);
     color: var(--footer-text-color);
 }
 
-/* Seção de destaque de passeios */
+/* Estilos da Seção de Passeios em Destaque */
 .section {
     margin-top: 20px;
     animation: fadeInUp 1s ease-in-out;
@@ -57,7 +58,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Seção de chamada para ação */
+/* Estilos da Seção de Chamada para Ação */
 .call-to-action {
     background-color: var(--callout-color);
     color: var(--footer-text-color);
@@ -89,7 +90,7 @@ body {
     background-color: #e68a00;
 }
 
-/* Seção de mapa de localização */
+/* Estilos da Seção de Mapa de Localização */
 .location-map {
     margin-top: 20px;
     animation: fadeInUp 1s ease-in-out;
@@ -100,7 +101,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* Footer */
+/* Estilos do Footer */
 .footer {
     background-color: var(--footer-background-color);
     color: var(--footer-text-color);
@@ -127,7 +128,7 @@ body {
     text-decoration: underline;
 }
 
-/* Media Queries for Responsiveness */
+/* Media Queries para Responsividade */
 @media (max-width: 768px) {
     .navbar-nav {
         text-align: center;

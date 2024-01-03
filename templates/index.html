@@ -9,6 +9,9 @@
     <meta name="keywords" content="alter do chão, passeios, buffets, hotéis">
     <title>Guia de Alter - Passeios em Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -49,42 +52,29 @@
         <div class="content-overlay">
             <div class="highlighted-tours text-center">
                 <div class="container">
-                    <h2>Passeios em Destaque</h2>
-                    <ul>
-                        <li>Passeio de Barco pelo Rio Tapajós</li>
-                        <li>Trilha na Floresta Amazônica</li>
-                    </ul>
+                    <h2>Tour Destaque</h2>
+                </div>
+
+
+                <div class="iframe-container">
+                    <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400"
+                        style="border:0;"></iframe>
+                </div>
+
+                <div class="iframe-container">
+                    <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400"
+                        style="border:0;"></iframe>
+                </div>
+
+                <div class="location-map text-center">
+                    <div class="container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15943.968153708129!2d-54.95258845!3d-2.5094830500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92885284fb3ebf99%3A0xcb08442fee6790c3!2sAlter%20do%20Ch%C3%A3o%2C%20Santar%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v1703982093638!5m2!1spt-BR!2sbr"
+                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
-
-            <div class="new-tours text-center">
-                <div class="container">
-                    <h2>Cidades</h2>
-                    <ul>
-                        <li>Passeio de Canoa pelos Igapós</li>
-                        <li>Visita à Comunidade Tradicional</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="iframe-container">
-                <iframe src="{{ url_for('routes.passeiosdestaque') }}" width="100%" height="400"
-                    style="border:0;"></iframe>
-            </div>
-
-            <div class="iframe-container">
-                <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
-            </div>
-
-            <div class="location-map text-center">
-                <div class="container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15943.968153708129!2d-54.95258845!3d-2.5094830500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92885284fb3ebf99%3A0xcb08442fee6790c3!2sAlter%20do%20Ch%C3%A3o%2C%20Santar%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v1703982093638!5m2!1spt-BR!2sbr"
-                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
     </section>
 
     <div class="new-tours text-center">

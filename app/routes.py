@@ -81,6 +81,21 @@ def explorealter():
     return render_template('explorealter.html')
 
 
+@routes.route('/tours')
+def tours():
+    return render_template('tours.html')
+
+
+@routes.route('/tours/lagoverde')
+def lagoverde():
+    return render_template('tours/lagoverde.html')
+
+
+@routes.route('/tours/alterdochao')
+def alterdochaotour():
+    return render_template('tours/alterdochaotour.html')
+
+
 @routes.route('/passeiosagendar')
 def passeiosagendar():
     return render_template('passeiosagendar.html')
@@ -122,6 +137,12 @@ def logout():
 @login_required
 def admin():
     return render_template('admin.html', username=current_user.id)
+
+
+@routes.route('/tourdestaques')
+def tourdestaques():
+    # Seu código para a página de destaques do tour aqui
+    return render_template('tourdestaques.html')
 
 
 @routes.app_errorhandler(404)

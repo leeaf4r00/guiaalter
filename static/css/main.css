@@ -1,0 +1,56 @@
+/* main.css */
+
+/* Estilos gerais para a seção principal */
+.main-content {
+    padding: 20px;
+    background-color: var(--background-color);
+}
+
+/* Overlay sobre a imagem de fundo para melhorar a legibilidade do texto */
+.content-overlay {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+}
+
+/* Estilos para as seções destacadas, como 'Passeios em Destaque' */
+.highlighted-tours,
+.new-tours {
+    margin-bottom: 20px;
+}
+
+.highlighted-tours h2,
+.new-tours h2 {
+    color: var(--main-color);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.highlighted-tours ul,
+.new-tours ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.highlighted-tours ul li,
+.new-tours ul li {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 5px;
+}
+
+/* Estilos para iframes (como mapas e depoimentos) */
+.iframe-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Responsividade para seções centrais */
+@media (max-width: 768px) {
+
+    .highlighted-tours ul li,
+    .new-tours ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
