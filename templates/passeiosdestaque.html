@@ -17,12 +17,14 @@
         }
 
         .tour-image {
-            object-fit: cover;
             height: 250px;
+            object-fit: cover;
+            width: 100%;
         }
 
         .tour-title {
             color: #007bff;
+            margin-top: 15px;
         }
 
         .footer {
@@ -36,30 +38,75 @@
 </head>
 
 <body>
-
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Passeios em Destaque</h1>
+        <h1 class="text-center mb-4">Quer Fazer os Melhores Passeios em Alter do Chão?</h1>
 
-        <!-- Exemplo de um card de passeio -->
-        <div class="card tour-card">
-            <img src="caminho_para_imagem_do_passeio.jpg" class="card-img-top tour-image" alt="Nome do Passeio">
-            <div class="card-body">
-                <h5 class="card-title tour-title">Nome do Passeio</h5>
-                <p class="card-text">Descrição breve do passeio. Informações sobre o destino, atrações, duração, etc.
-                </p>
-                <a href="#" class="btn btn-primary">Saiba Mais</a>
+        <!-- Carrossel de passeios -->
+        <div id="tour-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Passeio 1: Flona do Tapajos -->
+                <div class="carousel-item active">
+                    <div class="card tour-card">
+                        <img src="static/img/flonadotapajos.jpg" class="card-img-top tour-image" alt="Flona do Tapajos">
+                        <div class="card-body">
+                            <h5 class="card-title tour-title">Flona do Tapajos</h5>
+                            <p class="card-text">Você vai se encantar com praias, comunidades tradicionais, igarapés,
+                                igapós e
+                                árvores centenárias.</p>
+                            <!-- Detalhes do passeio -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passeio 2: Canal do Jari -->
+                <div class="carousel-item">
+                    <div class="card tour-card">
+                        <img src="static/img/canaldojari.jpg" class="card-img-top tour-image" alt="Canal do Jari">
+                        <div class="card-body">
+                            <h5 class="card-title tour-title">Canal do Jari</h5>
+                            <p class="card-text">O Canal do Jari é ideal para quem deseja ter um maior contato com a
+                                natureza e
+                                conhecer lindas praias.</p>
+                            <!-- Detalhes do passeio -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passeio 3: Praia do Pindobal -->
+                <div class="carousel-item">
+                    <div class="card tour-card">
+                        <img src="static/img/pindobal.jpg" class="card-img-top tour-image" alt="Praia do Pindobal">
+                        <div class="card-body">
+                            <h5 class="card-title tour-title">Praia do Pindobal</h5>
+                            <p class="card-text">Praia do Pindobal: um dos cenários mais belos de Alter do Chão.</p>
+                            <!-- Detalhes do passeio -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passeio 4: Piracaia -->
+                <div class="carousel-item">
+                    <div class="card tour-card">
+                        <img src="static/img/piracaia.jpg" class="card-img-top tour-image" alt="Piracaia">
+                        <div class="card-body">
+                            <h5 class="card-title tour-title">Piracaia</h5>
+                            <p class="card-text">Sob o luar, nas areias da praia é organizado um banquete de peixes.</p>
+                            <!-- Detalhes do passeio -->
+                        </div>
+                    </div>
+                </div>
             </div>
+            <a class="carousel-control-prev" href="#tour-carousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#tour-carousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </a>
         </div>
 
-        <!-- Repita o card acima para cada passeio em destaque -->
-
-    </div>
-
-    <div class="footer">
-        © 2024 Guia de Alter. Todos os direitos reservados.
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

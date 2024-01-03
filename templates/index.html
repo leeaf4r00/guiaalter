@@ -8,28 +8,43 @@
     <title>Guia de Alter - Passeios em Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .logo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .site-name h1,
+        .site-name p {
+            text-align: center;
+        }
+
+        .header,
+        .footer {
+            margin-bottom: 20px;
+        }
+
+        .iframe-container {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header text-center">
+    <header class="header">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-4">
-                    <div class="logo">
-                        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Seu Site"
-                            class="img-fluid">
-                    </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 logo">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Seu Site">
                 </div>
-                <div class="col-md-4 site-name">
+                <div class="col-md-6 site-name">
                     <h1>Guia de Alter</h1>
                     <p>Descubra a beleza de Alter do Chão</p>
-                </div>
-                <div class="col-md-4 header-buttons">
-                    {% if 'user_id' in session %}
-                    <a href="/logout">Logout</a>
-                    {% else %}
-                    <a href="/login">Login</a>
-                    {% endif %}
                 </div>
             </div>
         </div>
@@ -49,7 +64,7 @@
                         <a class="nav-link" href="/passeios">Passeios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/buffets">buffets</a>
+                        <a class="nav-link" href="/buffets">Buffets</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/hotels">Hotéis</a>
@@ -73,24 +88,17 @@
 
     <section class="main-content">
         <div class="slideshow text-center">
-            <!-- Slideshow com fotos dos principais passeios -->
             <div class="image-container">
-                <img src="{{ url_for('static', filename='img/alter1.jpg') }}" alt="Passeio 1" class="img-fluid">
+                <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}" alt="Passeio 1" class="img-fluid">
             </div>
-            <div class="image-container">
-                <img src="{{ url_for('static', filename='img/alter2.jpg') }}" alt="Passeio 2" class="img-fluid">
-            </div>
-            <!-- Adicione mais imagens conforme necessário -->
         </div>
 
         <div class="highlighted-tours text-center">
             <div class="container">
                 <h2>Passeios em Destaque</h2>
-                <!-- Lista de passeios destacados -->
                 <ul>
                     <li>Passeio de Barco pelo Rio Tapajós</li>
                     <li>Trilha na Floresta Amazônica</li>
-                    <!-- Adicione mais passeios destacados -->
                 </ul>
             </div>
         </div>
@@ -98,48 +106,23 @@
         <div class="new-tours text-center">
             <div class="container">
                 <h2>Cidades</h2>
-                <!-- Lista de novos passeios adicionados -->
                 <ul>
                     <li>Passeio de Canoa pelos Igapós</li>
                     <li>Visita à Comunidade Tradicional</li>
-                    <!-- Adicione mais novos passeios -->
                 </ul>
             </div>
         </div>
 
-        <div class="new-tours text-center">
-            <div class="container">
-                <h2>Pacotes</h2>
-                <!-- Lista de novos passeios adicionados -->
-                <ul>
-                    <li>Passeio de Canoa pelos Igapós</li>
-                    <li>Visita à Comunidade Tradicional</li>
-                    <!-- Adicione mais novos passeios -->
-                </ul>
-            </div>
+        <div class="iframe-container">
+            <iframe src="{{ url_for('routes.passeiosdestaque') }}" width="100%" height="400" style="border:0;"></iframe>
         </div>
 
-
-        <div class="client-testimonials text-center">
-            <div class="container">
-                <h2>Depoimentos de Clientes</h2>
-                <!-- Seção para depoimentos/avaliações de clientes -->
-                <p>"Adorei a experiência! Os guias são incríveis e as paisagens são deslumbrantes."</p>
-                <!-- Adicione mais depoimentos conforme necessário -->
-            </div>
-        </div>
-
-        <div class="call-to-action text-center">
-            <div class="container">
-                <h2>Pronto para explorar Alter do Chão?</h2>
-                <p>Agende agora seu passeio e descubra a beleza única desta região!</p>
-                <a href="/contato" class="cta-button">Agendar Passeio</a>
-            </div>
+        <div class="iframe-container">
+            <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
         </div>
 
         <div class="location-map text-center">
             <div class="container">
-                <!-- Seção de mapa de localização -->
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15943.968153708129!2d-54.95258845!3d-2.5094830500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92885284fb3ebf99%3A0xcb08442fee6790c3!2sAlter%20do%20Ch%C3%A3o%2C%20Santar%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v1703982093638!5m2!1spt-BR!2sbr"
                     width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
@@ -147,24 +130,25 @@
             </div>
         </div>
     </section>
+
     <div class="new-tours text-center">
         <div class="container">
             <h2>As Pessoas também compraram:</h2>
-            <!-- Lista de novos passeios adicionados -->
             <ul>
                 <li>Passeio de Canoa pelos Igapós</li>
                 <li>Visita à Comunidade Tradicional</li>
-                <!-- Adicione mais novos passeios -->
             </ul>
         </div>
     </div>
-
 
     <div class="client-testimonials text-center">
         <div class="container">
             <h2>Receba nossas novidades</h2>
             <p>"Insira seu Email."</p>
-            <!-- adicione o campo de email -->
+            <form>
+                <input type="email" class="form-control" placeholder="Seu email aqui">
+                <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
+            </form>
         </div>
     </div>
 
@@ -185,7 +169,6 @@
                 </div>
                 <div class="col-md-4 whatsapp-contact">
                     <h3>Contato via WhatsApp</h3>
-                    <!-- Botão/link para contato via WhatsApp -->
                     <a href="https://wa.me/5593991160523" target="_blank">Enviar Mensagem</a>
                 </div>
             </div>
