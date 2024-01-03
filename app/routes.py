@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
 from .models import User
 from .database import count_users
-from .user import validate_login  # Importação da função validate_login
+from .user import validate_login
 
 routes = Blueprint('routes', __name__)
 
@@ -31,17 +31,13 @@ def login():
 
 @routes.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
-    if request.method == 'POST':
-        # Implemente a lógica de cadastro aqui
-        pass
+    # Lógica de cadastro
     return render_template('cadastro.html')
 
 
 @routes.route('/reservas', methods=['GET', 'POST'])
 def reservas():
-    if request.method == 'POST':
-        # Implemente a lógica de reservas aqui
-        pass
+    # Lógica de reservas
     return render_template('reservas.html')
 
 
@@ -78,6 +74,41 @@ def veiculos():
 @routes.route('/sobrenos')
 def sobrenos():
     return render_template('sobrenos.html')
+
+
+@routes.route('/explorealter')
+def explorealter():
+    return render_template('explorealter.html')
+
+
+@routes.route('/passeiosagendar')
+def passeiosagendar():
+    return render_template('passeiosagendar.html')
+
+
+@routes.route('/passeiosdestaque')
+def passeiosdestaque():
+    return render_template('passeiosdestaque.html')
+
+
+@routes.route('/passeiosnovos')
+def passeiosnovos():
+    return render_template('passeiosnovos.html')
+
+
+@routes.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
+
+@routes.route('/terms-of-use')
+def terms_of_use():
+    return render_template('terms-of-use.html')
+
+
+@routes.route('/depoimentos')
+def depoimentos():
+    return render_template('depoimentos.html')
 
 
 @routes.route('/logout')
