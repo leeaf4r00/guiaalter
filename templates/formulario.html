@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Reserva - Guia de Alter do Chão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+</head>
+
+<body>
+    <!-- Inclua aqui o cabeçalho da página, se aplicável -->
+    <header>
+        <!-- Conteúdo do cabeçalho -->
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Formulário de Reserva</h1>
+            <form action="#" method="post" id="reservation-form">
+                <!-- Dados Pessoais -->
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" id="endereco" name="endereco">
+                    </div>
+                    <!-- Outros campos de endereço -->
+                </fieldset>
+
+                <!-- Dados de Voo -->
+                <fieldset>
+                    <legend>Dados de Voo</legend>
+                    <div class="form-group">
+                        <label for="numero-voo">Número do Voo:</label>
+                        <input type="text" id="numero-voo" name="numero-voo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="companhia-aerea">Companhia Aérea:</label>
+                        <select id="companhia-aerea" name="companhia-aerea" required>
+                            <option value="gol">GOL</option>
+                            <option value="azul">Azul</option>
+                            <option value="latam">LATAM</option>
+                            <option value="outra">Outra</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="origem">Local de Origem:</label>
+                        <input type="text" id="origem" name="origem" required>
+                    </div>
+                    <!-- Outros campos de dados de voo -->
+                </fieldset>
+
+                <!-- Datas e Horários -->
+                <fieldset>
+                    <legend>Datas e Horários</legend>
+                    <div class="form-group">
+                        <label for="data-chegada">Data de Chegada:</label>
+                        <input type="date" id="data-chegada" name="data-chegada" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora-chegada">Hora de Chegada:</label>
+                        <input type="time" id="hora-chegada" name="hora-chegada" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-saida">Data de Saída:</label>
+                        <input type="date" id="data-saida" name="data-saida" required>
+                    </div>
+                    <!-- Outros campos de datas e horários -->
+                </fieldset>
+
+                <!-- Informações Adicionais -->
+                <fieldset>
+                    <legend>Informações Adicionais</legend>
+                    <div class="form-group">
+                        <label for="quantidade-pessoas">Quantidade de Pessoas:</label>
+                        <input type="number" id="quantidade-pessoas" name="quantidade-pessoas" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="necessidades-especiais">Pessoas com Necessidades Especiais:</label>
+                        <input type="checkbox" id="necessidades-especiais" name="necessidades-especiais">
+                    </div>
+                    <div class="form-group">
+                        <label for="observacoes">Observações:</label>
+                        <textarea id="observacoes" name="observacoes"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Meio de Pagamento -->
+                <fieldset>
+                    <legend>Meio de Pagamento</legend>
+                    <div class="form-group">
+                        <label for="meio-pagamento">Selecione o Meio de Pagamento:</label>
+                        <select id="meio-pagamento" name="meio-pagamento" required>
+                            <option value="cartao-credito">Cartão de Crédito</option>
+                            <option value="pix">Pix</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <!-- Upload de Comprovante -->
+                <fieldset>
+                    <legend>Upload de Comprovante</legend>
+                    <div class="form-group">
+                        <label for="comprovante">Comprovante de Pagamento:</label>
+                        <input type="file" id="comprovante" name="comprovante">
+                    </div>
+                </fieldset>
+
+                <!-- Botão de Envio -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Enviar Reserva</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Inclua aqui o rodapé da página, se aplicável -->
+    <footer>
+        <!-- Conteúdo do rodapé -->
+    </footer>
+</body>
+
+</html>
