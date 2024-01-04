@@ -10,10 +10,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .tour-box {
-            width: 400px;
-            height: 400px;
+            width: 300px;
+            height: 300px;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tour-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tour-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .tour-name {
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         @media (max-width: 768px) {
@@ -22,159 +41,130 @@
                 height: auto;
             }
         }
+
+        body {
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <!-- Cabeçalho aqui -->
-    </header>
-
     <main>
         <div class="container">
             <h1>Tours em Destaque</h1>
-            <div class="row">
-
+            <div class="row" id="carousel">
                 <!-- Tour 1: Ponta da Valéria -->
                 <div class="col-md-4">
-                    <div class="tour-box">
-                        <div id="carouselPontaValeria" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ url_for('static', filename='img/pontadavaleria.jpg') }}"
-                                        class="d-block w-100" alt="Ponta da Valéria">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ url_for('static', filename='img/pontadavaleria1.jpg') }}"
-                                        class="d-block w-100" alt="Ponta da Valéria">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ url_for('static', filename='img/pontadavaleria2.jpg') }}"
-                                        class="d-block w-100" alt="Ponta da Valéria">
-                                </div>
-                            </div>
+                    <a href="{{ url_for('routes.pontadavaleria') }}">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/pontadavaleria.jpg') }}"
+                                alt="Ponta da Valéria">
                         </div>
-                        <a href="templates/tours/pontadavaleria.html">Ponta da Valéria</a>
-                    </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Ponta da Valéria</div>
+                            <a href="{{ url_for('routes.pontadavaleria') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Tour 2: Lago Verde -->
                 <div class="col-md-4">
-                    <div class="tour-box">
-                        <div id="carouselLagoVerde" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}"
-                                        class="d-block w-100" alt="Lago Verde">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}"
-                                        class="d-block w-100" alt="Lago Verde">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}"
-                                        class="d-block w-100" alt="Lago Verde">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}"
-                                        class="d-block w-100" alt="Lago Verde">
-                                </div>
-                            </div>
+                    <a href="{{ url_for('routes.lagoverde') }}">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde">
                         </div>
-                        <a href="templates/tours/lagoverde.html">Lago Verde</a>
-                    </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Lago Verde</div>
+                            <a href="{{ url_for('routes.lagoverde') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
-
 
                 <!-- Tour 3: Igarapé do Macaco -->
                 <div class="col-md-4">
-                    <div class="tour-box">
-                        <div id="carouselIgarapeMacaco" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ url_for('static', filename='img/igarapemacaco1.jpg') }}"
-                                        class="d-block w-100" alt="Igarapé do Macaco">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ url_for('static', filename='img/igarapemacaco2.jpg') }}"
-                                        class="d-block w-100" alt="Igarapé do Macaco">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ url_for('static', filename='img/igarapemacaco3.jpg') }}"
-                                        class="d-block w-100" alt="Igarapé do Macaco">
-                                </div>
-                            </div>
+                    <a href="{{ url_for('routes.igarapedomacaco') }}">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/igarapemacaco1.jpg') }}"
+                                alt="Igarapé do Macaco">
                         </div>
-                        <a href="templates/tours/igarapedomacaco.html">Igarapé do Macaco</a>
-                    </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Igarapé do Macaco</div>
+                            <a href="{{ url_for('routes.igarapedomacaco') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Tour 4: Igarapé do Camarão -->
                 <div class="col-md-4">
-                    <div class="tour-box">
-                        <div id="carouselIgarapeCamarao" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ url_for('static', filename='img/igarapecamarao.jpg') }}"
-                                        class="d-block w-100" alt="Igarapé do Camarão">
-                                </div>
-                            </div>
+                    <a href="{{ url_for('routes.igarapedocamarao') }}">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/igarapecamarao.jpg') }}"
+                                alt="Igarapé do Camarão">
                         </div>
-                        <a href="templates/tours/igarapedocamarao.html">Igarapé do Camarão</a>
-                    </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Igarapé do Camarão</div>
+                            <a href="{{ url_for('routes.igarapedocamarao') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Tour 5: Floresta Encantada -->
                 <div class="col-md-4">
-                    <div class="tour-box">
-                        <div id="carouselFlorestaEncantada" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ url_for('static', filename='img/florestaencantada.jpg') }}"
-                                        class="d-block w-100" alt="Floresta Encantada">
-                                </div>
-                            </div>
+                    <a href="{{ url_for('routes.florestaencantada') }}">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/florestaencantada.jpg') }}"
+                                alt="Floresta Encantada">
                         </div>
-                        <a href="templates/tours/florestaencantada.html">Floresta Encantada</a>
-                    </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Floresta Encantada</div>
+                            <a href="{{ url_for('routes.florestaencantada') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Tour 6: Alter do Chão Tour -->
                 <div class="col-md-4">
-                    <div class="tour-box">
-                        <div id="carouselAlterDoChao" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}"
-                                        class="d-block w-100" alt="Alter do Chão">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ url_for('static', filename='img/alterdochao2.jpg') }}"
-                                        class="d-block w-100" alt="Alter do Chão">
-                                </div>
-                            </div>
+                    <a href="{{ url_for('routes.alterdochaotour') }}">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}" alt="Alter do Chão">
                         </div>
-                        <a href="templates/tours/alterdochaotour.html">Alter do Chão Tour</a>
-                    </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Alter do Chão Tour</div>
+                            <a href="{{ url_for('routes.alterdochaotour') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
             </div>
         </div>
     </main>
 
-    <footer class="footer">
-        <!-- Rodapé aqui -->
-    </footer>
+    <script>
+        var currentIndex = 0;
+        var tours = document.querySelectorAll(".col-md-4");
+
+        function showTours() {
+            for (var i = 0; i < tours.length; i++) {
+                tours[i].style.display = "none";
+            }
+            for (var i = currentIndex; i < currentIndex + 3; i++) {
+                if (i < tours.length) {
+                    tours[i].style.display = "block";
+                }
+            }
+            currentIndex += 3;
+            if (currentIndex >= tours.length) {
+                currentIndex = 0;
+            }
+            setTimeout(showTours, 2000); // Altere o intervalo de troca aqui (em milissegundos)
+        }
+
+        showTours();
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        // Aumente o tempo de transição do carousel para 5 segundos
-        $('.carousel').carousel({
-            interval: 5000
-        });
-    </script>
 </body>
 
 </html>

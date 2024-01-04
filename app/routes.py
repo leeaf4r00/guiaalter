@@ -96,6 +96,26 @@ def alterdochaotour():
     return render_template('tours/alterdochaotour.html')
 
 
+@routes.route('/tours/florestaencantada')
+def florestaencantada():
+    return render_template('tours/florestaencantada.html')
+
+
+@routes.route('/tours/igarapedocamarao')
+def igarapedocamarao():
+    return render_template('tours/igarapedocamarao.html')
+
+
+@routes.route('/tours/igarapedomacaco')
+def igarapedomacaco():
+    return render_template('tours/igarapedomacaco.html')
+
+
+@routes.route('/tours/pontadavaleria')
+def pontadavaleria():
+    return render_template('tours/pontadavaleria.html')
+
+
 @routes.route('/passeiosagendar')
 def passeiosagendar():
     return render_template('passeiosagendar.html')
