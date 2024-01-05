@@ -1,9 +1,9 @@
 import os
+from flask import Flask, render_template
+from flask_login import LoginManager, UserMixin
+from app.models.user import get_user_by_username
 from app.routes import routes
 from app.routes_tours import routes_tours  # Adicione esta linha
-from flask import Flask
-from flask_login import LoginManager, UserMixin, login_required
-from app.models.user import get_user_by_username
 
 app = Flask(__name__)
 
@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = os.environ.get(
 
 # Configuração do sistema de login
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'routes.login'
 
 # Classe de usuário para Flask-Login
 
@@ -35,6 +35,14 @@ def load_user(user_id):
 # Importa e registra as rotas
 app.register_blueprint(routes)
 app.register_blueprint(routes_tours)
+
+# Configuração de tratamento de erro 404
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

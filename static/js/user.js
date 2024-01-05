@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const isValid = validateLoginForm();
             if (isValid) {
                 // Implementar a lógica de login aqui (possivelmente usando AJAX)
+                // Dispare o evento 'loginSuccess' após um login bem-sucedido
+                document.dispatchEvent(new Event('loginSuccess'));
             }
         });
     }

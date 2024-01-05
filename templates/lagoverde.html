@@ -5,60 +5,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubra as belezas do Lago Verde em Alter do Chão">
-    <meta name="keywords" content="Lago Verde, Alter do Chão, Natureza, Turismo">
     <title>Lago Verde - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .tour-box {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tour-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tour-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .tour-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .tour-box {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header">
-        <!-- Aqui vai o cabeçalho -->
-    </header>
-
     <main>
-        <section class="intro-section">
-            <div class="container">
-                <h1>Lago Verde - Um Tesouro de Alter do Chão</h1>
-                <p>Descubra as maravilhas naturais e as águas cristalinas do Lago Verde, um dos destinos mais
-                    encantadores de Alter do Chão.</p>
-            </div>
-        </section>
-
         <section class="gallery-section">
             <div class="container">
-                <h2>Galeria de Fotos</h2>
-                <div id="carouselLagoVerde" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde 1"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde 2"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}" alt="Lago Verde 3"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}" alt="Lago Verde 4"
-                                class="d-block w-100">
+                <div class="row" id="carouselLagoVerde">
+                    <!-- Imagem 1 -->
+                    <div class="col-md-4">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde 1">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselLagoVerde" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselLagoVerde" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Próximo</span>
-                    </a>
+
+                    <!-- Imagem 2 -->
+                    <div class="col-md-4">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde 2">
+                        </div>
+                    </div>
+
+                    <!-- Imagem 3 -->
+                    <div class="col-md-4">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}" alt="Lago Verde 3">
+                        </div>
+                    </div>
+
+                    <!-- Imagem 4 -->
+                    <div class="col-md-4">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}" alt="Lago Verde 4">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

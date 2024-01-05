@@ -2,8 +2,6 @@
 
 // Aguarda o carregamento completo do DOM antes de executar o código JavaScript
 document.addEventListener("DOMContentLoaded", function () {
-    // Seu código JavaScript aqui
-
     // Exemplo: Adicionando um evento de clique a um elemento com ID "meuElemento"
     var meuElemento = document.getElementById("meuElemento");
 
@@ -32,6 +30,39 @@ document.addEventListener("DOMContentLoaded", function () {
             lazyImageObserver.observe(lazyImage);
         });
     }
-});
 
-// Mais código JavaScript pode ser adicionado conforme necessário
+    // Exemplo: Adicionar um evento de clique a um botão com ID "meuBotao"
+    var meuBotao = document.getElementById("meuBotao");
+
+    if (meuBotao) {
+        meuBotao.addEventListener("click", function () {
+            alert("Cliquei no botão!");
+        });
+    }
+
+    // Exemplo: Fazer uma solicitação AJAX quando um botão com ID "meuBotaoAjax" for clicado
+    var meuBotaoAjax = document.getElementById("meuBotaoAjax");
+
+    if (meuBotaoAjax) {
+        meuBotaoAjax.addEventListener("click", function () {
+            // Fazer uma solicitação AJAX aqui
+            // Por exemplo, usando a biblioteca fetch:
+            fetch("/url_do_servidor")
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Erro na solicitação");
+                    }
+                })
+                .then(function (data) {
+                    // Manipular os dados recebidos do servidor
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        });
+    }
+
+    // Mais código JavaScript pode ser adicionado conforme necessário
+});

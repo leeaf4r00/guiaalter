@@ -63,14 +63,9 @@ def aramanai():
     return render_template('tours/subindoorio/aramanai.html')
 
 
-@routes_tours.route('/rioarapiuns')
-def rioarapiuns():
-    return render_template('rioarapiuns.html')
-
-
-@routes_tours.route('/tours/rioarapiuns/torono')
-def torono():
-    return render_template('tours/rioarapiuns/torono.html')
+@routes_tours.route('/tours/rioarapiuns/pontadotorono')
+def pontadotorono():
+    return render_template('tours/rioarapiuns/pontadotorono.html')
 
 
 @routes_tours.route('/tours/rioarapiuns/pontagrande')
@@ -78,8 +73,8 @@ def pontagrande():
     return render_template('tours/rioarapiuns/pontagrande.html')
 
 
-@routes_tours.route('/tours/rioarapiuns/melipolinario')
-def melipolinario():
+@routes_tours.route('/tours/rioarapiuns/meliponario')
+def meliponario():
     return render_template('tours/rioarapiuns/meliponario.html')
 
 

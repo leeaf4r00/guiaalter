@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash, Blueprint, current_app
 from flask_login import login_user, login_required, logout_user, current_user
+from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
 from app.models.user import User, validate_login
 from app.forms import RegistrationForm
@@ -20,14 +21,16 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user_id = validate_login(username, password)
-        if user_id:
-            user = User()
-            user.id = user_id
-            login_user(user)
+        user = get_user_by_username(username)
+
+        if user and check_password_hash(user.password, password):
+            user_object = User(username)
+            login_user(user_object)
             return redirect(url_for('routes.index'))
-        else:
-            return render_template('login.html', error='Credenciais inválidas. Tente novamente.')
+
+        flash('Credenciais inválidas. Tente novamente.', 'error')
+
+    # Se o método for GET ou se as credenciais estiverem incorretas, renderize a página de login
     return render_template('login.html')
 
 
@@ -37,12 +40,20 @@ def register():
     if form.validate_on_submit():
         hashed_password = generate_password_hash(
             form.password.data)  # Hash da senha
+        is_admin = False
+        if form.username.data == "seu_usuario_admin" and db.count_admin_users() == 0:
+            is_admin = True
         # Usando create_user
         # Use a função 'create_user' da instância 'db'
-        success = db.create_user(form.username.data, hashed_password)
+        success = db.create_user(form.username.data, hashed_password, is_admin)
         if success:
             flash('Conta criada com sucesso!', 'success')
-            return redirect(url_for('routes.login'))
+
+            # Redirecionar com base no nível de permissão
+            if is_admin:
+                return redirect(url_for('routes.admin'))
+            else:
+                return redirect(url_for('routes.login'))
         else:
             flash('Erro ao criar a conta.', 'error')
     return render_template('cadastro.html', title='Cadastro', form=form)
@@ -127,9 +138,9 @@ def logout():
 
 
 @routes.route('/admin')
-@login_required
 def admin():
-    return render_template('admin.html', username=current_user.id)
+    # Lógica da visualização da página de administração
+    return render_template('admin.html')
 
 
 @routes.route('/rioarapiuns')
@@ -167,3 +178,12 @@ def depoimentos():
     # Seu código para a página de depoimentos do tour aqui
     return render_template('depoimentos.html')
 
+
+@routes.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+
+@routes.route('/cadastro_backend')
+def cadastro_backend():
+    return render_template('cadastro_backend.html')
