@@ -1,8 +1,9 @@
-from flask import render_template, request, redirect, url_for, Blueprint
+from flask import render_template, request, redirect, url_for, flash, Blueprint
 from flask_login import login_user, login_required, logout_user, current_user
-from .models import User
-from .database import count_users
-from .user import validate_login
+from app.models.user import User, validate_login
+from app.forms import RegistrationForm
+# Importe a função count_users do arquivo app.database
+from app.database import count_users
 
 routes = Blueprint('routes', __name__)
 
@@ -29,10 +30,18 @@ def login():
     return render_template('login.html')
 
 
-@routes.route('/cadastro', methods=['GET', 'POST'])
-def cadastro():
-    # Lógica de cadastro
-    return render_template('cadastro.html')
+@routes.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = form.password.data
+        new_user = User(username=form.username.data, email=form.email.data,
+                        password=hashed_password, user_type=form.user_type.data)
+        db.session.add(new_user)
+        db.session.commit()
+        flash('Conta criada com sucesso!', 'success')
+        return redirect(url_for('routes.login'))
+    return render_template('cadastro.html', title='Cadastro', form=form)
 
 
 @routes.route('/reservas', methods=['GET', 'POST'])
@@ -81,69 +90,29 @@ def explorealter():
     return render_template('explorealter.html')
 
 
-@routes.route('/tours')
-def tours():
-    return render_template('tours.html')
+@routes.route('/mapaalter')
+def mapaalter():
+    return render_template('mapaalter.html')
 
 
-@routes.route('/tours/lagoverde')
-def lagoverde():
-    return render_template('tours/lagoverde.html')
+@routes.route('/pessoascompraram')
+def pessoascompraram():
+    return render_template('pessoascompraram.html')
 
 
-@routes.route('/tours/alterdochao')
-def alterdochaotour():
-    return render_template('tours/alterdochaotour.html')
+@routes.route('/conhecaalter')
+def conhecaalter():
+    return render_template('conhecaalter.html')
 
 
-@routes.route('/tours/florestaencantada')
-def florestaencantada():
-    return render_template('tours/florestaencantada.html')
+@routes.route('/souvenir')
+def souvenir():
+    return render_template('souvenir.html')
 
 
-@routes.route('/tours/igarapedocamarao')
-def igarapedocamarao():
-    return render_template('tours/igarapedocamarao.html')
-
-
-@routes.route('/tours/igarapedomacaco')
-def igarapedomacaco():
-    return render_template('tours/igarapedomacaco.html')
-
-
-@routes.route('/tours/pontadavaleria')
-def pontadavaleria():
-    return render_template('tours/pontadavaleria.html')
-
-
-@routes.route('/passeiosagendar')
-def passeiosagendar():
-    return render_template('passeiosagendar.html')
-
-
-@routes.route('/passeiosdestaque')
-def passeiosdestaque():
-    return render_template('passeiosdestaque.html')
-
-
-@routes.route('/passeiosnovos')
-def passeiosnovos():
-    return render_template('passeiosnovos.html')
-
-
-@routes.route('/privacy-policy')
-def privacy_policy():
-    return render_template('privacy-policy.html')
-
-
-@routes.route('/terms-of-use')
-def terms_of_use():
-    return render_template('terms-of-use.html')
-
-
-@routes.route('/depoimentos')
-def depoimentos():
-    return render_template('depoimentos.html')
+@routes.route('/sejanossoparceiro')
+def sejanossoparceiro():
+    return render_template('sejanossoparceiro.html')
 
 
 @routes.route('/logout')
@@ -159,12 +128,31 @@ def admin():
     return render_template('admin.html', username=current_user.id)
 
 
+@routes.route('/rioarapiuns')
+def rioarapiuns():
+    # Aqui você pode adicionar qualquer lógica adicional necessária
+    return render_template('rioarapiuns.html')
+
+
+@routes.route('/lagoverde')
+def lagoverde():
+    # Aqui você pode adicionar qualquer lógica adicional necessária
+    return render_template('lagoverde.html')
+
+
+@routes.route('/descendoorio')
+def descendoorio():
+    # Aqui você pode adicionar qualquer lógica adicional necessária
+    return render_template('descendoorio.html')
+
+
+@routes.route('/subindoorio')
+def subindoorio():
+    # Aqui você pode adicionar qualquer lógica adicional necessária
+    return render_template('subindoorio.html')
+
+
 @routes.route('/tourdestaques')
 def tourdestaques():
     # Seu código para a página de destaques do tour aqui
     return render_template('tourdestaques.html')
-
-
-@routes.app_errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
