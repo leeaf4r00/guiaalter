@@ -2,67 +2,63 @@
 
 // Aguarda o carregamento completo do DOM antes de executar o código JavaScript
 document.addEventListener("DOMContentLoaded", function () {
-    // Exemplo: Adicionando um evento de clique a um elemento com ID "meuElemento"
-    var meuElemento = document.getElementById("meuElemento");
+    // Adiciona um ouvinte de evento ao formulário de login
+    const loginForm = document.getElementById("loginForm");
 
-    if (meuElemento) {
-        meuElemento.addEventListener("click", function () {
-            alert("Cliquei no elemento!");
-        });
-    }
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Impede o envio do formulário padrão
+            const isValid = validateLoginForm();
 
-    // Exemplo: Implementação do lazy loading para imagens
-    var lazyImages = document.querySelectorAll('img.lazy');
+            if (isValid) {
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
 
-    if ('IntersectionObserver' in window) {
-        var lazyImageObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    var lazyImage = entry.target;
-                    lazyImage.src = lazyImage.dataset.src;
-                    lazyImage.classList.remove('lazy');
-                    lazyImageObserver.unobserve(lazyImage);
-                }
-            });
-        });
-
-        lazyImages.forEach(function (lazyImage) {
-            lazyImageObserver.observe(lazyImage);
-        });
-    }
-
-    // Exemplo: Adicionar um evento de clique a um botão com ID "meuBotao"
-    var meuBotao = document.getElementById("meuBotao");
-
-    if (meuBotao) {
-        meuBotao.addEventListener("click", function () {
-            alert("Cliquei no botão!");
-        });
-    }
-
-    // Exemplo: Fazer uma solicitação AJAX quando um botão com ID "meuBotaoAjax" for clicado
-    var meuBotaoAjax = document.getElementById("meuBotaoAjax");
-
-    if (meuBotaoAjax) {
-        meuBotaoAjax.addEventListener("click", function () {
-            // Fazer uma solicitação AJAX aqui
-            // Por exemplo, usando a biblioteca fetch:
-            fetch("/url_do_servidor")
-                .then(function (response) {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error("Erro na solicitação");
-                    }
+                // Fazer uma solicitação AJAX para o backend
+                fetch("/login", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
                 })
-                .then(function (data) {
-                    // Manipular os dados recebidos do servidor
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
+                    .then(function (response) {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error("Erro na solicitação");
+                        }
+                    })
+                    .then(function (data) {
+                        if (data.status === 'success') {
+                            // Redireciona para a rota protegida após login bem-sucedido
+                            window.location.href = '/admin'; // Substitua '/admin' pela rota desejada
+                        } else {
+                            // Mostrar mensagem de erro
+                            alert("Credenciais inválidas. Tente novamente.");
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error(error);
+                    });
+            }
         });
     }
 
-    // Mais código JavaScript pode ser adicionado conforme necessário
+    // Função para validar o formulário de login
+    function validateLoginForm() {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (!username || !password) {
+            alert('Por favor, preencha todos os campos.');
+            return false;
+        }
+
+        // Adicione aqui mais validações conforme necessário
+
+        return true;
+    }
+
+    // Outros eventos e lógica JavaScript podem ser adicionados conforme necessário
 });

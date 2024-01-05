@@ -17,12 +17,9 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'routes.login'
 
 # Classe de usuário para Flask-Login
-
-
 class User(UserMixin):
     def __init__(self, user_id):
         self.id = user_id
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -31,18 +28,14 @@ def load_user(user_id):
         return User(user_id=user_data[0])
     return None
 
-
 # Importa e registra as rotas
 app.register_blueprint(routes)
 app.register_blueprint(routes_tours)
 
 # Configuração de tratamento de erro 404
-
-
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
-
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

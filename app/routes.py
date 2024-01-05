@@ -22,16 +22,37 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+
+        if not username:
+            flash('Informe o nome de usuário', 'error')
+            return redirect(url_for('routes.login'))
+
+        if not password:
+            flash('Informe a senha', 'error')
+            return redirect(url_for('routes.login'))
+
         user = get_user_by_username(username)
 
-        if user and check_password_hash(user.password, password):
-            user_object = User(username)
-            login_user(user_object)
-            return redirect(url_for('routes.index'))
+        if not user:
+            flash('Usuário não encontrado', 'error')
+            return redirect(url_for('routes.login'))
 
-        flash('Credenciais inválidas. Tente novamente.', 'error')
+        if user.check_password(password):
+            user_object = User(user.id, user.username,
+                               user.email, user.password, user.is_admin)
 
-    # Se o método for GET ou se as credenciais estiverem incorretas, renderize a página de login
+            if login_user(user_object):
+                if user.is_admin:
+                    # Redirecionar usuário administrativo
+                    return redirect(url_for('routes.admin'))
+                else:
+                    # Redirecionar usuário normal
+                    return redirect(url_for('routes.index'))
+            else:
+                flash('Erro ao fazer login', 'error')
+        else:
+            flash('Credenciais inválidas. Tente novamente.', 'error')
+
     return render_template('login.html')
 
 
@@ -178,11 +199,6 @@ def tourdestaques():
 def depoimentos():
     # Seu código para a página de depoimentos do tour aqui
     return render_template('depoimentos.html')
-
-
-@routes.errorhandler(404)
-def page_not_found(error):
-    return render_template('404.html'), 404
 
 
 @routes.route('/cadastro_backend')

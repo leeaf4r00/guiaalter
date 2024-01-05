@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Função para validar o formulário de login
     function validateLoginForm() {
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value.trim();
@@ -9,30 +8,37 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         }
 
-        // Adicione aqui mais validações conforme necessário
-
         return true;
     }
 
-    // Adiciona um ouvinte de evento ao formulário de login
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Impede o envio do formulário padrão
+            event.preventDefault();
             const isValid = validateLoginForm();
             if (isValid) {
-                // Implementar a lógica de login aqui (possivelmente usando AJAX)
-                // Dispare o evento 'loginSuccess' após um login bem-sucedido
-                document.dispatchEvent(new Event('loginSuccess'));
+                fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: document.getElementById('username').value,
+                        password: document.getElementById('password').value
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        window.location.href = '/admin';
+                    } else {
+                        alert('Login falhou. Verifique suas credenciais.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro na requisição AJAX:', error);
+                });
             }
         });
     }
-
-    // Adiciona um ouvinte de evento para 'loginSuccess'
-    document.addEventListener('loginSuccess', function () {
-        // Redireciona para a rota protegida após login
-        window.location.href = '/admin'; // Substitua '/admin' pela rota desejada
-    });
-
-    // Aqui você pode adicionar mais códigos relacionados ao usuário, como requisições AJAX, etc.
 });

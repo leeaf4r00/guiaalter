@@ -77,8 +77,8 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        // Disparar evento loginSuccess
-                        document.dispatchEvent(new Event('loginSuccess'));
+                        // Redirecionar para a página inicial após o login bem-sucedido
+                        window.location.href = "{{ url_for('routes.index') }}";
                     } else {
                         // Mostrar mensagem de erro
                         alert('Credenciais inválidas. Tente novamente.');
