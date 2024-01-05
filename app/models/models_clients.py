@@ -1,36 +1,62 @@
-from flask_sqlalchemy import SQLAlchemy
+import sqlite3
+from flask import current_app
 
-db = SQLAlchemy()
+DATABASE_PATH = "data/database.db"
+CLIENTS_DATABASE_PATH = "data/database_clients.db"
 
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(128), nullable=False)
+class User:
 
-    def __init__(self, username, email, password):
+    def __init__(self, id, username, email, password):
+        self.id = id
         self.username = username
         self.email = email
         self.password = password
 
 
-def create_clients_database(app):
-    # Configura o banco de dados para usar o novo banco de dados de clientes
-    app.config['SQLALCHEMY_BINDS'] = {
-        'clients': 'sqlite:///data/database_clients.db'
-    }
-    db.init_app(app)
+def create_clients_database():
+    conn = sqlite3.connect(CLIENTS_DATABASE_PATH)
+    cursor = conn.cursor()
 
-    # Cria as tabelas no novo banco de dados de clientes (se não existirem)
-    with app.app_context():
-        db.create_all(bind='clients')
+    # Cria a tabela 'user' no novo banco de dados de clientes (se não existir)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+
+    conn.commit()
+    conn.close()
 
 
 def init_app(app):
-    # Inicializa o aplicativo Flask com as configurações do banco de dados
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/database.db'
-    db.init_app(app)
+    # Configura o banco de dados principal
+    app.config['DATABASE_PATH'] = DATABASE_PATH
 
-    # Cria e inicializa o banco de dados de clientes
-    create_clients_database(app)
+    # Cria o banco de dados principal (se não existir)
+    conn = sqlite3.connect(DATABASE_PATH)
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS user (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+    # Configura o banco de dados de clientes
+    app.config['CLIENTS_DATABASE_PATH'] = CLIENTS_DATABASE_PATH
+
+    # Cria o banco de dados de clientes (se não existir)
+    create_clients_database()
+
+
+# Exemplo de uso:
+# from flask import Flask
+# app = Flask(__name__)
+# init_app(app)

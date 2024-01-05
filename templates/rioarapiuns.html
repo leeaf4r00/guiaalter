@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tours em Destaque - Alter do Chão</title>
+    <title>Rotas - Rio Arapiuns</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -52,84 +52,86 @@
     <main>
         <div class="container">
             <div class="row" id="carousel">
-                <!-- Tour 1: Ponta da Valéria -->
+                <!-- Tour 1: Comunidade de Coroca -->
                 <div class="col-md-4">
-                    <a href="{{ url_for('routes.pontadavaleria') }}" target="_blank">
+                    <a href="{{ url_for('routes_tours.comunidadecoroca') }}" target="_blank">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/pontadavaleria.jpg') }}"
-                                alt="Ponta da Valéria">
+                            <img src="{{ url_for('static', filename='img/rioarapiuns/comunidadecoroca1.jpg') }}"
+                                alt="comunidadecoroca">
                         </div>
                         <div class="tour-info">
-                            <div class="tour-name">Ponta da Valéria</div>
-                            <a href="{{ url_for('routes.pontadavaleria') }}" class="btn btn-primary">Ver mais</a>
+                            <div class="tour-name">Comunidade de Coroca</div>
+                            <a href="{{ url_for('routes_tours.comunidadecoroca') }}" class="btn btn-primary">Ver
+                                mais</a>
                         </div>
                     </a>
                 </div>
 
-                <!-- Tour 2: Lago Verde -->
+                <!-- Tour 2: Icuxí -->
                 <div class="col-md-4">
-                    <a href="{{ url_for('routes.lagoverde') }}" target="_blank">
+                    <a href="{{ url_for('routes_tours.icuxi') }}" target="_blank">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde">
+                            <img src="{{ url_for('static', filename='img/rioarapiuns/icuxi1.jpg') }}"
+                                alt="Icuxí">
                         </div>
                         <div class="tour-info">
-                            <div class="tour-name">Lago Verde</div>
-                            <a href="{{ url_for('routes.lagoverde') }}" class="btn btn-primary">Ver mais</a>
+                            <div class="tour-name">Icuxí</div>
+                            <a href="{{ url_for('routes_tours.icuxi') }}" class="btn btn-primary">Ver mais</a>
                         </div>
                     </a>
                 </div>
 
-                <!-- Tour 3: Igarapé do Macaco -->
+                <!-- Tour 3: Meliponário -->
                 <div class="col-md-4">
-                    <a href="{{ url_for('routes.igarapedomacaco') }}" target="_blank">
+                    <a href="{{ url_for('routes_tours.meliponario') }}" target="_blank">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/igarapemacaco2.jpg') }}"
-                                alt="Igarapé do Macaco">
+                            <img src="{{ url_for('static', filename='img/rioarapiuns/meliponario.jpg') }}" alt="Meliponário">
                         </div>
                         <div class="tour-info">
-                            <div class="tour-name">Igarapé do Macaco</div>
-                            <a href="{{ url_for('routes.igarapedomacaco') }}" class="btn btn-primary">Ver mais</a>
+                            <div class="tour-name">Meliponário</div>
+                            <a href="{{ url_for('routes_tours.meliponario') }}" class="btn btn-primary">Ver mais</a>
                         </div>
                     </a>
                 </div>
 
-                <!-- Tour 4: Igarapé do Camarão -->
+                <!-- Tour 4: Ponta Grande -->
                 <div class="col-md-4">
-                    <a href="{{ url_for('routes.igarapedocamarao') }}" target="_blank">
+                    <a href="{{ url_for('routes_tours.pontagrande') }}" target="_blank">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/igarapecamarao.jpg') }}"
-                                alt="Igarapé do Camarão">
+                            <img src="{{ url_for('static', filename='img/rioarapiuns/pontagrande1.jpg') }}"
+                                alt="Ponta Grande">
                         </div>
                         <div class="tour-info">
-                            <div class="tour-name">Igarapé do Camarão</div>
-                            <a href="{{ url_for('routes.igarapedocamarao') }}" class="btn btn-primary">Ver mais</a>
+                            <div class="tour-name">Ponta Grande</div>
+                            <a href="{{ url_for('routes_tours.pontagrande') }}" class="btn btn-primary">Ver mais</a>
                         </div>
                     </a>
                 </div>
 
-                <!-- Tour 5: Floresta Encantada -->
+                <!-- Tour 5: Ponta do Toronó -->
                 <div class="col-md-4">
-                    <a href="{{ url_for('routes.florestaencantada') }}" target="_blank">
+                    <a href="{{ url_for('routes_tours.pontadotorono') }}" target="_blank">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/florestaencantada.jpg') }}"
-                                alt="Floresta Encantada">
+                            <img src="{{ url_for('static', filename='img/rioarapiuns/pontadotorono1.jpg') }}"
+                                alt="Ponta do Toronó">
                         </div>
                         <div class="tour-info">
-                            <div class="tour-name">Floresta Encantada</div>
+                            <div class="tour-name">Ponta do Toronó</div>
                             <a href="{{ url_for('routes.florestaencantada') }}" class="btn btn-primary">Ver mais</a>
                         </div>
                     </a>
                 </div>
 
-                <!-- Tour 6: Alter do Chão Tour -->
+                <!-- Tour 6: Ponta Grande -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes.alterdochaotour') }}" target="_blank">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}" alt="Alter do Chão">
+                            <img src="{{ url_for('static', filename='img/rioarapiuns/pontagrande1.jpg') }}"
+                                alt="Ponta Grande">
                         </div>
                         <div class="tour-info">
-                            <div class="tour-name">Alter do Chão Tour</div>
-                            <a href="{{ url_for('routes.alterdochaotour') }}" class="btn btn-primary">Ver mais</a>
+                            <div class="tour-name">Ponta Grande</div>
+                            <a href="{{ url_for('routes_tours.pontagrande') }}" class="btn btn-primary">Ver mais</a>
                         </div>
                     </a>
                 </div>

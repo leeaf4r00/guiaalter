@@ -63,6 +63,11 @@ def aramanai():
     return render_template('tours/subindoorio/aramanai.html')
 
 
+@routes_tours.route('/rioarapiuns')
+def rioarapiuns():
+    return render_template('rioarapiuns.html')
+
+
 @routes_tours.route('/tours/rioarapiuns/torono')
 def torono():
     return render_template('tours/rioarapiuns/torono.html')
@@ -75,7 +80,7 @@ def pontagrande():
 
 @routes_tours.route('/tours/rioarapiuns/melipolinario')
 def melipolinario():
-    return render_template('tours/rioarapiuns/melipolinario.html')
+    return render_template('tours/rioarapiuns/meliponario.html')
 
 
 @routes_tours.route('/tours/rioarapiuns/icuxi')
@@ -126,9 +131,3 @@ def casadosaulo():
 @routes_tours.route('/tours/descendoorio/canaldojari')
 def canaldojari():
     return render_template('tours/descendoorio/canaldojari.html')
-
-
-@routes_tours.route('/depoimentos')
-def depoimentos():
-    # Seu código para a página de destaques do tour aqui
-    return render_template('depoimentos.html')

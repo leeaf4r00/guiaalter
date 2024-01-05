@@ -1,16 +1,17 @@
-from flask import render_template, request, redirect, url_for, flash, Blueprint
+from flask import render_template, request, redirect, url_for, flash, Blueprint, current_app
 from flask_login import login_user, login_required, logout_user, current_user
+from werkzeug.security import generate_password_hash
 from app.models.user import User, validate_login
 from app.forms import RegistrationForm
-# Importe a função count_users do arquivo app.database
-from app.database import count_users
+from app.database import db
+from app.forms import RegistrationForm
 
 routes = Blueprint('routes', __name__)
 
 
 @routes.route('/')
 def index():
-    user_count = count_users()
+    user_count = db.count_users()  # Use a função 'count_users' da instância 'db'
     return render_template('index.html', user_count=user_count)
 
 
@@ -34,13 +35,16 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = form.password.data
-        new_user = User(username=form.username.data, email=form.email.data,
-                        password=hashed_password, user_type=form.user_type.data)
-        db.session.add(new_user)
-        db.session.commit()
-        flash('Conta criada com sucesso!', 'success')
-        return redirect(url_for('routes.login'))
+        hashed_password = generate_password_hash(
+            form.password.data)  # Hash da senha
+        # Usando create_user
+        # Use a função 'create_user' da instância 'db'
+        success = db.create_user(form.username.data, hashed_password)
+        if success:
+            flash('Conta criada com sucesso!', 'success')
+            return redirect(url_for('routes.login'))
+        else:
+            flash('Erro ao criar a conta.', 'error')
     return render_template('cadastro.html', title='Cadastro', form=form)
 
 
@@ -156,3 +160,10 @@ def subindoorio():
 def tourdestaques():
     # Seu código para a página de destaques do tour aqui
     return render_template('tourdestaques.html')
+
+
+@routes.route('/depoimentos')
+def depoimentos():
+    # Seu código para a página de depoimentos do tour aqui
+    return render_template('depoimentos.html')
+
