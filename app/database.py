@@ -18,12 +18,13 @@ class Database:
 
     def init_db(self):
         if self.conn is not None:
-            # Cria tabela users
+            # Cria tabela users com uma coluna adicional 'is_admin'
             self.conn.execute('''
                 CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY AUTOINCREMENT, 
                     username TEXT UNIQUE NOT NULL,
-                    password TEXT NOT NULL
+                    password TEXT NOT NULL,
+                    is_admin INTEGER NOT NULL DEFAULT 0
                 )
             ''')
 
@@ -31,12 +32,12 @@ class Database:
 
             self.conn.commit()
 
-    def create_user(self, username, hashed_password):
+    def create_user(self, username, hashed_password, is_admin=False):
         if self.conn is not None:
             try:
                 self.conn.execute(
-                    'INSERT INTO users (username, password) VALUES (?, ?)',
-                    (username, hashed_password)
+                    'INSERT INTO users (username, password, is_admin) VALUES (?, ?, ?)',
+                    (username, hashed_password, int(is_admin))
                 )
                 self.conn.commit()
                 return True
@@ -49,6 +50,13 @@ class Database:
                 'SELECT * FROM users WHERE username = ?', (username,)
             )
             return cursor.fetchone()
+
+    def count_admin_users(self):
+        if self.conn is not None:
+            cursor = self.conn.execute(
+                'SELECT COUNT(*) FROM users WHERE is_admin = 1')
+            result = cursor.fetchone()
+            return result[0] if result else 0
 
     def count_users(self):
         if self.conn is not None:
