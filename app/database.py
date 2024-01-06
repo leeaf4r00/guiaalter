@@ -64,6 +64,11 @@ class Database:
             result = cursor.fetchone()
             return result[0] if result else 0
 
+    def get_all_users(self):
+        if self.conn is not None:
+            cursor = self.conn.execute('SELECT * FROM users')
+            return cursor.fetchall()
+
 
 # Instância global do banco de dados
 db = Database()

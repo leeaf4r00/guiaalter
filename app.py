@@ -5,7 +5,7 @@ from app.models.user import get_user_by_username
 from app.routes import routes
 from app.routes_tours import routes_tours
 from app.routes_admin import routes_admin
-from app.database import Database
+from app.database import db  # Importe a instância global do banco de dados
 
 app = Flask(__name__)
 
@@ -13,9 +13,6 @@ app = Flask(__name__)
 app.config['DATABASE_PATH'] = "data/database.db"
 app.config['SECRET_KEY'] = os.environ.get(
     'FLASK_SECRET_KEY', 'sua_chave_secreta')
-
-# Crie uma instância da classe Database e inicialize-a com o aplicativo Flask
-db = Database(app)
 
 # Configuração do sistema de login
 login_manager = LoginManager(app)
@@ -31,7 +28,8 @@ class User(UserMixin):
 
 @login_manager.user_loader
 def load_user(user_id):
-    user_data = get_user_by_username(user_id)
+    # Use a função do banco de dados para obter o usuário
+    user_data = db.get_user_by_username(user_id)
     if user_data:
         return User(user_id=user_data[0])
     return None
