@@ -7,6 +7,7 @@ from app.models.user import User, get_user_by_username
 from app.forms import RegistrationForm
 from app.database import db
 from app.forms import RegistrationForm
+from flask import jsonify
 
 routes = Blueprint('routes', __name__)
 
@@ -20,39 +21,33 @@ def index():
 @routes.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        # Obter dados enviados pelo cliente em formato JSON
+        data = request.get_json()
+        username = data.get('username')
+        password = data.get('password')
 
-        if not username:
-            flash('Informe o nome de usuário', 'error')
-            return redirect(url_for('routes.login'))
-
-        if not password:
-            flash('Informe a senha', 'error')
-            return redirect(url_for('routes.login'))
+        if not username or not password:
+            # Retorna um erro se o usuário ou senha não forem fornecidos
+            return jsonify({"message": "Usuário e senha são obrigatórios"}), 400
 
         user = get_user_by_username(username)
 
-        if not user:
-            flash('Usuário não encontrado', 'error')
-            return redirect(url_for('routes.login'))
-
-        if user.check_password(password):
+        if user and check_password_hash(user.password, password):
+            # Cria um objeto User para gerenciar o login
             user_object = User(user.id, user.username,
                                user.email, user.password, user.is_admin)
+            login_user(user_object)
 
-            if login_user(user_object):
-                if user.is_admin:
-                    # Redirecionar usuário administrativo
-                    return redirect(url_for('routes.admin'))
-                else:
-                    # Redirecionar usuário normal
-                    return redirect(url_for('routes.index'))
+            # Redireciona para a página apropriada, dependendo do tipo de usuário
+            if user.is_admin:
+                return jsonify({"redirect": url_for('routes.admin')})
             else:
-                flash('Erro ao fazer login', 'error')
+                return jsonify({"redirect": url_for('routes.index')})
         else:
-            flash('Credenciais inválidas. Tente novamente.', 'error')
+            # Retorna um erro se as credenciais forem inválidas
+            return jsonify({"message": "Usuário ou senha inválidos"}), 401
 
+    # Renderiza a página de login para métodos GET
     return render_template('login.html')
 
 
@@ -71,11 +66,9 @@ def register():
         if success:
             flash('Conta criada com sucesso!', 'success')
 
-            # Redirecionar com base no nível de permissão
-            if is_admin:
-                return redirect(url_for('routes.admin'))
-            else:
-                return redirect(url_for('routes.login'))
+            # Redireciona para a página de cadastro bem-sucedido
+            return redirect(url_for('routes.cadastro_bem_sucedido'))
+
         else:
             flash('Erro ao criar a conta.', 'error')
     return render_template('cadastro.html', title='Cadastro', form=form)
@@ -201,6 +194,19 @@ def depoimentos():
     return render_template('depoimentos.html')
 
 
-@routes.route('/cadastro_backend')
-def cadastro_backend():
+@routes.route('/cadastro_bem_sucedido')
+def cadastro_bem_sucedido():
     return render_template('cadastro_backend.html')
+
+
+@routes.route('/user_list')
+def user_list():
+    # Recupere a lista de usuários cadastrados do seu banco de dados
+    users = [
+        {"id": 1, "username": "user1", "email": "user1@example.com"},
+        {"id": 2, "username": "user2", "email": "user2@example.com"},
+        # Adicione mais usuários da sua base de dados
+    ]
+
+    # Retorne a lista de usuários em formato JSON
+    return jsonify({"users": users})

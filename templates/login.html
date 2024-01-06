@@ -43,7 +43,7 @@
 
     <div class="container">
         <h2>Login</h2>
-        <form id="loginForm" method="post">
+        <form id="loginForm">
             <div class="mb-3">
                 <label for="username" class="form-label">Usuário</label>
                 <input type="text" class="form-control" id="username" name="username" required>
@@ -54,11 +54,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
-        {% if error %}
-        <div class="alert alert-danger mt-3" role="alert">
-            {{ error }}
-        </div>
-        {% endif %}
+        <div id="loginError" class="alert alert-danger" style="display: none;"></div>
         <p>Não tem uma conta? <a href="{{ url_for('routes.register') }}">Cadastre-se aqui</a></p>
     </div>
 
@@ -68,21 +64,41 @@
             e.preventDefault();
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
+            var loginError = document.getElementById('loginError');
 
-            fetch('{{ url_for("routes.login") }}', {
+            // Criar objeto com credenciais
+            var credentials = {
+                username: username,
+                password: password
+            };
+
+            // Enviar credenciais para o servidor via HTTPS
+            fetch('/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password)
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json' // Indica que aceitamos resposta JSON
+                },
+                body: JSON.stringify(credentials)
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Redirecionar para a página inicial após o login bem-sucedido
+                .then(response => {
+                    if (response.status === 200) {
+                        // Redirecionar para a página de sucesso
                         window.location.href = "{{ url_for('routes.index') }}";
+                    } else if (response.status === 401) {
+                        // Exibir mensagem de erro do servidor
+                        response.json().then(data => {
+                            loginError.textContent = data.message;
+                            loginError.style.display = 'block';
+                        });
                     } else {
-                        // Mostrar mensagem de erro
-                        alert('Credenciais inválidas. Tente novamente.');
+                        throw new Error('Erro no servidor');
                     }
+                })
+                .catch(error => {
+                    // Exibir erros de conexão ou outros erros
+                    loginError.textContent = error.message;
+                    loginError.style.display = 'block';
                 });
         });
     </script>

@@ -3,8 +3,8 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-# Caminho para o banco de dados SQLite
-DATABASE_PATH = os.path.join(os.path.dirname(__file__), "data", "database.db")
+# Caminho relativo para o banco de dados SQLite
+DATABASE_PATH = os.path.join(os.getcwd(), "data", "database.db")
 
 
 class User(UserMixin):

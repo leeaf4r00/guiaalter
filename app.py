@@ -4,7 +4,8 @@ from flask_login import LoginManager, UserMixin
 from app.models.user import get_user_by_username
 from app.routes import routes
 from app.routes_tours import routes_tours
-from app.database import Database  # Importe a classe Database
+from app.routes_admin import routes_admin
+from app.database import Database
 
 app = Flask(__name__)
 
@@ -39,6 +40,7 @@ def load_user(user_id):
 # Importa e registra as rotas
 app.register_blueprint(routes)
 app.register_blueprint(routes_tours)
+app.register_blueprint(routes_admin)
 
 # Configuração de tratamento de erro 404
 

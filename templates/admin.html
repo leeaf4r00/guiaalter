@@ -25,9 +25,67 @@
     <div class="container mt-5">
         <h2>Bem-vindo, {{ username }}!</h2>
         <p>Você está na página administrativa.</p>
-        <p>Adicione aqui o conteúdo que deseja exibir para usuários autenticados com permissões de administrador.</p>
+        <h3>Funções Administrativas:</h3>
+        <ul>
+            <li><a href="#">Listar Todos os Usuários Conectados</a></li>
+            <li><a href="#">Modificar Senha de Usuário</a></li>
+            <li><a href="#">Bloquear IP</a></li>
+            <!-- Adicione outras funções administrativas aqui -->
+        </ul>
+
+        <h3>Lista de Usuários Cadastrados:</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome de Usuário</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="userList">
+                <!-- Aqui serão exibidos os usuários -->
+            </tbody>
+        </table>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Função para carregar a lista de usuários
+        function loadUserList() {
+            $.ajax({
+                url: "{{ url_for('routes.user_list') }}", // Defina a rota correta em routes.py
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    // Limpa a tabela atual
+                    $("#userList").empty();
+
+                    // Preenche a tabela com os dados dos usuários
+                    data.users.forEach(function (user) {
+                        var row = $("<tr>");
+                        row.append($("<td>").text(user.id));
+                        row.append($("<td>").text(user.username));
+                        row.append($("<td>").text(user.email));
+                        var actions = $("<td>");
+                        actions.append($("<a href='#'>Editar</a>"));
+                        actions.append(" | ");
+                        actions.append($("<a href='#'>Excluir</a>"));
+                        row.append(actions);
+                        $("#userList").append(row);
+                    });
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Chame a função para carregar a lista de usuários quando a página for carregada
+        $(document).ready(function () {
+            loadUserList();
+        });
+    </script>
 </body>
 
 </html>
