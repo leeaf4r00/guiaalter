@@ -1,5 +1,6 @@
 import sqlite3
 
+
 class Database:
 
     def __init__(self, app=None):
@@ -32,11 +33,15 @@ class Database:
 
     def create_user(self, username, hashed_password):
         if self.conn is not None:
-            self.conn.execute(
-                'INSERT INTO users (username, password) VALUES (?, ?)',
-                (username, hashed_password)
-            )
-            self.conn.commit()
+            try:
+                self.conn.execute(
+                    'INSERT INTO users (username, password) VALUES (?, ?)',
+                    (username, hashed_password)
+                )
+                self.conn.commit()
+                return True
+            except sqlite3.Error:
+                return False
 
     def get_user_by_username(self, username):
         if self.conn is not None:
@@ -50,6 +55,7 @@ class Database:
             cursor = self.conn.execute('SELECT COUNT(*) FROM users')
             result = cursor.fetchone()
             return result[0] if result else 0
+
 
 # Instância global do banco de dados
 db = Database()

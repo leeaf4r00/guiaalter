@@ -3,7 +3,8 @@ from flask import Flask, render_template
 from flask_login import LoginManager, UserMixin
 from app.models.user import get_user_by_username
 from app.routes import routes
-from app.routes_tours import routes_tours  # Adicione esta linha
+from app.routes_tours import routes_tours
+from app.database import Database  # Importe a classe Database
 
 app = Flask(__name__)
 
@@ -12,14 +13,20 @@ app.config['DATABASE_PATH'] = "data/database.db"
 app.config['SECRET_KEY'] = os.environ.get(
     'FLASK_SECRET_KEY', 'sua_chave_secreta')
 
+# Crie uma instância da classe Database e inicialize-a com o aplicativo Flask
+db = Database(app)
+
 # Configuração do sistema de login
 login_manager = LoginManager(app)
 login_manager.login_view = 'routes.login'
 
 # Classe de usuário para Flask-Login
+
+
 class User(UserMixin):
     def __init__(self, user_id):
         self.id = user_id
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -28,14 +35,18 @@ def load_user(user_id):
         return User(user_id=user_data[0])
     return None
 
+
 # Importa e registra as rotas
 app.register_blueprint(routes)
 app.register_blueprint(routes_tours)
 
 # Configuração de tratamento de erro 404
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
