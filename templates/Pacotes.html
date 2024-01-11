@@ -3,113 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacotes de Passeio de Barco</title>
-    <style>
-        /* Adicione estilos adicionais conforme necessário */
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        li:hover {
-            background-color: #0056b3;
-        }
-
-        .package-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>ROTEIROS E PACOTES DE VIAGEM PARA ALTER DO CHÃO</title>
+    <!-- Inclua os links para o CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Bem-vindo aos Pacotes de Passeio de Barco</h1>
-
-    <!-- Passeios Customizados -->
-    <h2>Passeios Customizados</h2>
-    <ul id="customTours">
-        <!-- Os passeios customizados serão adicionados aqui dinamicamente -->
-    </ul>
-
-    <!-- Passeios com Roteiros Definidos -->
-    <h2>Passeios com Roteiros Definidos</h2>
-    <ul id="predefinedTours">
-        <!-- Os passeios com roteiros definidos serão adicionados aqui dinamicamente -->
-    </ul>
-
-    <!-- Passeios Noturnos com Buffet -->
-    <h2>Passeios Noturnos Gastronomicos</h2>
-    <ul id="nightTours">
-        <!-- Os passeios noturnos com buffet serão adicionados aqui dinamicamente -->
-    </ul>
-
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Função para adicionar passeios dinamicamente a uma lista
-            function addToursToList(listId, tours) {
-                const list = document.getElementById(listId);
-
-                tours.forEach(tour => {
-                    const liElement = document.createElement("li");
-
-                    const imageElement = document.createElement("img");
-                    imageElement.src = tour.imagem;
-                    imageElement.alt = tour.nome;
-                    imageElement.className = "package-image";
-                    liElement.appendChild(imageElement);
-
-                    const nameElement = document.createElement("p");
-                    nameElement.textContent = tour.nome;
-                    liElement.appendChild(nameElement);
-
-                    const descriptionElement = document.createElement("p");
-                    descriptionElement.textContent = tour.descricao;
-                    liElement.appendChild(descriptionElement);
-
-                    list.appendChild(liElement);
-                });
-            }
-
-            // Exemplo de passeios (substitua com seus dados reais)
-            const pacotes = {
-                customizados: [
-                    { nome: "Passeio Personalizado 1", descricao: "Descrição do Passeio 1", imagem: "caminho/para/imagens/passeio1.jpg" },
-                    { nome: "Passeio Personalizado 2", descricao: "Descrição do Passeio 2", imagem: "caminho/para/imagens/passeio2.jpg" },
-                    { nome: "Passeio Personalizado 3", descricao: "Descrição do Passeio 3", imagem: "caminho/para/imagens/passeio3.jpg" },
-                ],
-                roteiros: [
-                    { nome: "Passeio com Roteiro 1", descricao: "Descrição do Passeio 1", imagem: "caminho/para/imagens/roteiro1.jpg" },
-                    { nome: "Passeio com Roteiro 2", descricao: "Descrição do Passeio 2", imagem: "caminho/para/imagens/roteiro2.jpg" },
-                    { nome: "Passeio com Roteiro 3", descricao: "Descrição do Passeio 3", imagem: "caminho/para/imagens/roteiro3.jpg" },
-                ],
-                noturnos: [
-                    { nome: "Passeio Noturno 1", descricao: "Descrição do Passeio 1", imagem: "caminho/para/imagens/noturno1.jpg" },
-                    { nome: "Passeio Noturno 2", descricao: "Descrição do Passeio 2", imagem: "caminho/para/imagens/noturno2.jpg" },
-                    { nome: "Passeio Noturno 3", descricao: "Descrição do Passeio 3", imagem: "caminho/para/imagens/noturno3.jpg" },
-                ],
-            };
-
-            // Adiciona os passeios às listas
-            addToursToList("customTours", pacotes.customizados);
-            addToursToList("predefinedTours", pacotes.roteiros);
-            addToursToList("nightTours", pacotes.noturnos);
-        });
-    </script>
+    <div class="container mt-5">
+        <h1 class="text-center">ROTEIROS E PACOTES DE VIAGEM PARA ALTER DO CHÃO</h1>
+        <ul>
+            <li><a href="templates/pacotes/passeioscustomizados.html" target="iframe">Passeios Customizados</a></li>
+            <li><a href="templates/pacotes/passeioscomroteirosdefinidos.html" target="iframe">Passeios com Roteiros
+                    Definidos</a></li>
+            <li><a href="templates/pacotes/passeiosnorturnosgastronomicos.html" target="iframe">Passeios Noturnos
+                    Gastronômicos</a></li>
+        </ul>
+        <iframe src="templates/pacotes/passeiosdestaque.html" name="iframe" width="100%" height="400"></iframe>
+    </div>
+    <!-- Inclua os links para os scripts do Bootstrap no final do corpo do documento -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

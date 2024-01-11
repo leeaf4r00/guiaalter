@@ -179,6 +179,11 @@ def cadastro_bem_sucedido():
     return render_template('cadastro_backend.html')
 
 
+@routes.route('/rotas')
+def rotas():
+    return render_template('rotas.html')
+
+
 @routes.route('/user_list')
 def user_list():
     conn = sqlite3.connect('seu_banco_de_dados.db')

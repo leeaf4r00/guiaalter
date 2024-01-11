@@ -126,3 +126,18 @@ def casadosaulo():
 @routes_tours.route('/tours/descendoorio/canaldojari')
 def canaldojari():
     return render_template('tours/descendoorio/canaldojari.html')
+
+
+@routes_tours.route('/pacotes/passeiocustomizado')
+def passeiocustomizado():
+    return render_template('pacotes/passeiocustomizado.html')
+
+
+@routes_tours.route('/pacotes/passeioscomroteirosdefinidos')
+def passeioscomroteirosdefinidos():
+    return render_template('pacotes/passeioscomroteirosdefinidos.html')
+
+
+@routes_tours.route('/pacotes/passeiosnorturnosgastronomicos')
+def passeiosnorturnosgastronomicos():
+    return render_template('pacotes/passeiosnorturnosgastronomicos.html')
