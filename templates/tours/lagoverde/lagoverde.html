@@ -5,74 +5,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubra as belezas do Lago Verde em Alter do Chão">
-    <meta name="keywords" content="Lago Verde, Alter do Chão, Natureza, Turismo">
-    <title>Lago Verde - Alter do Chão</title>
+    <title>Ponta da Valéria - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .image-slider {
+            max-width: 300px;
+            margin: auto;
+            position: relative;
+        }
+
+        .slider-img {
+            width: 100%;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .slider-img:first-child {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header">
-        <!-- Aqui vai o cabeçalho -->
+    <header class="page-header">
+        <h2>Descubra a Ponta da Valéria</h2>
+        <p>A Ponta da Valéria é uma atração imperdível em Alter do Chão, onde você pode passar uma tarde
+            agradável desfrutando da beleza natural e do ambiente tranquilo. Localizada às margens do Rio
+            Tapajós,
+            esta área oferece vistas deslumbrantes, areias douradas e águas cristalinas.</p>
+        <p>Relaxe sob as árvores, nade nas águas refrescantes do rio e aproveite para fazer belas fotos deste
+            paraíso natural. É o local perfeito para fugir da agitação da cidade e entrar em contato com a
+            natureza.</p>
+        <p>Visitar a Ponta da Valéria é uma experiência única que você não pode perder durante sua estadia em
+            Alter do Chão.</p>
     </header>
 
-    <main>
-        <section class="intro-section">
-            <div class="container">
-                <h1>Lago Verde - Um Tesouro de Alter do Chão</h1>
-                <p>Descubra as maravilhas naturais e as águas cristalinas do Lago Verde, um dos destinos mais
-                    encantadores de Alter do Chão.</p>
+    <div class="container">
+        <div class="back-to-home">
+            <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Voltar para o Home</a>
+        </div>
+        <div class="row">
+            <div class="col-md-6 page-content">
+                <!-- Conteúdo da página... -->
             </div>
-        </section>
-
-        <section class="gallery-section">
-            <div class="container">
-                <h2>Galeria de Fotos</h2>
-                <div id="carouselLagoVerde" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde 1"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde 2"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}" alt="Lago Verde 3"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}" alt="Lago Verde 4"
-                                class="d-block w-100">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselLagoVerde" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselLagoVerde" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Próximo</span>
-                    </a>
+            <div class="col-md-6">
+                <div class="image-slider">
+                    <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde"
+                        class="slider-img">
+                    <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde"
+                        class="slider-img">
+                    <img src="{{ url_for('static', filename='img/pontadavaleria3.jpg') }}" alt="Ponta da Valéria"
+                        class="slider-img">
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- Outras seções conforme necessário -->
-    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.slider-img');
+            const totalImages = images.length;
 
-    <footer class="footer">
-        <!-- Rodapé -->
-    </footer>
+            setInterval(() => {
+                images[currentImageIndex].style.display = 'none';
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                images[currentImageIndex].style.display = 'block';
+            }, 2000); // 2000 ms = 2 segundos
+        });
+    </script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap e outros scripts... -->
 </body>
 
 </html>

@@ -1,0 +1,18 @@
+/* Estilo básico para o container do mapa */
+#mapid {
+    height: 100vh; /* Altura total da janela de visualização */
+    width: 100%; /* Largura total do elemento pai */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* Sombra sutil */
+}
+
+/* Estilos para responsividade */
+@media (max-width: 768px) {
+    #mapid {
+        height: 50vh; /* Altura reduzida em telas menores */
+    }
+}
+
+/* Estilos adicionais para o mapa, se necessário */
+/* ... */

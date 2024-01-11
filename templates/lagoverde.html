@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lago Verde - Alter do Chão</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -13,29 +13,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .tour-box {
-            width: 300px;
+            max-width: 300px;
             height: 300px;
+            margin: auto;
+            position: relative;
             overflow: hidden;
-            margin: 10px;
             border: 1px solid #ccc;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .tour-box img {
+        .slider-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
         }
 
-        .tour-info {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .tour-name {
-            font-weight: bold;
-            margin-bottom: 10px;
+        .slider-img:first-child {
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -43,10 +42,6 @@
                 width: 100%;
                 height: auto;
             }
-        }
-
-        body {
-            overflow: hidden;
         }
     </style>
 </head>
@@ -56,47 +51,43 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="row" id="carouselLagoVerde">
-                    <!-- Imagem 1 -->
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde 1">
-                        </div>
-                    </div>
-
-                    <!-- Imagem 2 -->
-                    <div class="col-md-4">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde 2">
-                        </div>
-                    </div>
-
-                    <!-- Imagem 3 -->
-                    <div class="col-md-4">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}" alt="Lago Verde 3">
-                        </div>
-                    </div>
-
-                    <!-- Imagem 4 -->
-                    <div class="col-md-4">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}" alt="Lago Verde 4">
+                            <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde 1"
+                                class="slider-img">
+                            <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde 2"
+                                class="slider-img">
+                            <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}" alt="Lago Verde 3"
+                                class="slider-img">
+                            <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}" alt="Lago Verde 4"
+                                class="slider-img">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Outras seções conforme necessário -->
     </main>
 
     <footer class="footer">
-        <!-- Rodapé -->
+        <!-- Conteúdo do Rodapé -->
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.slider-img');
+            const totalImages = images.length;
+
+            setInterval(() => {
+                images[currentImageIndex].style.display = 'none';
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                images[currentImageIndex].style.display = 'block';
+            }, 2000);
+        });
+    </script>
 </body>
 
 </html>

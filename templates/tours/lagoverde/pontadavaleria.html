@@ -5,92 +5,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ponta da Valéria - Alter do Chão</title>
+    <title>Lago Verde - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Estilos específicos para a página da Ponta da Valéria */
-        .page-header {
-            background-image: url("{{ url_for('static', filename='img/pontadavaleria.jpg') }}");
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
+        body {
             text-align: center;
+            padding: 10px;
+            font-family: Arial, sans-serif;
         }
 
-        .page-header h1 {
-            font-size: 36px;
-            font-weight: bold;
+        .image-box {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        .page-content {
-            padding: 20px;
-        }
-
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .image-container img {
+        .slider-img {
             width: 100%;
-            max-width: 300px;
             height: auto;
-            border: 1px solid #ddd;
+            display: none;
+        }
+
+        .slider-img:first-child {
+            display: block;
+        }
+
+        .button-group {
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: block;
+            width: 80%;
+            padding: 8px;
+            margin: 5px auto;
+            /* Centraliza o botão */
+            border: none;
             border-radius: 5px;
+            font-size: 14px;
+            color: white;
         }
 
-        /* Estilos para o botão */
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
         .btn-primary {
-            background-color: #FF6600;
-            border-color: #FF6600;
-        }
-
-        .btn-primary:hover {
-            background-color: #E65500;
-            border-color: #E65500;
+            background-color: #007bff;
         }
     </style>
 </head>
 
 <body>
-    <header class="page-header">
-        <h1>Ponta da Valéria</h1>
-        <p>Uma tarde agradável em um ambiente encantador</p>
-    </header>
+    <div class="image-box">
+        <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde 1" class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde 2" class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}" alt="Lago Verde 3" class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}" alt="Lago Verde 4" class="slider-img">
+    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 page-content">
-                <h2>Descubra a Ponta da Valéria</h2>
-                <p>A Ponta da Valéria é uma atração imperdível em Alter do Chão, onde você pode passar uma tarde
-                    agradável desfrutando da beleza natural e do ambiente tranquilo. Localizada às margens do Rio
-                    Tapajós,
-                    esta área oferece vistas deslumbrantes, areias douradas e águas cristalinas.</p>
-                <p>Relaxe sob as árvores, nade nas águas refrescantes do rio e aproveite para fazer belas fotos deste
-                    paraíso natural. É o local perfeito para fugir da agitação da cidade e entrar em contato com a
-                    natureza.</p>
-                <p>Visitar a Ponta da Valéria é uma experiência única que você não pode perder durante sua estadia em
-                    Alter do Chão.</p>
-                <a href="#" class="btn btn-primary">Saiba mais</a>
-            </div>
-            <div class="col-md-6">
-                <!-- Imagens adicionais da Ponta da Valéria em uma caixa -->
-                <div class="image-container">
-                    <img src="{{ url_for('static', filename='img/pontadavaleria2.jpg') }}" alt="Ponta da Valéria">
-                    <img src="{{ url_for('static', filename='img/pontadavaleria1.jpg') }}" alt="Ponta da Valéria">
-                    <img src="{{ url_for('static', filename='img/pontadavaleria.jpg') }}" alt="Ponta da Valéria">
-                </div>
-            </div>
-        </div>
+    <div class="button-group">
+        <a href="{{ url_for('routes.index') }}" class="btn btn-secondary">Voltar para o Home</a>
+        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary">Saiba mais</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.slider-img');
+            const totalImages = images.length;
+
+            setInterval(() => {
+                images[currentImageIndex].style.display = 'none';
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                images[currentImageIndex].style.display = 'block';
+            }, 2000);
+        });
+    </script>
 </body>
 
 </html>
