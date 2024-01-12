@@ -66,6 +66,21 @@
                     </a>
                 </div>
 
+                <!-- Tour ponta Grande -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.pontagrande') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/rioarapiuns/pontagrande1.jpg') }}"
+                                alt="Ponta Grande">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Ponta Grande</div>
+                            <a href="{{ url_for('routes_tours.pontagrande') }}" class="btn btn-primary">Ver
+                                mais</a>
+                        </div>
+                    </a>
+                </div>
+
                 <!-- Tour 2: Lago Verde -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.lagoverde') }}" target="_blank">
@@ -93,16 +108,16 @@
                     </a>
                 </div>
 
-                <!-- Tour 4: Igarapé do Camarão -->
+                <!-- Tour 4: Ponta do Cururu -->
                 <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.igarapedocamarao') }}" target="_blank">
+                    <a href="{{ url_for('routes_tours.pontadocururu') }}" target="_blank">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/igarapecamarao.jpg') }}"
-                                alt="Igarapé do Camarão">
+                            <img src="{{ url_for('static', filename='img/descendoorio/pontadocururu2.jpg') }}"
+                                alt="Ponta do Cururu">
                         </div>
                         <div class="tour-info">
-                            <div class="tour-name">Igarapé do Camarão</div>
-                            <a href="{{ url_for('routes_tours.igarapedocamarao') }}" class="btn btn-primary">Ver
+                            <div class="tour-name">Ponta do Cururu</div>
+                            <a href="{{ url_for('routes_tours.pontadocururu') }}" class="btn btn-primary">Ver
                                 mais</a>
                         </div>
                     </a>
@@ -123,21 +138,76 @@
                     </a>
                 </div>
 
-                <!-- Tour 6: Alter do Chão Tour -->
+                <!-- Tour 6: Lago Preto -->
                 <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.alterdochaotour') }}" target="_blank">
+                    <div class="tour-box">
+                        <img src="{{ url_for('static', filename='img/descendoorio/lagopreto2.jpg') }}" alt="Lago Preto">
+                    </div>
+                    <div class="tour-info">
+                        <div class="tour-name">Lago Preto</div>
+                        <a href="{{ url_for('routes_tours.lagopreto') }}" class="btn btn-primary" target="_blank">Ver
+                            mais</a>
+                    </div>
+                </div>
+
+                <!-- Tour 4: Igarapé do Camarão -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.igarapedocamarao') }}" target="_blank">
                         <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}" alt="Alter do Chão">
+                            <img src="{{ url_for('static', filename='img/igarapecamarao.jpg') }}"
+                                alt="Igarapé do Camarão">
                         </div>
                         <div class="tour-info">
-                            <div class="tour-name">Alter do Chão Tour</div>
-                            <a href="{{ url_for('routes_tours.alterdochaotour') }}" class="btn btn-primary">Ver mais</a>
+                            <div class="tour-name">Igarapé do Camarão</div>
+                            <a href="{{ url_for('routes_tours.igarapedocamarao') }}" class="btn btn-primary">Ver
+                                mais</a>
                         </div>
                     </a>
                 </div>
 
+                <!-- Tour 7: Ponta de Pedras -->
+                <div class="col-md-4">
+                    <div class="tour-box">
+                        <img src="{{ url_for('static', filename='img/descendoorio/pontadepedras3.jpg') }}"
+                            alt="Ponta de Pedras">
+                    </div>
+                    <div class="tour-info">
+                        <div class="tour-name">Ponta de Pedras</div>
+                        <a href="{{ url_for('routes_tours.pontadepedras') }}" class="btn btn-primary"
+                            target="_blank">Ver mais</a>
+                    </div>
+                </div>
+
+                <!-- Tour 7: Encontro das Águas -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.encontrodasaguas') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/encontrodasaguas1.jpg') }}"
+                                alt="Alter do Chão">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Encontro das Águas</div>
+                            <a href="{{ url_for('routes_tours.encontrodasaguas') }}" class="btn btn-primary">Ver
+                                mais</a>
+                        </div>
+
+                        <!-- Tour 8: Alter do Chão Tour -->
+                        <div class="col-md-4">
+                            <a href="{{ url_for('routes_tours.alterdochaotour') }}" target="_blank">
+                                <div class="tour-box">
+                                    <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}"
+                                        alt="Alter do Chão">
+                                </div>
+                                <div class="tour-info">
+                                    <div class="tour-name">Alter do Chão Tour</div>
+                                    <a href="{{ url_for('routes_tours.alterdochaotour') }}" class="btn btn-primary">Ver
+                                        mais</a>
+                                </div>
+                            </a>
+                        </div>
+
+                </div>
             </div>
-        </div>
     </main>
 
     <script>

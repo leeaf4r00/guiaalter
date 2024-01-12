@@ -5,70 +5,163 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubra as belezas do Lago Verde em Alter do Chão">
-    <meta name="keywords" content="Lago Verde, Alter do Chão, Natureza, Turismo">
-    <title>Lago Verde - Alter do Chão</title>
+    <title>Tours em Destaque - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .tour-box {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tour-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tour-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .tour-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .tour-box {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header">
-        <!-- Aqui vai o cabeçalho -->
-    </header>
-
     <main>
-        <section class="intro-section">
-            <div class="container">
-                <h1>Lago Verde - Um Tesouro de Alter do Chão</h1>
-                <p>Descubra as maravilhas naturais e as águas cristalinas do Lago Verde, um dos destinos mais
-                    encantadores de Alter do Chão.</p>
-            </div>
-        </section>
-
-        <section class="gallery-section">
-            <div class="container">
-                <h2>Galeria de Fotos</h2>
-                <div id="carouselLagoVerde" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde 1"
-                                class="d-block w-100">
+        <div class="container">
+            <div class="row" id="carousel">
+                <!-- Tour 1:Aramanaí -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.aramanai') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/subindoorio/aramanai1.jpg') }}" alt="Aramanaí">
                         </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde 2"
-                                class="d-block w-100">
+                        <div class="tour-info">
+                            <div class="tour-name">Praia de Aramanaí</div>
+                            <a href="{{ url_for('routes_tours.aramanai') }}" class="btn btn-primary">Ver mais</a>
                         </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}" alt="Lago Verde 3"
-                                class="d-block w-100">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}" alt="Lago Verde 4"
-                                class="d-block w-100">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselLagoVerde" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselLagoVerde" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Próximo</span>
                     </a>
                 </div>
-            </div>
-        </section>
 
-        <!-- Outras seções conforme necessário -->
+                <!-- Tour 2: Praia de Cajutuba -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.cajutuba') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/subindoorio/cajutuba1.jpg') }}"
+                                alt="Praia de Cajutuba">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Praia de Cajutuba Belterra - PA</div>
+                            <a href="{{ url_for('routes_tours.cajutuba') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tour 3: Igarapé do Macaco -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.igarapedomacaco') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/igarapemacaco2.jpg') }}"
+                                alt="Igarapé do Macaco">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Igarapé do Macaco</div>
+                            <a href="{{ url_for('routes_tours.igarapedomacaco') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tour 4: Igarapé do Camarão -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.igarapedocamarao') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/igarapecamarao.jpg') }}"
+                                alt="Igarapé do Camarão">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Igarapé do Camarão</div>
+                            <a href="{{ url_for('routes_tours.igarapedocamarao') }}" class="btn btn-primary">Ver
+                                mais</a>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tour 5: Floresta Encantada -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.florestaencantada') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/florestaencantada.jpg') }}"
+                                alt="Floresta Encantada">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Floresta Encantada</div>
+                            <a href="{{ url_for('routes_tours.florestaencantada') }}" class="btn btn-primary">Ver
+                                mais</a>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tour 6: Alter do Chão Tour -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.alterdochaotour') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}" alt="Alter do Chão">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Alter do Chão Tour</div>
+                            <a href="{{ url_for('routes_tours.alterdochaotour') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </main>
 
-    <footer class="footer">
-        <!-- Rodapé -->
-    </footer>
+    <script>
+        var currentIndex = 0;
+        var tours = document.querySelectorAll(".col-md-4");
+
+        function showTours() {
+            for (var i = 0; i < tours.length; i++) {
+                tours[i].style.display = "none";
+            }
+            for (var i = currentIndex; i < currentIndex + 3; i++) {
+                if (i < tours.length) {
+                    tours[i].style.display = "block";
+                }
+            }
+            currentIndex += 3;
+            if (currentIndex >= tours.length) {
+                currentIndex = 0;
+            }
+            setTimeout(showTours, 2000); // Altere o intervalo de troca aqui (em milissegundos)
+        }
+
+        showTours();
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
