@@ -43,14 +43,14 @@ def pindobal():
     return render_template('tours/subindoorio/pindobal.html')
 
 
-@routes_tours.route('/tours/subindoorio/mureta')
-def mureta():
-    return render_template('tours/subindoorio/mureta.html')
+@routes_tours.route('/tours/subindoorio/pontadomureta')
+def pontadomureta():
+    return render_template('tours/subindoorio/pontadomureta.html')
 
 
-@routes_tours.route('/tours/subindoorio/jurucui')
-def jurucui():
-    return render_template('tours/subindoorio/jurucui.html')
+@routes_tours.route('/tours/subindoorio/lagodojurucui')
+def lagodojurucui():
+    return render_template('tours/subindoorio/lagodojurucui.html')
 
 
 @routes_tours.route('/tours/subindoorio/cajutuba')
