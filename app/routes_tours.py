@@ -88,6 +88,11 @@ def comunidadecoroca():
     return render_template('tours/rioarapiuns/comunidadecoroca.html')
 
 
+@routes_tours.route('/tours/rioarapiuns/pontadocaracarai')
+def pontadocaracarai():
+    return render_template('tours/rioarapiuns/pontadocaracarai.html')
+
+
 @routes_tours.route('/tours/descendoorio/pontadocururu')
 def pontadocururu():
     return render_template('tours/descendoorio/pontadocururu.html')
