@@ -3,75 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lago Verde - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            text-align: center;
-            padding: 10px;
-            font-family: Arial, sans-serif;
-        }
-
-        .image-box {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .slider-img {
-            width: 100%;
-            height: auto;
-            display: none;
-        }
-
-        .slider-img:first-child {
-            display: block;
-        }
-
-        .button-group {
-            margin: 20px 0;
-        }
-
-        .btn {
-            display: block;
-            width: 80%;
-            padding: 8px;
-            margin: 5px auto;
-            /* Centraliza o botão */
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            color: white;
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-        }
-    </style>
 </head>
 
 <body>
     <div class="image-box">
-        <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde 1" class="slider-img">
-        <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde 2" class="slider-img">
-        <img src="{{ url_for('static', filename='img/lagoverde3.jpg') }}" alt="Lago Verde 3" class="slider-img">
-        <img src="{{ url_for('static', filename='img/lagoverde4.jpg') }}" alt="Lago Verde 4" class="slider-img">
+        <img src="{{ url_for('static', filename='img/pontadavaleria.jpg') }}" alt="Ponta da Valéria" class="slider-img">
+        <img src="{{ url_for('static', filename='img/pontadavaleria1.jpg') }}" alt="Ponta da Valéria 1"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/pontadavaleria2.jpg') }}" alt="Ponta da Valéria 2"
+            class="slider-img">
     </div>
 
+    <p class="tour-description">
+        Ponta da Valéria: a ponta fica próximo à Vila de Alter do Chão, dentro do Lago Verde, uma ponta bela com uma
+        vista sensacional.
+    </p>
+
     <div class="button-group">
-        <a href="{{ url_for('routes.index') }}" class="btn btn-secondary">Voltar para o Home</a>
+        <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
         <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary">Saiba mais</a>
     </div>
 

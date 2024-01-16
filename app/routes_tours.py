@@ -146,3 +146,9 @@ def passeioscomroteirosdefinidos():
 @routes_tours.route('/pacotes/passeiosnorturnosgastronomicos')
 def passeiosnorturnosgastronomicos():
     return render_template('pacotes/passeiosnorturnosgastronomicos.html')
+
+
+@routes_tours.route('/')
+def index():
+    user_count = db.count_users()
+    return render_template('index.html', user_count=user_count)
