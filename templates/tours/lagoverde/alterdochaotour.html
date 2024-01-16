@@ -3,49 +3,64 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore as maravilhas naturais de Alter do Chão">
-    <meta name="keywords" content="Alter do Chão, Turismo, Natureza, Praia">
-    <title>Tour em Alter do Chão</title>
+    <title>Lago Verde - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-    <header class="header">
-        <!-- Cabeçalho aqui -->
-    </header>
-
-    <main>
-        <section class="intro-section">
-            <div class="container">
-                <h1>Explore Alter do Chão</h1>
-                <p>Conheça o "Caribe Amazônico" e suas praias de água doce, uma experiência única em Alter do Chão.</p>
+    <div class="image-box">
+        <img src="{{ url_for('static', filename='img/lagoverde/alterdochao.jpg') }}" alt="Alter do chão 1"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/alterdochao2.jpg') }}" alt="Alter do chão 2"
+            class="slider-img">
             </div>
-        </section>
 
-        <section class="image-section">
-            <div class="container text-center">
-                <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}" alt="Alter do Chão"
-                    class="img-fluid">
-            </div>
-        </section>
+    <p class="tour-description">
 
-        <!-- Outras seções específicas do tour em Alter do Chão -->
 
-    </main>
 
-    <footer class="footer">
-        <!-- Rodapé aqui -->
-    </footer>
+        Alter do Chão, localizada no município de Santarém, no estado do Pará, Brasil, é uma vila pitoresca conhecida
+        como o "Caribe Amazônico".
+        Este destino turístico é famoso por suas praias de água doce, especialmente durante a estação seca,
+        quando as areias brancas e as águas cristalinas do Rio Tapajós emergem, formando cenários deslumbrantes.
+        A Ilha do Amor, em frente à vila, é uma das principais atrações, atraindo visitantes com suas praias idílicas e
+        vistas espetaculares.
+        Além das praias, Alter do Chão é um ponto de partida excelente para explorar a floresta amazônica, com
+        atividades como passeios de barco,
+        observação de vida selvagem e visitas a comunidades locais. A cultura e gastronomia da região também são
+        destaques,
+        oferecendo aos visitantes uma experiência autêntica e enriquecedora.
+        O turismo sustentável é vital para a preservação deste paraíso natural único e da cultura dos povos indígenas
+        locais.
+
+    </p>
+
+    <div class="button-group">
+        <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.slider-img');
+            const totalImages = images.length;
+
+            setInterval(() => {
+                images[currentImageIndex].style.display = 'none';
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                images[currentImageIndex].style.display = 'block';
+            }, 2000);
+        });
+    </script>
 </body>
 
 </html>

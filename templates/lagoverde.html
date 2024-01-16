@@ -3,169 +3,59 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tours em Destaque - Alter do Chão</title>
+    <title>Lago Verde - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .tour-box {
-            width: 300px;
-            height: 300px;
-            overflow: hidden;
-            margin: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .tour-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .tour-info {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .tour-name {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .tour-box {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        body {
-            overflow: hidden;
-        }
-    </style>
 </head>
 
 <body>
-    <main>
-        <div class="container">
-            <div class="row" id="carousel">
-                <!-- Tour 1: Ponta da Valéria -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontadavaleria') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/pontadavaleria.jpg') }}"
-                                alt="Ponta da Valéria">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta da Valéria</div>
-                            <a href="{{ url_for('routes_tours.pontadavaleria') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
+    <div class="image-box">
+        <img src="{{ url_for('static', filename='img/lagoverde/igarapedocamarao.jpg') }}" alt="Igarapé do Camarão 1"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/igarapedocamarao.jpg') }}" alt="Igarapé do Camarão 2"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/igarapedocamarao.jpg') }}" alt="Igarapé do Camarão 3"
+            class="slider-img">
+    </div>
 
-                <!-- Tour 2: Lago Verde -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.lagoverde') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde5.jpg') }}" alt="Lago Verde">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Lago Verde</div>
-                            <a href="{{ url_for('routes.lagoverde') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
+    <p class="tour-description">
 
-                <!-- Tour 3: Igarapé do Macaco -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.igarapedomacaco') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/igarapemacaco2.jpg') }}"
-                                alt="Igarapé do Macaco">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Igarapé do Macaco</div>
-                            <a href="{{ url_for('routes_tours.igarapedomacaco') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
+        O Lago Verde, localizado em Alter do Chão, no Pará, é uma das joias naturais da região Amazônica do Brasil.
+        Este lago de água doce, caracterizado pela sua cor esmeralda distintiva,
+        é circundado por vastas florestas e praias de areia branca, criando um cenário de beleza natural incomparável.
+        Durante a estação seca, quando o nível da água baixa, emergem praias encantadoras,
+        tornando-o um destino popular para natação, relaxamento e atividades ao ar livre.
+        O Lago Verde é conectado ao Rio Tapajós e é conhecido por sua tranquilidade e águas límpidas,
+        proporcionando um refúgio perfeito para os amantes da natureza e aqueles que buscam paz e quietude.
+        Além do seu apelo turístico, o lago desempenha um papel importante no ecossistema local,
+        sustentando uma rica biodiversidade e sendo fundamental para as comunidades ribeirinhas.
+    </p>
 
-                <!-- Tour 4: Igarapé do Camarão -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.igarapedocamarao') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/igarapecamarao.jpg') }}"
-                                alt="Igarapé do Camarão">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Igarapé do Camarão</div>
-                            <a href="{{ url_for('routes_tours.igarapedocamarao') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 5: Floresta Encantada -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.florestaencantada') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/florestaencantada.jpg') }}"
-                                alt="Floresta Encantada">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Floresta Encantada</div>
-                            <a href="{{ url_for('routes_tours.florestaencantada') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 6: Alter do Chão Tour -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.alterdochaotour') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/alterdochao.jpg') }}" alt="Alter do Chão">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Alter do Chão Tour</div>
-                            <a href="{{ url_for('routes_tours.alterdochaotour') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </main>
-
-    <script>
-        var currentIndex = 0;
-        var tours = document.querySelectorAll(".col-md-4");
-
-        function showTours() {
-            for (var i = 0; i < tours.length; i++) {
-                tours[i].style.display = "none";
-            }
-            for (var i = currentIndex; i < currentIndex + 3; i++) {
-                if (i < tours.length) {
-                    tours[i].style.display = "block";
-                }
-            }
-            currentIndex += 3;
-            if (currentIndex >= tours.length) {
-                currentIndex = 0;
-            }
-            setTimeout(showTours, 2000); // Altere o intervalo de troca aqui (em milissegundos)
-        }
-
-        showTours();
-    </script>
+    <div class="button-group">
+        <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary">Saiba mais</a>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.slider-img');
+            const totalImages = images.length;
+
+            setInterval(() => {
+                images[currentImageIndex].style.display = 'none';
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                images[currentImageIndex].style.display = 'block';
+            }, 2000);
+        });
+    </script>
 </body>
 
 </html>

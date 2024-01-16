@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lago Verde - Alter do Chão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="image-box">
+        <img src="{{ url_for('static', filename='img/lagoverde/igarapedomacaco1.jpg') }}" alt="Igarapé do Macaco 1"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/igarapedomacaco2.jpg') }}" alt="Igarapé do Macaco 2"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/igarapedomacaco3.jpg') }}" alt="Igarapé do Macaco 3"
+            class="slider-img">
+    </div>
+
+    <p class="tour-description">
+        Igarapé do Macaco: O Igarapé do Macaco, especificamente, é uma área de grande beleza natural, com águas
+        cristalinas cercadas por florestas densas.
+        É um local ideal para passeios de barco ou canoa, permitindo aos visitantes experimentar a tranquilidade e a
+        beleza da floresta amazônica.
+        Além disso, é possível observar a vida selvagem, incluindo várias espécies de pássaros, peixes e, possivelmente,
+        mamíferos menores.
+    </p>
+
+    <div class="button-group">
+        <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.slider-img');
+            const totalImages = images.length;
+
+            setInterval(() => {
+                images[currentImageIndex].style.display = 'none';
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                images[currentImageIndex].style.display = 'block';
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

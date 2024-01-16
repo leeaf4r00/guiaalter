@@ -3,71 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ponta da Valéria - Alter do Chão</title>
+    <title>Lago Verde - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .image-slider {
-            max-width: 300px;
-            margin: auto;
-            position: relative;
-        }
-
-        .slider-img {
-            width: 100%;
-            border-radius: 5px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: none;
-        }
-
-        .slider-img:first-child {
-            display: block;
-        }
-    </style>
 </head>
 
 <body>
-    <header class="page-header">
-        <h2>Descubra a Ponta da Valéria</h2>
-        <p>A Ponta da Valéria é uma atração imperdível em Alter do Chão, onde você pode passar uma tarde
-            agradável desfrutando da beleza natural e do ambiente tranquilo. Localizada às margens do Rio
-            Tapajós,
-            esta área oferece vistas deslumbrantes, areias douradas e águas cristalinas.</p>
-        <p>Relaxe sob as árvores, nade nas águas refrescantes do rio e aproveite para fazer belas fotos deste
-            paraíso natural. É o local perfeito para fugir da agitação da cidade e entrar em contato com a
-            natureza.</p>
-        <p>Visitar a Ponta da Valéria é uma experiência única que você não pode perder durante sua estadia em
-            Alter do Chão.</p>
-    </header>
-
-    <div class="container">
-        <div class="back-to-home">
-            <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Voltar para o Home</a>
-        </div>
-        <div class="row">
-            <div class="col-md-6 page-content">
-                <!-- Conteúdo da página... -->
-            </div>
-            <div class="col-md-6">
-                <div class="image-slider">
-                    <img src="{{ url_for('static', filename='img/lagoverde1.jpg') }}" alt="Lago Verde"
-                        class="slider-img">
-                    <img src="{{ url_for('static', filename='img/lagoverde2.jpg') }}" alt="Lago Verde"
-                        class="slider-img">
-                    <img src="{{ url_for('static', filename='img/pontadavaleria3.jpg') }}" alt="Ponta da Valéria"
-                        class="slider-img">
-                </div>
-            </div>
-        </div>
+    <div class="image-box">
+        <img src="{{ url_for('static', filename='img/lagoverde/lagoverde1.jpg') }}" alt="Lago Verde 1"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/lagoverde2.jpg') }}" alt="Lago Verde 2"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/lagoverde3.jpg') }}" alt="Lago Verde 3"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/lagoverde4.jpg') }}" alt="Lago Verde 4 "
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/lagoverde5.jpg') }}" alt="Lago Verde 5"
+            class="slider-img">
     </div>
 
+    <p class="tour-description">
+        Lago Verde: Em meio à serenidade de uma vila de pescadores na Amazônia, 
+        banhada pelas águas do imponente Rio Tapajós, repousa o Lago Verde em Alter do Chão.
+        Este maravilhoso cenário natural envolve carinhosamente a Ilha do Amor, 
+        oferecendo aos seus visitantes uma jornada memorável e repleta de beleza natural.
+    </p>
+
+    <div class="button-group">
+        <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let currentImageIndex = 0;
@@ -78,11 +51,9 @@
                 images[currentImageIndex].style.display = 'none';
                 currentImageIndex = (currentImageIndex + 1) % totalImages;
                 images[currentImageIndex].style.display = 'block';
-            }, 2000); // 2000 ms = 2 segundos
+            }, 2000);
         });
     </script>
-
-    <!-- Bootstrap e outros scripts... -->
 </body>
 
 </html>

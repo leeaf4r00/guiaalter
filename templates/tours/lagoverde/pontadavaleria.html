@@ -14,10 +14,11 @@
 
 <body>
     <div class="image-box">
-        <img src="{{ url_for('static', filename='img/pontadavaleria.jpg') }}" alt="Ponta da Valéria" class="slider-img">
-        <img src="{{ url_for('static', filename='img/pontadavaleria1.jpg') }}" alt="Ponta da Valéria 1"
+        <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria.jpg') }}" alt="Ponta da Valéria"
             class="slider-img">
-        <img src="{{ url_for('static', filename='img/pontadavaleria2.jpg') }}" alt="Ponta da Valéria 2"
+        <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria1.jpg') }}" alt="Ponta da Valéria 1"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria2.jpg') }}" alt="Ponta da Valéria 2"
             class="slider-img">
     </div>
 
@@ -28,7 +29,7 @@
 
     <div class="button-group">
         <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
-        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary">Saiba mais</a>
+        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
