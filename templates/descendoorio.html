@@ -5,48 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours em Destaque - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .destination-box {
-            width: 300px;
-            height: auto;
-            margin: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .destination-box img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        .destination-info {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .destination-name {
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .btn-external-link {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .btn-external-link:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 
 <body>
@@ -55,130 +17,142 @@
             <div class="row" id="destination-gallery">
                 <!-- Destino 1: Canal do Jari -->
                 <div class="col-md-4">
-                    <div class="destination-box">
-                        <img src="static/img/descendoorio/canaldojari3.jpg" alt="Canal do Jari">
-                    </div>
-                    <div class="destination-info">
-                        <div class="destination-name">Canal do Jari</div>
-                        <a href="{{ url_for('routes_tours.canaldojari') }}" class="btn btn-external-link"
-                            target="_blank">Ver
-                            mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.canaldojari') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/canaldojari3.jpg') }}"
+                                alt="Canal do Jari">
+                        </div>
+                        <div class="tour-info">
+                            <div class="destination-name">Canal do Jari</div>
+                            <a href="{{ url_for('routes_tours.canaldojari') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Destino 2: Casa do Saulo -->
                 <div class="col-md-4">
-                    <div class="destination-box">
-                        <img src="static/img/descendoorio/casadosaulo2.jpg" alt="Casa do Saulo">
-                    </div>
-                    <div class="destination-info">
-                        <div class="destination-name">Casa do Saulo</div>
-                        <a href="{{ url_for('routes_tours.casadosaulo') }}" class="btn btn-external-link"
-                            target="_blank">Ver
-                            mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.casadosaulo') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/casadosaulo2.jpg') }}"
+                                alt="Casa do Saulo">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Casa do Saulo</div>
+                            <a href="{{ url_for('routes_tours.casadosaulo') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Destino 3: Encontro das Águas -->
                 <div class="col-md-4">
-                    <div class="destination-box">
-                        <img src="static/img/descendoorio/encontrodasaguas1.jpg" alt="Encontro das Águas">
-                    </div>
-                    <div class="destination-info">
-                        <div class="destination-name">Encontro das Águas</div>
-                        <a href="{{ url_for('routes_tours.encontrodasaguas') }}" class="btn btn-external-link"
-                            target="_blank">Ver mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.encontrodasaguas') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/encontrodasaguas1.jpg') }}"
+                                alt="Encontro das Águas">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Encontro das Águas</div>
+                            <a href="{{ url_for('routes_tours.encontrodasaguas') }}" class="btn btn-primary">Ver
+                                mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Destino 4: Lago do Jacaré -->
                 <div class="col-md-4">
-                    <div class="destination-box">
-                        <img src="static/img/descendoorio/lagojacare2.jpg" alt="Lago do Jacaré">
-                    </div>
-                    <div class="destination-info">
-                        <div class="destination-name">Lago do Jacaré</div>
-                        <a href="{{ url_for('routes_tours.lagodojacare') }}" class="btn btn-external-link"
-                            target="_blank">Ver
-                            mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.lagodojacare') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/lagojacare2.jpg') }}"
+                                alt="Lago do Jacaré">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Lago do Jacaré</div>
+                            <a href="{{ url_for('routes_tours.lagodojacare') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Destino 5: Lago Preto -->
                 <div class="col-md-4">
-                    <div class="destination-box">
-                        <img src="{{ url_for('static', filename='img/descendoorio/lagopreto1.jpg') }}" alt="lagopreto">
-                    </div>
-                    <div class="destination-info">
-                        <div class="destination-name">Lago Preto</div>
-                        <a href="{{ url_for('routes_tours.lagopreto') }}" class="btn btn-external-link"
-                            target="_blank">Ver
-                            mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.lagopreto') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/lagopreto1.jpg') }}"
+                                alt="Lago Preto">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Lago Preto</div>
+                            <a href="{{ url_for('routes_tours.lagopreto') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Destino 6: Pedra da Moca -->
                 <div class="col-md-4">
-                    <div class="destination-box">
-                        <img src="static/img/descendoorio/pedramoca3.JPG" alt="Pedra da Moca">
-                    </div>
-                    <div class="destination-info">
-                        <div class="destination-name">Pedra da Moca</div>
-                        <a href="{{ url_for('routes_tours.pedradamoca') }}" class="btn btn-external-link"
-                            target="_blank">Ver
-                            mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.pedradamoca') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/pedramoca3.JPG') }}"
+                                alt="Pedra da Moca">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Pedra da Moca</div>
+                            <a href="{{ url_for('routes_tours.pedradamoca') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Destino 7: Ponta do Cururu -->
                 <div class="col-md-4">
-                    <div class="destination-box">
-                        <img src="static/img/descendoorio/pontadocururu1.jpg" alt="Ponta do Cururu">
-                    </div>
-                    <div class="destination-info">
-                        <div class="destination-name">Ponta do Cururu</div>
-                        <a href="{{ url_for('routes_tours.pontadocururu') }}" class="btn btn-external-link"
-                            target="_blank">Ver
-                            mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.pontadocururu') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/pontadocururu1.jpg') }}"
+                                alt="Ponta do Cururu">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Ponta do Cururu</div>
+                            <a href="{{ url_for('routes_tours.pontadocururu') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Destino 8: Ponta de Pedras -->
                 <div class="col-md-4">
-                    <div class="destination-box">
-                        <img src="static/img/descendoorio/pontadepedras3.jpg" alt="Ponta de Pedras">
-                    </div>
-                    <div class="destination-info">
-                        <div class="destination-name">Ponta de Pedras</div>
-                        <a href="{{ url_for('routes_tours.pontadepedras') }}" class="btn btn-external-link"
-                            target="_blank">Ver mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.pontadepedras') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/pontadepedras3.jpg') }}"
+                                alt="Ponta de Pedras">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Ponta de Pedras</div>
+                            <a href="{{ url_for('routes_tours.pontadepedras') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
             </div>
+        </div>
         </div>
     </main>
 
     <script>
         var currentIndex = 0;
-        var destinations = document.querySelectorAll(".col-md-4");
+        var tours = document.querySelectorAll(".col-md-4");
 
-        function showDestinations() {
-            for (var i = 0; i < destinations.length; i++) {
-                destinations[i].style.display = "none";
+        function showTours() {
+            for (var i = 0; i < tours.length; i++) {
+                tours[i].style.display = "none";
             }
             for (var i = currentIndex; i < currentIndex + 3; i++) {
-                if (i < destinations.length) {
-                    destinations[i].style.display = "block";
+                if (i < tours.length) {
+                    tours[i].style.display = "block";
                 }
             }
             currentIndex += 3;
-            if (currentIndex >= destinations.length) {
+            if (currentIndex >= tours.length) {
                 currentIndex = 0;
             }
-            setTimeout(showDestinations, 2000); // Altere o intervalo de troca aqui (em milissegundos)
+            setTimeout(showTours, 2000); // Altere o intervalo de troca aqui (em milissegundos)
         }
 
-        showDestinations();
+        showTours();
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

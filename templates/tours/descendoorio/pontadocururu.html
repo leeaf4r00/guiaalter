@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponta da Cururú - Alter do Chão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="image-box">
+        <img src="{{ url_for('static', filename='img/descendoorio/pontadocururu1.jpg') }}" alt="Ponta da Cururú"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/descendoorio/pontadocururu2.jpg') }}" alt="Ponta da Cururú 1"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/descendoorio/pontadocururu1.jpg') }}" alt="Ponta da Cururú 2"
+            class="slider-img">
+    </div>
+
+    <p class="tour-description">
+        A Ponta do Cururu é um ponto turístico popular e encantador localizado em Alter do Chão, no Pará, Brasil.
+        Situada na margem do Rio Tapajós, esta área é famosa por suas praias de areia branca e águas cristalinas,
+        oferecendo um cenário deslumbrante para o pôr do sol, um dos mais belos da região. É um local ideal para relaxamento,
+        natação e atividades ao ar livre, como piqueniques e passeios de barco.
+        A Ponta do Cururu também é um excelente ponto para observar a vida selvagem, especialmente os botos, que frequentemente são vistos nas proximidades. A área atrai tanto turistas quanto moradores locais, sendo uma parte vital da vida cultural e social de Alter do Chão. O turismo sustentável é essencial nesta região, para garantir a preservação desse ambiente natural único e a continuidade de suas tradições culturais.
+    </p>
+
+    <div class="button-group">
+        <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.slider-img');
+            const totalImages = images.length;
+
+            setInterval(() => {
+                images[currentImageIndex].style.display = 'none';
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                images[currentImageIndex].style.display = 'block';
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

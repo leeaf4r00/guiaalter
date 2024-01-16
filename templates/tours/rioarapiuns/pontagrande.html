@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Ponta Grande - Rio Arapiuns</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="image-box">
+        <img src="{{ url_for('static', filename='img/rioarapiuns/pontagrande1.jpg') }}" alt="Ponta Grande"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/rioarapiuns/pontagrande2.jpg') }}" alt="Ponta Grande 1"
+            class="slider-img">
+        <img src="{{ url_for('static', filename='img/rioarapiuns/pontagrande3.jpg') }}" alt="Ponta Grande 2"
+            class="slider-img">
+    </div>
+
+    <p class="tour-description">
+        A Ponta Grande, situada às margens do Rio Arapiuns, perto de Alter do Chão no estado do Pará, Brasil
+        é uma das muitas maravilhas naturais da região amazônica.
+        Este local é conhecido por suas extensas praias de areia branca que contrastam magnificamente com as águas
+        azul-turquesa do rio,
+        criando um cenário paradisíaco. A área é menos movimentada que outros destinos turísticos próximos,
+        oferecendo um refúgio tranquilo para os visitantes que buscam paz e uma experiência mais íntima com a natureza.
+    </p>
+
+    <div class="button-group">
+        <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.slider-img');
+            const totalImages = images.length;
+
+            setInterval(() => {
+                images[currentImageIndex].style.display = 'none';
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                images[currentImageIndex].style.display = 'block';
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

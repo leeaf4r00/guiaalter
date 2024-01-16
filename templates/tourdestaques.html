@@ -7,45 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tours em Destaque - Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .tour-box {
-            width: 300px;
-            height: 300px;
-            overflow: hidden;
-            margin: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .tour-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .tour-info {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .tour-name {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .tour-box {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        body {
-            overflow: hidden;
-        }
-    </style>
 </head>
 
 <body>
