@@ -4,50 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ponta da Valéria - Alter do Chão</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Passeio Ponta da Valéria - Alter do Chão</title>
 </head>
 
 <body>
-    <div class="image-box">
-        <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria.jpg') }}" alt="Ponta da Valéria"
-            class="slider-img">
-        <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria1.jpg') }}" alt="Ponta da Valéria 1"
-            class="slider-img">
-        <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria2.jpg') }}" alt="Ponta da Valéria 2"
-            class="slider-img">
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="image-box text-center">
+                    <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria.jpg') }}"
+                        alt="Ponta da Valéria" class="slider-img">
+                    <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria1.jpg') }}"
+                        alt="Ponta da Valéria 1" class="slider-img">
+                    <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria2.jpg') }}"
+                        alt="Ponta da Valéria 2" class="slider-img">
+                </div>
+            </div>
+        </div>
 
-    <p class="tour-description">
-        Ponta da Valéria: a ponta fica próximo à Vila de Alter do Chão, dentro do Lago Verde, uma ponta bela com uma
-        vista sensacional.
-    </p>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="tour-description">
+                    Ponta da Valéria: a ponta fica próxima à Vila de Alter do Chão, dentro do Lago Verde, com uma vista
+                    sensacional.
+                </p>
+            </div>
+        </div>
 
-    <div class="button-group">
-        <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
-        <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="price-box">
+                    <p class="price">Preço: Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="button-group">
+                    <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+                    <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let currentImageIndex = 0;
-            const images = document.querySelectorAll('.slider-img');
-            const totalImages = images.length;
 
-            setInterval(() => {
-                images[currentImageIndex].style.display = 'none';
-                currentImageIndex = (currentImageIndex + 1) % totalImages;
-                images[currentImageIndex].style.display = 'block';
-            }, 2000);
-        });
-    </script>
+    <!-- Incorporando o arquivo tours.js -->
+    <script src="{{ url_for('static', filename='js/tours.js') }}"></script>
 </body>
 
 </html>

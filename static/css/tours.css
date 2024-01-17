@@ -1,9 +1,10 @@
 /* Estilos gerais */
-
 body {
     font-family: Arial, sans-serif;
     color: #333;
     line-height: 1.6;
+    font-size: 18px;
+    /* Tamanho base da fonte aumentado para facilitar a leitura em telas pequenas */
 }
 
 a {
@@ -12,14 +13,15 @@ a {
 }
 
 /* Layout */
-
 .container {
-    max-width: 960px;
+    max-width: 500px;
+    /* Largura máxima da página para evitar linhas de texto muito longas */
     margin: 0 auto;
+    padding: 20px;
+    /* Espaçamento interno para o conteúdo */
 }
 
 /* Botões */
-
 .button-group {
     text-align: center;
     margin: 20px 0;
@@ -31,7 +33,6 @@ a {
 }
 
 /* Tour boxes */
-
 .tour-box {
     width: 300px;
     height: 300px;
@@ -59,12 +60,75 @@ a {
 }
 
 /* Torna responsivo */
-
-@media (max-width: 768px) {
-
+@media (max-width: 576px) {
     .tour-box {
         width: 100%;
-        height: auto;
+        /* Para dispositivos pequenos */
     }
+}
 
+@media (max-width: 768px) {
+    .tour-box {
+        width: calc(50% - 20px);
+        /* Para dispositivos médios */
+    }
+}
+
+/* Estilos adicionais para a caixa de preço */
+.price-box {
+    background-color: #f5f5f5;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+    /* Espaçamento superior */
+}
+
+.price {
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+}
+
+/* Estilos para a descrição do tour */
+.tour-description {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* Estilos para os botões de navegação */
+.btn-secondary {
+    background-color: #333;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para as imagens do slider */
+.image-box {
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.slider-img {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.slider-img:first-child {
+    display: block;
 }
