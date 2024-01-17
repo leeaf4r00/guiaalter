@@ -8,9 +8,9 @@ def tours():
     return render_template('tours.html')
 
 
-@routes_tours.route('/tours/lagoverde')
-def lagoverde():
-    return render_template('tours/lagoverde/lagoverde.html')
+@routes_tours.route('/tours/lagoverdetour')
+def lagoverdetour():
+    return render_template('tours/lagoverde/lagoverdetour.html')
 
 
 @routes_tours.route('/tours/alterdochao')
