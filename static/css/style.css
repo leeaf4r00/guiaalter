@@ -16,6 +16,8 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    /* Aumento do tamanho base da fonte para telas pequenas */
 }
 
 /* Estilos do Header */

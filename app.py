@@ -5,7 +5,7 @@ from app.models.user import get_user_by_username
 from app.routes import routes
 from app.routes_tours import routes_tours
 from app.routes_admin import routes_admin
-from app.database import db  # Importe a instância global do banco de dados
+from app.database import db
 
 app = Flask(__name__)
 
