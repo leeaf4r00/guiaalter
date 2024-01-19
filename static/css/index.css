@@ -3,16 +3,12 @@
 
 /* Variáveis CSS */
 :root {
-    --main-color: #007FFF;
-    /* Azul oceânico */
-    --background-color: #F5DEB3;
-    /* Areia */
-    --text-color: #000000;
-    /* Texto escuro para contraste */
-    --footer-background-color: #007FFF;
-    /* Azul oceânico */
-    --footer-text-color: #F5DEB3;
-    /* Areia para o texto */
+    --main-color: #007bff;
+    /* Cor principal */
+    --text-color: #333;
+    /* Cor do texto principal */
+    --background-color: #f8f8f8;
+    /* Cor de fundo */
 }
 
 /* Estilos gerais */
@@ -21,7 +17,9 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -29,234 +27,92 @@ a {
     text-decoration: none;
 }
 
-.container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ffffff;
-}
-
-/* Estilos para o botão "Saiba mais" */
-.btn-see-more {
-    background-color: #87CEEB;
-    /* Azul do céu */
-    color: #fff;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Torna responsivo */
-@media (max-width: 576px) {
-    .btn-see-more {
-        font-size: 14px;
-        padding: 4px 8px;
-    }
-}
-
-/* Estilos do Header */
+/* Estilos para cabeçalho (header) */
 .header {
-    background-color: var(--footer-background-color);
-    /* Azul oceânico */
-    color: var(--footer-text-color);
-    /* Texto do cabeçalho */
-    padding: 10px 0;
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 20px;
     text-align: center;
 }
 
-.header img {
-    max-width: 150px;
-    height: auto;
+.header h1 {
+    font-size: 2rem;
+    margin: 0;
 }
 
-/* Estilos da Seção de Chamada para Ação */
-.call-to-action {
-    background-color: #F5DEB3;
-    /* Areia */
-    color: #007FFF;
-    /* Azul oceânico para o texto */
-    padding: 20px 0;
+/* Estilos para a barra de navegação (navbar) */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap;
+    /* Adicionado flex-wrap para que os elementos possam quebrar para a próxima linha em telas menores */
+    flex-direction: row;
+    /* Definido flex-direction como row (horizontal) */
+}
+
+/* Estilos para os links da barra de navegação */
+.navbar a {
+    background-color: var(--main-color);
+    color: #fff;
     text-align: center;
-}
-
-.call-to-action h2 {
-    margin-bottom: 15px;
-}
-
-.call-to-action p {
-    margin-top: 10px;
-}
-
-.call-to-action .cta-button {
-    display: inline-block;
     padding: 10px 20px;
-    background-color: var(--footer-background-color);
-    /* Azul oceânico */
-    color: var(--footer-text-color);
-    /* Texto do cabeçalho */
-    text-decoration: none;
-    font-weight: bold;
+    /* Ajuste o padding dos links para melhor espaçamento */
+    margin: 5px;
+    /* Adicione margem entre os links para espaçamento */
     border-radius: 5px;
-    margin-top: 10px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.call-to-action .cta-button:hover {
-    background-color: #e68a00;
-    /* Cor de destaque ao passar o mouse */
-}
-
-/* Estilos da Seção de Mapa de Localização */
-.location-map {
-    margin-top: 20px;
-    animation: fadeInUp 1s ease-in-out;
-}
-
-.location-map h2 {
-    color: var(--main-color);
-    /* Azul oceânico */
-    margin-bottom: 15px;
-}
-
-/* Estilos do Footer */
-.footer {
-    background-color: var(--footer-background-color);
-    /* Azul oceânico */
-    color: var(--footer-text-color);
-    /* Texto do cabeçalho */
-    padding: 20px 0;
-}
-
-.footer ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
-
-.footer ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-.footer a {
-    color: var(--footer-text-color);
-    /* Texto do cabeçalho */
     text-decoration: none;
 }
 
-.footer a:hover {
-    text-decoration: underline;
+.navbar a:hover {
+    color: #0056b3;
 }
 
-/* Estilos gerais para a seção principal */
+/* Estilos para a seção principal (main content) */
 .main-content {
     padding: 20px;
-    background-color: var(--background-color);
 }
 
-/* Overlay sobre a imagem de fundo para melhorar a legibilidade do texto */
-.content-overlay {
-    background: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-}
-
-/* Responsividade para seções centrais */
-@media (max-width: 768px) {
-    .navbar-nav {
-        text-align: center;
-    }
-
-    .header img {
-        max-width: 120px;
-    }
-
-    .navbar-toggler {
-        display: block;
-    }
-
-    .navbar-collapse {
-        max-height: 0;
-        overflow-y: hidden;
-        transition: max-height 0.3s ease-out;
-        padding: 0;
-    }
-
-    .navbar-toggler.active .navbar-collapse {
-        max-height: 500px;
-        overflow-y: auto;
-        transition: max-height 0.3s ease-in;
-        padding: 0;
-    }
-
-    .navbar-nav .nav-item {
-        text-align: center;
-        margin: 0;
-        padding: 10px 0;
-    }
-
-    /* Estilos gerais para a seção principal */
-    .main-content {
-        padding: 20px;
-        background-color: var(--background-color);
-    }
-
-    /* Overlay sobre a imagem de fundo para melhorar a legibilidade do texto */
-    .content-overlay {
-        background: rgba(255, 255, 255, 0.7);
-        padding: 20px;
-    }
-}
-
-/* Estilos da Navbar */
-.navbar {
-    background-color: #000000;
-    color: #0a0a0a;
-    height: auto;
-    max-height: none;
-    width: 100%;
-    z-index: 999;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-toggler {
-    background-color: transparent;
-    border: none;
-    color: var(--footer-text-color);
-    /* Texto do cabeçalho */
-    padding: 0;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.navbar-toggler-icon {
-    font-size: 24px;
-    color: var(--footer-text-color);
-    /* Texto do cabeçalho */
-}
-
-.navbar a {
-    color: var(--footer-text-color);
-    /* Texto do cabeçalho */
-}
-
-/* Botão do Navbar */
-.navbar .btn-navbar {
-    background-color: #87CEEB;
-    /* Azul do céu */
-    color: #fff;
+/* Estilos para os botões */
+.btn {
+    display: inline-block;
     padding: 10px 20px;
-    border-radius: 5px;
+    background-color: var(--main-color);
+    color: #fff;
     text-decoration: none;
+    border: none;
+    border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.navbar .btn-navbar:hover {
-    background-color: #e68a00;
-    /* Cor de destaque ao passar o mouse */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Adicione regras de estilo para telas maiores (computadores) */
+@media (min-width: 992px) {
+
+    /* Aumente o tamanho da fonte e o espaçamento no corpo */
+    body {
+        font-size: 18px;
+        line-height: 1.8;
+    }
+
+    /* Aumente o tamanho do cabeçalho */
+    .header h1 {
+        font-size: 3rem;
+    }
+
+    /* Aumente o padding na barra de navegação */
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    /* Aumente o padding nos botões */
+    .btn {
+        padding: 12px 24px;
+    }
 }

@@ -1,165 +1,92 @@
-/* Reset CSS - Normalize.css é um exemplo de reset CSS */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
-
-/* Variáveis CSS */
-:root {
-    --main-color: #944747;
-    /* Cor principal */
-    --callout-color: #ff9900;
-    /* Cor do destaque */
-    --background-color: rgba(0, 128, 255, 0.5);
-    /* Cor de fundo com transparência */
-    --text-color: #050505;
-    /* Cor do texto principal */
-    --footer-background-color: #007bff;
-    /* Cor de fundo do footer */
-    --footer-text-color: #080404;
-    /* Cor do texto do footer */
-}
-
-/* Estilos gerais do corpo */
+/* Estilos gerais para o corpo principal */
 body {
     font-family: Arial, sans-serif;
-    /* Fonte do texto */
-    color: var(--text-color);
+    color: #333;
     /* Cor do texto principal */
-    line-height: 1.6;
-    /* Altura da linha do texto */
-    font-size: 18px;
-    /* Tamanho da fonte do texto */
-    background-color: var(--background-color);
-    /* Cor de fundo */
+    background-color: #f8f8f8;
+    /* Cor de fundo do corpo */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    /* Largura máxima do conteúdo */
+    margin: 0 auto;
+    /* Centraliza o conteúdo na página */
+    padding: 20px;
+    /* Espaçamento interno para o conteúdo */
+}
+
+/* Estilos para cabeçalhos */
+h1 {
+    font-size: 32px;
+    /* Tamanho da fonte para cabeçalhos de nível 1 */
+    margin-bottom: 20px;
+    /* Espaçamento inferior entre cabeçalhos e outros elementos */
+}
+
+h2 {
+    font-size: 24px;
+    /* Tamanho da fonte para cabeçalhos de nível 2 */
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 20px;
+    /* Tamanho da fonte para cabeçalhos de nível 3 */
+    margin-bottom: 10px;
+}
+
+/* Estilos para parágrafos */
+p {
+    font-size: 16px;
+    /* Tamanho da fonte para parágrafos */
+    line-height: 1.5;
+    /* Espaçamento entre linhas para facilitar a leitura */
+    margin-bottom: 15px;
+    /* Espaçamento inferior entre parágrafos */
 }
 
 /* Estilos para links */
 a {
-    color: var(--main-color);
+    color: #007bff;
     /* Cor dos links */
     text-decoration: none;
-    /* Remover sublinhado padrão dos links */
+    /* Remover sublinhado padrão */
 }
 
-
-/* Estilos para botões */
-.button-group {
-    text-align: center;
-    /* Centralizar o conteúdo dos botões */
-    margin: 20px 0;
-    /* Margem superior e inferior */
+a:hover {
+    text-decoration: underline;
+    /* Adicionar sublinhado ao passar o mouse sobre os links */
 }
 
-.button-group .btn {
-    display: inline-block;
-    /* Exibir botões em linha */
-    margin: 5px;
-    /* Espaçamento entre botões */
-}
-
-/* Estilos para caixas de tour */
-.tour-box {
-    width: 100%;
-    max-width: 300px;
-    /* Largura máxima das caixas de tour */
-    height: auto;
-    /* Altura automática para manter a proporção */
-    overflow: hidden;
-    /* Esconder conteúdo que ultrapassa as caixas */
-    margin: 10px auto;
-    /* Centralizar as caixas horizontalmente */
-    border: 1px solid #ccc;
-    /* Borda das caixas */
-    border-radius: 10px;
-    /* Cantos arredondados das caixas */
-    box-shadow: 0 4px 6px rgba(22, 22, 22, 0.1);
-    /* Sombra das caixas */
-}
-
-.tour-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Redimensionar imagens para cobrir a caixa */
-}
-
-/* Estilos responsivos para caixas de tour em dispositivos pequenos */
-@media (max-width: 576px) {
-    .tour-box {
-        max-width: 100%;
-        /* Largura máxima de 100% para dispositivos pequenos */
-        max-height: 400px;
-        /* Altura máxima para dispositivos pequenos */
-        margin: 10px auto;
-        /* Centralizar as caixas horizontalmente */
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        /* Reduzir o espaçamento interno para telas menores */
     }
 
-    .button-group {
-        text-align: center;
-        /* Centralizar o botão "Ver Mais" */
+    h1 {
+        font-size: 28px;
+        /* Reduzir o tamanho da fonte para cabeçalhos de nível 1 */
     }
 
-    .button-group .btn {
-        display: inline-block;
-        /* Exibir botões em linha */
-        margin: 5px;
-        /* Espaçamento entre botões */
+    h2 {
+        font-size: 22px;
+        /* Reduzir o tamanho da fonte para cabeçalhos de nível 2 */
     }
-}
 
-/* Estilos adicionais para caixa de preço */
-.price-box {
-    background-color: #f5f5f5;
-    /* Cor de fundo da caixa de preço */
-    padding: 10px;
-    /* Espaçamento interno da caixa de preço */
-    text-align: center;
-    /* Centralizar o conteúdo */
-    border: 1px solid #ccc;
-    /* Borda da caixa de preço */
-    border-radius: 5px;
-    /* Cantos arredondados da caixa de preço */
-    margin-top: 20px;
-    /* Margem superior da caixa de preço */
-}
+    h3 {
+        font-size: 18px;
+        /* Reduzir o tamanho da fonte para cabeçalhos de nível 3 */
+    }
 
-.price {
-    font-weight: bold;
-    /* Texto em negrito */
-    color: #333;
-    /* Cor do texto da caixa de preço */
-    font-size: 18px;
-    /* Tamanho da fonte da caixa de preço */
-}
-
-/* Estilos para a descrição do tour */
-.tour-description {
-    font-size: 16px;
-    /* Tamanho da fonte da descrição do tour */
-    margin-top: 20px;
-    /* Margem superior da descrição do tour */
-}
-
-/* Estilos para botões de navegação secundários */
-.btn-secondary {
-    background-color: #333;
-    /* Cor de fundo dos botões secundários */
-    color: #fff;
-    /* Cor do texto dos botões secundários */
-}
-
-.btn-secondary:hover {
-    background-color: #555;
-    /* Cor de fundo ao passar o mouse sobre os botões secundários */
-}
-
-/* Estilos para botões de navegação primários */
-.btn-primary {
-    background-color: var(--main-color);
-    /* Cor de fundo dos botões primários */
-    color: #fff;
-    /* Cor do texto dos botões primários */
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    /* Cor de fundo ao passar o mouse sobre os botões primários */
+    p {
+        font-size: 14px;
+        /* Reduzir o tamanho da fonte para parágrafos */
+        margin-bottom: 10px;
+        /* Reduzir o espaçamento inferior entre parágrafos */
+    }
 }

@@ -10,10 +10,10 @@
     <title>Guia de Alter - Passeios em Alter do Chão</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/body.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -31,131 +31,147 @@
             <p>Seu guia de passeios por Alter do Chão</p>
         </div>
 
-        <nav>
-            <ul>
-                <li>
-                    <a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-                </li>
-                <li>
-                    <a href="/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
-    <nav class="navbar navbar-expand-sm navbar-custom">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- Botão hamburguer -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/passeios">Passeios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/hotels">Hotéis</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/veiculos">Transfer/Embarcações</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/pacotes">Pacotes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/rotas">Mapa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/conhecaalter">Conheça Alter</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/souvenir">Souvenir</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/sejanossoparceiro">Seja Nosso Parceiro</a></li>
+
+            <!-- Links Início, Pacotes, Transfer/Embarcações e Mapa (não fazendo parte do botão hamburger) -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pacotes">Pacotes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/veiculos">Transfer/Embarcações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rotas">Mapa</a>
+                    </li>
                 </ul>
             </div>
-        </div>
-    </nav>
-    <main class="main-content">
-        <section class="content-overlay">
-            <article class="highlighted-tours text-center">
-                <div class="container">
-                    <h1>Tour em Destaque</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
 
-                    <h1>Lago Verde</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
+            <!-- Links do menu principal (visíveis em dispositivos maiores) -->
+            <div class="navbar-collapse collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/passeios">Passeios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hotels">Hotéis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contato">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/conhecaalter">Conheça Alter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/souvenir">Souvenir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sejanossoparceiro">Seja Nosso Parceiro</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main class="main-content">
+            <section class="content-overlay">
+                <article class="highlighted-tours text-center">
+                    <div class="container">
+                        <h1>Tour em Destaque</h1>
+                        <div class="iframe-container">
+                            <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400"
+                                style="border:0;"></iframe>
+                        </div>
 
-                    <h1>Subindo o Rio</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
+                        <h1>Lago Verde</h1>
+                        <div class="iframe-container">
+                            <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400"
+                                style="border:0;"></iframe>
+                        </div>
 
-                    <h1>Descendo o Rio</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
+                        <h1>Subindo o Rio</h1>
+                        <div class="iframe-container">
+                            <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400"
+                                style="border:0;"></iframe>
+                        </div>
 
-                    <h1>Rio Arapiuns</h1>
-                    <div class="iframe-container" style="overflow: hidden;">
-                        <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
+                        <h1>Descendo o Rio</h1>
+                        <div class="iframe-container">
+                            <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400"
+                                style="border:0;"></iframe>
+                        </div>
+
+                        <h1>Rio Arapiuns</h1>
+                        <div class="iframe-container" style="overflow: hidden;">
+                            <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400"
+                                style="border:0;"></iframe>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            </section>
+        </main>
+
+        <section class="new-tours text-center">
+            <div class="container">
+                <h2>As Pessoas Também Compraram:</h2>
+                <ul>
+                    <li>Passeio de Canoa pelos Igapós</li>
+                    <li>Visita à Comunidade Tradicional</li>
+                </ul>
+            </div>
         </section>
-    </main>
 
-    <section class="new-tours text-center">
-        <div class="container">
-            <h2>As Pessoas Também Compraram:</h2>
-            <ul>
-                <li>Passeio de Canoa pelos Igapós</li>
-                <li>Visita à Comunidade Tradicional</li>
-            </ul>
-        </div>
-    </section>
+        <section class="client-testimonials text-center">
+            <div class="container">
+                <h2>Receba Nossas Novidades</h2>
+                <p>"Insira seu Email."</p>
+                <form>
+                    <input type="email" class="form-control" placeholder="Seu email aqui">
+                    <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
+                </form>
+            </div>
+        </section>
 
-    <section class="client-testimonials text-center">
-        <div class="container">
-            <h2>Receba Nossas Novidades</h2>
-            <p>"Insira seu Email."</p>
-            <form>
-                <input type="email" class="form-control" placeholder="Seu email aqui">
-                <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
-            </form>
-        </div>
-    </section>
+        <section class="iframe-container">
+            <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
+        </section>
 
-    <section class="iframe-container">
-        <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 footer-links">
-                    <ul>
-                        <li><a href="/privacy-policy">Política de Privacidade</a></li>
-                        <li><a href="/terms-of-use">Termos de Uso</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 contact-info">
-                    <h3>Entre em Contato</h3>
-                    <p>Endereço: Rua Principal, Alter do Chão</p>
-                    <p>Telefone: (55) 93991160523</p>
-                    <p>Email: guiadealter@contato.com</p>
-                </div>
-                <div class="col-md-4 whatsapp-contact">
-                    <h3>Contato via WhatsApp</h3>
-                    <a href="https://wa.me/5593991160523" target="_blank">Enviar Mensagem</a>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-links">
+                        <ul>
+                            <li><a href="/privacy-policy">Política de Privacidade</a></li>
+                            <li><a href="/terms-of-use">Termos de Uso</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 contact-info">
+                        <h3>Entre em Contato</h3>
+                        <p>Endereço: Rua Principal, Alter do Chão</p>
+                        <p>Telefone: (55) 93991160523</p>
+                        <p>Email: guiadealter@contato.com</p>
+                    </div>
+                    <div class="col-md-4 whatsapp-contact">
+                        <h3>Contato via WhatsApp</h3>
+                        <a href="https://wa.me/5593991160523" target="_blank">Enviar Mensagem</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/tours.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/tours.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/user.js') }}"></script>
 </body>
 
 </html>

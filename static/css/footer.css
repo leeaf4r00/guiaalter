@@ -1,24 +1,16 @@
-/* Estilos do Footer */
+/* Estilos para rodapé (footer) */
 .footer {
-    background-color: var(--footer-background-color);
-    color: var(--footer-text-color);
+    background-color: var(--main-color);
+    color: #fff;
     padding: 20px 0;
-}
-
-.footer ul {
-    list-style: none;
-    padding: 0;
     text-align: center;
 }
 
-.footer ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
+/* Estilos para links no rodapé */
 .footer a {
-    color: var(--footer-text-color);
+    color: #fff;
     text-decoration: none;
+    margin: 0 10px;
 }
 
 .footer a:hover {
