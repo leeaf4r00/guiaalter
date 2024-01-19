@@ -164,13 +164,6 @@ a {
     align-items: center;
 }
 
-.header img {
-    max-width: 150px;
-    height: auto;
-    margin-bottom: 10px;
-    /* Espaço entre a logo e o texto */
-}
-
 /* Estilos da Navbar */
 .navbar {
     background-color: var(--main-color);
@@ -362,3 +355,4 @@ a {
         max-width: 80px;
     }
 }
+

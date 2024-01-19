@@ -8,149 +8,165 @@
     <meta name="description" content="Guia de passeios, buffets, hotéis e mais em Alter do Chão">
     <meta name="keywords" content="alter do chão, passeios, buffets, hotéis">
     <title>Guia de Alter - Passeios em Alter do Chão</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/logo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
-<body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Guia de Alter">
-            </div>
-            <div class="site-name">
-                <h1>Guia de Alter</h1>
-                <p>Seu guia de passeios por Alter do Chão</p>
-            </div>
-        </div>
-        <a href="/login" class="login-link">Login</a>
-    </header>
+<header>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/passeios">Passeios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/hotels">Hotéis</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/veiculos">Transfer/Embarcações</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/pacotes">Pacotes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/rotas">Mapa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/conhecaalter">Conheça Alter</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/souvenir">Souvenir</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/sejanossoparceiro">Seja Nosso Parceiro</a></li>
-                </ul>
-            </div>
-        </div>
+    <a class="logo" href="/">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Guia de Alter">
+    </a>
+
+    <div class="identity">
+
+        <h1>
+            <a href="/">Guia de Alter</a>
+        </h1>
+
+        <p>Seu guia de passeios por Alter do Chão</p>
+
+    </div>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/login">Login</a>
+            </li>
+            <li>
+                <a href="/cadastro">Cadastro</a>
+            </li>
+        </ul>
     </nav>
 
-    <main class="main-content">
-        <section class="content-overlay">
-            <article class="highlighted-tours text-center">
-                <div class="container">
-                    <h1>Tour em Destaque</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
+</header>
 
-                    <h1>Lago Verde</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
-
-                    <h1>Subindo o Rio</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
-
-                    <h1>Descendo o Rio</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
-
-                    <h1>Rio Arapiuns</h1>
-                    <div class="iframe-container" style="overflow: hidden;">
-                        <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
-
-                    <h2>Mapa de Alter do Chão</h2>
-                    <section class="location-map text-center">
-                        <div class="container">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15943.968153708129!2d-54.95258845!3d-2.5094830500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92885284fb3ebf99%3A0xcb08442fee6790c3!2sAlter%20do%20Ch%C3%A3o%2C%20Santar%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v1703982093638!5m2!1spt-BR!2sbr"
-                                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </section>
-                </div>
-            </article>
-        </section>
-    </main>
-
-    <section class="new-tours text-center">
-        <div class="container">
-            <h2>As Pessoas Também Compraram:</h2>
-            <ul>
-                <li>Passeio de Canoa pelos Igapós</li>
-                <li>Visita à Comunidade Tradicional</li>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="/passeios">Passeios</a></li>
+                <li class="nav-item"><a class="nav-link" href="/hotels">Hotéis</a></li>
+                <li class="nav-item"><a class="nav-link" href="/veiculos">Transfer/Embarcações</a></li>
+                <li class="nav-item"><a class="nav-link" href="/pacotes">Pacotes</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
+                <li class="nav-item"><a class="nav-link" href="/rotas">Mapa</a></li>
+                <li class="nav-item"><a class="nav-link" href="/conhecaalter">Conheça Alter</a></li>
+                <li class="nav-item"><a class="nav-link" href="/souvenir">Souvenir</a></li>
+                <li class="nav-item"><a class="nav-link" href="/sejanossoparceiro">Seja Nosso Parceiro</a></li>
             </ul>
         </div>
-    </section>
+    </div>
+</nav>
 
-    <section class="client-testimonials text-center">
-        <div class="container">
-            <h2>Receba Nossas Novidades</h2>
-            <p>"Insira seu Email."</p>
-            <form>
-                <input type="email" class="form-control" placeholder="Seu email aqui">
-                <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
-            </form>
-        </div>
-    </section>
+<main class="main-content">
+    <section class="content-overlay">
+        <article class="highlighted-tours text-center">
+            <div class="container">
+                <h1>Tour em Destaque</h1>
+                <div class="iframe-container">
+                    <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400"
+                        style="border:0;"></iframe>
+                </div>
 
-    <section class="iframe-container">
-        <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
-    </section>
+                <h1>Lago Verde</h1>
+                <div class="iframe-container">
+                    <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400"
+                        style="border:0;"></iframe>
+                </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 footer-links">
-                    <ul>
-                        <li><a href="/privacy-policy">Política de Privacidade</a></li>
-                        <li><a href="/terms-of-use">Termos de Uso</a></li>
-                    </ul>
+                <h1>Subindo o Rio</h1>
+                <div class="iframe-container">
+                    <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400"
+                        style="border:0;"></iframe>
                 </div>
-                <div class="col-md-4 contact-info">
-                    <h3>Entre em Contato</h3>
-                    <p>Endereço: Rua Principal, Alter do Chão</p>
-                    <p>Telefone: (55) 93991160523</p>
-                    <p>Email: guiadealter@contato.com</p>
+
+                <h1>Descendo o Rio</h1>
+                <div class="iframe-container">
+                    <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400"
+                        style="border:0;"></iframe>
                 </div>
-                <div class="col-md-4 whatsapp-contact">
-                    <h3>Contato via WhatsApp</h3>
-                    <a href="https://wa.me/5593991160523" target="_blank">Enviar Mensagem</a>
+
+                <h1>Rio Arapiuns</h1>
+                <div class="iframe-container" style="overflow: hidden;">
+                    <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400"
+                        style="border:0;"></iframe>
                 </div>
+
+                <h2>Mapa de Alter do Chão</h2>
+                <section class="location-map text-center">
+                    <div class="container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15943.968153708129!2d-54.95258845!3d-2.5094830500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92885284fb3ebf99%3A0xcb08442fee6790c3!2sAlter%20do%20Ch%C3%A3o%2C%20Santar%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v1703982093638!5m2!1spt-BR!2sbr"
+                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </section>
+            </div>
+        </article>
+    </section>
+</main>
+
+<section class="new-tours text-center">
+    <div class="container">
+        <h2>As Pessoas Também Compraram:</h2>
+        <ul>
+            <li>Passeio de Canoa pelos Igapós</li>
+            <li>Visita à Comunidade Tradicional</li>
+        </ul>
+    </div>
+</section>
+
+<section class="client-testimonials text-center">
+    <div class="container">
+        <h2>Receba Nossas Novidades</h2>
+        <p>"Insira seu Email."</p>
+        <form>
+            <input type="email" class="form-control" placeholder="Seu email aqui">
+            <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
+        </form>
+    </div>
+</section>
+
+<section class="iframe-container">
+    <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-links">
+                <ul>
+                    <li><a href="/privacy-policy">Política de Privacidade</a></li>
+                    <li><a href="/terms-of-use">Termos de Uso</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 contact-info">
+                <h3>Entre em Contato</h3>
+                <p>Endereço: Rua Principal, Alter do Chão</p>
+                <p>Telefone: (55) 93991160523</p>
+                <p>Email: guiadealter@contato.com</p>
+            </div>
+            <div class="col-md-4 whatsapp-contact">
+                <h3>Contato via WhatsApp</h3>
+                <a href="https://wa.me/5593991160523" target="_blank">Enviar Mensagem</a>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/tours.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/tours.js') }}"></script>
+<script src="{{ url_for('static', filename='js/user.js') }}"></script>
 </body>
 
 </html>
