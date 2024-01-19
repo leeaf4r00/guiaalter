@@ -42,27 +42,17 @@ a {
 
 /* Estilos para a barra de navegação (navbar) */
 .navbar {
-    display: flex;
-    justify-content: space-around;
+    position: relative;
+    display: ;
+    color: #fff;
     align-items: center;
     padding: 0.5rem 1rem;
-    flex-wrap: wrap;
-    /* Adicionado flex-wrap para que os elementos possam quebrar para a próxima linha em telas menores */
-    flex-direction: row;
-    /* Definido flex-direction como row (horizontal) */
 }
 
-/* Estilos para os links da barra de navegação */
 .navbar a {
     background-color: var(--main-color);
     color: #fff;
     text-align: center;
-    padding: 10px 20px;
-    /* Ajuste o padding dos links para melhor espaçamento */
-    margin: 5px;
-    /* Adicione margem entre os links para espaçamento */
-    border-radius: 5px;
-    text-decoration: none;
 }
 
 .navbar a:hover {
