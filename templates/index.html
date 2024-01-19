@@ -9,24 +9,8 @@
     <meta name="keywords" content="alter do chão, passeios, buffets, hotéis">
     <title>Guia de Alter - Passeios em Alter do Chão</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logo.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .header {
-            background-image: url("{{ url_for('static', filename='img/topo1.jpg') }}");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            opacity: 0.7;
-        }
-
-        .login-link {
-            position: relative;
-            z-index: 9999;
-        }
-    </style>
 </head>
 
 <body>
@@ -65,18 +49,15 @@
         </div>
     </nav>
 
-    <section class="main-content">
-        <div class="content-overlay">
-            <div class="highlighted-tours text-center">
+    <main class="main-content">
+        <section class="content-overlay">
+            <article class="highlighted-tours text-center">
                 <div class="container">
-
-
                     <h1>Tour em Destaque</h1>
                     <div class="iframe-container">
                         <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400"
                             style="border:0;"></iframe>
                     </div>
-
 
                     <h1>Lago Verde</h1>
                     <div class="iframe-container">
@@ -103,19 +84,20 @@
                     </div>
 
                     <h2>Mapa de Alter do Chão</h2>
-                    <div class="location-map text-center">
+                    <section class="location-map text-center">
                         <div class="container">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15943.968153708129!2d-54.95258845!3d-2.5094830500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92885284fb3ebf99%3A0xcb08442fee6790c3!2sAlter%20do%20Ch%C3%A3o%2C%20Santar%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v1703982093638!5m2!1spt-BR!2sbr"
                                 width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                    </div>
+                    </section>
                 </div>
-            </div>
-    </section>
+            </article>
+        </section>
+    </main>
 
-    <div class="new-tours text-center">
+    <section class="new-tours text-center">
         <div class="container">
             <h2>As Pessoas Também Compraram:</h2>
             <ul>
@@ -123,9 +105,9 @@
                 <li>Visita à Comunidade Tradicional</li>
             </ul>
         </div>
-    </div>
+    </section>
 
-    <div class="client-testimonials text-center">
+    <section class="client-testimonials text-center">
         <div class="container">
             <h2>Receba Nossas Novidades</h2>
             <p>"Insira seu Email."</p>
@@ -134,11 +116,11 @@
                 <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
             </form>
         </div>
-    </div>
+    </section>
 
-    <div class="iframe-container">
+    <section class="iframe-container">
         <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
-    </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
@@ -166,6 +148,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tours.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
 </body>
 
 </html>

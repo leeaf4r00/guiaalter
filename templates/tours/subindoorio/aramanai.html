@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Passeio Praia de Aramanai - Belterra - PA</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="image-box text-center">
+                    <img src="{{ url_for('static', filename='img/subindoorio/aramanai1.jpg') }}" alt="Praia de Aramanai"
+                        class="slider-img">
+                    <img src="{{ url_for('static', filename='img/subindoorio/aramanai2.jpg') }}" alt="Praia de Aramanai"
+                        class="slider-img">
+                    <img src="{{ url_for('static', filename='img/subindoorio/aramanai1.jpg') }}" alt="Praia de Aramanai"
+                        class="slider-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="tour-description">
+
+                    A praia de Aramanai é uma das mais belas e surpreendentes da região, com águas mornas do rio Tapajós
+                    e também gélidas do igarapé Encantado, que deságua na ponta da praia. A praia é ideal para relaxar,
+                    tomar sol, nadar e apreciar a natureza. Nos arredores da praia, existem vários restaurantes,
+                    pousadas e barracas que oferecem comodidade e gastronomia típica aos visitantes. Além disso, é
+                    possível fazer trilhas e passear de canoa pelo igarapé, que encanta com suas águas claras e
+                    cristalinas, rodeado pela mata.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="price-box">
+                    <p class="price">Preço: Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="button-group">
+                    <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+                    <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Incorporando o arquivo tours.js -->
+    <script src="{{ url_for('static', filename='js/tours.js') }}"></script>
+</body>
+
+</html>

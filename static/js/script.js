@@ -1,6 +1,3 @@
-// script.js
-
-// Aguarda o carregamento completo do DOM antes de executar o código JavaScript
 document.addEventListener("DOMContentLoaded", function () {
     // Adiciona um ouvinte de evento ao formulário de login
     const loginForm = document.getElementById("loginForm");
@@ -59,6 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return true;
     }
+
+    // Adiciona um ouvinte de evento ao botão de menu responsivo
+    const menuButton = document.querySelector(".navbar-toggler");
+    const navbarNav = document.querySelector(".navbar-nav");
+
+    menuButton.addEventListener("click", function () {
+        navbarNav.classList.toggle("show");
+    });
 
     // Outros eventos e lógica JavaScript podem ser adicionados conforme necessário
 });

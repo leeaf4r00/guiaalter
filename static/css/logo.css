@@ -1,0 +1,28 @@
+/* Estilos para a logo */
+.logo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 10px;
+    /* Fixa a logo no topo em dispositivos móveis */
+    z-index: 1000;
+    /* Certifique-se de que a logo fique acima de outros elementos */
+    background: linear-gradient(to bottom, transparent 20%, #fff);
+    /* Adiciona um degradê no topo ao rolar a página */
+    transition: transform 0.3s;
+}
+
+.logo img {
+    width: 10vw;
+    /* Torna a logo responsiva com unidades de viewport (vw) */
+    max-width: 120px;
+    /* Define o tamanho máximo para a logo */
+    height: auto;
+}
+
+/* Adiciona uma animação suave de escala na rolagem para destacar */
+.logo-wrap:hover .logo img {
+    transform: scale(1.05);
+}

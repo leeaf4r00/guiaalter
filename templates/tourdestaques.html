@@ -5,47 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotas - Rio Arapiuns</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="static/css/tours.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .tour-box {
-            width: 300px;
-            height: 300px;
-            overflow: hidden;
-            margin: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .tour-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .tour-info {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .tour-name {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .tour-box {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        body {
-            overflow: hidden;
-        }
-    </style>
 </head>
 
 <body>
@@ -66,7 +27,7 @@
                     </a>
                 </div>
 
-                <!-- Tour ponta Grande -->
+                <!-- Tour 2: ponta Grande -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.pontagrande') }}" target="_blank">
                         <div class="tour-box">
@@ -81,7 +42,7 @@
                     </a>
                 </div>
 
-                <!-- Tour 8: Alter do Chão -->
+                <!-- Tour 3: Alter do Chão -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.alterdochaotour') }}" target="_blank">
                         <div class="tour-box">
@@ -95,7 +56,7 @@
                     </a>
                 </div>
 
-                <!-- Tour 2: Lago Verde -->
+                <!-- Tour 4: Lago Verde -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.lagoverdetour') }}" target="_blank">
                         <div class="tour-box">
@@ -109,7 +70,7 @@
                     </a>
                 </div>
 
-                <!-- Tour 3: Igarapé do Macaco -->
+                <!-- Tour 5: Igarapé do Macaco -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.igarapedomacaco') }}" target="_blank">
                         <div class="tour-box">
@@ -123,7 +84,22 @@
                     </a>
                 </div>
 
-                <!-- Tour 4: Ponta do Cururu -->
+                <!-- Tour 6: Praia de Aramanaí -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.aramanai') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/subindoorio/aramanai1.jpg') }}"
+                                alt="Praia de Aramanaí">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Praia de Aramanaí</div>
+                            <a href="{{ url_for('routes_tours.aramanai') }}" class="btn btn-primary">Ver
+                                mais</a>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tour 7: Ponta do Cururu -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.pontadocururu') }}" target="_blank">
                         <div class="tour-box">
@@ -138,22 +114,7 @@
                     </a>
                 </div>
 
-                <!-- Tour 4: Ponta do Cururu -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontadocururu') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/descendoorio/pontadocururu2.jpg') }}"
-                                alt="Ponta do Cururu">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta do Cururu</div>
-                            <a href="{{ url_for('routes_tours.pontadocururu') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 5: Floresta Encantada -->
+                <!-- Tour 8: Floresta Encantada -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.florestaencantada') }}" target="_blank">
                         <div class="tour-box">
@@ -168,7 +129,7 @@
                     </a>
                 </div>
 
-                <!-- Tour 5: Praia de Pindobal -->
+                <!-- Tour 9: Praia de Pindobal -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.pindobal') }}" target="_blank">
                         <div class="tour-box">
@@ -183,19 +144,21 @@
                     </a>
                 </div>
 
-                <!-- Tour 6: Lago Preto -->
+                <!-- Tour 10: Lago Preto -->
                 <div class="col-md-4">
-                    <div class="tour-box">
-                        <img src="{{ url_for('static', filename='img/descendoorio/lagopreto2.jpg') }}" alt="Lago Preto">
-                    </div>
-                    <div class="tour-info">
-                        <div class="tour-name">Lago Preto</div>
-                        <a href="{{ url_for('routes_tours.lagopreto') }}" class="btn btn-primary" target="_blank">Ver
-                            mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.lagopreto') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/lagopreto2.jpg') }}"
+                                alt="Lago Preto">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Lago Preto</div>
+                            <a href="{{ url_for('routes_tours.lagopreto') }}" class="btn btn-primary">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
-                <!-- Tour 4: Igarapé do Camarão -->
+                <!-- Tour 11: Igarapé do Camarão -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.igarapedocamarao') }}" target="_blank">
                         <div class="tour-box">
@@ -210,20 +173,37 @@
                     </a>
                 </div>
 
-                <!-- Tour 7: Ponta de Pedras -->
+                <!-- Tour 12: Ponta de Pedras -->
                 <div class="col-md-4">
-                    <div class="tour-box">
-                        <img src="{{ url_for('static', filename='img/descendoorio/pontadepedras3.jpg') }}"
-                            alt="Ponta de Pedras">
-                    </div>
-                    <div class="tour-info">
-                        <div class="tour-name">Ponta de Pedras</div>
-                        <a href="{{ url_for('routes_tours.pontadepedras') }}" class="btn btn-primary"
-                            target="_blank">Ver mais</a>
-                    </div>
+                    <a href="{{ url_for('routes_tours.pontadepedras') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/descendoorio/pontadepedras3.jpg') }}"
+                                alt="Ponta de Pedras">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Ponta de Pedras</div>
+                            <a href="{{ url_for('routes_tours.pontadepedras') }}" class="btn btn-primary"
+                                target="_blank">Ver mais</a>
+                        </div>
+                    </a>
                 </div>
 
-                <!-- Tour 7: Encontro das Águas -->
+                <!-- Tour 13: falta -->
+                <div class="col-md-4">
+                    <a href="{{ url_for('routes_tours.florestaencantada') }}" target="_blank">
+                        <div class="tour-box">
+                            <img src="{{ url_for('static', filename='img/lagoverde/florestaencantada.jpg') }}"
+                                alt="Floresta Encantada">
+                        </div>
+                        <div class="tour-info">
+                            <div class="tour-name">Floresta Encantada</div>
+                            <a href="{{ url_for('routes_tours.florestaencantada') }}" class="btn btn-primary">Ver
+                                mais</a>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Tour 14: Encontro das Águas -->
                 <div class="col-md-4">
                     <a href="{{ url_for('routes_tours.encontrodasaguas') }}" target="_blank">
                         <div class="tour-box">
@@ -235,10 +215,10 @@
                             <a href="{{ url_for('routes_tours.encontrodasaguas') }}" class="btn btn-primary">Ver
                                 mais</a>
                         </div>
-
-
+                    </a>
                 </div>
             </div>
+        </div>
     </main>
 
     <script>

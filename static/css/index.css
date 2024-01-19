@@ -3,7 +3,7 @@
 
 /* Variáveis CSS */
 :root {
-    --main-color: #333;
+    --main-color: #1784c4;
     --callout-color: #ff9900;
     --background-color: #f8f9fa;
     --text-color: #000;
@@ -14,14 +14,13 @@
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    color: #333;
+    color: var(--text-color);
     line-height: 1.6;
     font-size: 18px;
-
 }
 
 a {
-    color: #007bff;
+    color: var(--main-color);
     text-decoration: none;
 }
 
@@ -34,34 +33,23 @@ a {
     /* Espaçamento interno para o conteúdo */
 }
 
-/* Estilos para o botão "Saiba mais" */
-.btn-see-more {
-    background-color: #007bff;
-    color: #fff;
-    padding: 5px 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    position: absolute;
-    /* Posicione o botão sobre a imagem */
-    bottom: 10px;
-    /* Ajuste a posição vertical */
-    left: 50%;
-    /* Centralize horizontalmente */
-    transform: translateX(-50%);
-    /* Centralize horizontalmente */
+/* Botões */
+.button-group {
+    text-align: center;
+    margin: 20px 0;
 }
 
-/* Estilos para as imagens das tours */
+.button-group .btn {
+    display: inline-block;
+    margin: 5px;
+}
+
+/* Tour boxes */
 .tour-box {
-    width: 100%;
-    max-width: 300px;
-    /* Largura máxima das caixas de tour */
-    height: auto;
-    /* Altura automática para manter a proporção */
+    width: 300px;
+    height: 300px;
     overflow: hidden;
-    margin: 10px auto;
-    /* Centraliza as caixas de tour horizontalmente */
+    margin: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -73,25 +61,32 @@ a {
     object-fit: cover;
 }
 
+.tour-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.tour-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 /* Torna responsivo */
 @media (max-width: 576px) {
     .tour-box {
-        max-width: 100%;
-        /* Largura máxima de 100% para dispositivos pequenos */
-        max-height: 400px;
-        /* Altura máxima para dispositivos pequenos */
-        margin: 10px auto;
-        /* Centraliza as caixas de tour horizontalmente */
+        width: 100%;
+        /* Para dispositivos pequenos, ocupar toda a largura */
+        grid-auto-flow: row;
+        /* Exibir uma imagem por vez em uma única coluna */
     }
+}
 
-    .button-group {
-        text-align: center;
-        /* Centraliza o botão "Ver Mais" */
-    }
-
-    .button-group .btn {
-        display: inline-block;
-        margin: 5px;
+@media (max-width: 768px) {
+    .tour-box {
+        width: 100%;
+        /* Para dispositivos médios, ocupar toda a largura */
+        grid-auto-flow: row;
+        /* Exibir uma imagem por vez em uma única coluna */
     }
 }
 
@@ -129,7 +124,7 @@ a {
 }
 
 .btn-primary {
-    background-color: #007bff;
+    background-color: var(--main-color);
     color: #fff;
 }
 
@@ -156,15 +151,24 @@ a {
 
 /* Estilos do Header */
 .header {
-    background-color: var(--footer-background-color);
+    background-image: url("{{ url_for('static', filename='img/topo1.jpg') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.7;
     color: var(--footer-text-color);
     padding: 10px 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header img {
     max-width: 150px;
     height: auto;
+    margin-bottom: 10px;
+    /* Espaço entre a logo e o texto */
 }
 
 /* Estilos da Navbar */
@@ -278,7 +282,7 @@ a {
 
 .location-map h2 {
     color: var(--main-color);
-    margin_bottom: 15px;
+    margin-bottom: 15px;
 }
 
 /* Estilos do Footer */
@@ -352,49 +356,9 @@ a {
     margin-bottom: 20px;
 }
 
-/* Responsividade para seções centrais */
-@media (max-width: 768px) {
-    .navbar-nav {
-        text-align: center;
-    }
-
+/* Reduz o tamanho da logo em dispositivos móveis */
+@media (max-width: 576px) {
     .header img {
-        max-width: 120px;
-    }
-
-    .navbar-toggler {
-        display: block;
-    }
-
-    .navbar-collapse {
-        max-height: 0;
-        /* Altura inicial 0 */
-        overflow-y: hidden;
-        transition: max-height 0.3s ease-out;
-    }
-
-    .navbar-toggler.active .navbar-collapse {
-        max-height: 500px;
-        /* Altura quando ativado */
-        overflow-y: auto;
-        transition: max-height 0.3s ease-in;
-    }
-
-    .navbar-nav .nav-item {
-        text-align: center;
-        margin: 0;
-        padding: 10px 0;
-    }
-
-    /* Estilos gerais para a seção principal */
-    .main-content {
-        padding: 20px;
-        background-color: var(--background-color);
-    }
-
-    /* Overlay sobre a imagem de fundo para melhorar a legibilidade do texto */
-    .content-overlay {
-        background: rgba(255, 255, 255, 0.7);
-        padding: 20px;
+        max-width: 80px;
     }
 }

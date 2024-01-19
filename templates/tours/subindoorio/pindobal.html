@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tours.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Passeio Praia de Pindobal - Belterra - PA</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="image-box text-center">
+                    <img src="{{ url_for('static', filename='img/subindoorio/pindobal1.jpg') }}" alt="Praia de Pindobal"
+                        class="slider-img">
+                    <img src="{{ url_for('static', filename='img/subindoorio/pindobal2.jpg') }}" alt="Praia de Pindobal"
+                        class="slider-img">
+                    <img src="{{ url_for('static', filename='img/subindoorio/pindobal3.jpg') }}" alt="Praia de Pindobal"
+                        class="slider-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="tour-description">
+                    A praia de Pindobal é uma bela praia de água doce localizada no município de Belterra, às margens do
+                    rio Tapajós. Ela é uma das preferidas dos turistas que visitam a região de Alter do Chão, pois
+                    oferece diversas cabanas de palha, restaurantes e um maravilhoso pôr do sol. A praia fica a 9 km da
+                    vila de Alter do Chão e pode ser acessada por estrada de terra ou pelo rio. A praia muda muito de
+                    acordo com o nível da água do rio, que varia ao longo do ano. A melhor época para visitar a praia é
+                    entre agosto e dezembro, quando a água está mais baixa e a faixa de areia é mais extensa.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="price-box">
+                    <p class="price">Preço: Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="button-group">
+                    <a href="{{ url_for('routes.tourdestaques') }}" class="btn btn-secondary">Home</a>
+                    <a href="{{ url_for('routes.pacotes') }}" class="btn btn-primary" target="_blank">Saiba mais</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Incorporando o arquivo tours.js -->
+    <script src="{{ url_for('static', filename='js/tours.js') }}"></script>
+</body>
+
+</html>
