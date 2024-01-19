@@ -1,8 +1,9 @@
 from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_required, logout_user, current_user
-from app.models.user import get_all_users
+from app.users import get_user_by_username
 from app.forms import RegistrationForm
 from app.database import db
+from werkzeug.security import generate_password_hash
 
 admin = Blueprint('admin', __name__)
 

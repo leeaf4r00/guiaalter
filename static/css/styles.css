@@ -1,0 +1,40 @@
+/* Defina cores padrão */
+body {
+    font-family: Arial, sans-serif;
+    color: #000000;
+    background-color: #0b1118;
+}
+
+a {
+    color: #070a0e;
+    text-decoration: none;
+}
+
+/* Estilos para botões */
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para cabeçalho de página */
+.page-header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Estilos para rodapé */
+.page-footer {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}

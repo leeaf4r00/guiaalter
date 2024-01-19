@@ -1,13 +1,10 @@
 import sqlite3
-from flask import render_template, request, redirect, url_for, flash, Blueprint, current_app, jsonify
+from flask import render_template, request, redirect, url_for, flash, Blueprint, jsonify
 from flask_login import login_user, login_required, logout_user, current_user
-from werkzeug.security import check_password_hash
-from werkzeug.security import generate_password_hash
-from app.models.user import User, validate_login
-from app.models.user import User, get_user_by_username
+from werkzeug.security import check_password_hash, generate_password_hash
+from app.models.user import User, validate_login, get_user_by_username
 from app.forms import RegistrationForm
 from app.database import db
-from app.forms import RegistrationForm
 
 routes = Blueprint('routes', __name__)
 

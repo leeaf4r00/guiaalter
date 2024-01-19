@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template
 from flask_login import LoginManager, UserMixin
-from app.models.user import get_user_by_username
+from app.models.users import UserDatabase
 from app.routes import routes
 from app.routes_tours import routes_tours
 from app.routes_admin import routes_admin
@@ -31,7 +31,7 @@ def load_user(user_id):
     # Use a função do banco de dados para obter o usuário
     user_data = db.get_user_by_username(user_id)
     if user_data:
-        return User(user_id=user_data[0])
+        return User(user_id=user_data['username'])
     return None
 
 

@@ -3,18 +3,23 @@
 
 /* Variáveis CSS */
 :root {
-    --main-color: #1784c4;
-    --callout-color: #ff9900;
-    --background-color: #f8f9fa;
-    --text-color: #000;
-    --footer-background-color: #007bff;
-    --footer-text-color: #fff;
+    --main-color: #007FFF;
+    /* Azul oceânico */
+    --background-color: #F5DEB3;
+    /* Areia */
+    --text-color: #000000;
+    /* Texto escuro para contraste */
+    --footer-background-color: #007FFF;
+    /* Azul oceânico */
+    --footer-text-color: #F5DEB3;
+    /* Areia para o texto */
 }
 
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
     color: var(--text-color);
+    background-color: var(--background-color);
     line-height: 1.6;
     font-size: 18px;
 }
@@ -24,221 +29,57 @@ a {
     text-decoration: none;
 }
 
-/* Layout */
 .container {
     max-width: 500px;
-    /* Largura máxima da página para evitar linhas de texto muito longas */
     margin: 0 auto;
     padding: 20px;
-    /* Espaçamento interno para o conteúdo */
+    background-color: #ffffff;
 }
 
-/* Botões */
-.button-group {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.button-group .btn {
+/* Estilos para o botão "Saiba mais" */
+.btn-see-more {
+    background-color: #87CEEB;
+    /* Azul do céu */
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
     display: inline-block;
-    margin: 5px;
-}
-
-/* Tour boxes */
-.tour-box {
-    width: 300px;
-    height: 300px;
-    overflow: hidden;
-    margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.tour-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.tour-info {
-    padding: 10px;
-    text-align: center;
-}
-
-.tour-name {
-    font-weight: bold;
-    margin-bottom: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Torna responsivo */
 @media (max-width: 576px) {
-    .tour-box {
-        width: 100%;
-        /* Para dispositivos pequenos, ocupar toda a largura */
-        grid-auto-flow: row;
-        /* Exibir uma imagem por vez em uma única coluna */
+    .btn-see-more {
+        font-size: 14px;
+        padding: 4px 8px;
     }
-}
-
-@media (max-width: 768px) {
-    .tour-box {
-        width: 100%;
-        /* Para dispositivos médios, ocupar toda a largura */
-        grid-auto-flow: row;
-        /* Exibir uma imagem por vez em uma única coluna */
-    }
-}
-
-/* Estilos adicionais para a caixa de preço */
-.price-box {
-    background-color: #f5f5f5;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 20px;
-    /* Espaçamento superior */
-}
-
-.price {
-    font-weight: bold;
-    color: #333;
-    font-size: 18px;
-}
-
-/* Estilos para a descrição do tour */
-.tour-description {
-    font-size: 16px;
-    margin-top: 20px;
-}
-
-/* Estilos para os botões de navegação */
-.btn-secondary {
-    background-color: #333;
-    color: #fff;
-}
-
-.btn-secondary:hover {
-    background-color: #555;
-}
-
-.btn-primary {
-    background-color: var(--main-color);
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-/* Estilos para as imagens do slider */
-.image-box {
-    position: relative;
-    width: 80%;
-    margin: 20px auto;
-}
-
-.slider-img {
-    display: none;
-    width: 100%;
-    height: auto;
-}
-
-.slider-img:first-child {
-    display: block;
 }
 
 /* Estilos do Header */
 .header {
-    background-image: url("{{ url_for('static', filename='img/topo1.jpg') }}");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    opacity: 0.7;
+    background-color: var(--footer-background-color);
+    /* Azul oceânico */
     color: var(--footer-text-color);
+    /* Texto do cabeçalho */
     padding: 10px 0;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-/* Estilos da Navbar */
-.navbar {
-    background-color: var(--main-color);
-    color: var(--footer-text-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.navbar-toggler {
-    display: block;
-    background-color: transparent;
-    border: none;
-    color: var(--footer-text-color);
-}
-
-.navbar-toggler-icon {
-    font-size: 24px;
-}
-
-.navbar-collapse {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 300px;
-    /* Altura padrão */
-    overflow-y: hidden;
-    transition: max-height 0.3s ease-out;
-    /* Transição suave */
-}
-
-.navbar-nav {
-    flex-direction: column;
-    /* Itens em coluna no mobile */
-    text-align: center;
-}
-
-.nav-item {
-    margin-bottom: 10px;
-}
-
-.navbar-toggler.active .navbar-collapse {
-    max-height: 500px;
-    /* Altura quando ativado */
-    overflow-y: auto;
-    transition: max-height 0.3s ease-in;
-    /* Transição suave quando ativado */
-}
-
-/* Estilos da Seção de Passeios em Destaque */
-.section {
-    margin-top: 20px;
-    animation: fadeInUp 1s ease-in-out;
-}
-
-.section h2 {
-    color: var(--main-color);
-    font-size: 1.5em;
-    margin-bottom: 15px;
-}
-
-.section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.section ul li {
-    margin-bottom: 10px;
+.header img {
+    max-width: 150px;
+    height: auto;
 }
 
 /* Estilos da Seção de Chamada para Ação */
 .call-to-action {
-    background-color: var(--callout-color);
-    color: var(--footer-text-color);
+    background-color: #F5DEB3;
+    /* Areia */
+    color: #007FFF;
+    /* Azul oceânico para o texto */
     padding: 20px 0;
     text-align: center;
 }
@@ -255,7 +96,9 @@ a {
     display: inline-block;
     padding: 10px 20px;
     background-color: var(--footer-background-color);
+    /* Azul oceânico */
     color: var(--footer-text-color);
+    /* Texto do cabeçalho */
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
@@ -265,6 +108,7 @@ a {
 
 .call-to-action .cta-button:hover {
     background-color: #e68a00;
+    /* Cor de destaque ao passar o mouse */
 }
 
 /* Estilos da Seção de Mapa de Localização */
@@ -275,13 +119,16 @@ a {
 
 .location-map h2 {
     color: var(--main-color);
+    /* Azul oceânico */
     margin-bottom: 15px;
 }
 
 /* Estilos do Footer */
 .footer {
     background-color: var(--footer-background-color);
+    /* Azul oceânico */
     color: var(--footer-text-color);
+    /* Texto do cabeçalho */
     padding: 20px 0;
 }
 
@@ -298,6 +145,7 @@ a {
 
 .footer a {
     color: var(--footer-text-color);
+    /* Texto do cabeçalho */
     text-decoration: none;
 }
 
@@ -317,42 +165,98 @@ a {
     padding: 20px;
 }
 
-/* Estilos para as seções destacadas, como 'Passeios em Destaque' */
-.highlighted-tours,
-.new-tours {
-    margin-bottom: 20px;
-}
+/* Responsividade para seções centrais */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
 
-.highlighted-tours h2,
-.new-tours h2 {
-    color: var(--main-color);
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.highlighted-tours ul,
-.new-tours ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-}
-
-.highlighted-tours ul li,
-.new-tours ul li {
-    display: block;
-    margin-bottom: 10px;
-}
-
-/* Estilos para iframes (como mapas e depoimentos) */
-.iframe-container {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-/* Reduz o tamanho da logo em dispositivos móveis */
-@media (max-width: 576px) {
     .header img {
-        max-width: 80px;
+        max-width: 120px;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-collapse {
+        max-height: 0;
+        overflow-y: hidden;
+        transition: max-height 0.3s ease-out;
+        padding: 0;
+    }
+
+    .navbar-toggler.active .navbar-collapse {
+        max-height: 500px;
+        overflow-y: auto;
+        transition: max-height 0.3s ease-in;
+        padding: 0;
+    }
+
+    .navbar-nav .nav-item {
+        text-align: center;
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    /* Estilos gerais para a seção principal */
+    .main-content {
+        padding: 20px;
+        background-color: var(--background-color);
+    }
+
+    /* Overlay sobre a imagem de fundo para melhorar a legibilidade do texto */
+    .content-overlay {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 20px;
     }
 }
 
+/* Estilos da Navbar */
+.navbar {
+    background-color: #000000;
+    color: #0a0a0a;
+    height: auto;
+    max-height: none;
+    width: 100%;
+    z-index: 999;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-toggler {
+    background-color: transparent;
+    border: none;
+    color: var(--footer-text-color);
+    /* Texto do cabeçalho */
+    padding: 0;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.navbar-toggler-icon {
+    font-size: 24px;
+    color: var(--footer-text-color);
+    /* Texto do cabeçalho */
+}
+
+.navbar a {
+    color: var(--footer-text-color);
+    /* Texto do cabeçalho */
+}
+
+/* Botão do Navbar */
+.navbar .btn-navbar {
+    background-color: #87CEEB;
+    /* Azul do céu */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar .btn-navbar:hover {
+    background-color: #e68a00;
+    /* Cor de destaque ao passar o mouse */
+}
