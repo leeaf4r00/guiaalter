@@ -126,24 +126,25 @@
     </section>
 
     <footer class="footer">
-        <!-- Conteúdo do rodapé -->
         <div class="container">
             <div class="row">
-                <div class="col-md-4 footer-links">
-                    <ul>
-                        <li><a href="/privacy-policy">Política de Privacidade</a></li>
-                        <li><a href="/terms-of-use">Termos de Uso</a></li>
+                <div class="col-md-4 col-sm-12 footer-links text-center">
+                    <ul class="list-unstyled">
+                        <li><a href="/privacy-policy"><i class="fas fa-user-shield"></i> Política de Privacidade</a>
+                        </li>
+                        <li><a href="/terms-of-use"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 contact-info">
+                <div class="col-md-4 col-sm-12 contact-info text-center">
                     <h3>Entre em Contato</h3>
-                    <p>Endereço: Rua Principal, Alter do Chão</p>
-                    <p>Telefone: (55) 93991160523</p>
-                    <p>Email: guiadealter@contato.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Endereço: Rua Principal, Alter do Chão</p>
+                    <p><i class="fas fa-phone"></i> Telefone: (55) 93991160523</p>
+                    <p><i class="fas fa-envelope"></i> Email: guiadealter@contato.com</p>
                 </div>
-                <div class="col-md-4 whatsapp-contact">
-                    <h3>Contato via WhatsApp</h3>
-                    <a href="https://wa.me/5593991160523" target="_blank">Enviar Mensagem</a>
+                <div class="col-md-4 col-sm-12 whatsapp-contact text-center">
+                    <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+                    <a href="https://wa.me/5593991160523" target="_blank"
+                        aria-label="Enviar mensagem via WhatsApp">Enviar Mensagem</a>
                 </div>
             </div>
         </div>
@@ -153,7 +154,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/tours.js') }}"></script>
     <script src="{{ url_for('static', filename='js/user.js') }}"></script>
     <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
 </body>

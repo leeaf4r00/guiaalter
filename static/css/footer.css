@@ -1,18 +1,50 @@
 /* Estilos para rodapé (footer) */
 .footer {
     background-color: var(--main-color);
+    /* Define a cor de fundo do rodapé */
     color: #fff;
+    /* Cor do texto no rodapé */
     padding: 20px 0;
+    /* Preenchimento superior e inferior */
     text-align: center;
+    /* Centraliza o conteúdo do rodapé */
 }
 
-/* Estilos para links no rodapé */
+/* Estilos para os links no rodapé */
 .footer a {
     color: #fff;
+    /* Cor dos links no rodapé */
     text-decoration: none;
+    /* Remove o sublinhado dos links */
     margin: 0 10px;
+    /* Margem entre os links */
 }
 
 .footer a:hover {
     text-decoration: underline;
+    /* Sublinha o link ao passar o mouse */
 }
+
+/* Estilos responsivos para colunas do rodapé em telas menores */
+@media (max-width: 767px) {
+    .footer .row>div {
+        margin-bottom: 15px;
+        /* Espaçamento entre as colunas quando empilhadas */
+    }
+}
+
+/* Outras personalizações estéticas */
+.footer ul {
+    padding: 0;
+    list-style: none;
+    /* Remove estilos de lista */
+}
+
+.footer h3 {
+    margin-top: 0;
+    /* Remove a margem superior dos títulos */
+    color: #000;
+    /* Define a cor do texto dos títulos para preto */
+}
+
+/* Estilos adicionais se necessário */

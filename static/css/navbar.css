@@ -1,54 +1,79 @@
 /* navbar.css */
 .navbar {
     background-color: rgba(255, 255, 255, 0.5);
-    /* Cor branca com transparência */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Sombra leve para destacar a navbar */
+    display: flex;
+    justify-content: center;
     padding: 0.5rem 1rem;
-    /* Ajuste o preenchimento conforme necessário */
+    max-width: 100%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar-brand {
-    font-size: 1.5rem;
-    /* Tamanho da fonte para a marca da navbar */
-    color: #007bff;
-    /* Cor da marca da navbar */
-}
-
+/* Container dos itens da navbar */
 .navbar-nav {
-    font-size: 1rem;
-    /* Tamanho da fonte para os itens da navbar */
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: all 0.3s ease;
+    /* Transição suave */
 }
 
+/* Estilização dos itens da navbar */
 .nav-item {
-    padding: 0.5rem 0.75rem;
-    /* Espaçamento entre os itens da navbar */
+    margin: 0 1rem;
 }
 
 .nav-link {
     color: #343a40;
-    /* Cor dos links */
-    transition: color 0.3s ease-in-out;
-    /* Transição suave para efeitos hover */
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .nav-link:hover,
 .nav-link:focus {
     color: #007bff;
-    /* Cor dos links ao passar o mouse ou focar */
+    transform: scale(1.1);
+    /* Efeito de ampliação no hover */
 }
 
+/* Estilos para o botão hamburguer */
 .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.5);
-    /* Cor da borda do botão toggler */
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    display: none;
+    /* Escondido inicialmente */
 }
 
-/* Estilos para navbar em dispositivos móveis */
-@media (max-width: 991.98px) {
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Responsividade: transforma a navbar em menu hamburguer em telas pequenas */
+@media (max-width: 767px) {
+    .navbar-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        /* Sombra no menu */
+    }
+
+    .navbar-nav.show {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .navbar-toggler {
+        display: inline-block;
+        /* Exibe o botão hamburguer */
+    }
+
     .navbar {
-        background-color: rgba(255, 255, 255, 0.8);
-        /* Maior transparência em dispositivos móveis */
+        justify-content: space-between;
     }
 }
-
-/* Adicione mais estilos específicos conforme necessário */
