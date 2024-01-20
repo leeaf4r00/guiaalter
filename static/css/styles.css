@@ -1,22 +1,36 @@
-/* Defina cores padrão */
+/* Defina variáveis para cores e estilos reutilizáveis */
+:root {
+    --text-color: #000000;
+    --background-color: #0b1118;
+    --main-color: #007bff;
+    --dark-color: #070a0e;
+}
+
+/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    color: #000000;
-    background-color: #0b1118;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-    color: #070a0e;
+    color: var(--dark-color);
     text-decoration: none;
 }
 
 /* Estilos para botões */
 .btn {
-    background-color: #007bff;
+    background-color: var(--main-color);
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
+    transition: background-color 0.3s ease;
+    /* Efeito de transição suave */
 }
 
 .btn:hover {
@@ -29,12 +43,36 @@ a {
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    background-image: url('static/img/alterdochao.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Logo sobreposta na imagem de fundo */
+.logo {
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
+}
+
+.identity {
+    position: relative;
+    z-index: 5;
+    margin-top: 20px;
 }
 
 /* Estilos para rodapé */
 .page-footer {
-    background-color: #007bff;
+    background-color: var(--main-color);
     color: #fff;
     padding: 20px 0;
     text-align: center;
+}
+
+/* Estilos para links no rodapé */
+.page-footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
 }

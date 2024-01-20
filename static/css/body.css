@@ -1,92 +1,56 @@
-/* Estilos gerais para o corpo principal */
+:root {
+    /* cores */
+}
+
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    /* Cor do texto principal */
-    background-color: #f8f8f8;
-    /* Cor de fundo do corpo */
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.container {
+.content {
+    flex: 1;
+}
+
+.navbar {
+    width: 100%;
+}
+
+main {
     max-width: 1200px;
-    /* Largura máxima do conteúdo */
     margin: 0 auto;
-    /* Centraliza o conteúdo na página */
     padding: 20px;
-    /* Espaçamento interno para o conteúdo */
 }
 
-/* Estilos para cabeçalhos */
-h1 {
-    font-size: 32px;
-    /* Tamanho da fonte para cabeçalhos de nível 1 */
+section {
     margin-bottom: 20px;
-    /* Espaçamento inferior entre cabeçalhos e outros elementos */
 }
 
-h2 {
-    font-size: 24px;
-    /* Tamanho da fonte para cabeçalhos de nível 2 */
-    margin-bottom: 15px;
-}
-
+h1,
+h2,
 h3 {
-    font-size: 20px;
-    /* Tamanho da fonte para cabeçalhos de nível 3 */
-    margin-bottom: 10px;
+    /* estilos */
 }
 
-/* Estilos para parágrafos */
 p {
-    font-size: 16px;
-    /* Tamanho da fonte para parágrafos */
+    font-size: 1rem;
     line-height: 1.5;
-    /* Espaçamento entre linhas para facilitar a leitura */
-    margin-bottom: 15px;
-    /* Espaçamento inferior entre parágrafos */
+    margin-bottom: 1rem;
 }
 
-/* Estilos para links */
-a {
-    color: #007bff;
-    /* Cor dos links */
-    text-decoration: none;
-    /* Remover sublinhado padrão */
-}
-
-a:hover {
-    text-decoration: underline;
-    /* Adicionar sublinhado ao passar o mouse sobre os links */
-}
-
-/* Media query para dispositivos móveis */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-        /* Reduzir o espaçamento interno para telas menores */
+/* Torna responsivo */
+@media (max-width: 576px) {
+    .tour-box {
+        max-width: 100%;
+        max-height: 400px;
+        margin: 10px auto;
     }
 
-    h1 {
-        font-size: 28px;
-        /* Reduzir o tamanho da fonte para cabeçalhos de nível 1 */
+    .button-group {
+        text-align: center;
     }
 
-    h2 {
-        font-size: 22px;
-        /* Reduzir o tamanho da fonte para cabeçalhos de nível 2 */
-    }
-
-    h3 {
-        font-size: 18px;
-        /* Reduzir o tamanho da fonte para cabeçalhos de nível 3 */
-    }
-
-    p {
-        font-size: 14px;
-        /* Reduzir o tamanho da fonte para parágrafos */
-        margin-bottom: 10px;
-        /* Reduzir o espaçamento inferior entre parágrafos */
+    .button-group .btn {
+        display: inline-block;
+        margin: 5px;
     }
 }

@@ -57,13 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
-    // Adiciona um ouvinte de evento ao botão de menu responsivo
-    const menuButton = document.querySelector(".navbar-toggler");
-    const navbarNav = document.querySelector(".navbar-nav");
 
-    menuButton.addEventListener("click", function () {
-        navbarNav.classList.toggle("show");
-    });
 
     // Outros eventos e lógica JavaScript podem ser adicionados conforme necessário
 });

@@ -1,0 +1,53 @@
+/* main.css */
+/* Importação do Reset CSS - Normalize.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+/* Variáveis CSS */
+:root {
+    --main-color: #007bff; /* Cor principal */
+    --text-color: #333; /* Cor do texto principal */
+    --background-color: #f8f8f8; /* Cor de fundo */
+}
+
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para cabeçalhos - h1, h2, h3, etc. */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--main-color);
+    margin-top: 0;
+}
+
+/* Estilos para botões */
+.btn {
+    display: inline-block;
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: darken(var(--main-color), 10%);
+}
+
+/* Adicione mais estilos globais conforme necessário */

@@ -1,3 +1,4 @@
+/*index.css*/
 /* Reset CSS - Normalize.css é um exemplo de reset CSS */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 
@@ -11,98 +12,19 @@
     /* Cor de fundo */
 }
 
-/* Estilos gerais */
-body {
-    font-family: Arial, sans-serif;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    line-height: 1.6;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-}
+/* Estilize diretamente as classes no HTML */
 
-a {
-    color: var(--main-color);
-    text-decoration: none;
-}
-
-/* Estilos para cabeçalho (header) */
-.header {
-    background-color: var(--main-color);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-.header h1 {
+/* Estilos para o texto e parágrafo */
+.identity h1 {
     font-size: 2rem;
-    margin: 0;
+    margin-top: 20px;
+    /* Espaçamento entre o título e o parágrafo */
+    color: var(--text-color);
+    /* Usando a variável para a cor do texto principal */
 }
 
-/* Estilos para a barra de navegação (navbar) */
-.navbar {
-    position: relative;
-    display: ;
-    color: #fff;
-    align-items: center;
-    padding: 0.5rem 1rem;
-}
-
-.navbar a {
-    background-color: var(--main-color);
-    color: #fff;
-    text-align: center;
-}
-
-.navbar a:hover {
-    color: #0056b3;
-}
-
-/* Estilos para a seção principal (main content) */
-.main-content {
-    padding: 20px;
-}
-
-/* Estilos para os botões */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--main-color);
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
-/* Adicione regras de estilo para telas maiores (computadores) */
-@media (min-width: 992px) {
-
-    /* Aumente o tamanho da fonte e o espaçamento no corpo */
-    body {
-        font-size: 18px;
-        line-height: 1.8;
-    }
-
-    /* Aumente o tamanho do cabeçalho */
-    .header h1 {
-        font-size: 3rem;
-    }
-
-    /* Aumente o padding na barra de navegação */
-    .navbar {
-        padding: 1rem 2rem;
-    }
-
-    /* Aumente o padding nos botões */
-    .btn {
-        padding: 12px 24px;
-    }
+/* Estilo para o parágrafo "Seu guia de passeios por Alter do Chão" */
+.identity p {
+    color: #000;
+    /* Cor preta */
 }

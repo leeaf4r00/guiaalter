@@ -1,94 +1,68 @@
-/* header.css */
-.logo {
+/*header.css*/
+/* Estilos para o cabeçalho */
+header {
+    background-image: url('static/img/alterdochao.jpg');
+    /* Caminho para a imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    /* Ajuste este valor conforme necessário para posicionar o título abaixo da logo */
     text-align: center;
-    margin-top: 1rem;
+    color: #fff;
+    /* Cor do texto no cabeçalho */
 }
 
-.logo img {
-    width: 50%;
+/* Estilos para a logo */
+.logo-box {
+    position: relative;
+    display: inline-block;
+}
+
+.logo {
     max-width: 300px;
-    display: block;
-    margin: 0 auto;
 }
 
-/* Centralizar a logo em dispositivos pequenos */
-@media (max-width: 576px) {
-    .logo img {
-        width: 70%;
-        max-width: 150px;
-    }
+/* Alterar a cor do texto "Login" e "Cadastro" */
+nav ul li a {
+    color: #000;
+    /* Cor preta */
 }
 
-/* Centralizar e manter proporção em altura */
-@media (max-width: 376px) {
-    .logo img {
-        width: 80%;
-        max-width: 80px;
-        height: auto;
-    }
+/* Estilos gerais para links */
+a {
+    color: #007bff;
+    /* Cor padrão para links */
+    text-decoration: none;
+    /* Remove o sublinhado dos links */
 }
 
-/* Espaço em volta da logo */
-.logo {
-    padding: 0 1rem;
-}
-
-@media (min-width: 1200px) {
-    .logo {
-        padding: 0 5rem;
-    }
-}
-
-/* Identity */
-.identity {
-    text-align: center;
-    margin-top: 0.5rem;
-}
-
-.identity h1 {
-    font: bold calc(1em + 2 * (100vw - 120px) / 100) 'Dancing Script', fantasy;
-    color: var(--main-color);
-    /* Azul oceânico */
-    text-shadow: #000000 2px 2px 0.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.identity p {
-    font-size: 1rem;
-    color: var(--text-color);
-    /* Texto escuro para contraste */
-}
-
-/* Navigation */
+/* Estilos para a Navegação */
 nav ul {
-    list-style: none;
-    padding: 0;
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    /* Espaçamento entre o parágrafo e o menu */
 }
 
-nav ul li {
-    margin: 0 1rem;
+/* Estilos para ícones e links na navegação */
+nav a {
+    color: #fff;
+    /* Cor para os links da navegação */
+    margin: 0 15px;
+    /* Espaçamento horizontal entre os links */
+    font-size: 1em;
+    /* Tamanho da fonte para os links */
 }
 
-/* Estilize os ícones e os links */
-nav ul li a {
-    text-decoration: none;
-    color: var(--text-color);
-    /* Texto escuro para contraste */
-    font-weight: bold;
-    transition: color 0.3s ease;
-    display: flex;
-    align-items: center;
+nav a:hover {
+    color: #0056b3;
+    /* Cor para o hover dos links */
 }
 
-/* Adicione os ícones usando as classes do Font Awesome */
-nav ul li a i {
-    margin-right: 5px;
-}
-
-nav ul li a:hover {
-    color: var(--main-color);
-    /* Cor de destaque ao passar o mouse */
+/* Adicione estas regras para tornar o texto escuro */
+.dark-text {
+    color: #000;
+    /* Cor escura, por exemplo, preto */
 }
