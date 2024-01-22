@@ -1,62 +1,57 @@
-/* main.css */
-/* Importação do Reset CSS - Normalize.css */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
-
-/* Variáveis CSS */
-:root {
-    --main-color: #007bff;
-    /* Cor principal */
-    --text-color: #333;
-    /* Cor do texto principal */
-    --background-color: #f8f8f8;
-    /* Cor de fundo */
+/* Estilos para o conteúdo principal */
+.main-content {
+    padding: 20px;
+    /* Adapte o espaçamento interno conforme necessário */
+    text-align: center;
+    /* Centraliza o conteúdo */
 }
 
-/* Estilos Gerais */
-body {
-    font-family: Arial, sans-serif;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+/* Estilos para a seção de destaques */
+.content-overlay {
+    /* Remova o background-color para não exibir um fundo */
+    padding: 40px 0;
+    /* Espaçamento interno da seção de destaques */
 }
 
-a {
+/* Estilos para os artigos de destaques */
+.highlighted-tours {
+    margin-bottom: 30px;
+    /* Espaçamento inferior entre os artigos de destaques */
+}
+
+/* Estilos para os títulos dos passeios */
+.main-content h1 {
     color: #000;
-    /* Cor dos links ajustada para preto */
-    text-decoration: none;
+    /* Cor do texto dos títulos */
+    margin-top: 20px;
+    /* Espaçamento superior para os títulos */
 }
 
-a:hover {
-    text-decoration: underline;
+/* Estilos para a seção de depoimentos */
+.client-testimonials {
+    background-color: #f8f9fa;
+    /* Cor de fundo da seção de depoimentos, se necessário */
+    padding: 40px 0;
+    /* Espaçamento interno da seção de depoimentos */
+    text-align: center;
+    /* Centraliza o conteúdo da seção */
 }
 
-/* Estilos para cabeçalhos - h1, h2, h3, etc. */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: var(--main-color);
-    margin-top: 0;
+/* Estilos para o formulário de inscrição */
+.client-testimonials form {
+    max-width: 400px;
+    /* Largura máxima do formulário para manter o conteúdo mais compacto */
+    margin: 0 auto;
+    /* Centraliza o formulário dentro da seção de depoimentos */
 }
 
-/* Estilos para botões */
-.btn {
-    display: inline-block;
-    background-color: var(--main-color);
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
+.client-testimonials h2,
+.client-testimonials p {
+    margin-bottom: 20px;
+    /* Espaçamento inferior para o título e o parágrafo dentro da seção de depoimentos */
 }
 
-.btn:hover {
-    background-color: darken(var(--main-color), 10%);
+/* Adicione estilos específicos para telas menores se necessário */
+@media (max-width: 767px) {
+    /* Adicione estilos específicos para telas menores aqui */
 }
-
-/* Adicione mais estilos globais conforme necessário */

@@ -1,17 +1,12 @@
 /* Estilos para o cabeçalho */
-/* Estilos para o cabeçalho */
 header {
     background-image: url('static/img/alterdochao.jpg');
-    /* Caminho para a imagem de fundo */
     background-size: cover;
     background-position: center;
-    padding: 100px 0;
-    /* Ajuste este valor conforme necessário para posicionar o título abaixo da logo */
+    padding: 50px 0;
     text-align: center;
     color: #000;
-    /* Cor do texto no cabeçalho */
     position: relative;
-    /* Para posicionamento relativo */
 }
 
 /* Estilos para a logo */
@@ -24,24 +19,24 @@ header {
 
 .logo {
     max-width: 300px;
-    background-color: rgba(255, 255, 255, 0.5);
-    /* Cor de fundo semitransparente */
-    padding: 10px;
-    /* Adicione um espaço ao redor da logo */
+    position: relative;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Alterar a cor do texto "Login" e "Cadastro" */
 nav ul li a {
     color: #000;
-    /* Cor preta */
 }
 
 /* Estilos gerais para links */
 a {
     color: #007bff;
-    /* Cor padrão para links */
     text-decoration: none;
-    /* Remove o sublinhado dos links */
 }
 
 /* Estilos para a Navegação */
@@ -56,21 +51,28 @@ nav ul {
 
 /* Estilos para ícones e links na navegação */
 nav a {
-    color: #fff;
-    /* Cor para os links da navegação */
+    color: #050505;
     margin: 0 15px;
-    /* Espaçamento horizontal entre os links */
     font-size: 1em;
-    /* Tamanho da fonte para os links */
 }
 
 nav a:hover {
     color: #0056b3;
-    /* Cor para o hover dos links */
 }
 
 /* Adicione estas regras para tornar o texto escuro */
 .dark-text {
     color: #000;
-    /* Cor escura, por exemplo, preto */
+}
+
+/* Estilos responsivos para a Navegação em telas menores */
+@media (max-width: 767px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
 }

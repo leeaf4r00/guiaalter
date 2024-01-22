@@ -1,9 +1,9 @@
 /* Estilos para rodapé (footer) */
 .footer {
-    background-color: var(--main-color);
-    /* Define a cor de fundo do rodapé */
-    color: #fff;
-    /* Cor do texto no rodapé */
+    background-color: #007BFF;
+    /* Cor de fundo do rodapé */
+    color: #ffffff;
+    /* Cor do texto no rodapé (azul mais escuro) */
     padding: 20px 0;
     /* Preenchimento superior e inferior */
     text-align: center;
@@ -12,8 +12,8 @@
 
 /* Estilos para os links no rodapé */
 .footer a {
-    color: #fff;
-    /* Cor dos links no rodapé */
+    color: #ffffff;
+    /* Cor dos links no rodapé (azul mais escuro) */
     text-decoration: none;
     /* Remove o sublinhado dos links */
     margin: 0 10px;

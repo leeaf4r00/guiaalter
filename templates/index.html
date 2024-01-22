@@ -1,11 +1,10 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Guia de passeios, buffets, hotéis e mais em Alter do Chão">
     <meta name="keywords" content="alter do chão, passeios, buffets, hotéis">
     <title>Guia de Alter - Passeios em Alter do Chão</title>
@@ -13,50 +12,43 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
-    <header class="page-header">
+    <header style="background-image: url('{{ url_for('static', filename='img/alterdochao.jpg') }}');">
         <div class="logo-box">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Guia de Alter" class="logo">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Guia de Alter">
+            </div>
         </div>
         <div class="identity">
             <h1><a href="/">Guia de Alter</a></h1>
             <p>Seu guia de passeios por Alter do Chão</p>
         </div>
-        <nav>
-            <ul>
+        <div class="login-nav">
+            <ul class="nav-itens">
                 <li><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                 <li><a href="/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 
-    <nav class="navbar">
-        <button class="navbar-toggler" id="toggleMenu">
-            <span class="navbar-toggler-icon">&#9776;</span>
-        </button>
-
-        <div class="navbar-links">
-            <a href="/rotas">Rotas</a>
-            <a href="/veiculos">Transfer</a>
-            <a href="/mapa">Mapa</a>
-        </div>
-
-        <div class="navbar-collapse" id="navbarToggledMenu">
-            <ul>
-                <li><a href="/passeios">Passeios</a></li>
-                <li><a href="/hotels">Hotéis</a></li>
-                <li><a href="/contato">Contato</a></li>
-                <li><a href="/conhecaalter">Conheça Alter</a></li>
-                <li><a href="/souvenir">Souvenir</a></li>
-                <li><a href="/sejanossoparceiro">Seja Nosso Parceiro</a></li>
-            </ul>
-        </div>
+    <nav class="nav-itens">
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/passeios">Passeios</a></li>
+            <li><a href="/hotels">Hotéis</a></li>
+            <li><a href="/veiculos">Transfer/Embarcações</a></li>
+            <li><a href="/pacotes">Pacotes</a></li>
+            <li><a href="/contato">Contato</a></li>
+            <li><a href="/rotas">Rotas</a></li>
+            <li><a href="/Conhecaalter">Conheça Alter</a></li>
+            <li><a href="/souvenir">Souvenir</a></li>
+            <li><a href="/sejanossoparceiro">Seja Nosso Parceiro</a></li>
+        </ul>
     </nav>
+
 
     <!-- Conteúdo principal -->
     <main class="main-content">
@@ -69,32 +61,32 @@
                         <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400"
                             style="border:0;"></iframe>
                     </div>
-
-                    <h1>Lago Verde</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
-
-                    <h1>Subindo o Rio</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
-
-                    <h1>Descendo o Rio</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
-
-                    <h1>Rio Arapiuns</h1>
-                    <div class="iframe-container" style="overflow: hidden;">
-                        <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
                 </div>
             </article>
+        </section>
+
+
+        <h1>Lago Verde</h1>
+        <div class="iframe-container">
+            <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400" style="border:0;"></iframe>
+        </div>
+
+        <h1>Subindo o Rio</h1>
+        <div class="iframe-container">
+            <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400" style="border:0;"></iframe>
+        </div>
+
+        <h1>Descendo o Rio</h1>
+        <div class="iframe-container">
+            <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400" style="border:0;"></iframe>
+        </div>
+
+        <h1>Rio Arapiuns</h1>
+        <div class="iframe-container" style="overflow: hidden;">
+            <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400" style="border:0;"></iframe>
+        </div>
+        </div>
+        </article>
         </section>
     </main>
     <!-- Rodapé -->
@@ -119,42 +111,37 @@
             </form>
         </div>
     </section>
-
-    <section class="iframe-container">
+    <div class="iframe-container" style="overflow: hidden;">
         <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
-    </section>
+        </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12 contact-info text-center">
-                    <h3>Entre em Contato</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Endereço: Rua Principal, Alter do Chão</p>
-                    <p><i class="fas fa-phone"></i> Telefone: (55) 93991160523</p>
-                    <p><i class="fas fa-envelope"></i> Email: guiadealter@contato.com</p>
-                </div>
-                <div class="col-md-4 col-sm-12 whatsapp-contact text-center">
-                    <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
-                    <a href="https://wa.me/5593991160523" target="_blank"
-                        aria-label="Enviar mensagem via WhatsApp">Enviar Mensagem</a>
-                </div>
-                <div class="col-md-4 col-sm-12 footer-links text-center">
-                    <ul class="list-unstyled">
-                        <li><a href="/privacy-policy"><i class="fas fa-user-shield"></i> Política de Privacidade</a>
-                        </li>
-                        <li><a href="/terms-of-use"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
-                    </ul>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 contact-info text-center">
+                        <h3>Entre em Contato</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Endereço: Rua Principal, Alter do Chão</p>
+                        <p><i class="fas fa-phone"></i> Telefone: (55) 93991160523</p>
+                        <p><i class="fas fa-envelope"></i> Email: guiadealter@contato.com</p>
+                    </div>
+                    <div class="col-md-4 col-sm-12 whatsapp-contact text-center">
+                        <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+                        <a href="https://wa.me/5593991160523" target="_blank"
+                            aria-label="Enviar mensagem via WhatsApp">Enviar Mensagem</a>
+                    </div>
+                    <div class="col-md-4 col-sm-12 footer-links text-center">
+                        <ul class="list-unstyled">
+                            <li><a href="/privacy-policy"><i class="fas fa-user-shield"></i> Política de Privacidade</a>
+                            </li>
+                            <li><a href="/terms-of-use"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+        </footer>
+        <!-- Scripts -->
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/user.js') }}"></script>
 </body>
 
 </html>
