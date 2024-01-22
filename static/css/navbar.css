@@ -1,79 +1,95 @@
-/* navbar.css */
+/* Estilo para a barra de navegação */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    /* Alinha horizontalmente com espaço entre os elementos */
+    background-color: #f8f9fa;
+    /* Cor de fundo da navbar */
     padding: 0.5rem 1rem;
-    max-width: 100%;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Espaçamento interno da navbar */
 }
 
-/* Container dos itens da navbar */
-.navbar-nav {
+/* Estilo para o botão de hambúrguer */
+#toggleMenu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    /* Tamanho do ícone do hambúrguer */
+}
+
+/* Estilo para os links na barra de navegação */
+.navbar-links {
     display: flex;
     list-style: none;
-    padding: 0;
     margin: 0;
-    transition: all 0.3s ease;
-    /* Transição suave */
+    padding: 0;
 }
 
-/* Estilização dos itens da navbar */
-.nav-item {
-    margin: 0 1rem;
+.navbar-links a {
+    text-decoration: none;
+    color: #333;
+    /* Cor dos links */
+    margin-right: 20px;
+    /* Espaçamento entre os links */
+    font-weight: bold;
 }
 
-.nav-link {
-    color: #343a40;
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.nav-link:hover,
-.nav-link:focus {
-    color: #007bff;
-    transform: scale(1.1);
-    /* Efeito de ampliação no hover */
-}
-
-/* Estilos para o botão hamburguer */
-.navbar-toggler {
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1.2rem;
+/* Estilo para a lista de itens colapsáveis */
+.navbar-collapse {
     display: none;
-    /* Escondido inicialmente */
+    /* Inicialmente, ocultar a lista colapsável */
+    margin-top: 10px;
+    /* Espaçamento superior para a lista colapsável em dispositivos móveis */
 }
 
-.navbar-toggler:focus {
-    box-shadow: none;
+/* Estilo para os links na lista colapsável */
+.navbar-collapse ul {
+    list-style: none;
+    padding: 0;
 }
 
-/* Responsividade: transforma a navbar em menu hamburguer em telas pequenas */
-@media (max-width: 767px) {
-    .navbar-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        /* Sombra no menu */
-    }
+.navbar-collapse ul li {
+    margin: 0;
+}
 
-    .navbar-nav.show {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem 0;
-    }
+.navbar-collapse ul li a {
+    text-decoration: none;
+    color: #333;
+    /* Cor dos links */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    /* Adicione um espaçamento inferior entre os links em dispositivos móveis */
+}
 
-    .navbar-toggler {
-        display: inline-block;
-        /* Exibe o botão hamburguer */
-    }
-
+/* Adicione regras CSS para telas menores (móveis) */
+@media (max-width: 768px) {
     .navbar {
-        justify-content: space-between;
+        flex-direction: column;
+        /* Coloca os elementos em uma coluna para dispositivos móveis */
+        align-items: flex-start;
+        /* Alinha os elementos à esquerda em dispositivos móveis */
+    }
+
+    .navbar-links {
+        margin-top: 10px;
+        /* Espaçamento superior para os links em dispositivos móveis */
+    }
+
+    /* Estilo para os links em dispositivos móveis */
+    .navbar-links a {
+        margin-right: 0;
+        /* Remova o espaçamento à direita para dispositivos móveis */
+        margin-bottom: 10px;
+        /* Adicione um espaçamento inferior entre os links em dispositivos móveis */
+    }
+
+    /* Exibir a lista colapsável em dispositivos móveis */
+    .navbar-active .navbar-collapse {
+        display: block;
     }
 }

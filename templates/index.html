@@ -10,10 +10,7 @@
     <meta name="keywords" content="alter do chão, passeios, buffets, hotéis">
     <title>Guia de Alter - Passeios em Alter do Chão</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/body.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
@@ -22,7 +19,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="page-header">
         <div class="logo-box">
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Guia de Alter" class="logo">
         </div>
@@ -38,27 +35,29 @@
         </nav>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavCollapsed"
-            aria-controls="navbarNavCollapsed" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav class="navbar">
+        <button class="navbar-toggler" id="toggleMenu">
+            <span class="navbar-toggler-icon">&#9776;</span>
         </button>
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="/pacotes">Pacotes</a></li>
-            <li class="nav-item"><a class="nav-link" href="/veiculos">Transfer/Embarcações</a></li>
-            <li class="nav-item"><a class="nav-link" href="/rotas">Mapa</a></li>
-        </ul>
-        <div class="navbar-collapse collapse" id="navbarNavCollapsed">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/passeios">Passeios</a></li>
-                <li class="nav-item"><a class="nav-link" href="/hotels">Hotéis</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
-                <li class="nav-item"><a class="nav-link" href="/conhecaalter">Conheça Alter</a></li>
-                <li class="nav-item"><a class="nav-link" href="/souvenir">Souvenir</a></li>
-                <li class="nav-item"><a class="nav-link" href="/sejanossoparceiro">Seja Nosso Parceiro</a></li>
+
+        <div class="navbar-links">
+            <a href="/rotas">Rotas</a>
+            <a href="/veiculos">Transfer</a>
+            <a href="/mapa">Mapa</a>
+        </div>
+
+        <div class="navbar-collapse" id="navbarToggledMenu">
+            <ul>
+                <li><a href="/passeios">Passeios</a></li>
+                <li><a href="/hotels">Hotéis</a></li>
+                <li><a href="/contato">Contato</a></li>
+                <li><a href="/conhecaalter">Conheça Alter</a></li>
+                <li><a href="/souvenir">Souvenir</a></li>
+                <li><a href="/sejanossoparceiro">Seja Nosso Parceiro</a></li>
             </ul>
         </div>
     </nav>
+
     <!-- Conteúdo principal -->
     <main class="main-content">
         <!-- Seção de conteúdo, iframe, etc. -->
@@ -128,13 +127,6 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-12 footer-links text-center">
-                    <ul class="list-unstyled">
-                        <li><a href="/privacy-policy"><i class="fas fa-user-shield"></i> Política de Privacidade</a>
-                        </li>
-                        <li><a href="/terms-of-use"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
-                    </ul>
-                </div>
                 <div class="col-md-4 col-sm-12 contact-info text-center">
                     <h3>Entre em Contato</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Endereço: Rua Principal, Alter do Chão</p>
@@ -145,6 +137,13 @@
                     <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
                     <a href="https://wa.me/5593991160523" target="_blank"
                         aria-label="Enviar mensagem via WhatsApp">Enviar Mensagem</a>
+                </div>
+                <div class="col-md-4 col-sm-12 footer-links text-center">
+                    <ul class="list-unstyled">
+                        <li><a href="/privacy-policy"><i class="fas fa-user-shield"></i> Política de Privacidade</a>
+                        </li>
+                        <li><a href="/terms-of-use"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

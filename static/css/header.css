@@ -1,4 +1,4 @@
-/*header.css*/
+/* Estilos para o cabeçalho */
 /* Estilos para o cabeçalho */
 header {
     background-image: url('static/img/alterdochao.jpg');
@@ -8,18 +8,26 @@ header {
     padding: 100px 0;
     /* Ajuste este valor conforme necessário para posicionar o título abaixo da logo */
     text-align: center;
-    color: #fff;
+    color: #000;
     /* Cor do texto no cabeçalho */
+    position: relative;
+    /* Para posicionamento relativo */
 }
 
 /* Estilos para a logo */
 .logo-box {
     position: relative;
     display: inline-block;
+    pointer-events: none;
+    /* Impede que a logo seja clicada */
 }
 
 .logo {
     max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Cor de fundo semitransparente */
+    padding: 10px;
+    /* Adicione um espaço ao redor da logo */
 }
 
 /* Alterar a cor do texto "Login" e "Cadastro" */

@@ -1,24 +1,29 @@
+/*body.css*/
 :root {
-    /* cores */
+    /* Defina suas variáveis de cores aqui, se necessário */
 }
 
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    /* Centraliza o conteúdo horizontalmente */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    /* Escolha uma fonte adequada para o corpo do texto */
 }
 
 .content {
     flex: 1;
-}
-
-.navbar {
     width: 100%;
+    /* Garante que o conteúdo ocupe a largura total */
+    max-width: 1200px;
+    /* Limita a largura máxima do conteúdo */
 }
 
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin-top: 20px;
+    /* Adicione um espaçamento superior para separar o cabeçalho da página */
 }
 
 section {
@@ -28,7 +33,7 @@ section {
 h1,
 h2,
 h3 {
-    /* estilos */
+    /* Estilos para os títulos */
 }
 
 p {
