@@ -11,7 +11,7 @@
 <body>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">Seu Aplicativo</a>
+        <a class="navbar-brand" href="#">Guia de Alter (Admin)</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('routes.index') }}">Página Inicial</a>
@@ -25,28 +25,33 @@
     <div class="container mt-5">
         <h2>Bem-vindo, {{ username }}!</h2>
         <p>Você está na página administrativa.</p>
-        <h3>Funções Administrativas:</h3>
-        <ul>
-            <li><a href="#">Listar Todos os Usuários Conectados</a></li>
-            <li><a href="#">Modificar Senha de Usuário</a></li>
-            <li><a href="#">Bloquear IP</a></li>
-            <!-- Adicione outras funções administrativas aqui -->
-        </ul>
 
-        <h3>Lista de Usuários Cadastrados:</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome de Usuário</th>
-                    <th>Email</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody id="userList">
-                <!-- Aqui serão exibidos os usuários -->
-            </tbody>
-        </table>
+        <section>
+            <h3>Funções Administrativas:</h3>
+            <ul>
+                <li><a href="#">Listar Todos os Usuários Conectados</a></li>
+                <li><a href="#">Modificar Senha de Usuário</a></li>
+                <li><a href="#">Bloquear IP</a></li>
+                <!-- Adicione outras funções administrativas aqui -->
+            </ul>
+        </section>
+
+        <section>
+            <h3>Lista de Usuários Cadastrados:</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome de Usuário</th>
+                        <th>Email</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="userList">
+                    <!-- Aqui serão exibidos os usuários -->
+                </tbody>
+            </table>
+        </section>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -54,7 +59,7 @@
         // Função para carregar a lista de usuários
         function loadUserList() {
             $.ajax({
-                url: "{{ url_for('routes.user_list') }}", // Defina a rota correta em routes.py
+                url: "{{ url_for('routes_admin.user_list') }}", // Defina a rota correta em routes_admin.py
                 type: "GET",
                 dataType: "json",
                 success: function (data) {

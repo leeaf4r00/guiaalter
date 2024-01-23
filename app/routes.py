@@ -2,7 +2,7 @@ import sqlite3
 from flask import render_template, request, redirect, url_for, flash, Blueprint, jsonify
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
-from app.models.user import User, validate_login, get_user_by_username
+from app.models.users import User, get_user_by_username
 from app.forms import RegistrationForm
 from app.database import db
 
@@ -15,47 +15,42 @@ def index():
     return render_template('index.html', user_count=user_count)
 
 
-@routes.route('/login', methods=['GET', 'POST'])
+@routes.route('/login', methods=['POST'])
 def login():
-    if request.method == 'POST':
-        data = request.get_json()
-        username = data.get('username')
-        password = data.get('password')
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
 
-        if not username or not password:
-            return jsonify({"message": "Usuário e senha são obrigatórios"}), 400
+    if not username or not password or not isinstance(username, str) or not isinstance(password, str):
+        return jsonify({"message": "Usuário e senha são obrigatórios e devem ser strings"}), 400
 
-        user = get_user_by_username(username)
+    user = get_user_by_username(username)
 
-        if user and check_password_hash(user.password, password):
-            user_object = User(user.id, user.username,
-                               user.email, user.password, user.is_admin)
-            login_user(user_object)
+    if user and check_password_hash(user.password, password):
+        user_object = User(user.id, user.username, user.email,
+                           user.password, user.is_admin)
+        login_user(user_object)
 
-            if user.is_admin:
-                return jsonify({"redirect": url_for('routes.admin')})
-            else:
-                return jsonify({"redirect": url_for('routes.index')})
+        if user.is_admin:
+            return jsonify({"redirect": url_for('routes.admin')})
         else:
-            return jsonify({"message": "Usuário ou senha inválidos"}), 401
+            return jsonify({"redirect": url_for('routes.index')})
+    else:
+        return jsonify({"message": "Usuário ou senha inválidos"}), 401
 
-    return render_template('login.html')
 
-
-@routes.route('/register', methods=['GET', 'POST'])
+@routes.route('/register', methods=['POST'])
 def register():
     form = RegistrationForm()
+
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data)
-        is_admin = False
-        if form.username.data == "seu_usuario_admin" and db.count_admin_users() == 0:
-            is_admin = True
+        is_admin = form.username.data == "seu_usuario_admin" and db.count_admin_users() == 0
         success = db.create_user(form.username.data, hashed_password, is_admin)
-        if success:
-            flash('Conta criada com sucesso!', 'success')
-            return redirect(url_for('routes.cadastro_bem_sucedido'))
-        else:
-            flash('Erro ao criar a conta.', 'error')
+        flash('Conta criada com sucesso!' if success else 'Erro ao criar a conta.',
+              'success' if success else 'error')
+        return redirect(url_for('routes.cadastro_bem_sucedido' if success else 'routes.register'))
+
     return render_template('cadastro.html', title='Cadastro', form=form)
 
 
@@ -183,18 +178,8 @@ def rotas():
 
 @routes.route('/user_list')
 def user_list():
-    conn = sqlite3.connect('seu_banco_de_dados.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM users')
-    users = cursor.fetchall()
-    user_list = []
-    for user in users:
-        user_info = {
-            "id": user[0],
-            "username": user[1],
-            "email": user[2]
-        }
-        user_list.append(user_info)
-    conn.close()
+    users = User.query.all()
+    user_list = [{"id": user.id, "username": user.username,
+                  "email": user.email} for user in users]
     return jsonify({"users": user_list})
 

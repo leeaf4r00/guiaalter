@@ -1,44 +1,44 @@
+from app.routes_admin import routes_admin
+from app.routes_tours import routes_tours
+from app.routes import routes
 import os
 from flask import Flask, render_template
 from flask_login import LoginManager, UserMixin
-from app.models.users import UserDatabase
-from app.routes import routes
-from app.routes_tours import routes_tours
-from app.routes_admin import routes_admin
-from app.database import db
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
 # Configurações
-app.config['DATABASE_PATH'] = "data/database.db"
-app.config['SECRET_KEY'] = os.environ.get(
-    'FLASK_SECRET_KEY', 'sua_chave_secreta')
+app.config['DATABASE_PATH'] = 'data/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/database.db'
+app.config['SECRET_KEY'] = "leeafar:420"
+
+# Inicializa o SQLAlchemy
+db = SQLAlchemy(app)
 
 # Configuração do sistema de login
 login_manager = LoginManager(app)
 login_manager.login_view = 'routes.login'
 
-# Classe de usuário para Flask-Login
-class User(UserMixin):
-    def __init__(self, user_id):
-        self.id = user_id
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(200), nullable=False)
+    is_admin = db.Column(db.Boolean, default=False)
 
 
 @login_manager.user_loader
 def load_user(user_id):
-    # Use a função do banco de dados para obter o usuário
-    user_data = db.get_user_by_username(user_id)
-    if user_data:
-        return User(user_id=user_data['username'])
-    return None
+    return User.query.get(int(user_id))
 
 
-# Importa e registra as rotas
+# Importa e registra as blueprints
+
 app.register_blueprint(routes)
 app.register_blueprint(routes_tours)
 app.register_blueprint(routes_admin)
-
-# Configuração de tratamento de erro 404
 
 
 @app.errorhandler(404)

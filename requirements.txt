@@ -6,3 +6,4 @@ Werkzeug>=3.0.0
 Flask-SQLAlchemy
 cryptography
 Flask-WTF
+email_validatorcls

@@ -1,48 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Adiciona um ouvinte de evento ao formulário de login
     const loginForm = document.getElementById("loginForm");
 
     if (loginForm) {
         loginForm.addEventListener("submit", function (event) {
-            event.preventDefault(); // Impede o envio do formulário padrão
+            event.preventDefault();
             const isValid = validateLoginForm();
 
             if (isValid) {
                 const username = document.getElementById('username').value.trim();
                 const password = document.getElementById('password').value.trim();
 
-                // Fazer uma solicitação AJAX para o backend
-                fetch("/login", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ username, password })
-                })
-                    .then(function (response) {
-                        if (response.ok) {
-                            return response.json();
-                        } else {
-                            throw new Error("Erro na solicitação");
-                        }
-                    })
-                    .then(function (data) {
-                        if (data.status === 'success') {
-                            // Redireciona para a rota protegida após login bem-sucedido
-                            window.location.href = '/admin'; // Substitua '/admin' pela rota desejada
-                        } else {
-                            // Mostrar mensagem de erro
-                            alert("Credenciais inválidas. Tente novamente.");
-                        }
-                    })
-                    .catch(function (error) {
-                        console.error(error);
-                    });
+                login(username, password);
             }
         });
     }
 
-    // Função para validar o formulário de login
     function validateLoginForm() {
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value.trim();
@@ -57,7 +29,38 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
+    function login(username, password) {
+        fetch("/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        })
+            .then(handleResponse)
+            .then(handleLoginSuccess)
+            .catch(handleError);
+    }
 
+    function handleResponse(response) {
+        if (!response.ok) {
+            throw new Error('Erro na solicitação: ' + response.statusText);
+        }
+        return response.json();
+    }
+
+    function handleLoginSuccess(data) {
+        if (data.redirect) {
+            window.location.href = data.redirect;
+        } else {
+            alert("Credenciais inválidas. Tente novamente.");
+        }
+    }
+
+    function handleError(error) {
+        console.error(error);
+        alert('Ocorreu um erro ao processar seu login. Por favor, tente novamente.');
+    }
 
     // Outros eventos e lógica JavaScript podem ser adicionados conforme necessário
 });
