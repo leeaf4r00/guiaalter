@@ -133,6 +133,11 @@ def canaldojari():
     return render_template('tours/descendoorio/canaldojari.html')
 
 
+@routes_tours.route('/pacotes')
+def pacotes():
+    return render_template('pacotes.html')
+
+
 @routes_tours.route('/pacotes/passeiocustomizado')
 def passeiocustomizado():
     return render_template('pacotes/passeiocustomizado.html')

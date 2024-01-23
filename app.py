@@ -19,8 +19,6 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'routes.login'
 
 # Classe de usuário para Flask-Login
-
-
 class User(UserMixin):
     def __init__(self, user_id):
         self.id = user_id
