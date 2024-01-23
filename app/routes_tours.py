@@ -133,11 +133,6 @@ def canaldojari():
     return render_template('tours/descendoorio/canaldojari.html')
 
 
-@routes_tours.route('/pacotes')
-def pacotes():
-    return render_template('pacotes.html')
-
-
 @routes_tours.route('/pacotes/passeiocustomizado')
 def passeiocustomizado():
     return render_template('pacotes/passeiocustomizado.html')
@@ -157,8 +152,3 @@ def passeiosnorturnosgastronomicos():
 def index():
     user_count = db.count_users()
     return render_template('index.html', user_count=user_count)
-
-
-@routes_tours.route('/pacotes/tourdestaques')
-def tourdestaques():
-    return render_template('tourdestaques.html')
