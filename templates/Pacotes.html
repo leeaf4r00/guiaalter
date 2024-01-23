@@ -3,13 +3,33 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTEIROS E PACOTES DE VIAGEM PARA ALTER DO CHÃO</title>
-    <!-- Inclua os links para o CSS do Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
+    <nav>
+        <div class="logo">Guia de Alter</div>
+        <div class="links">
+            <ul class="nav-itens">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Preços</a></li>
+                <li><a href="#">Suporte</a></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <button href="#" class="login">Login</button>
+            <button href="#" class="cadastro">Cadastro</button>
+        </div>
+
+    </nav>
     <div class="container mt-5">
         <h1 class="text-center">ROTEIROS E PACOTES DE VIAGEM PARA ALTER DO CHÃO</h1>
         <ul>
@@ -19,7 +39,7 @@
             <li><a href="templates/pacotes/passeiosnorturnosgastronomicos.html" target="iframe">Passeios Noturnos
                     Gastronômicos</a></li>
         </ul>
-        <iframe src="templates/pacotes/passeiosdestaque.html" name="iframe" width="100%" height="400"></iframe>
+        <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400" style="border:0;"></iframe>
     </div>
     <!-- Inclua os links para os scripts do Bootstrap no final do corpo do documento -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

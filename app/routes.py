@@ -197,3 +197,4 @@ def user_list():
         user_list.append(user_info)
     conn.close()
     return jsonify({"users": user_list})
+

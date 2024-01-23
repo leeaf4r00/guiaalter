@@ -152,3 +152,8 @@ def passeiosnorturnosgastronomicos():
 def index():
     user_count = db.count_users()
     return render_template('index.html', user_count=user_count)
+
+
+@routes_tours.route('/pacotes/tourdestaques')
+def tourdestaques():
+    return render_template('tourdestaques.html')
