@@ -1,318 +1,250 @@
-# Guia de Alter
+# 🌴 Guia de Alter - Plataforma de Turismo
 
-Este projeto é um aplicativo web Flask que fornece uma série de funcionalidades, incluindo autenticação de usuários, exibição de informações estáticas e dinâmicas, gerenciamento de conteúdo e apresenta informações turísticas sobre a região de Alter do Chão, no Brasil.
+> Seu guia completo para explorar o Caribe Amazônico
 
-## Estrutura do Projeto
+[![Flask](https://img.shields.io/badge/Flask-3.0.1-blue.svg)](https://flask.palletsprojects.com/)
+[![Python](https://img.shields.io/badge/Python-3.11+-green.svg)](https://www.python.org/)
 
-O projeto está estruturado como um pacote Python com vários módulos. A estrutura básica é a seguinte:
+## 📋 Sobre o Projeto
 
-guiadealter/
-│
+Plataforma moderna e responsiva para guia de turismo em Alter do Chão, desenvolvida com Flask e design premium. O sistema oferece uma experiência completa para explorar passeios, hotéis, pacotes e muito mais no paraíso amazônico.
+
+## ✨ Características
+
+- **Design Moderno**: Interface premium com gradientes tropicais, glassmorphism e animações suaves
+- **Arquitetura Modular**: Sistema organizado com templates base e componentes reutilizáveis
+- **Responsivo**: 100% adaptável para desktop, tablet e mobile
+- **Sistema de Autenticação**: Login seguro com Flask-Login
+- **SEO Otimizado**: Meta tags, Open Graph e estrutura semântica
+- **Performance**: Lazy loading, animações otimizadas e cache
+
+## 🏗️ Estrutura do Projeto
+
+```
+guiaalter/
 ├── app/
 │   ├── __init__.py
-│   ├── routes.py
-│   ├── routes_tours.py
-│   ├── paineladmin.py
-│   ├── forms.py
-│   ├── database.py
+│   ├── routes.py              # Rotas principais
+│   ├── routes_admin.py        # Rotas administrativas
+│   ├── routes_tours.py        # Rotas de passeios
 │   ├── models/
-│   │   ├── user.py
-│   │   ├── models.py
-│   │   ├── models_clients.py
-│   │   ├── db.py
-│   │   ├── clients.py
-│   │   ├── __init__.py
-│   │   └── __pycache__/
-│   ├── __pycache__/
-│
-├── data/
-│
-├── src/
-│
+│   │   ├── users.py           # Modelo de usuários
+│   │   └── clients.py         # Modelo de clientes
+│   ├── forms.py               # Formulários WTForms
+│   └── database.py            # Configuração do banco
+├── templates/
+│   ├── base.html              # Template base (herança)
+│   ├── components/
+│   │   ├── header.html        # Componente de cabeçalho
+│   │   ├── navbar.html        # Componente de navegação
+│   │   └── footer.html        # Componente de rodapé
+│   ├── index.html             # Página inicial
+│   ├── login.html             # Página de login
+│   └── ...                    # Outras páginas
 ├── static/
 │   ├── css/
-│   │   ├── style.css
-│   │   ├── main.css
-│   │   ├── header.css
-│   │   ├── footer.css
-│   │   └── (outras folhas de estilo)
+│   │   ├── main.css           # Estilos principais
+│   │   ├── header.css         # Estilos do header
+│   │   ├── navbar.css         # Estilos da navbar
+│   │   └── footer.css         # Estilos do footer
 │   ├── js/
-│   │   ├── user.js
-│   │   ├── script.js
-│   │   └── (outros arquivos JavaScript)
-│   ├── img/
-│   │   ├── topo1.jpg
-│   │   ├── topo.jpg
-│   │   ├── ruby2.png
-│   │   ├── ruby1.png
-│   │   ├── pontadavaleria2.jpg
-│   │   ├── pontadavaleria1.jpg
-│   │   ├── pontadavaleria.jpg
-│   │   ├── piracaia2.jpg
-│   │   ├── piracaia.jpg
-│   │   ├── pindobal.jpg
-│   │   ├── logoruby.png
-│   │   ├── logo.png
-│   │   ├── lagoverde4.jpg
-│   │   ├── lagoverde3.jpg
-│   │   ├── lagoverde2.jpg
-│   │   ├── lagoverde1.jpg
-│   │   ├── igarapemacaco3.jpg
-│   │   ├── igarapemacaco2.jpg
-│   │   ├── igarapemacaco1.jpg
-│   │   ├── igarapecamarao.jpg
-│   │   ├── florestaencantada.jpg
-│   │   ├── flonadotapajos.jpg
-│   │   ├── canaldojari.jpg
-│   │   ├── alterdochao2.jpg
-│   │   ├── alterdochao.jpg
-│   │   ├── rioarapiuns/
-│   │   │   ├── comunidadecoroca2.jpg
-│   │   │   ├── comunidadecoroca1.jpg
-│   │   │   ├── (outras imagens)
-│   │   ├── descendoorio/
-│   │   │   ├── pontadepedras3.jpg
-│   │   │   ├── pontadepedras2.jpg
-│   │   │   ├── pontadepedras1.jpg
-│   │   │   ├── pontacururu3.jpg
-│   │   │   ├── pontacururu2.jpg
-│   │   │   ├── pontacururu1.jpg
-│   │   │   ├── pedramoca3.JPG
-│   │   │   ├── pedramoca2.jpg
-│   │   │   ├── pedramoca1.jpg
-│   │   │   ├── lagopreto3.jpg
-│   │   │   ├── lagopreto2.jpg
-│   │   │   ├── lagopreto1.jpg
-│   │   │   ├── lagojacare2.jpg
-│   │   │   ├── lagojacare1.jpg
-│   │   │   ├── casadosaulo2.jpg
-│   │   │   ├── casadosaulo1.jpg
-│   │   │   ├── canaldojari3.jpg
-│   │   │   ├── canaldojari2.jpg
-│   │   │   ├── canaldojari1.jpg
-│   │   │   ├── (outras imagens)
-│
-├── templates/
-│   ├── veiculos.html
-│   ├── tours.html
-│   ├── tourdestaques.html
-│   ├── top10para.html
-│   ├── terms-of-use.html
-│   ├── suporte.html
-│   ├── subindoorio.html
-│   ├── sobrenos.html
-│   ├── rioarapiuns.html
-│   ├── reservas.html
-│   ├── privacy-policy.html
-│   ├── passeiosnovos.html
-│   ├── passeiosdestaque.html
-│   ├── passeiosagendar.html
-│   ├── passeios.html
-│   ├── pacotesgastronomicos.html
-│   ├── pacotes.html
-│   ├── login.html
-│   ├── lagoverde.html
-│   ├── index.html
-│   ├── hotels.html
-│   ├── formulario.html
-│   ├── explorealter.html
-│   ├── descendoorio.html
-│   ├── depoimentos.html
-│   ├── contato.html
-│   ├── cadastro.html
-│   ├── buffets.html
-│   ├── admin.html
-│   └── 404.html
-│
-├── .gitattributes
-├── app.py
-├── database.py
-├── models.py
-├── Procfile
-├── README.md
-└── requirements.txt
+│   │   ├── script.js          # Scripts gerais
+│   │   └── user.js            # Scripts de usuário
+│   └── img/                   # Imagens
+├── data/
+│   └── database.db            # Banco de dados SQLite
+├── app.py                     # Aplicação principal
+├── requirements.txt           # Dependências
+└── README.md                  # Este arquivo
+```
 
-### Descrição dos Arquivos
+## 🚀 Instalação
 
-* guiadealter/
-  │
-  ├── app/ - Contém os principais arquivos relacionados à lógica da aplicação.
-  │   ├── __init__.py - Arquivo vazio que indica que o diretório é um pacote Python.
-  │   ├── routes.py - Define as rotas principais do aplicativo Flask.
-  │   ├── routes_tours.py - Define as rotas relacionadas a passeios turísticos.
-  │   ├── paineladmin.py - Arquivo para a administração do painel de controle (admin).
-  │   ├── forms.py - Contém as classes de formulários para a aplicação.
-  │   ├── database.py - Contém funções para interagir com o banco de dados SQLite.
-  │   ├── models/ - Diretório que organiza os modelos de dados da aplicação.
-  │   │   ├── user.py - Define o modelo de usuário para o sistema de autenticação Flask-Login.
-  │   │   ├── models.py - Outros modelos de dados da aplicação, se aplicável.
-  │   │   ├── models_clients.py - Modelos específicos de clientes, se aplicável.
-  │   │   ├── db.py - Configurações do banco de dados.
-  │   │   ├── clients.py - Lógica relacionada a clientes, se aplicável.
-  │   │   ├── __init__.py - Arquivo vazio para indicar que este diretório é um pacote Python.
-  │   │   └── __pycache__/ - Cache de bytecode Python.
-  │   ├── __pycache__/ - Cache de bytecode Python para os arquivos do pacote "app".
-  │
-  ├── data/ - Diretório para armazenar dados ou recursos da aplicação.
-  │
-  ├── src/ - Diretório para código-fonte externo ou bibliotecas adicionais, se aplicável.
-  │
-  ├── static/ - Contém arquivos estáticos, como CSS, JavaScript e imagens.
-  │   ├── css/ - Arquivos CSS para estilização.
-  │   │   ├── style.css - Arquivo CSS principal.
-  │   │   ├── main.css - Estilos gerais da aplicação.
-  │   │   ├── header.css - Estilos do cabeçalho.
-  │   │   ├── footer.css - Estilos do rodapé.
-  │   │   └── (outros arquivos CSS, se aplicável).
-  │   ├── js/ - Arquivos JavaScript para funcionalidades interativas.
-  │   │   ├── user.js - JavaScript relacionado aos usuários.
-  │   │   ├── script.js - Outros scripts JavaScript.
-  │   │   └── (outros arquivos JavaScript, se aplicável).
-  │   ├── img/ - Imagens e recursos gráficos.
-  │   │   ├── (arquivos de imagens diversos).
-  │
-  ├── templates/ - Contém os arquivos HTML que compõem as páginas da aplicação.
-  │   ├── (arquivos HTML para cada página da aplicação).
-  │
-  ├── .gitattributes - Arquivo Git para configuração de atributos.
-  ├── app.py - Arquivo principal da aplicação Flask.
-  ├── database.py - Configurações e funções relacionadas ao banco de dados.
-  ├── models.py - Definição de modelos de dados da aplicação (se não estiver em "app/models/").
-  ├── Procfile - Arquivo usado para implantação no Heroku (se aplicável).
-  ├── README.md - Documentação do projeto (este arquivo).
-  └── requirements.txt - Lista de dependências da aplicação para instalação.
+### Pré-requisitos
 
-## Configuração e Instalação
+- Python 3.11 ou superior
+- pip (gerenciador de pacotes Python)
+- Virtualenv (recomendado)
 
-Para configurar e executar o projeto, siga estas etapas:
+### Passos
 
-1. **Configuração do Ambiente Virtual:**
-   * Recomenda-se criar um ambiente virtual para o projeto.
-   * Execute `python -m venv venv` para criar um ambiente virtual.
-   * Ative o ambiente virtual com `source venv/bin/activate` (Linux/macOS) ou `venv\Scripts\activate` (Windows).
-2. **Instalação de Dependências:**
-   * Instale as dependências necessárias com `pip install -r requirements.txt`.
-3. **Execução do Aplicativo:**
-   * Navegue até o diretório raiz do projeto.
-   * Execute `python -m guiadealter.app` para iniciar o servidor de desenvolvimento.
-   * Acesse o aplicativo através do navegador em `http://localhost:5000`.
+1. **Clone o repositório**
+   ```bash
+   git clone <repositório>
+   cd guiaalter
+   ```
 
-## Funcionalidades
+2. **Crie e ative um ambiente virtual**
+   ```bash
+   python -m venv .venv
+   
+   # Windows
+   .venv\Scripts\activate
+   
+   # Linux/Mac
+   source .venv/bin/activate
+   ```
 
-O Guia de Alter é um aplicativo web Flask abrangente que oferece uma variedade de funcionalidades para atender às necessidades dos usuários. Abaixo estão algumas das principais funcionalidades do projeto:
+3. **Instale as dependências**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### Autenticação de Usuários:
+4. **Configure as variáveis de ambiente (opcional)**
+   ```bash
+   # Crie um arquivo .env
+   FLASK_DEBUG=True
+   SECRET_KEY=sua_chave_secreta_aqui
+   ```
 
-* **Login e Logout de Usuários:** Os usuários podem fazer login e fazer logout de suas contas com segurança.
-* **Registro de Conta:** Os usuários podem se registrar criando uma nova conta com informações pessoais.
-* **Proteção de Rotas:** Rotas específicas são protegidas e exigem autenticação para acesso.
-* **Painel de Administração:** Os administradores têm acesso a um painel de administração para gerenciar usuários e conteúdo.
+5. **Inicialize o banco de dados**
+   ```bash
+   python -c "from app import app, db; app.app_context().push(); db.create_all()"
+   ```
 
-### Gerenciamento de Conteúdo:
+6. **Execute a aplicação**
+   ```bash
+   python app.py
+   ```
 
-* **Visualização de Conteúdo Dinâmico e Estático:** Os usuários podem visualizar informações estáticas, como páginas de destino e informações de contato, bem como conteúdo dinâmico, como passeios e pacotes.
-* **Explorar Passeios:** Os usuários podem explorar uma variedade de passeios turísticos disponíveis, incluindo descrições detalhadas e informações sobre destinos.
-* **Reservas de Passeios:** Os usuários podem fazer reservas para passeios específicos e ver informações relevantes sobre disponibilidade e preços.
-* **Páginas de Destaque:** Destaques de passeios e pacotes são exibidos para destacar as principais ofertas.
-* **Depoimentos:** Os usuários podem ver depoimentos de outros clientes para obter feedback sobre as experiências.
-* **Contato e Suporte:** Os usuários podem entrar em contato com a equipe de suporte através do formulário de contato.
-* **Políticas e Termos:** Informações legais, como políticas de privacidade e termos de uso, estão disponíveis para consulta.
-* **Página "Sobre Nós":** Os usuários podem aprender mais sobre a empresa e sua equipe.
-* **Informações de Parceiros:** Informações sobre como se tornar um parceiro estão disponíveis.
+7. **Acesse no navegador**
+   ```
+   http://localhost:5000
+   ```
 
-### Estilo Visual Atraente:
+## 🎨 Sistema de Design
 
-* **Design Responsivo:** O aplicativo possui um design responsivo para se adaptar a dispositivos móveis e desktops.
-* **CSS Personalizado:** O aplicativo utiliza arquivos CSS personalizados para estilização.
-* **Imagens Atraentes:** Imagens de alta qualidade são usadas para aprimorar a experiência do usuário.
+### Paleta de Cores
 
-### Estrutura Modular:
+```css
+--primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+--tropical-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+--sunset-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+--forest-gradient: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
+```
 
-* **Blueprints:** As rotas são organizadas em blueprints para facilitar a modularização e manutenção do código.
-* **Organização de Arquivos:** Os arquivos são estruturados de forma organizada em diretórios para facilitar a localização e manutenção.
+### Tipografia
 
-### Implantação Fácil:
+- **Principal**: Inter (Google Fonts)
+- **Títulos**: Poppins (Google Fonts)
 
-* **Preparado para Heroku:** O projeto inclui um arquivo Procfile e uma lista de dependências no requirements.txt para facilitar a implantação no Heroku ou em outras plataformas de hospedagem.
+### Efeitos
 
-O Guia de Alter oferece uma ampla gama de funcionalidades para atender às necessidades dos usuários que desejam explorar Alter do Chão e suas atrações turísticas.
+- Glassmorphism: `backdrop-filter: blur(10px)`
+- Sombras suaves: `box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15)`
+- Transições: `cubic-bezier(0.4, 0, 0.2, 1)`
 
-### Gerenciamento de Conteúdo
+## 📱 Componentes Modulares
 
-* Visualização e interação com conteúdo dinâmico e estático.
-* Páginas informativas sobre a região de Alter do Chão.
-* Páginas de reservas, pacotes turísticos, buffets, hotéis e passeios.
+### Template Base (`base.html`)
 
-### Informações Turísticas
+Template principal que define a estrutura padrão de todas as páginas:
 
-* Informações detalhadas sobre diferentes passeios turísticos na região.
-* Páginas dedicadas a destinos específicos, como Lago Verde, Alter do Chão e outros.
+```jinja2
+{% extends "base.html" %}
 
-## Rotas Principais
+{% block content %}
+  <!-- Seu conteúdo aqui -->
+{% endblock %}
+```
 
-### Rotas definidas em `routes.py`
+### Componentes
 
-* `/`: Página Inicial
-* `/login`: Página de Login
-* `/register`: Página de Registro
-* `/reservas`: Página de Reservas
-* `/pacotes`: Página de Pacotes Turísticos
-* `/buffets`: Página de Buffets
-* `/hotels`: Página de Hotéis
-* `/passeios`: Página de Passeios
-* `/contato`: Página de Contato
-* `/veiculos`: Página de Veículos
-* `/sobrenos`: Página "Sobre Nós"
-* `/explorealter`: Página "Explore Alter"
-* `/mapaalter`: Página "Mapa de Alter"
-* `/pessoascompraram`: Página "Pessoas Compraram"
-* `/conhecaalter`: Página "Conheça Alter"
-* `/souvenir`: Página "Souvenir"
-* `/sejanossoparceiro`: Página "Seja Nosso Parceiro"
-* `/logout`: Página de Logout
-* `/admin`: Página de Administração
-* `/rioarapiuns`: Página "Rio Arapiuns"
-* `/lagoverde`: Página "Lago Verde"
-* `/descendoorio`: Página "Descendo o Rio"
-* `/subindoorio`: Página "Subindo o Rio"
-* `/tourdestaques`: Página de Destaques do Tour
+- **Header**: Logo, branding e autenticação
+- **Navbar**: Navegação principal com menu responsivo
+- **Footer**: Contato, links e redes sociais
 
-### Rotas definidas em `routes_tours.py`
+## 🔒 Autenticação
 
-* `/tours`: Página de Tours
-* `/tours/lagoverde`: Página do Tour "Lago Verde"
-* `/tours/alterdochao`: Página do Tour "Alter do Chão"
-* `/tours/florestaencantada`: Página do Tour "Floresta Encantada"
-* `/tours/igarapedocamarao`: Página do Tour "Igarapé do Camarão"
-* `/tours/igarapedomacaco`: Página do Tour "Igarapé do Macaco"
-* `/tours/pontadavaleria`: Página do Tour "Ponta da Valéria"
-* `/tours/subindoorio/pindobal`: Página do Tour "Pindobal"
-* `/tours/subindoorio/mureta`: Página do Tour "Mureta"
-* `/tours/subindoorio/jurucui`: Página do Tour "Jurucuí"
-* `/tours/subindoorio/cajutuba`: Página do Tour "Cajutuba"
-* `/tours/subindoorio/aramanai`: Página do Tour "Aramanai"
-* `/tours/rioarapiuns/torono`: Página do Tour "Toronó"
-* `/tours/rioarapiuns/pontagrande`: Página do Tour "Ponta Grande"
-* `/tours/rioarapiuns/melipolinario`: Página do Tour "Melipolinário"
-* `/tours/rioarapiuns/icuxi`: Página do Tour "Icuxi"
-* `/tours/rioarapiuns/comunidadecoroca`: Página do Tour "Comunidade Coroca"
-* `/tours/descendoorio/pontadocururu`: Página do Tour "Ponta do Cururu"
-* `/tours/descendoorio/pontadepedras`: Página do Tour "Ponta de Pedras"
-* `/tours/descendoorio/pedradamoca`: Página do Tour "Pedra da Moca"
-* `/tours/descendoorio/lagopreto`: Página do Tour "Lago Preto"
-* `/tours/descendoorio/lagodojacare`: Página do Tour "Lago do Jacaré"
-* `/tours/descendoorio/encontrodasaguas`: Página do Tour "Encontro das Águas"
-* `/tours/descendoorio/casadosaulo`: Página do Tour "Casa do Saulo"
-* `/tours/descendoorio/canaldojari`: Página do Tour "Canal do Jari"
+Sistema de login implementado com Flask-Login:
 
-### Rotas de Depoimentos
+- Registro de usuários
+- Login seguro com hash de senha
+- Sessões persistentes
+- Controle de acesso administrativo
 
-* `/depoimentos`: Página de Depoimentos
+## 🛠️ Tecnologias
 
-## Contribuição
+- **Backend**: Flask 3.0.1
+- **ORM**: Flask-SQLAlchemy
+- **Autenticação**: Flask-Login
+- **Formulários**: Flask-WTF, WTForms
+- **Banco de Dados**: SQLite
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Ícones**: Font Awesome 6.4.0
+- **Fontes**: Google Fonts (Inter, Poppins)
 
-Contribuições para o projeto são bem-vindas. Para contribuir, por favor, siga as práticas padrão de desenvolvimento de software e faça pull requests para revisão.
+## 📝 Uso
 
-## Licença
+### Criar uma Nova Página
 
-Este projeto está licenciado sob a [MIT License]().
+1. Crie um template que herda de `base.html`:
+
+```jinja2
+{% extends "base.html" %}
+
+{% block title %}Título da Página{% endblock %}
+
+{% block content %}
+  <h1>Conteúdo da Página</h1>
+{% endblock %}
+```
+
+2. Adicione a rota em `app/routes.py`:
+
+```python
+@routes.route('/minha-pagina')
+def minha_pagina():
+    return render_template('minha_pagina.html')
+```
+
+### Adicionar CSS Customizado
+
+```jinja2
+{% block extra_css %}
+<style>
+  /* Seus estilos */
+</style>
+{% endblock %}
+```
+
+### Adicionar JavaScript
+
+```jinja2
+{% block extra_scripts %}
+<script>
+  // Seu código
+</script>
+{% endblock %}
+```
+
+## 🚀 Deploy
+
+### Heroku
+
+O projeto já está configurado com `Procfile` e `gunicorn`:
+
+```bash
+git push heroku main
+```
+
+### Outras Plataformas
+
+Configure a variável de ambiente `PORT` e execute:
+
+```bash
+gunicorn app:app
+```
+
+## 📄 Licença
+
+Este projeto é de código fechado. Todos os direitos reservados.
+
+## 👥 Contato
+
+- **WhatsApp**: (93) 99116-0523
+- **Email**: guiadealter@contato.com
+
+---
+
+**Feito com ❤️ em Alter do Chão**

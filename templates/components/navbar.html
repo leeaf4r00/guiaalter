@@ -1,0 +1,83 @@
+<nav class="main-nav" id="mainNav">
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu de navegação">
+        <span class="hamburger"></span>
+    </button>
+
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a href="/" class="nav-link {% if request.endpoint == 'routes.index' %}active{% endif %}">
+                <i class="fas fa-home"></i> Início
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/passeios" class="nav-link {% if request.endpoint == 'routes.passeios' %}active{% endif %}">
+                <i class="fas fa-ship"></i> Passeios
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/hotels" class="nav-link {% if request.endpoint == 'routes.hotels' %}active{% endif %}">
+                <i class="fas fa-hotel"></i> Hotéis
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/veiculos" class="nav-link {% if request.endpoint == 'routes.veiculos' %}active{% endif %}">
+                <i class="fas fa-car"></i> Transfer/Embarcações
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/pacotes" class="nav-link {% if request.endpoint == 'routes.pacotes' %}active{% endif %}">
+                <i class="fas fa-box"></i> Pacotes
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/contato" class="nav-link {% if request.endpoint == 'routes.contato' %}active{% endif %}">
+                <i class="fas fa-envelope"></i> Contato
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/rotas" class="nav-link {% if request.endpoint == 'routes.rotas' %}active{% endif %}">
+                <i class="fas fa-map-marked-alt"></i> Rotas
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/Conhecaalter"
+                class="nav-link {% if request.endpoint == 'routes.conhecaalter' %}active{% endif %}">
+                <i class="fas fa-info-circle"></i> Conheça Alter
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/souvenir" class="nav-link {% if request.endpoint == 'routes.souvenir' %}active{% endif %}">
+                <i class="fas fa-gift"></i> Souvenir
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/sejanossoparceiro"
+                class="nav-link {% if request.endpoint == 'routes.sejanossoparceiro' %}active{% endif %}">
+                <i class="fas fa-handshake"></i> Seja Nosso Parceiro
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function () {
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', function () {
+                mainNav.classList.toggle('nav-open');
+                this.classList.toggle('active');
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!mainNav.contains(event.target) && mainNav.classList.contains('nav-open')) {
+                mainNav.classList.remove('nav-open');
+                navToggle.classList.remove('active');
+            }
+        });
+    });
+</script>

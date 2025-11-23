@@ -1,0 +1,50 @@
+<header class="site-header" style="background-image: url('{{ url_for('static', filename='img/alterdochao.jpg') }}');">
+    <div class="header-overlay"></div>
+
+    <div class="header-content">
+        <div class="logo-box">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Guia de Alter">
+            </div>
+        </div>
+
+        <div class="identity">
+            <h1><a href="/" class="brand-link">Guia de Alter</a></h1>
+            <p class="tagline">Seu guia de passeios por Alter do Chão</p>
+        </div>
+
+        <div class="login-nav">
+            <ul class="nav-itens">
+                {% if current_user.is_authenticated %}
+                <li class="user-greeting">
+                    <i class="fas fa-user-circle"></i>
+                    Olá, {{ current_user.username }}
+                </li>
+                {% if current_user.is_admin %}
+                <li>
+                    <a href="/admin" class="btn-admin">
+                        <i class="fas fa-cog"></i> Admin
+                    </a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="/logout" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="/login" class="btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </li>
+                <li>
+                    <a href="/register" class="btn-register">
+                        <i class="fas fa-user-plus"></i> Cadastro
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>

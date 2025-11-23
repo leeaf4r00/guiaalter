@@ -1,50 +1,293 @@
-/* Estilos para rodapé (footer) */
-.footer {
-    background-color: #007BFF;
-    /* Cor de fundo do rodapé */
-    color: #ffffff;
-    /* Cor do texto no rodapé (azul mais escuro) */
-    padding: 20px 0;
-    /* Preenchimento superior e inferior */
-    text-align: center;
-    /* Centraliza o conteúdo do rodapé */
+/* ========================================
+   FOOTER COMPONENT - DESIGN MODERNO
+======================================== */
+
+.site-footer {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: white;
+    padding: 60px 20px 30px;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Estilos para os links no rodapé */
-.footer a {
-    color: #ffffff;
-    /* Cor dos links no rodapé (azul mais escuro) */
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Grid Layout */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-section h3 i {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+}
+
+/* Contact Info */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.contact-list i {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    min-width: 20px;
+}
+
+.contact-list a {
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    /* Remove o sublinhado dos links */
-    margin: 0 10px;
-    /* Margem entre os links */
+    transition: all 0.3s ease;
 }
 
-.footer a:hover {
-    text-decoration: underline;
-    /* Sublinha o link ao passar o mouse */
+.contact-list a:hover {
+    color: white;
+    transform: translateX(3px);
 }
 
-/* Estilos responsivos para colunas do rodapé em telas menores */
-@media (max-width: 767px) {
-    .footer .row>div {
-        margin-bottom: 15px;
-        /* Espaçamento entre as colunas quando empilhadas */
+/* WhatsApp Section */
+.whatsapp-description {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 35px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background: #20ba5a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp i {
+    font-size: 1.3rem;
+}
+
+/* Legal Links */
+.legal-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.legal-links li {
+    margin-bottom: 15px;
+}
+
+.legal-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.legal-links a i {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+}
+
+.legal-links a:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+/* Social Media */
+.social-media {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+}
+
+.social-media h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) rotate(5deg);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.social-icon.facebook:hover {
+    background: #1877f2;
+    box-shadow: 0 8px 20px rgba(24, 119, 242, 0.4);
+}
+
+.social-icon.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 8px 20px rgba(188, 24, 136, 0.4);
+}
+
+.social-icon.twitter:hover {
+    background: #1da1f2;
+    box-shadow: 0 8px 20px rgba(29, 161, 242, 0.4);
+}
+
+.social-icon.whatsapp:hover {
+    background: #25D366;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 10px 0;
+    font-size: 0.95rem;
+}
+
+.made-with {
+    font-size: 0.9rem;
+}
+
+.made-with i {
+    color: #e74c3c;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    10%,
+    30% {
+        transform: scale(1.1);
+    }
+
+    20%,
+    40% {
+        transform: scale(0.9);
     }
 }
 
-/* Outras personalizações estéticas */
-.footer ul {
-    padding: 0;
-    list-style: none;
-    /* Remove estilos de lista */
+/* Responsividade */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 40px 20px 25px;
+        margin-top: 60px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .contact-list li,
+    .legal-links a {
+        justify-content: center;
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
 }
 
-.footer h3 {
-    margin-top: 0;
-    /* Remove a margem superior dos títulos */
-    color: #000;
-    /* Define a cor do texto dos títulos para preto */
-}
+@media (max-width: 480px) {
+    .footer-section h3 {
+        font-size: 1.3rem;
+        justify-content: center;
+    }
 
-/* Estilos adicionais se necessário */
+    .btn-whatsapp {
+        padding: 12px 28px;
+        font-size: 1rem;
+    }
+}

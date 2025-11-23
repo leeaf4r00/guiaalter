@@ -1,107 +1,367 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Guia de Alter</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
+{% block title %}Login - Guia de Alter{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Login Page Styles */
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .login-container {
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        max-width: 450px;
+        width: 100%;
+        animation: slideUp 0.6s ease-out;
+    }
+
+    .login-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px 30px;
+        text-align: center;
+        color: white;
+    }
+
+    .login-header i {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+        opacity: 0.95;
+    }
+
+    .login-header h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2rem;
+        margin: 0 0 10px;
+        font-weight: 700;
+    }
+
+    .login-header p {
+        margin: 0;
+        opacity: 0.9;
+        font-size: 0.95rem;
+    }
+
+    .login-body {
+        padding: 40px 35px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #2d3748;
+        font-size: 0.95rem;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-wrapper i {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #667eea;
+        font-size: 1.1rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 15px 15px 15px 50px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #f7fafc;
+        outline: none;
+    }
+
+    .form-control:focus {
+        border-color: #667eea;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        margin-top: 10px;
+    }
+
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-login:active {
+        transform: translateY(0);
+    }
+
+    .alert {
+        padding: 15px 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        display: none;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .alert-danger {
+        background: #fee;
+        border: 1px solid #fcc;
+        color: #c33;
+    }
+
+    .divider {
+        text-align: center;
+        margin: 30px 0;
+        position: relative;
+    }
+
+    .divider::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #e2e8f0;
+    }
+
+    .divider span {
+        background: white;
+        padding: 0 15px;
+        color: #718096;
+        font-size: 0.9rem;
+        position: relative;
+    }
+
+    .register-link {
+        text-align: center;
+        color: #4a5568;
+    }
+
+    .register-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    .register-link a:hover {
+        color: #764ba2;
+        text-decoration: underline;
+    }
+
+    .back-home {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .back-home a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .back-home a:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .container {
-            max-width: 400px;
-            margin-top: 5%;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
         }
 
-        h2 {
-            text-align: center;
-            color: #007bff;
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .login-container {
+            border-radius: 16px;
         }
 
-        label {
-            font-weight: bold;
+        .login-header {
+            padding: 30px 25px;
         }
 
-        .btn-primary {
-            width: 100%;
+        .login-header h2 {
+            font-size: 1.7rem;
         }
 
-        .alert {
-            margin-top: 20px;
+        .login-body {
+            padding: 30px 25px;
         }
-    </style>
-</head>
+    }
 
-<body>
+    /* Hide header and footer for login page */
+    .site-header,
+    .main-nav,
+    .site-footer {
+        display: none;
+    }
+</style>
+{% endblock %}
 
-    <div class="container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <div class="mb-3">
-                <label for="username" class="form-label">Usuário</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Entrar</button>
-        </form>
-        <div id="loginError" class="alert alert-danger" style="display: none;"></div>
-        <p>Não tem uma conta? <a href="{{ url_for('routes.register') }}">Cadastre-se aqui</a></p>
+{% block content %}
+<div class="login-container">
+    <div class="login-header">
+        <i class="fas fa-user-circle"></i>
+        <h2>Bem-vindo!</h2>
+        <p>Faça login para continuar</p>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var loginError = document.getElementById('loginError');
+    <div class="login-body">
+        <form id="loginForm">
+            <div id="loginError" class="alert alert-danger"></div>
 
-            // Criar objeto com credenciais
-            var credentials = {
-                username: username,
-                password: password
-            };
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="form-control" id="username" name="username"
+                        placeholder="Digite seu usuário" required autocomplete="username">
+                </div>
+            </div>
 
-            // Enviar credenciais para o servidor via HTTPS
-            fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json' // Indica que aceitamos resposta JSON
-                },
-                body: JSON.stringify(credentials)
-            })
-                .then(response => {
-                    if (response.status === 200) {
-                        // Redirecionar para a página de sucesso
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Digite sua senha" required autocomplete="current-password">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i> Entrar
+            </button>
+        </form>
+
+        <div class="divider">
+            <span>ou</span>
+        </div>
+
+        <p class="register-link">
+            Não tem uma conta? <a href="{{ url_for('routes.register') }}">Cadastre-se aqui</a>
+        </p>
+    </div>
+</div>
+
+<div class="back-home">
+    <a href="{{ url_for('routes.index') }}">
+        <i class="fas fa-arrow-left"></i> Voltar para o início
+    </a>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const loginError = document.getElementById('loginError');
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+
+        // Disable button and show loading
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Entrando...';
+
+        // Hide previous errors
+        loginError.style.display = 'none';
+
+        const credentials = {
+            username: username,
+            password: password
+        };
+
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    // Success - redirect
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Sucesso!';
+                    setTimeout(() => {
                         window.location.href = "{{ url_for('routes.index') }}";
-                    } else if (response.status === 401) {
-                        // Exibir mensagem de erro do servidor
-                        response.json().then(data => {
-                            loginError.textContent = data.message;
-                            loginError.style.display = 'block';
-                        });
-                    } else {
-                        throw new Error('Erro no servidor');
-                    }
-                })
-                .catch(error => {
-                    // Exibir erros de conexão ou outros erros
-                    loginError.textContent = error.message;
-                    loginError.style.display = 'block';
-                });
-        });
-    </script>
-</body>
-
-</html>
+                    }, 500);
+                } else if (response.status === 401) {
+                    // Unauthorized
+                    return response.json().then(data => {
+                        throw new Error(data.message || 'Usuário ou senha incorretos');
+                    });
+                } else {
+                    throw new Error('Erro no servidor. Tente novamente.');
+                }
+            })
+            .catch(error => {
+                loginError.textContent = error.message;
+                loginError.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
+    });
+</script>
+{% endblock %}

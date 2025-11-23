@@ -1,147 +1,114 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Guia de passeios, buffets, hotéis e mais em Alter do Chão">
-    <meta name="keywords" content="alter do chão, passeios, buffets, hotéis">
-    <title>Guia de Alter - Passeios em Alter do Chão</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
+{% block title %}Guia de Alter - Passeios em Alter do Chão{% endblock %}
 
-<body>
-    <header style="background-image: url('{{ url_for('static', filename='img/alterdochao.jpg') }}');">
-        <div class="logo-box">
-            <div class="logo">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Guia de Alter">
+{% block meta_description %}Descubra os melhores passeios, hotéis e experiências em Alter do Chão. Seu guia completo
+para explorar o Caribe Amazônico.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="content-overlay">
+    <article class="highlighted-tours text-center">
+        <div class="container">
+            <h1>Tours em Destaque</h1>
+            <div class="iframe-container">
+                <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400" loading="lazy"
+                    title="Tours em destaque" style="border:0;">
+                </iframe>
             </div>
         </div>
-        <div class="identity">
-            <h1><a href="/">Guia de Alter</a></h1>
-            <p>Seu guia de passeios por Alter do Chão</p>
-        </div>
-        <div class="login-nav">
-            <ul class="nav-itens">
-                <li><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                <li><a href="/register"><i class="fas fa-user-plus"></i> Cadastro</a></li>
-            </ul>
-        </div>
-    </header>
+    </article>
+</section>
 
-    <nav class="nav-itens">
+<!-- Tours Sections -->
+<h1>Lago Verde</h1>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400" loading="lazy" title="Passeios Lago Verde"
+        style="border:0;">
+    </iframe>
+</div>
+
+<h1>Subindo o Rio</h1>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400" loading="lazy"
+        title="Passeios Subindo o Rio" style="border:0;">
+    </iframe>
+</div>
+
+<h1>Descendo o Rio</h1>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400" loading="lazy"
+        title="Passeios Descendo o Rio" style="border:0;">
+    </iframe>
+</div>
+
+<h1>Rio Arapiuns</h1>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400" loading="lazy"
+        title="Passeios Rio Arapiuns" style="border:0;">
+    </iframe>
+</div>
+
+<!-- Popular Tours Section -->
+<section class="new-tours text-center">
+    <div class="container">
+        <h2>As Pessoas Também Compraram:</h2>
         <ul>
-            <li><a href="/">Início</a></li>
-            <li><a href="/passeios">Passeios</a></li>
-            <li><a href="/hotels">Hotéis</a></li>
-            <li><a href="/veiculos">Transfer/Embarcações</a></li>
-            <li><a href="/pacotes">Pacotes</a></li>
-            <li><a href="/contato">Contato</a></li>
-            <li><a href="/rotas">Rotas</a></li>
-            <li><a href="/Conhecaalter">Conheça Alter</a></li>
-            <li><a href="/souvenir">Souvenir</a></li>
-            <li><a href="/sejanossoparceiro">Seja Nosso Parceiro</a></li>
+            <li>Passeio de Canoa pelos Igapós</li>
+            <li>Visita à Comunidade Tradicional</li>
         </ul>
-    </nav>
+    </div>
+</section>
 
+<!-- Newsletter Section -->
+<section class="client-testimonials text-center">
+    <div class="container">
+        <h2>Receba Nossas Novidades</h2>
+        <p>Inscreva-se para receber ofertas exclusivas e novidades!</p>
+        <form id="newsletterForm">
+            <input type="email" class="form-control" placeholder="Seu melhor email" required
+                aria-label="Email para newsletter">
+            <button type="submit" class="btn btn-primary mt-2">
+                Inscrever-se
+            </button>
+        </form>
+    </div>
+</section>
 
-    <!-- Conteúdo principal -->
-    <main class="main-content">
-        <!-- Seção de conteúdo, iframe, etc. -->
-        <section class="content-overlay">
-            <article class="highlighted-tours text-center">
-                <div class="container">
-                    <h1>Tour em Destaque</h1>
-                    <div class="iframe-container">
-                        <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400"
-                            style="border:0;"></iframe>
-                    </div>
-                </div>
-            </article>
-        </section>
+<!-- Testimonials -->
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" loading="lazy"
+        title="Depoimentos de clientes" style="border:0;">
+    </iframe>
+</div>
+{% endblock %}
 
+{% block extra_scripts %}
+<script>
+    // Newsletter form handler
+    document.getElementById('newsletterForm')?.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
 
-        <h1>Lago Verde</h1>
-        <div class="iframe-container">
-            <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400" style="border:0;"></iframe>
-        </div>
+        // Simple validation
+        if (email) {
+            alert('Obrigado por se inscrever! Em breve você receberá nossas novidades.');
+            this.reset();
+        }
+    });
 
-        <h1>Subindo o Rio</h1>
-        <div class="iframe-container">
-            <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400" style="border:0;"></iframe>
-        </div>
-
-        <h1>Descendo o Rio</h1>
-        <div class="iframe-container">
-            <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400" style="border:0;"></iframe>
-        </div>
-
-        <h1>Rio Arapiuns</h1>
-        <div class="iframe-container" style="overflow: hidden;">
-            <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400" style="border:0;"></iframe>
-        </div>
-        </div>
-        </article>
-        </section>
-    </main>
-    <!-- Rodapé -->
-
-    <section class="new-tours text-center">
-        <div class="container">
-            <h2>As Pessoas Também Compraram:</h2>
-            <ul>
-                <li>Passeio de Canoa pelos Igapós</li>
-                <li>Visita à Comunidade Tradicional</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="client-testimonials text-center">
-        <div class="container">
-            <h2>Receba Nossas Novidades</h2>
-            <p>"Insira seu Email."</p>
-            <form>
-                <input type="email" class="form-control" placeholder="Seu email aqui">
-                <button type="submit" class="btn btn-primary mt-2">Inscrever-se</button>
-            </form>
-        </div>
-    </section>
-    <div class="iframe-container" style="overflow: hidden;">
-        <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" style="border:0;"></iframe>
-        </section>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-12 contact-info text-center">
-                        <h3>Entre em Contato</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Endereço: Rua Principal, Alter do Chão</p>
-                        <p><i class="fas fa-phone"></i> Telefone: (55) 93991160523</p>
-                        <p><i class="fas fa-envelope"></i> Email: guiadealter@contato.com</p>
-                    </div>
-                    <div class="col-md-4 col-sm-12 whatsapp-contact text-center">
-                        <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
-                        <a href="https://wa.me/5593991160523" target="_blank"
-                            aria-label="Enviar mensagem via WhatsApp">Enviar Mensagem</a>
-                    </div>
-                    <div class="col-md-4 col-sm-12 footer-links text-center">
-                        <ul class="list-unstyled">
-                            <li><a href="/privacy-policy"><i class="fas fa-user-shield"></i> Política de Privacidade</a>
-                            </li>
-                            <li><a href="/terms-of-use"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Scripts -->
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/user.js') }}"></script>
-</body>
-
-</html>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}
