@@ -17,5 +17,9 @@ WTForms==3.1.2
 python-dotenv==1.0.0
 gunicorn==21.2.0
 
+# QR Code Generation
+qrcode==7.4.2
+Pillow==10.2.0
+
 # Desktop Application
 pywebview==4.4.1

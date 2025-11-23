@@ -1,0 +1,134 @@
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║   🌴 GUIA DE ALTER - DASHBOARD DESKTOP                        ║
+║                                                               ║
+║   Como iniciar a janela do Windows com suas configurações    ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   📁 ARQUIVOS CRIADOS:                                        ║
+║                                                               ║
+║   ✅ run_desktop.py         - Aplicação desktop principal     ║
+║   ✅ run-desktop.bat        - Atalho para iniciar (clique!)   ║
+║   ✅ DESKTOP_APP.md         - Guia completo                   ║
+║   ✅ INICIO_RAPIDO_DESKTOP.md - Início rápido                 ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   🚀 COMO INICIAR:                                            ║
+║                                                               ║
+║   1️⃣  Dê DUPLO CLIQUE em: run-desktop.bat                     ║
+║                                                               ║
+║   2️⃣  Aguarde a janela abrir (10-15 segundos)                 ║
+║                                                               ║
+║   3️⃣  Faça login com:                                         ║
+║      • Usuário: admin                                        ║
+║      • Senha: admin123                                       ║
+║                                                               ║
+║   4️⃣  Pronto! Você está no dashboard desktop! 🎉              ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   💡 VANTAGENS DO MODO DESKTOP:                               ║
+║                                                               ║
+║   ✅ Janela nativa do Windows (não é navegador)               ║
+║   ✅ Aparência profissional de aplicativo                     ║
+║   ✅ Mais rápido e leve                                       ║
+║   ✅ Sem barra de endereço ou abas                            ║
+║   ✅ Ícone próprio na barra de tarefas                        ║
+║   ✅ Todas as funcionalidades do dashboard                    ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   📊 FUNCIONALIDADES DISPONÍVEIS:                             ║
+║                                                               ║
+║   👥 Gestão de Usuários                                       ║
+║      • Criar, editar, bloquear usuários                      ║
+║      • 3 níveis: Admin, Parceiro, Usuário                    ║
+║      • Controle de status: ativo, bloqueado, pendente        ║
+║                                                               ║
+║   🤝 Aprovação de Parceiros                                   ║
+║      • Ver cadastros pendentes                               ║
+║      • Aprovar ou rejeitar                                   ║
+║      • Gerenciar tipos de parceiros                          ║
+║                                                               ║
+║   🔒 Segurança                                                ║
+║      • Bloqueio de IPs                                       ║
+║      • Logs de auditoria                                     ║
+║      • Rastreamento de ações                                 ║
+║                                                               ║
+║   ⚙️  Sistema                                                 ║
+║      • Backup do banco de dados                              ║
+║      • Restauração de backups                                ║
+║      • Modo manutenção                                       ║
+║      • Estatísticas do sistema                               ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   🆚 DIFERENÇA ENTRE OS MODOS:                                ║
+║                                                               ║
+║   🪟 MODO DESKTOP (run-desktop.bat)                           ║
+║      • Janela nativa do Windows                              ║
+║      • Uso local no computador                               ║
+║      • Aparência profissional                                ║
+║      • Mais rápido                                           ║
+║                                                               ║
+║   🌐 MODO WEB (run.py)                                        ║
+║      • Abre no navegador                                     ║
+║      • Acesso remoto possível                                ║
+║      • Pode usar no celular                                  ║
+║      • Múltiplos usuários simultâneos                        ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   ⚠️  IMPORTANTE:                                             ║
+║                                                               ║
+║   • Altere a senha padrão após primeiro login!               ║
+║   • Faça backups regulares do banco de dados                 ║
+║   • Não execute os dois modos ao mesmo tempo                 ║
+║   • Se der erro de porta, feche o run.py primeiro            ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   🔧 SOLUÇÃO DE PROBLEMAS:                                    ║
+║                                                               ║
+║   ❌ "Porta já em uso"                                        ║
+║      → Feche qualquer run.py que esteja rodando              ║
+║                                                               ║
+║   ❌ Janela não abre                                          ║
+║      → Aguarde 15 segundos, servidor está iniciando          ║
+║                                                               ║
+║   ❌ Tela branca                                              ║
+║      → Aguarde, Flask está carregando                        ║
+║                                                               ║
+║   ❌ Erro de módulo                                           ║
+║      → Execute: pip install pywebview                        ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   📖 DOCUMENTAÇÃO:                                            ║
+║                                                               ║
+║   • DESKTOP_APP.md - Guia completo da aplicação desktop      ║
+║   • SISTEMA_COMPLETO.md - Documentação do sistema            ║
+║   • README_MOBILE_ADMIN.md - Dashboard mobile                ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   ✅ CHECKLIST:                                               ║
+║                                                               ║
+║   [ ] Python 3.8+ instalado                                  ║
+║   [ ] Dependências instaladas (pip install -r requirements)  ║
+║   [ ] Banco migrado (python migrate_db_simple.py)            ║
+║   [ ] Duplo clique em run-desktop.bat                        ║
+║   [ ] Login realizado                                        ║
+║   [ ] Senha alterada                                         ║
+║                                                               ║
+╠═══════════════════════════════════════════════════════════════╣
+║                                                               ║
+║   🎊 PRONTO PARA USAR!                                        ║
+║                                                               ║
+║   Duplo clique em: run-desktop.bat                           ║
+║                                                               ║
+║   Aproveite seu dashboard desktop profissional! 🌴           ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
