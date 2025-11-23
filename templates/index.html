@@ -5,81 +5,269 @@
 {% block meta_description %}Descubra os melhores passeios, hotéis e experiências em Alter do Chão. Seu guia completo
 para explorar o Caribe Amazônico.{% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Hero Section Melhorada */
+    body {
+        background: #f8f9fa;
+    }
+
+    .hero-banner {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 60px 20px;
+        text-align: center;
+        color: white;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-banner h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-banner p {
+        font-size: 1.2rem;
+        opacity: 0.95;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Section Titles */
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto 50px;
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 10px;
+        padding: 20px;
+        background: white;
+        border-radius: 15px 15px 0 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        border-left: 5px solid #667eea;
+    }
+
+    /* Iframe Container Melhorado */
+    .iframe-wrapper {
+        background: white;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        margin-bottom: 40px;
+        transition: all 0.3s ease;
+    }
+
+    .iframe-wrapper:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .iframe-wrapper iframe {
+        width: 100%;
+        height: 450px;
+        border: 0;
+        display: block;
+    }
+
+    /* Newsletter Melhorada */
+    .newsletter-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 50px 20px;
+        text-align: center;
+        color: white;
+        border-radius: 20px;
+        margin: 60px auto;
+        max-width: 800px;
+        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .newsletter-box h2 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .newsletter-box p {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        opacity: 0.95;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .newsletter-form input {
+        flex: 1;
+        min-width: 250px;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+    }
+
+    .newsletter-form button {
+        padding: 15px 35px;
+        background: white;
+        color: #667eea;
+        border: none;
+        border-radius: 50px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+
+    .newsletter-form button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Popular Tours */
+    .popular-section {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        max-width: 800px;
+        margin: 40px auto;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .popular-section h2 {
+        font-size: 1.8rem;
+        color: #1e293b;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .popular-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .popular-section li {
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        transition: all 0.3s ease;
+        font-size: 1.05rem;
+    }
+
+    .popular-section li:hover {
+        transform: translateX(5px);
+        background: #e9ecef;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-banner h1 {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .newsletter-form {
+            flex-direction: column;
+        }
+
+        .newsletter-form input,
+        .newsletter-form button {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- Hero Section -->
-<section class="content-overlay">
-    <article class="highlighted-tours text-center">
-        <div class="container">
-            <h1>Tours em Destaque</h1>
-            <div class="iframe-container">
-                <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400" loading="lazy"
-                    title="Tours em destaque" style="border:0;">
-                </iframe>
-            </div>
-        </div>
-    </article>
-</section>
-
-<!-- Tours Sections -->
-<h1>Lago Verde</h1>
-<div class="iframe-container">
-    <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400" loading="lazy" title="Passeios Lago Verde"
-        style="border:0;">
-    </iframe>
+<!-- Hero Banner -->
+<div class="hero-banner">
+    <h1>🌴 Descubra Alter do Chão</h1>
+    <p>O Caribe Amazônico te espera com praias paradisíacas e experiências inesquecíveis</p>
 </div>
 
-<h1>Subindo o Rio</h1>
-<div class="iframe-container">
-    <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400" loading="lazy"
-        title="Passeios Subindo o Rio" style="border:0;">
-    </iframe>
-</div>
-
-<h1>Descendo o Rio</h1>
-<div class="iframe-container">
-    <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400" loading="lazy"
-        title="Passeios Descendo o Rio" style="border:0;">
-    </iframe>
-</div>
-
-<h1>Rio Arapiuns</h1>
-<div class="iframe-container">
-    <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400" loading="lazy"
-        title="Passeios Rio Arapiuns" style="border:0;">
-    </iframe>
-</div>
-
-<!-- Popular Tours Section -->
-<section class="new-tours text-center">
-    <div class="container">
-        <h2>As Pessoas Também Compraram:</h2>
-        <ul>
-            <li>Passeio de Canoa pelos Igapós</li>
-            <li>Visita à Comunidade Tradicional</li>
-        </ul>
+<!-- Tours em Destaque -->
+<div class="section-container">
+    <h2 class="section-title">✨ Tours em Destaque</h2>
+    <div class="iframe-wrapper">
+        <iframe src="{{ url_for('routes.tourdestaques') }}" loading="lazy" title="Tours em destaque"></iframe>
     </div>
-</section>
+</div>
 
-<!-- Newsletter Section -->
-<section class="client-testimonials text-center">
-    <div class="container">
-        <h2>Receba Nossas Novidades</h2>
-        <p>Inscreva-se para receber ofertas exclusivas e novidades!</p>
-        <form id="newsletterForm">
-            <input type="email" class="form-control" placeholder="Seu melhor email" required
-                aria-label="Email para newsletter">
-            <button type="submit" class="btn btn-primary mt-2">
-                Inscrever-se
-            </button>
-        </form>
+<!-- Lago Verde -->
+<div class="section-container">
+    <h2 class="section-title">💚 Lago Verde</h2>
+    <div class="iframe-wrapper">
+        <iframe src="{{ url_for('routes.lagoverde') }}" loading="lazy" title="Passeios Lago Verde"></iframe>
     </div>
-</section>
+</div>
 
-<!-- Testimonials -->
-<div class="iframe-container">
-    <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" loading="lazy"
-        title="Depoimentos de clientes" style="border:0;">
-    </iframe>
+<!-- Subindo o Rio -->
+<div class="section-container">
+    <h2 class="section-title">⬆️ Subindo o Rio</h2>
+    <div class="iframe-wrapper">
+        <iframe src="{{ url_for('routes.subindoorio') }}" loading="lazy" title="Passeios Subindo o Rio"></iframe>
+    </div>
+</div>
+
+<!-- Descendo o Rio -->
+<div class="section-container">
+    <h2 class="section-title">⬇️ Descendo o Rio</h2>
+    <div class="iframe-wrapper">
+        <iframe src="{{ url_for('routes.descendoorio') }}" loading="lazy" title="Passeios Descendo o Rio"></iframe>
+    </div>
+</div>
+
+<!-- Rio Arapiuns -->
+<div class="section-container">
+    <h2 class="section-title">🏞️ Rio Arapiuns</h2>
+    <div class="iframe-wrapper">
+        <iframe src="{{ url_for('routes.rioarapiuns') }}" loading="lazy" title="Passeios Rio Arapiuns"></iframe>
+    </div>
+</div>
+
+<!-- Popular Tours -->
+<div class="popular-section">
+    <h2>🔥 As Pessoas Também Compraram</h2>
+    <ul>
+        <li>🛶 Passeio de Canoa pelos Igapós</li>
+        <li>🏘️ Visita à Comunidade Tradicional</li>
+        <li>🐬 Observação de Botos Cor-de-Rosa</li>
+        <li>📸 Tour Fotográfico ao Pôr do Sol</li>
+    </ul>
+</div>
+
+<!-- Newsletter -->
+<div class="newsletter-box">
+    <h2>📬 Receba Nossas Novidades</h2>
+    <p>Inscreva-se para receber ofertas exclusivas e novidades!</p>
+    <form id="newsletterForm" class="newsletter-form">
+        <input type="email" placeholder="Seu melhor email" required aria-label="Email para newsletter">
+        <button type="submit">Inscrever-se</button>
+    </form>
+</div>
+
+<!-- Depoimentos -->
+<div class="section-container">
+    <h2 class="section-title">💬 Depoimentos</h2>
+    <div class="iframe-wrapper">
+        <iframe src="{{ url_for('routes.depoimentos') }}" loading="lazy" title="Depoimentos de clientes"></iframe>
+    </div>
 </div>
 {% endblock %}
 
@@ -90,14 +278,13 @@ para explorar o Caribe Amazônico.{% endblock %}
         e.preventDefault();
         const email = this.querySelector('input[type="email"]').value;
 
-        // Simple validation
         if (email) {
-            alert('Obrigado por se inscrever! Em breve você receberá nossas novidades.');
+            alert('✅ Obrigado por se inscrever! Em breve você receberá nossas novidades.');
             this.reset();
         }
     });
 
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -109,6 +296,23 @@ para explorar o Caribe Amazônico.{% endblock %}
                 });
             }
         });
+    });
+
+    // Fade in animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section-container, .popular-section, .newsletter-box').forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s ease';
+        observer.observe(el);
     });
 </script>
 {% endblock %}
