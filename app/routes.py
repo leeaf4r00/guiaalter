@@ -204,7 +204,7 @@ def subindoorio():
 
 @routes.route('/tourdestaques')
 def tourdestaques():
-    tours = Tour.query.filter_by(category='tourdestaques', is_active=True).all()
+    tours = Tour.query.filter_by(category='destaque', is_active=True).all()
     return render_template('tourdestaques.html', tours=tours)
 
 
