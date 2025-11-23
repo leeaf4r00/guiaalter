@@ -51,10 +51,12 @@ def create_app():
     from app.routes import routes
     from app.routes_tours import routes_tours
     from app.routes_admin import routes_admin
+    from app.routes_mobile_admin import routes_mobile_admin
     
     app.register_blueprint(routes)
     app.register_blueprint(routes_tours)
     app.register_blueprint(routes_admin)
+    app.register_blueprint(routes_mobile_admin)
     
     # Error handlers
     @app.errorhandler(404)
