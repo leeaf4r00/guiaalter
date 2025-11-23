@@ -1,287 +1,74 @@
 {% extends "base.html" %}
 
 {% block title %}Guia de Alter - Passeios em Alter do Chão{% endblock %}
-transform: translateY(30px);
-}
 
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-/* Section Styling */
-.tours-section {
-max-width: 1200px;
-margin: 0 auto 80px;
-padding: 0 20px;
-}
-
-.section-header {
-text-align: center;
-margin-bottom: 50px;
-}
-
-.section-title {
-font-size: 2.5rem;
-font-weight: 700;
-color: #1e293b;
-margin-bottom: 15px;
-position: relative;
-display: inline-block;
-}
-
-.section-title::after {
-content: '';
-position: absolute;
-bottom: -10px;
-left: 50%;
-transform: translateX(-50%);
-width: 60px;
-height: 4px;
-background: linear-gradient(90deg, #667eea, #764ba2);
-border-radius: 2px;
-}
-
-.section-description {
-min-height: 400px;
-background: #f8fafc;
-}
-
-.iframe-container iframe {
-width: 100%;
-height: 400px;
-border: 0;
-display: block;
-}
-
-/* Newsletter Section */
-.newsletter-section {
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-padding: 60px 20px;
-text-align: center;
-color: white;
-margin: 80px 0;
-}
-
-.newsletter-section h2 {
-font-size: 2.5rem;
-margin-bottom: 15px;
-}
-
-.newsletter-section p {
-font-size: 1.2rem;
-margin-bottom: 30px;
-opacity: 0.95;
-}
-
-.newsletter-form {
-max-width: 500px;
-margin: 0 auto;
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
-justify-content: center;
-}
-
-.newsletter-form input {
-flex: 1;
-min-width: 250px;
-padding: 15px 25px;
-border: none;
-border-radius: 50px;
-font-size: 1rem;
-}
-
-.newsletter-form button {
-padding: 15px 35px;
-background: white;
-color: #667eea;
-border: none;
-border-radius: 50px;
-font-weight: 700;
-font-size: 1rem;
-cursor: pointer;
-transition: all 0.3s ease;
-}
-
-.newsletter-form button:hover {
-transform: translateY(-2px);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Popular Tours */
-.popular-tours {
-background: #f8fafc;
-padding: 60px 20px;
-text-align: center;
-}
-
-.popular-tours h2 {
-font-size: 2rem;
-color: #1e293b;
-margin-bottom: 30px;
-}
-
-.popular-tours ul {
-list-style: none;
-padding: 0;
-max-width: 600px;
-margin: 0 auto;
-}
-
-.popular-tours li {
-background: white;
-padding: 20px;
-margin-bottom: 15px;
-border-radius: 15px;
-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-font-size: 1.1rem;
-color: #475569;
-transition: all 0.3s ease;
-}
-
-.popular-tours li:hover {
-transform: translateX(10px);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-.hero-title {
-font-size: 2.5rem;
-}
-
-.hero-subtitle {
-font-size: 1.1rem;
-}
-
-.section-title {
-font-size: 2rem;
-}
-
-.tour-card-header {
-font-size: 1.5rem;
-padding: 20px;
-}
-
-.newsletter-form {
-flex-direction: column;
-}
-
-.newsletter-form input,
-.newsletter-form button {
-width: 100%;
-}
-}
-</style>
-{% endblock %}
+{% block meta_description %}Descubra os melhores passeios, hotéis e experiências em Alter do Chão. Seu guia completo
+para explorar o Caribe Amazônico.{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section">
-    <div class="hero-content">
-        <h1 class="hero-title">🌴 Descubra Alter do Chão</h1>
-        <p class="hero-subtitle">O Caribe Amazônico te espera com praias paradisíacas, rios cristalinos e experiências
-            inesquecíveis</p>
-        <a href="#tours" class="hero-cta">Explorar Passeios</a>
-    </div>
-</section>
-
-<!-- Tours em Destaque -->
-<section class="tours-section" id="tours">
-    <div class="section-header">
-        <h2 class="section-title">✨ Tours em Destaque</h2>
-        <p class="section-description">Conheça os passeios mais procurados e viva momentos únicos no paraíso amazônico
-        </p>
-    </div>
-    <div class="tour-card">
-        <div class="iframe-container">
-            <iframe src="{{ url_for('routes.tourdestaques') }}" loading="lazy" title="Tours em destaque">
-            </iframe>
-        </div>
-    </div>
-</section>
-
-<!-- Lago Verde -->
-<section class="tours-section">
-    <div class="tour-card">
-        <div class="tour-card-header">
-            💚 Lago Verde
-        </div>
-        <div class="tour-card-body">
+<section class="content-overlay">
+    <article class="highlighted-tours text-center">
+        <div class="container">
+            <h1>Tours em Destaque</h1>
             <div class="iframe-container">
-                <iframe src="{{ url_for('routes.lagoverde') }}" loading="lazy" title="Passeios Lago Verde">
+                <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400" loading="lazy"
+                    title="Tours em destaque" style="border:0;">
                 </iframe>
             </div>
         </div>
-    </div>
+    </article>
 </section>
 
-<!-- Subindo o Rio -->
-<section class="tours-section">
-    <div class="tour-card">
-        <div class="tour-card-header">
-            ⬆️ Subindo o Rio
-        </div>
-        <div class="tour-card-body">
-            <div class="iframe-container">
-                <iframe src="{{ url_for('routes.subindoorio') }}" loading="lazy" title="Passeios Subindo o Rio">
-                </iframe>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Tours Sections -->
+<h1>Lago Verde</h1>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.lagoverde') }}" width="100%" height="400" loading="lazy" title="Passeios Lago Verde"
+        style="border:0;">
+    </iframe>
+</div>
 
-<!-- Descendo o Rio -->
-<section class="tours-section">
-    <div class="tour-card">
-        <div class="tour-card-header">
-            ⬇️ Descendo o Rio
-        </div>
-        <div class="tour-card-body">
-            <div class="iframe-container">
-                <iframe src="{{ url_for('routes.descendoorio') }}" loading="lazy" title="Passeios Descendo o Rio">
-                </iframe>
-            </div>
-        </div>
-    </div>
-</section>
+<h1>Subindo o Rio</h1>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.subindoorio') }}" width="100%" height="400" loading="lazy"
+        title="Passeios Subindo o Rio" style="border:0;">
+    </iframe>
+</div>
 
-<!-- Rio Arapiuns -->
-<section class="tours-section">
-    <div class="tour-card">
-        <div class="tour-card-header">
-            🏞️ Rio Arapiuns
-        </div>
-        <div class="tour-card-body">
-            <div class="iframe-container">
-                <iframe src="{{ url_for('routes.rioarapiuns') }}" loading="lazy" title="Passeios Rio Arapiuns">
-                </iframe>
-            </div>
-        </div>
-    </div>
-</section>
+<h1>Descendo o Rio</h1>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.descendoorio') }}" width="100%" height="400" loading="lazy"
+        title="Passeios Descendo o Rio" style="border:0;">
+    </iframe>
+</div>
+
+<h1>Rio Arapiuns</h1>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.rioarapiuns') }}" width="100%" height="400" loading="lazy"
+        title="Passeios Rio Arapiuns" style="border:0;">
+    </iframe>
+</div>
 
 <!-- Popular Tours Section -->
-<section class="popular-tours">
+<section class="new-tours text-center">
     <div class="container">
-        <h2>🔥 As Pessoas Também Compraram</h2>
+        <h2>As Pessoas Também Compraram:</h2>
         <ul>
-            <li>🛶 Passeio de Canoa pelos Igapós</li>
-            <li>🏘️ Visita à Comunidade Tradicional</li>
+            <li>Passeio de Canoa pelos Igapós</li>
+            <li>Visita à Comunidade Tradicional</li>
         </ul>
     </div>
 </section>
 
 <!-- Newsletter Section -->
-<section class="newsletter-section">
+<section class="client-testimonials text-center">
     <div class="container">
-        <h2>📬 Receba Nossas Novidades</h2>
+        <h2>Receba Nossas Novidades</h2>
         <p>Inscreva-se para receber ofertas exclusivas e novidades!</p>
-        <form id="newsletterForm" class="newsletter-form">
-            <input type="email" placeholder="Seu melhor email" required aria-label="Email para newsletter">
-            <button type="submit">
+        <form id="newsletterForm">
+            <input type="email" class="form-control" placeholder="Seu melhor email" required
+                aria-label="Email para newsletter">
+            <button type="submit" class="btn btn-primary mt-2">
                 Inscrever-se
             </button>
         </form>
@@ -289,18 +76,11 @@ width: 100%;
 </section>
 
 <!-- Testimonials -->
-<section class="tours-section">
-    <div class="section-header">
-        <h2 class="section-title">💬 Depoimentos</h2>
-        <p class="section-description">Veja o que nossos clientes dizem sobre as experiências</p>
-    </div>
-    <div class="tour-card">
-        <div class="iframe-container">
-            <iframe src="{{ url_for('routes.depoimentos') }}" loading="lazy" title="Depoimentos de clientes">
-            </iframe>
-        </div>
-    </div>
-</section>
+<div class="iframe-container">
+    <iframe src="{{ url_for('routes.depoimentos') }}" width="100%" height="400" loading="lazy"
+        title="Depoimentos de clientes" style="border:0;">
+    </iframe>
+</div>
 {% endblock %}
 
 {% block extra_scripts %}
@@ -310,8 +90,9 @@ width: 100%;
         e.preventDefault();
         const email = this.querySelector('input[type="email"]').value;
 
+        // Simple validation
         if (email) {
-            alert('✅ Obrigado por se inscrever! Em breve você receberá nossas novidades.');
+            alert('Obrigado por se inscrever! Em breve você receberá nossas novidades.');
             this.reset();
         }
     });
@@ -328,15 +109,6 @@ width: 100%;
                 });
             }
         });
-    });
-
-    // Add loading animation to iframes
-    document.querySelectorAll('iframe').forEach(iframe => {
-        iframe.addEventListener('load', function () {
-            this.style.opacity = '1';
-        });
-        iframe.style.opacity = '0';
-        iframe.style.transition = 'opacity 0.3s ease';
     });
 </script>
 {% endblock %}

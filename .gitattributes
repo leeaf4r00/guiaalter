@@ -2,8 +2,6 @@
 __pycache__/
 *.pyc
 
-# Logs
-*.log
 
 # Virtual env
 venv/
@@ -13,5 +11,3 @@ venv/
 # VSCode
 .vscode/
 
-# Outros arquivos que você não quer
-LEIA ME DESKTOP.txt
