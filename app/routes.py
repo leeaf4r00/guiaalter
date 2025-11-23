@@ -1,67 +1,102 @@
-import sqlite3
+"""
+Routes - Rotas principais da aplicação
+"""
 from flask import render_template, request, redirect, url_for, flash, Blueprint, jsonify
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
-from app.models.users import User, get_user_by_username
-from app.forms import RegistrationForm
-from app.database import db
+from app import db
+from app.models.users import User, get_user_by_username, get_user_by_email, create_user
 
 routes = Blueprint('routes', __name__)
 
 
 @routes.route('/')
 def index():
-    user_count = db.count_users()
-    return render_template('index.html', user_count=user_count)
+    """Página inicial"""
+    return render_template('index.html')
 
 
-@routes.route('/login', methods=['POST'])
-def login():
+@routes.route('/login', methods=['GET', 'POST'])
+def login_page():
+    """Página de login"""
+    if request.method == 'GET':
+        return render_template('login.html')
+    
+    # POST - processar login
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
 
-    if not username or not password or not isinstance(username, str) or not isinstance(password, str):
-        return jsonify({"message": "Usuário e senha são obrigatórios e devem ser strings"}), 400
+    if not username or not password:
+        return jsonify({"message": "Usuário e senha são obrigatórios"}), 400
 
     user = get_user_by_username(username)
 
     if user and check_password_hash(user.password, password):
-        user_object = User(user.id, user.username, user.email,
-                           user.password, user.is_admin)
-        login_user(user_object)
-
+        login_user(user, remember=True)
+        
         if user.is_admin:
-            return jsonify({"redirect": url_for('routes.admin')})
+            return jsonify({"success": True, "redirect": url_for('routes_admin.painel')}), 200
         else:
-            return jsonify({"redirect": url_for('routes.index')})
+            return jsonify({"success": True, "redirect": url_for('routes.index')}), 200
     else:
-        return jsonify({"message": "Usuário ou senha inválidos"}), 401
+        return jsonify({"message": "Usuário ou senha incorretos"}), 401
 
 
-@routes.route('/register', methods=['POST'])
+@routes.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()
+    """Página de registro"""
+    if request.method == 'GET':
+        return render_template('cadastro.html')
+    
+    # POST - processar registro
+    data = request.get_json()
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+    
+    # Validações
+    if not username or not email or not password:
+        return jsonify({"message": "Todos os campos são obrigatórios"}), 400
+    
+    if len(password) < 6:
+        return jsonify({"message": "A senha deve ter no mínimo 6 caracteres"}), 400
+    
+    # Verifica se usuário já existe
+    if get_user_by_username(username):
+        return jsonify({"message": "Nome de usuário já existe"}), 400
+    
+    if get_user_by_email(email):
+        return jsonify({"message": "E-mail já cadastrado"}), 400
+    
+    # Cria usuário
+    hashed_password = generate_password_hash(password)
+    user = create_user(username, email, hashed_password)
+    
+    if user:
+        return jsonify({"success": True, "message": "Conta criada com sucesso!"}), 201
+    else:
+        return jsonify({"message": "Erro ao criar conta. Tente novamente."}), 500
 
-    if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data)
-        is_admin = form.username.data == "seu_usuario_admin" and db.count_admin_users() == 0
-        success = db.create_user(form.username.data, hashed_password, is_admin)
-        flash('Conta criada com sucesso!' if success else 'Erro ao criar a conta.',
-              'success' if success else 'error')
-        return redirect(url_for('routes.cadastro_bem_sucedido' if success else 'routes.register'))
 
-    return render_template('cadastro.html', title='Cadastro', form=form)
+@routes.route('/logout')
+@login_required
+def logout():
+    """Logout do usuário"""
+    logout_user()
+    flash('Você saiu da sua conta.', 'info')
+    return redirect(url_for('routes.index'))
 
 
-@routes.route('/reservas', methods=['GET', 'POST'])
+# Páginas de conteúdo
+@routes.route('/reservas')
 def reservas():
     return render_template('reservas.html')
 
 
 @routes.route('/pacotes')
 def pacotes():
-    return render_template('pacotes.html')
+    return render_template('Pacotes.html')
 
 
 @routes.route('/buffets')
@@ -94,21 +129,6 @@ def sobrenos():
     return render_template('sobrenos.html')
 
 
-@routes.route('/explorealter')
-def explorealter():
-    return render_template('explorealter.html')
-
-
-@routes.route('/mapaalter')
-def mapaalter():
-    return render_template('mapaalter.html')
-
-
-@routes.route('/pessoascompraram')
-def pessoascompraram():
-    return render_template('pessoascompraram.html')
-
-
 @routes.route('/conhecaalter')
 def conhecaalter():
     return render_template('conhecaalter.html')
@@ -124,18 +144,12 @@ def sejanossoparceiro():
     return render_template('sejanossoparceiro.html')
 
 
-@routes.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('routes.index'))
+@routes.route('/rotas')
+def rotas_page():
+    return render_template('rotas.html')
 
 
-@routes.route('/admin')
-def admin():
-    return render_template('admin.html')
-
-
+# Passeios - iframes
 @routes.route('/rioarapiuns')
 def rioarapiuns():
     return render_template('rioarapiuns.html')
@@ -166,20 +180,17 @@ def depoimentos():
     return render_template('depoimentos.html')
 
 
-@routes.route('/cadastro_bem_sucedido')
-def cadastro_bem_sucedido():
-    return render_template('cadastro_backend.html')
+# Páginas legais
+@routes.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
 
 
-@routes.route('/rotas')
-def rotas():
-    return render_template('rotas.html')
+@routes.route('/terms-of-use')
+def terms_of_use():
+    return render_template('terms-of-use.html')
 
 
-@routes.route('/user_list')
-def user_list():
-    users = User.query.all()
-    user_list = [{"id": user.id, "username": user.username,
-                  "email": user.email} for user in users]
-    return jsonify({"users": user_list})
-
+@routes.route('/suporte')
+def suporte():
+    return render_template('suporte.html')
