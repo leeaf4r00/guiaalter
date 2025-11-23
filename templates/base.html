@@ -5,31 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="{% block meta_description %}Guia de passeios, buffets, hotéis e mais em Alter do Chão{% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}alter do chão, passeios, buffets, hotéis, turismo{% endblock %}">
+    <meta name="description"
+        content="{% block meta_description %}Guia de passeios, buffets, hotéis e mais em Alter do Chão{% endblock %}">
+    <meta name="keywords"
+        content="{% block meta_keywords %}alter do chão, passeios, buffets, hotéis, turismo{% endblock %}">
     <meta name="author" content="Guia de Alter">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="{% block og_title %}Guia de Alter - Passeios em Alter do Chão{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Seu guia completo de passeios por Alter do Chão{% endblock %}">
-    
+    <meta property="og:description"
+        content="{% block og_description %}Seu guia completo de passeios por Alter do Chão{% endblock %}">
+
     <title>{% block title %}Guia de Alter - Passeios em Alter do Chão{% endblock %}</title>
-    
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom CSS - Ordem importa! -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-    
+
     {% block extra_css %}{% endblock %}
 </head>
 
@@ -59,7 +66,7 @@
     <!-- Scripts -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="{{ url_for('static', filename='js/user.js') }}"></script>
-    
+
     {% block extra_scripts %}{% endblock %}
 </body>
 
