@@ -1,75 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Não Encontrada</title>
-    <style>
-        body {
-            text-align: center;
-            padding: 40px 0;
-            background: #fff;
-            font-family: 'Arvo', serif;
-        }
+{% block title %}Página não encontrada - Guia de Alter{% endblock %}
 
-        .page_404 img {
-            width: 100%;
-        }
+{% block extra_css %}
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
 
-        .four_zero_four_bg {
-            background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
-            height: 400px;
-            background-position: center;
-        }
+    .main-content {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
 
-        .four_zero_four_bg h1 {
-            font-size: 80px;
-            color: #39ac31;
-            /* Alterei a cor para verde */
-        }
+    .error-container {
+        text-align: center;
+        color: white;
+        max-width: 600px;
+    }
 
-        .four_zero_four_bg h3 {
-            font-size: 40px;
-            /* Reduzi o tamanho da fonte para 40px */
-            color: #404F5E;
-            /* Alterei a cor para um cinza mais escuro */
-        }
+    .error-icon {
+        font-size: 8rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
 
-        .link_404 {
-            color: #fff !important;
-            padding: 10px 20px;
-            background: #39ac31;
-            margin: 20px 0;
-            display: inline-block;
-            text-decoration: none;
-        }
+    .error-code {
+        font-size: 8rem;
+        font-weight: 800;
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 20px;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
 
-        .contant_box_404 {
-            margin-top: -50px;
-        }
-    </style>
-</head>
+    .error-message {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
 
-<body>
-    <section class="page_404">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="col-sm-10 col-sm-offset-1 text-center">
-                        <div class="four_zero_four_bg">
-                            <h1 class="text-center">404</h1>
-                        </div>
-                        <div class="contant_box_404">
-                            <h3 class="h2">Parece que você está perdido</h3>
-                            <p>A página que você está procurando não está disponível.</p>
-                            <a href="/" class="link_404">Ir para a Página Inicial</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</body>
+    .error-description {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-bottom: 40px;
+    }
 
-</html>
+    .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 40px;
+        background: white;
+        color: var(--color-primary);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-home:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-icon">
+        <i class="fas fa-compass"></i>
+    </div>
+    <h1 class="error-code">404</h1>
+    <h2 class="error-message">Página Não Encontrada</h2>
+    <p class="error-description">
+        Ops! Parece que você se perdeu nas águas do Tapajós. A página que você procura não existe.
+    </p>
+    <a href="{{ url_for('routes.index') }}" class="btn-home">
+        <i class="fas fa-home"></i> Voltar para o Início
+    </a>
+</div>
+{% endblock %}

@@ -55,11 +55,11 @@ def create_app():
         from flask import render_template
         return render_template('404.html'), 404
     
-    @app.errorhandler(500)
-    def internal_error(error):
-        from flask import render_template
-        db.session.rollback()
-        return render_template('500.html'), 500
+    # @app.errorhandler(500)
+    # def internal_error(error):
+    #     from flask import render_template
+    #     db.session.rollback()
+    #     return render_template('500.html'), 500
     
     # Cria tabelas do banco de dados
     with app.app_context():
