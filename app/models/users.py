@@ -5,6 +5,9 @@ Enhanced with role levels and status management
 from app import db
 from flask_login import UserMixin
 from datetime import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 class User(db.Model, UserMixin):
     """Modelo de usuário com níveis de acesso"""
@@ -120,7 +123,7 @@ def create_user(username, email, password_hash, role='user', is_admin=False, **k
         return user
     except Exception as e:
         db.session.rollback()
-        print(f"Erro ao criar usuário: {e}")
+        logger.error(f"Erro ao criar usuário: {e}", exc_info=True)
         return None
 
 
@@ -155,7 +158,7 @@ def block_ip(ip_address, reason=None, blocked_by_user_id=None, expires_at=None):
         return True
     except Exception as e:
         db.session.rollback()
-        print(f"Erro ao bloquear IP: {e}")
+        logger.error(f"Erro ao bloquear IP {ip_address}: {e}", exc_info=True)
         return False
 
 
@@ -169,6 +172,6 @@ def unblock_ip(ip_address):
         return True
     except Exception as e:
         db.session.rollback()
-        print(f"Erro ao desbloquear IP: {e}")
+        logger.error(f"Erro ao desbloquear IP {ip_address}: {e}", exc_info=True)
         return False
 

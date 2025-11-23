@@ -798,6 +798,7 @@ def api_restore_database(filename):
 
 # ==================== AUDIT LOGS ====================
 
+
 @routes_mobile_admin.route('/api/logs')
 @admin_required
 def api_audit_logs():
@@ -806,15 +807,15 @@ def api_audit_logs():
         limit = request.args.get('limit', 50, type=int)
         offset = request.args.get('offset', 0, type=int)
         
-        logs = AuditLog.query.order_by(AuditLog.timestamp.desc()).limit(limit).offset(offset).all()
+        # Eager loading para evitar N+1 queries
+        logs = AuditLog.query.options(db.joinedload(AuditLog.user))\
+            .order_by(AuditLog.timestamp.desc())\
+            .limit(limit)\
+            .offset(offset)\
+            .all()
         
-        logs_data = []
-        for log in logs:
-            log_dict = log.to_dict()
-            # Adiciona username
-            user = User.query.get(log.user_id)
-            log_dict['username'] = user.username if user else 'Desconhecido'
-            logs_data.append(log_dict)
+        # to_dict() já inclui o username via relacionamento
+        logs_data = [log.to_dict() for log in logs]
         
         return jsonify({
             "logs": logs_data,

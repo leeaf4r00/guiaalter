@@ -2,7 +2,7 @@
 Guia de Alter - Aplicação Flask
 Inicialização da aplicação
 """
-from flask import Flask
+from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -11,21 +11,23 @@ import os
 db = SQLAlchemy()
 login_manager = LoginManager()
 
-def create_app():
+def create_app(config_name=None):
     """Factory pattern para criar a aplicação Flask"""
     # Define o caminho base como o diretório pai de 'app'
-    import os
     basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     
     app = Flask(__name__,
                 template_folder=os.path.join(basedir, 'templates'),
                 static_folder=os.path.join(basedir, 'static'))
     
-    # Configurações
-    app.config['DATABASE_PATH'] = 'database.db'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'leeafar:420')
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # Carrega configuração
+    from app.config import config, setup_logging
+    config_name = config_name or os.environ.get('FLASK_ENV', 'development')
+    app.config.from_object(config.get(config_name, config['default']))
+    
+    # Configura logging
+    setup_logging(app)
+    app.logger.info(f'Iniciando aplicação em modo: {config_name}')
     
     # Inicializa extensões com a app
     db.init_app(app)
@@ -60,20 +62,23 @@ def create_app():
     app.register_blueprint(routes_mobile_admin)
     app.register_blueprint(routes_public)
     
+    app.logger.info('Blueprints registrados com sucesso')
+    
     # Error handlers
     @app.errorhandler(404)
     def page_not_found(error):
-        from flask import render_template
+        app.logger.warning(f'Página não encontrada: {error}')
         return render_template('404.html'), 404
     
-    # @app.errorhandler(500)
-    # def internal_error(error):
-    #     from flask import render_template
-    #     db.session.rollback()
-    #     return render_template('500.html'), 500
+    @app.errorhandler(500)
+    def internal_error(error):
+        app.logger.error(f'Erro interno do servidor: {error}', exc_info=True)
+        db.session.rollback()
+        return render_template('500.html'), 500
     
     # Cria tabelas do banco de dados
     with app.app_context():
         db.create_all()
+        app.logger.info('Tabelas do banco de dados criadas/verificadas')
     
     return app

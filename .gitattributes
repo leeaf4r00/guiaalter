@@ -1,2 +1,17 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Bytecode
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Virtual env
+venv/
+.env/
+.venv/
+
+# VSCode
+.vscode/
+
+# Outros arquivos que você não quer
+LEIA ME DESKTOP.txt

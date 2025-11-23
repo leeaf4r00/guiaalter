@@ -1,0 +1,65 @@
+[2025-11-23 18:10:51,569] INFO in config: Logging configurado com sucesso
+[2025-11-23 18:10:51,569] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 18:10:51,815] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 18:10:51,826] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-11-23 18:10:53,852] INFO in config: Logging configurado com sucesso
+[2025-11-23 18:10:53,852] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 18:10:54,043] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 18:10:54,054] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-11-23 18:11:01,580] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:02,151] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:02,160] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:02,167] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:02,418] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:02,602] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:02,606] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:03,138] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:07,051] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:11:48,618] INFO in config: Logging configurado com sucesso
+[2025-11-23 18:11:48,619] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 18:11:48,768] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 18:11:48,775] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-11-23 18:11:53,261] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:12:47,627] INFO in config: Logging configurado com sucesso
+[2025-11-23 18:12:47,628] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 18:12:47,927] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 18:12:47,932] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-11-23 18:12:50,178] INFO in config: Logging configurado com sucesso
+[2025-11-23 18:12:50,179] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 18:12:50,353] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 18:12:50,359] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-11-23 18:13:01,827] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:01,830] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:01,855] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:02,176] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:02,291] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:03,753] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:19,000] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:19,004] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:19,005] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:19,006] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:19,020] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:19,391] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:19,669] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:13:19,879] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:18:50,657] INFO in config: Logging configurado com sucesso
+[2025-11-23 18:18:50,658] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 18:18:50,808] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 18:18:50,812] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-11-23 18:18:52,966] INFO in config: Logging configurado com sucesso
+[2025-11-23 18:18:52,967] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 18:18:53,122] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 18:18:53,127] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-11-23 18:18:59,403] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:18:59,472] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:18:59,499] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:00,320] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:00,457] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:05,261] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:05,280] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:05,538] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:06,308] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:06,421] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:06,961] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:07,122] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:19:07,859] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

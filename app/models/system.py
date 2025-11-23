@@ -3,6 +3,9 @@ System Settings Model - Configurações do sistema
 """
 from app import db
 from datetime import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class SystemSettings(db.Model):
@@ -41,6 +44,9 @@ class AuditLog(db.Model):
     ip_address = db.Column(db.String(45))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     
+    # Relacionamento para evitar N+1 queries
+    user = db.relationship('User', foreign_keys=[user_id], backref='audit_logs')
+    
     def __repr__(self):
         return f'<AuditLog {self.action} by user {self.user_id}>'
     
@@ -48,6 +54,7 @@ class AuditLog(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
+            'username': self.user.username if self.user else 'Desconhecido',
             'action': self.action,
             'target': self.target,
             'details': self.details,
@@ -86,7 +93,7 @@ def set_setting(key, value, description=None, user_id=None):
         return True
     except Exception as e:
         db.session.rollback()
-        print(f"Erro ao definir configuração: {e}")
+        logger.error(f"Erro ao definir configuração {key}: {e}", exc_info=True)
         return False
 
 
@@ -105,7 +112,7 @@ def log_action(user_id, action, target=None, details=None, ip_address=None):
         return True
     except Exception as e:
         db.session.rollback()
-        print(f"Erro ao registrar log: {e}")
+        logger.error(f"Erro ao registrar log de ação {action}: {e}", exc_info=True)
         return False
 
 
