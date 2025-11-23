@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tours em Destaque - Alter do Chão</title>
+    <title>Destaques</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,327 +14,122 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 30px 20px;
+            font-family: 'Inter', sans-serif;
+            background: #f7fafc;
+            padding: 20px 15px;
         }
 
         .tours-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .tour-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
         }
 
         .tour-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
 
         .tour-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tour-image img {
-            width: 100%;
-            height: 100%;
+            height: 180px;
             object-fit: cover;
-        }
-
-        .tour-image.lago-verde {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .tour-image.ilha-amor {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        }
-
-        .tour-image.rio-tapajos {
-            background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
-        }
-
-        .tour-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            color: #667eea;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #ecc94b 0%, #d69e2e 100%);
         }
 
         .tour-content {
-            padding: 25px;
+            padding: 18px;
         }
 
         .tour-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #2d3748;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .tour-title i {
-            color: #667eea;
+            color: #ecc94b;
         }
 
         .tour-description {
             color: #718096;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        .tour-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            color: #4a5568;
-            background: #f7fafc;
-            padding: 6px 12px;
-            border-radius: 8px;
-        }
-
-        .feature i {
-            color: #667eea;
             font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
 
         .tour-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid #e2e8f0;
         }
 
         .tour-price {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .price-label {
-            font-size: 0.75rem;
-            color: #a0aec0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .price-value {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #d69e2e;
         }
 
         .tour-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ecc94b 0%, #d69e2e 100%);
             color: white;
             border: none;
-            padding: 12px 28px;
+            padding: 10px 20px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+            text-align: center;
         }
 
         .tour-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 20px 15px;
-            }
-
-            .tours-grid {
-                grid-template-columns: 1fr;
-            }
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(236, 201, 75, 0.4);
         }
     </style>
 </head>
 
 <body>
     <div class="tours-grid">
-        <!-- Card 1: Lago Verde -->
+        {% for tour in tours %}
         <div class="tour-card">
-            <div class="tour-image lago-verde">
-                <img src="/static/img/lagoverde/lagoverde1.jpg" alt="Lago Verde">
-                <div class="tour-badge">⭐ Mais Popular</div>
-            </div>
+            <img src="{{ tour.image_url }}" alt="{{ tour.title }}" class="tour-image"
+                onerror="this.style.background='linear-gradient(135deg, #ecc94b 0%, #d69e2e 100%)'">
             <div class="tour-content">
                 <h3 class="tour-title">
-                    <i class="fas fa-water"></i>
-                    Lago Verde
+                    <i class="fas fa-star"></i>
+                    {{ tour.title }}
                 </h3>
                 <p class="tour-description">
-                    Conheça o famoso Lago Verde, com suas águas cristalinas de cor esmeralda. Inclui visita à Ilha do
-                    Amor, a praia de água doce mais bonita do Brasil, e banho nas praias de areia branca.
+                    {{ tour.description }}
                 </p>
-                <div class="tour-features">
-                    <div class="feature">
-                        <i class="fas fa-clock"></i>
-                        4-5 horas
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-ship"></i>
-                        Barco regional
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-camera"></i>
-                        Fotos incluídas
-                    </div>
-                </div>
                 <div class="tour-footer">
-                    <div class="tour-price">
-                        <span class="price-label">A partir de</span>
-                        <span class="price-value">R$ 150</span>
-                    </div>
-                    <button class="tour-button">
-                        <i class="fas fa-ticket-alt"></i> Reservar
-                    </button>
+                    <div class="tour-price">R$ {{ tour.price }}</div>
+                    <a href="https://wa.me/5593991160523?text={{ tour.whatsapp_message }}" target="_blank"
+                        class="tour-button">Reservar</a>
                 </div>
             </div>
         </div>
-
-        <!-- Card 2: Ilha do Amor -->
-        <div class="tour-card">
-            <div class="tour-image ilha-amor">
-                <img src="/static/img/lagoverde/alterdochao.jpg" alt="Ilha do Amor">
-                <div class="tour-badge">🏖️ Imperdível</div>
-            </div>
-            <div class="tour-content">
-                <h3 class="tour-title">
-                    <i class="fas fa-umbrella-beach"></i>
-                    Ilha do Amor
-                </h3>
-                <p class="tour-description">
-                    A famosa Ilha do Amor, formação de areia que surge na época da seca (julho a dezembro). Considerada
-                    uma das praias de água doce mais belas do Brasil, perfeita para relaxar e curtir o pôr do sol.
-                </p>
-                <div class="tour-features">
-                    <div class="feature">
-                        <i class="fas fa-clock"></i>
-                        3-4 horas
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-sun"></i>
-                        Melhor: Jul-Dez
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-umbrella-beach"></i>
-                        Praia privativa
-                    </div>
-                </div>
-                <div class="tour-footer">
-                    <div class="tour-price">
-                        <span class="price-label">A partir de</span>
-                        <span class="price-value">R$ 120</span>
-                    </div>
-                    <button class="tour-button">
-                        <i class="fas fa-ticket-alt"></i> Reservar
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 3: Rio Tapajós -->
-        <div class="tour-card">
-            <div class="tour-image rio-tapajos">
-                <img src="/static/img/lagoverde/florestaencantada.jpg" alt="Rio Tapajós">
-                <div class="tour-badge">🚤 Aventura</div>
-            </div>
-            <div class="tour-content">
-                <h3 class="tour-title">
-                    <i class="fas fa-ship"></i>
-                    Passeio pelo Rio Tapajós
-                </h3>
-                <p class="tour-description">
-                    Navegue pelas águas do Rio Tapajós, um dos rios mais limpos do mundo. Visite comunidades
-                    ribeirinhas, florestas alagadas e praias escondidas. Inclui paradas para banho e fotos panorâmicas.
-                </p>
-                <div class="tour-features">
-                    <div class="feature">
-                        <i class="fas fa-clock"></i>
-                        6-7 horas
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-utensils"></i>
-                        Almoço incluso
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-fish"></i>
-                        Pesca opcional
-                    </div>
-                </div>
-                <div class="tour-footer">
-                    <div class="tour-price">
-                        <span class="price-label">A partir de</span>
-                        <span class="price-value">R$ 200</span>
-                    </div>
-                    <button class="tour-button">
-                        <i class="fas fa-ticket-alt"></i> Reservar
-                    </button>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <p>Nenhum passeio encontrado nesta categoria.</p>
+        {% endfor %}
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const cards = document.querySelectorAll('.tour-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.transition = 'all 0.6s ease-out';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 150);
-            });
-
-            document.querySelectorAll('.tour-button').forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const tourName = this.closest('.tour-card').querySelector('.tour-title').textContent.trim();
-                    alert(`Reserva para: ${tourName}\n\nEm breve você será redirecionado para o WhatsApp para finalizar sua reserva!`);
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

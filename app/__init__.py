@@ -34,6 +34,7 @@ def create_app():
     
     # Importa models
     from app.models.users import User
+    from app.models.tours import Tour
     
     @login_manager.user_loader
     def load_user(user_id):

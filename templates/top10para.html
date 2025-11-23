@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Top 10 Pará - Guia de Alter{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <h1 class="text-center" style="margin-bottom: 40px;">Top 10 Atrações no Pará</h1>
+    <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1em; color: #666;">
+        O Pará é um estado rico em cultura, natureza e gastronomia. Confira nossa seleção das 10 atrações imperdíveis
+        para quem visita a região.
+    </p>
+
+    <div class="top10-list"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+
+        <!-- Item 1 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-umbrella-beach fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">1. Alter do Chão</h3>
+                <p>Conhecida como o "Caribe Amazônico", Alter do Chão possui praias de água doce incríveis, como a Ilha
+                    do Amor, e é o palco do famoso Sairé.</p>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-landmark fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">2. Mercado Ver-o-Peso (Belém)</h3>
+                <p>O maior mercado a céu aberto da América Latina. Um festival de cheiros, sabores e cores, onde você
+                    encontra de tudo, desde peixes frescos até ervas medicinais.</p>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-water fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">3. Ilha do Marajó</h3>
+                <p>A maior ilha fluviomarítima do mundo. Famosa por seus búfalos, praias de rio e mar, e rica cultura
+                    marajoara.</p>
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-tree fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">4. Estação das Docas (Belém)</h3>
+                <p>Um complexo turístico moderno à beira da Baía do Guajará, com restaurantes, lojas e uma vista
+                    incrível do pôr do sol.</p>
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-church fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">5. Basílica de Nazaré</h3>
+                <p>O ponto final do Círio de Nazaré, a maior procissão católica do mundo. Uma arquitetura belíssima e um
+                    local de muita fé.</p>
+            </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-leaf fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">6. Mangal das Garças</h3>
+                <p>Um parque ecológico no coração de Belém, com borboletário, viveiro de pássaros e o famoso farol com
+                    vista panorâmica.</p>
+            </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-swimmer fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">7. Salinas (Salinópolis)</h3>
+                <p>Destino favorito dos paraenses para curtir o mar. Praias extensas onde é possível entrar com o carro
+                    na areia.</p>
+            </div>
+        </div>
+
+        <!-- Item 8 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-theater-masks fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">8. Theatro da Paz</h3>
+                <p>Um dos teatros mais bonitos do Brasil, herança da época áurea da borracha. Uma visita guiada
+                    imperdível.</p>
+            </div>
+        </div>
+
+        <!-- Item 9 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-mountain fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">9. Serra das Andorinhas</h3>
+                <p>Localizada em São Geraldo do Araguaia, oferece trilhas, cavernas e cachoeiras para os amantes do
+                    ecoturismo.</p>
+            </div>
+        </div>
+
+        <!-- Item 10 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-utensils fa-3x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">10. Gastronomia Paraense</h3>
+                <p>Não é um lugar, mas uma atração à parte. Açaí, tacacá, maniçoba, pato no tucupi... Sabores únicos que
+                    você só encontra aqui.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

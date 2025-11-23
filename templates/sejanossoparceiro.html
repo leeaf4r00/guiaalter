@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Seja Nosso Parceiro - Guia de Alter{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <h1 class="text-center" style="margin-bottom: 30px;">Seja Nosso Parceiro</h1>
+
+    <div class="row" style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
+        <div class="col-md-6" style="flex: 1; min-width: 300px; max-width: 600px;">
+            <h3>Por que ser parceiro do Guia de Alter?</h3>
+            <p>O Guia de Alter é a principal referência para turistas que visitam Alter do Chão e região. Ao se tornar
+                nosso parceiro, você ganha visibilidade e acesso a um público qualificado que busca as melhores
+                experiências.</p>
+
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="margin-bottom: 15px;">
+                    <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 10px;"></i>
+                    Maior visibilidade para seu negócio
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 10px;"></i>
+                    Acesso direto a turistas
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 10px;"></i>
+                    Divulgação em nossas redes sociais
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 10px;"></i>
+                    Suporte dedicado
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-6"
+            style="flex: 1; min-width: 300px; max-width: 600px; background: #f9f9f9; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h3 class="text-center">Cadastre-se</h3>
+            <form action="#" method="POST">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="nome">Nome da Empresa / Profissional</label>
+                    <input type="text" id="nome" name="nome" class="form-control"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-control"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="telefone">Telefone / WhatsApp</label>
+                    <input type="tel" id="telefone" name="telefone" class="form-control"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" required>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" name="categoria" class="form-control"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        <option value="passeios">Passeios e Tours</option>
+                        <option value="hospedagem">Hospedagem</option>
+                        <option value="gastronomia">Gastronomia</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" class="form-control"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; padding: 12px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Enviar
+                    Cadastro</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

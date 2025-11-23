@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Busca - Guia de Alter{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <h1 class="mb-4">Resultados da Busca: "{{ query }}"</h1>
+
+    {% if results %}
+    <div class="row">
+        {% for tour in results %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ tour.image_url }}" class="card-img-top" alt="{{ tour.title }}"
+                    style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tour.title }}</h5>
+                    <p class="card-text text-muted">{{ tour.description }}</p>
+                    <h6 class="text-primary font-weight-bold">R$ {{ tour.price }}</h6>
+                </div>
+                <div class="card-footer bg-white border-top-0">
+                    <a href="https://wa.me/5593991160523?text={{ tour.whatsapp_message }}" target="_blank"
+                        class="btn btn-primary w-100">Reservar</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        <h4>Nenhum resultado encontrado.</h4>
+        <p>Tente buscar por outros termos como "Lago", "Rio" ou "Praia".</p>
+        <a href="{{ url_for('routes.index') }}" class="btn btn-outline-primary mt-3">Voltar para Home</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

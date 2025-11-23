@@ -42,7 +42,7 @@
             width: 100%;
             height: 180px;
             object-fit: cover;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
         }
 
         .tour-content {
@@ -60,7 +60,7 @@
         }
 
         .tour-title i {
-            color: #4facfe;
+            color: #48bb78;
         }
 
         .tour-description {
@@ -81,11 +81,11 @@
         .tour-price {
             font-size: 1.5rem;
             font-weight: 800;
-            color: #4facfe;
+            color: #48bb78;
         }
 
         .tour-button {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -94,84 +94,41 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
         }
 
         .tour-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
         }
     </style>
 </head>
 
 <body>
     <div class="tours-grid">
+        {% for tour in tours %}
         <div class="tour-card">
-            <img src="/static/img/lagoverde/lagoverde1.jpg" alt="Lago Verde" class="tour-image">
+            <img src="{{ tour.image_url }}" alt="{{ tour.title }}" class="tour-image"
+                onerror="this.style.background='linear-gradient(135deg, #48bb78 0%, #38a169 100%)'">
             <div class="tour-content">
                 <h3 class="tour-title">
                     <i class="fas fa-water"></i>
-                    Lago Verde
+                    {{ tour.title }}
                 </h3>
                 <p class="tour-description">
-                    Águas cristalinas e praias paradisíacas
+                    {{ tour.description }}
                 </p>
                 <div class="tour-footer">
-                    <div class="tour-price">R$ 150</div>
-                    <button class="tour-button">Ver Mais</button>
+                    <div class="tour-price">R$ {{ tour.price }}</div>
+                    <a href="https://wa.me/5593991160523?text={{ tour.whatsapp_message }}" target="_blank"
+                        class="tour-button">Reservar</a>
                 </div>
             </div>
         </div>
-
-        <div class="tour-card">
-            <img src="/static/img/lagoverde/alterdochao.jpg" alt="Ilha do Amor" class="tour-image">
-            <div class="tour-content">
-                <h3 class="tour-title">
-                    <i class="fas fa-heart"></i>
-                    Ilha do Amor
-                </h3>
-                <p class="tour-description">
-                    Areia branca e paisagens deslumbrantes
-                </p>
-                <div class="tour-footer">
-                    <div class="tour-price">R$ 120</div>
-                    <button class="tour-button">Ver Mais</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="tour-card">
-            <img src="/static/img/lagoverde/florestaencantada.jpg" alt="Floresta Encantada" class="tour-image">
-            <div class="tour-content">
-                <h3 class="tour-title">
-                    <i class="fas fa-tree"></i>
-                    Floresta Encantada
-                </h3>
-                <p class="tour-description">
-                    Trilhas e natureza exuberante
-                </p>
-                <div class="tour-footer">
-                    <div class="tour-price">R$ 140</div>
-                    <button class="tour-button">Ver Mais</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="tour-card">
-            <img src="/static/img/lagoverde/igarapecamarao.jpg" alt="Igarapé do Camarão" class="tour-image">
-            <div class="tour-content">
-                <h3 class="tour-title">
-                    <i class="fas fa-fish"></i>
-                    Igarapé do Camarão
-                </h3>
-                <p class="tour-description">
-                    Águas calmas e vida aquática
-                </p>
-                <div class="tour-footer">
-                    <div class="tour-price">R$ 130</div>
-                    <button class="tour-button">Ver Mais</button>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <p>Nenhum passeio encontrado nesta categoria.</p>
+        {% endfor %}
     </div>
 </body>
 

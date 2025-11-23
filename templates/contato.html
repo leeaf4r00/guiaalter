@@ -1,130 +1,106 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
+{% block title %}Contato - Guia de Alter{% endblock %}
 
-        h1 {
-            color: #007BFF;
-        }
+{% block content %}
+<div class="container" style="padding: 60px 20px;">
+    <h1 class="text-center" style="margin-bottom: 40px;">Fale Conosco</h1>
 
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box;
-        }
+    <div class="row" style="display: flex; flex-wrap: wrap; gap: 50px; justify-content: center;">
 
-        p {
-            margin-bottom: 16px;
-            color: #333;
-        }
+        <!-- Contact Info -->
+        <div class="col-md-5" style="flex: 1; min-width: 300px;">
+            <h3 style="margin-bottom: 20px; color: #3498db;">Informações de Contato</h3>
+            <p style="margin-bottom: 30px; color: #666;">Estamos prontos para tirar suas dúvidas e ajudar a planejar sua
+                viagem perfeita.</p>
 
-        a {
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: bold;
-        }
+            <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div class="icon"
+                    style="width: 50px; height: 50px; background: #e8f4fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-phone-alt" style="color: #3498db; font-size: 1.2rem;"></i>
+                </div>
+                <div>
+                    <h5 style="margin: 0; font-size: 1rem; color: #333;">Telefone</h5>
+                    <p style="margin: 0; color: #666;">+55 (93) 99116-0523</p>
+                </div>
+            </div>
 
-        form {
-            margin-top: 20px;
-        }
+            <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div class="icon"
+                    style="width: 50px; height: 50px; background: #e8f4fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-envelope" style="color: #3498db; font-size: 1.2rem;"></i>
+                </div>
+                <div>
+                    <h5 style="margin: 0; font-size: 1rem; color: #333;">E-mail</h5>
+                    <p style="margin: 0; color: #666;">contato@guiadealter.com.br</p>
+                </div>
+            </div>
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-        }
+            <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 20px;">
+                <div class="icon"
+                    style="width: 50px; height: 50px; background: #e8f4fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-map-marker-alt" style="color: #3498db; font-size: 1.2rem;"></i>
+                </div>
+                <div>
+                    <h5 style="margin: 0; font-size: 1rem; color: #333;">Localização</h5>
+                    <p style="margin: 0; color: #666;">Alter do Chão, Santarém - PA</p>
+                </div>
+            </div>
 
-        input,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            transition: border-color 0.3s ease-in-out;
-        }
+            <div class="social-links" style="margin-top: 30px;">
+                <h5 style="margin-bottom: 15px;">Siga-nos</h5>
+                <a href="#" style="color: #3498db; font-size: 1.5rem; margin-right: 15px;"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" style="color: #3498db; font-size: 1.5rem; margin-right: 15px;"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="#" style="color: #3498db; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
 
-        input,
-        textarea:focus {
-            border-color: #007BFF;
-        }
+        <!-- Contact Form -->
+        <div class="col-md-6"
+            style="flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+            <h3 style="margin-bottom: 20px;">Envie uma Mensagem</h3>
+            <form action="#" method="POST">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="nome" style="display: block; margin-bottom: 8px; font-weight: 500;">Nome
+                        Completo</label>
+                    <input type="text" id="nome" name="nome" class="form-control"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; outline: none; transition: border 0.3s;"
+                        required>
+                </div>
 
-        button {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-        }
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="email" style="display: block; margin-bottom: 8px; font-weight: 500;">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-control"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; outline: none; transition: border 0.3s;"
+                        required>
+                </div>
 
-        button:hover {
-            background-color: #0056b3;
-        }
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="assunto" style="display: block; margin-bottom: 8px; font-weight: 500;">Assunto</label>
+                    <select id="assunto" name="assunto" class="form-control"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; outline: none; transition: border 0.3s;">
+                        <option value="duvidas">Dúvidas Gerais</option>
+                        <option value="reservas">Reservas</option>
+                        <option value="parceria">Parcerias</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
 
-        .whatsapp-button {
-            display: block;
-            margin-top: 10px;
-            background-color: #25D366;
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s ease-in-out;
-        }
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="mensagem" style="display: block; margin-bottom: 8px; font-weight: 500;">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" class="form-control"
+                        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; outline: none; transition: border 0.3s;"
+                        required></textarea>
+                </div>
 
-        .whatsapp-button:hover {
-            background-color: #128C7E;
-        }
-    </style>
-</head>
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; padding: 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.3s;">Enviar
+                    Mensagem</button>
+            </form>
+        </div>
 
-<body>
-    <div class="contact-container">
-        <h1>Entre em Contato</h1>
-
-        <p>Para falar com o suporte, entre em contato pelos seguintes meios:</p>
-
-        <p>Número de Telefone: <a href="tel:+55 93991160523">+55 93991160523</a></p>
-        <p>Email de Suporte: <a href="mailto:guiadealter@contato.com">guiadealter@contato.com</a></p>
-
-        <form action="mailto:guiadealter@contato.com" method="post" enctype="text/plain">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone">
-
-            <label for="mensagem">Mensagem:</label>
-            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
-
-            <button type="submit">Enviar Mensagem</button>
-        </form>
-
-        <a href="https://wa.me/5599991160523" target="_blank" class="whatsapp-button">Entrar em Contato via WhatsApp</a>
     </div>
-</body>
-
-</html>
+</div>
+{% endblock %}

@@ -1,48 +1,95 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROTEIROS E PACOTES DE VIAGEM PARA ALTER DO CHÃO</title>
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-</head>
+{% block title %}Pacotes de Viagem - Guia de Alter{% endblock %}
 
-<body>
-    <nav>
-        <div class="logo">Guia de Alter</div>
-        <div class="links">
-            <ul class="nav-itens">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Preços</a></li>
-                <li><a href="#">Suporte</a></li>
-            </ul>
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <h1 class="text-center" style="margin-bottom: 40px;">Pacotes de Viagem</h1>
+    <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1em; color: #666;">
+        Escolha o pacote ideal para suas férias. Temos opções para todos os estilos, desde aventuras radicais até
+        roteiros românticos.
+    </p>
+
+    <div class="packages-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+
+        <!-- Pacote 1 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #2ecc71; display: flex; align-items: center; justify-content: center; color: white;">
+                <i class="fas fa-map-marked-alt fa-4x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">Alter Essencial</h3>
+                <p class="price" style="font-size: 1.5rem; color: #3498db; font-weight: bold;">3 Dias / 2 Noites</p>
+                <p style="color: #666; margin: 15px 0;">O roteiro perfeito para quem tem pouco tempo mas quer conhecer o
+                    principal de Alter.</p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Transfer In/Out</li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Hospedagem com café</li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Passeio Lago Verde</li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Passeio Ilha do Amor
+                    </li>
+                </ul>
+                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
+                    style="display: block; text-align: center; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Solicitar
+                    Cotação</a>
+            </div>
         </div>
-        <div class="btn">
-            <button href="#" class="login">Login</button>
-            <button href="#" class="cadastro">Cadastro</button>
+
+        <!-- Pacote 2 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #e67e22; display: flex; align-items: center; justify-content: center; color: white;">
+                <i class="fas fa-compass fa-4x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">Explorador do Tapajós</h3>
+                <p class="price" style="font-size: 1.5rem; color: #3498db; font-weight: bold;">5 Dias / 4 Noites</p>
+                <p style="color: #666; margin: 15px 0;">Uma imersão completa na natureza e cultura local. Visite
+                    comunidades e praias desertas.</p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Tudo do pacote Essencial
+                    </li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Passeio Rio Arapiuns
+                    </li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Almoço em comunidade
+                    </li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Trilha na Floresta</li>
+                </ul>
+                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
+                    style="display: block; text-align: center; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Solicitar
+                    Cotação</a>
+            </div>
         </div>
 
-    </nav>
-    <div class="container mt-5">
-        <h1 class="text-center">ROTEIROS E PACOTES DE VIAGEM PARA ALTER DO CHÃO</h1>
-        <ul>
-            <li><a href="templates/pacotes/passeioscustomizados.html" target="iframe">Passeios Customizados</a></li>
-            <li><a href="templates/pacotes/passeioscomroteirosdefinidos.html" target="iframe">Passeios com Roteiros
-                    Definidos</a></li>
-            <li><a href="templates/pacotes/passeiosnorturnosgastronomicos.html" target="iframe">Passeios Noturnos
-                    Gastronômicos</a></li>
-        </ul>
-        <iframe src="{{ url_for('routes.tourdestaques') }}" width="100%" height="400" style="border:0;"></iframe>
+        <!-- Pacote 3 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #9b59b6; display: flex; align-items: center; justify-content: center; color: white;">
+                <i class="fas fa-moon fa-4x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">Lua de Mel Amazônica</h3>
+                <p class="price" style="font-size: 1.5rem; color: #3498db; font-weight: bold;">4 Dias / 3 Noites</p>
+                <p style="color: #666; margin: 15px 0;">Romantismo e exclusividade. Jantares à luz de velas e passeios
+                    privativos.</p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Bangalô Privativo</li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Jantar Romântico</li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Passeio Pôr do Sol</li>
+                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Espumante de boas-vindas
+                    </li>
+                </ul>
+                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
+                    style="display: block; text-align: center; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Solicitar
+                    Cotação</a>
+            </div>
+        </div>
+
     </div>
-    <!-- Inclua os links para os scripts do Bootstrap no final do corpo do documento -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+</div>
+{% endblock %}

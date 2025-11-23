@@ -94,6 +94,8 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
         }
 
         .tour-button:hover {
@@ -105,59 +107,28 @@
 
 <body>
     <div class="tours-grid">
+        {% for tour in tours %}
         <div class="tour-card">
-            <img src="/static/img/rioarapiuns/alterdochao.jpg" alt="Alter do Chão" class="tour-image"
+            <img src="{{ tour.image_url }}" alt="{{ tour.title }}" class="tour-image"
                 onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
             <div class="tour-content">
                 <h3 class="tour-title">
-                    <i class="fas fa-home"></i>
-                    Alter do Chão
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ tour.title }}
                 </h3>
                 <p class="tour-description">
-                    Centro turístico principal
+                    {{ tour.description }}
                 </p>
                 <div class="tour-footer">
-                    <div class="tour-price">R$ 100</div>
-                    <button class="tour-button">Ver Mais</button>
+                    <div class="tour-price">R$ {{ tour.price }}</div>
+                    <a href="https://wa.me/5593991160523?text={{ tour.whatsapp_message }}" target="_blank"
+                        class="tour-button">Reservar</a>
                 </div>
             </div>
         </div>
-
-        <div class="tour-card">
-            <img src="/static/img/rioarapiuns/canaldojari.jpg" alt="Canal do Jari" class="tour-image"
-                onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
-            <div class="tour-content">
-                <h3 class="tour-title">
-                    <i class="fas fa-ship"></i>
-                    Comunidades Tradicionais
-                </h3>
-                <p class="tour-description">
-                    Conheça a cultura ribeirinha
-                </p>
-                <div class="tour-footer">
-                    <div class="tour-price">R$ 170</div>
-                    <button class="tour-button">Ver Mais</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="tour-card">
-            <img src="/static/img/rioarapiuns/flonatapajos.jpg" alt="Flona Tapajós" class="tour-image"
-                onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
-            <div class="tour-content">
-                <h3 class="tour-title">
-                    <i class="fas fa-tree"></i>
-                    Trilhas Ecológicas
-                </h3>
-                <p class="tour-description">
-                    Explore a floresta amazônica
-                </p>
-                <div class="tour-footer">
-                    <div class="tour-price">R$ 165</div>
-                    <button class="tour-button">Ver Mais</button>
-                </div>
-            </div>
-        </div>
+        {% else %}
+        <p>Nenhum passeio encontrado nesta categoria.</p>
+        {% endfor %}
     </div>
 </body>
 

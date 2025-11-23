@@ -6,6 +6,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from app import db
 from app.models.users import User, get_user_by_username, get_user_by_email, create_user
+from app.models.tours import Tour
 
 routes = Blueprint('routes', __name__)
 
@@ -17,7 +18,7 @@ def index():
 
 
 @routes.route('/login', methods=['GET', 'POST'])
-def login_page():
+def login():
     """Página de login"""
     if request.method == 'GET':
         return render_template('login.html')
@@ -88,6 +89,28 @@ def logout():
     return redirect(url_for('routes.index'))
 
 
+@routes.route('/perfil')
+@login_required
+def perfil():
+    """Página de perfil do usuário"""
+    return render_template('perfil.html')
+
+
+@routes.route('/busca')
+def busca():
+    """Rota de busca"""
+    query = request.args.get('q', '')
+    results = []
+    if query:
+        # Busca case-insensitive por título ou descrição
+        results = Tour.query.filter(
+            (Tour.title.ilike(f'%{query}%')) | 
+            (Tour.description.ilike(f'%{query}%'))
+        ).all()
+    
+    return render_template('busca.html', query=query, results=results)
+
+
 # Páginas de conteúdo
 @routes.route('/reservas')
 def reservas():
@@ -131,7 +154,7 @@ def sobrenos():
 
 @routes.route('/conhecaalter')
 def conhecaalter():
-    return render_template('conhecaalter.html')
+    return render_template('conheca_alter.html')
 
 
 @routes.route('/souvenir')
@@ -149,30 +172,40 @@ def rotas_page():
     return render_template('rotas.html')
 
 
+@routes.route('/top10para')
+def top10para():
+    return render_template('top10para.html')
+
+
 # Passeios - iframes
 @routes.route('/rioarapiuns')
 def rioarapiuns():
-    return render_template('rioarapiuns.html')
+    tours = Tour.query.filter_by(category='rioarapiuns', is_active=True).all()
+    return render_template('rioarapiuns.html', tours=tours)
 
 
 @routes.route('/lagoverde')
 def lagoverde():
-    return render_template('lagoverde.html')
+    tours = Tour.query.filter_by(category='lagoverde', is_active=True).all()
+    return render_template('lagoverde.html', tours=tours)
 
 
 @routes.route('/descendoorio')
 def descendoorio():
-    return render_template('descendoorio.html')
+    tours = Tour.query.filter_by(category='descendoorio', is_active=True).all()
+    return render_template('descendoorio.html', tours=tours)
 
 
 @routes.route('/subindoorio')
 def subindoorio():
-    return render_template('subindoorio.html')
+    tours = Tour.query.filter_by(category='subindoorio', is_active=True).all()
+    return render_template('subindoorio.html', tours=tours)
 
 
 @routes.route('/tourdestaques')
 def tourdestaques():
-    return render_template('tourdestaques.html')
+    tours = Tour.query.filter_by(category='tourdestaques', is_active=True).all()
+    return render_template('tourdestaques.html', tours=tours)
 
 
 @routes.route('/depoimentos')

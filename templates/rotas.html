@@ -1,40 +1,54 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <title>Mapa de Rotas - Alter do Chão</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}Mapa de Rotas - Guia de Alter{% endblock %}
 
-    <!-- Incluindo o CSS do Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+{% block extra_css %}
+<!-- Incluindo o CSS do Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<style>
+    #mapid {
+        height: 600px;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+{% endblock %}
 
-    <!-- Incluindo o arquivo CSS personalizado para o mapa -->
-    <link rel="stylesheet" href="static/css/maps.css">
-</head>
-
-<body>
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <h1 class="text-center" style="margin-bottom: 30px;">Mapa de Rotas</h1>
+    <p class="text-center" style="margin-bottom: 40px;">Explore as principais rotas e pontos turísticos de Alter do
+        Chão.</p>
 
     <div id="mapid"></div>
+</div>
+{% endblock %}
 
-    <!-- Incluindo o JavaScript do Leaflet -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+{% block extra_scripts %}
+<!-- Incluindo o JavaScript do Leaflet -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <script>
-        // Inicializando o mapa e configurando as coordenadas e o nível de zoom
-        var mymap = L.map('mapid').setView([-2.50381, -54.95145], 13);
+<script>
+    // Inicializando o mapa e configurando as coordenadas e o nível de zoom
+    var mymap = L.map('mapid').setView([-2.50381, -54.95145], 13);
 
-        // Adicionando os tiles do OpenStreetMap ao mapa
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© Contribuições do OpenStreetMap'
-        }).addTo(mymap);
+    // Adicionando os tiles do OpenStreetMap ao mapa
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© Contribuições do OpenStreetMap'
+    }).addTo(mymap);
 
-        // Adicionando um marcador no mapa
-        var marker = L.marker([-2.50381, -54.95145]).addTo(mymap);
-        marker.bindPopup("<b>Olá!</b><br>Alter do Chão.").openPopup();
-    </script>
+    // Adicionando um marcador no mapa
+    var marker = L.marker([-2.50381, -54.95145]).addTo(mymap);
+    marker.bindPopup("<b>Alter do Chão</b><br>O Caribe Amazônico.").openPopup();
 
-</body>
+    // Adicionando mais marcadores (Exemplos)
+    var lagoVerde = L.marker([-2.495, -54.955]).addTo(mymap);
+    lagoVerde.bindPopup("<b>Lago Verde</b><br>Floresta Encantada.");
 
-</html>
+    var ilhaDoAmor = L.marker([-2.500, -54.953]).addTo(mymap);
+    ilhaDoAmor.bindPopup("<b>Ilha do Amor</b><br>Praia mais famosa.");
+
+</script>
+{% endblock %}

@@ -1,75 +1,80 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buffets - Guia de Alter</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
+{% block title %}Buffets e Eventos - Guia de Alter{% endblock %}
 
-        .partner-card {
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <h1 class="text-center" style="margin-bottom: 40px;">Gastronomia e Eventos</h1>
+    <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1em; color: #666;">
+        Conheça nossos parceiros de gastronomia e espaços para eventos em Alter do Chão.
+    </p>
 
-        .logo {
-            width: 450px;
-            height: 450px;
-            object-fit: contain;
-        }
-
-        .partner-title {
-            color: #007bff;
-        }
-
-        .footer {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            margin-top: 30px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Nossos Parceiros de Buffet</h1>
-
-        <!-- Card do Espaço Ruby -->
-        <div class="card partner-card text-center">
-            <div class="my-3">
-                <img src="static/img/logoruby.png" class="logo mx-auto d-block" alt="Espaço Ruby">
+    <!-- Destaque -->
+    <div class="card mb-5"
+        style="border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 20px; overflow: hidden;">
+        <div class="row g-0">
+            <div class="col-md-4"
+                style="background: #f8f9fa; display: flex; align-items: center; justify-content: center; padding: 20px;">
+                <img src="{{ url_for('static', filename='img/logoruby.png') }}" alt="Espaço Ruby"
+                    style="max-width: 100%; max-height: 200px;">
             </div>
-            <div class="card-body">
-                <h5 class="card-title partner-title">Espaço Ruby</h5>
-                <p class="card-text">O Espaço Ruby é conhecido por sua excelência em serviços de buffet e eventos. Veja
-                    algumas de nossas colaborações de sucesso.</p>
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="static/img/ruby1.png" class="img-fluid" alt="Evento no Espaço Ruby">
+            <div class="col-md-8">
+                <div class="card-body" style="padding: 40px;">
+                    <h2 class="card-title" style="color: #3498db; margin-bottom: 20px;">Espaço Ruby</h2>
+                    <p class="card-text" style="font-size: 1.1em; color: #555; margin-bottom: 20px;">
+                        Referência em buffet e organização de eventos na região. O Espaço Ruby oferece uma experiência
+                        gastronômica única, com pratos regionais e internacionais, em um ambiente sofisticado e
+                        acolhedor.
+                    </p>
+                    <h5 style="margin-bottom: 15px;">Especialidades:</h5>
+                    <ul
+                        style="list-style: none; padding: 0; display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px;">
+                        <li><i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 5px;"></i> Casamentos
+                        </li>
+                        <li><i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 5px;"></i> Eventos
+                            Corporativos</li>
+                        <li><i class="fas fa-check-circle" style="color: #2ecc71; margin-right: 5px;"></i> Buffet
+                            Completo</li>
+                    </ul>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-6">
+                            <img src="{{ url_for('static', filename='img/ruby1.png') }}" class="img-fluid rounded"
+                                alt="Evento Ruby 1" style="width: 100%; height: 150px; object-fit: cover;">
+                        </div>
+                        <div class="col-6">
+                            <img src="{{ url_for('static', filename='img/ruby2.png') }}" class="img-fluid rounded"
+                                alt="Evento Ruby 2" style="width: 100%; height: 150px; object-fit: cover;">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <img src="static/img/ruby2.png" class="img-fluid" alt="Evento no Espaço Ruby">
-                    </div>
+                    <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
+                        style="padding: 12px 30px; background-color: #3498db; color: white; text-decoration: none; border-radius: 50px; font-weight: bold;">Solicitar
+                        Orçamento</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Adicione mais cards para outros parceiros aqui -->
+    <!-- Outros Parceiros -->
+    <h3 class="text-center" style="margin-bottom: 30px;">Outras Opções</h3>
+    <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+
+        <div class="col-md-4" style="flex: 1; min-width: 300px; max-width: 400px;">
+            <div class="card" style="border: 1px solid #eee; border-radius: 10px; padding: 20px; text-align: center;">
+                <i class="fas fa-utensils fa-3x" style="color: #e67e22; margin-bottom: 15px;"></i>
+                <h4>Sabor da Amazônia</h4>
+                <p>Restaurante especializado em peixes e culinária paraense.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="flex: 1; min-width: 300px; max-width: 400px;">
+            <div class="card" style="border: 1px solid #eee; border-radius: 10px; padding: 20px; text-align: center;">
+                <i class="fas fa-glass-cheers fa-3x" style="color: #9b59b6; margin-bottom: 15px;"></i>
+                <h4>Alter Drinks</h4>
+                <p>Bar e petiscaria com música ao vivo e drinks exóticos.</p>
+            </div>
+        </div>
 
     </div>
 
-    <div class="footer">
-        © 2024 Guia de Alter. Todos os direitos reservados.
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+</div>
+{% endblock %}

@@ -1,72 +1,65 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nós - Seu Nome de Empresa</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-        }
+{% block title %}Sobre Nós - Guia de Alter{% endblock %}
 
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #f2f2f2;
-        }
+{% block content %}
+<!-- Hero Section -->
+<section class="hero"
+    style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ url_for('static', filename='img/alterdochao_hero.jpg') }}') no-repeat center center/cover; height: 400px; display: flex; align-items: center; justify-content: center; color: white; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 3.5rem; margin-bottom: 20px;">Quem Somos</h1>
+        <p style="font-size: 1.2rem;">Apaixonados por Alter do Chão e dedicados a proporcionar as melhores experiências.
+        </p>
+    </div>
+</section>
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 10px;
-        }
+<div class="container" style="padding: 60px 20px;">
+    <div class="row" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+        <div class="col-md-6" style="flex: 1; min-width: 300px;">
+            <h2 style="color: #3498db; margin-bottom: 20px;">Nossa História</h2>
+            <p style="line-height: 1.8; color: #555;">
+                O Guia de Alter nasceu do amor por este pedaço do paraíso na Amazônia. Fundado em 2023, nosso objetivo é
+                conectar viajantes de todo o mundo com as belezas naturais, a cultura vibrante e a hospitalidade única
+                de Alter do Chão.
+            </p>
+            <p style="line-height: 1.8; color: #555;">
+                Começamos como um pequeno blog de dicas e hoje somos a principal plataforma de turismo da região,
+                oferecendo roteiros personalizados, reservas de passeios e informações completas para tornar sua viagem
+                inesquecível.
+            </p>
+        </div>
+        <div class="col-md-6" style="flex: 1; min-width: 300px;">
+            <img src="{{ url_for('static', filename='img/lagoverde/lagoverde1.jpg') }}" alt="Equipe Guia de Alter"
+                style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        </div>
+    </div>
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-        }
+    <div class="values-section" style="margin-top: 80px; text-align: center;">
+        <h2 style="margin-bottom: 40px;">Nossos Valores</h2>
+        <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
 
-        section {
-            margin: 20px 0;
-        }
+            <div class="value-card"
+                style="flex: 1; min-width: 250px; max-width: 350px; padding: 30px; background: #f9f9f9; border-radius: 10px;">
+                <i class="fas fa-heart" style="font-size: 3rem; color: #e74c3c; margin-bottom: 20px;"></i>
+                <h3>Paixão</h3>
+                <p>Amamos o que fazemos e transmitimos esse amor em cada roteiro que criamos.</p>
+            </div>
 
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
+            <div class="value-card"
+                style="flex: 1; min-width: 250px; max-width: 350px; padding: 30px; background: #f9f9f9; border-radius: 10px;">
+                <i class="fas fa-leaf" style="font-size: 3rem; color: #2ecc71; margin-bottom: 20px;"></i>
+                <h3>Sustentabilidade</h3>
+                <p>Respeitamos e preservamos a natureza, promovendo um turismo consciente e responsável.</p>
+            </div>
 
-<body>
-    <header>
-        <h1>Guia de Alter</h1>
-        <p>Sua melhor escolha para viagens à Ilha de Alter do Chão</p>
-    </header>
+            <div class="value-card"
+                style="flex: 1; min-width: 250px; max-width: 350px; padding: 30px; background: #f9f9f9; border-radius: 10px;">
+                <i class="fas fa-handshake" style="font-size: 3rem; color: #3498db; margin-bottom: 20px;"></i>
+                <h3>Excelência</h3>
+                <p>Buscamos sempre a melhor qualidade em nossos serviços e no atendimento aos nossos clientes.</p>
+            </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="destinos.html">Destinos</a>
-        <a href="pacotes.html">Pacotes</a>
-        <a href="reservas.html">Reservas</a>
-        <a href="sobrenos.html">Sobre Nós</a>
-    </nav>
-
-    <section>
-        <h2>Sobre Nós</h2>
-        <p>Breve descrição sobre a sua empresa e a razão pela qual os clientes devem escolher os seus serviços.</p>
-        <p>Destaque os diferenciais, como atendimento personalizado, pacotes exclusivos, etc.</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Seu Nome de Empresa. Todos os direitos reservados.</p>
-    </footer>
-</body>
-
-</html>
+        </div>
+    </div>
+</div>
+{% endblock %}

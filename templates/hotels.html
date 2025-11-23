@@ -1,69 +1,89 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotéis - Guia de Alter</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
+{% block title %}Hotéis e Pousadas - Guia de Alter{% endblock %}
 
-        .hotel-card {
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+{% block content %}
+<div class="container" style="padding: 40px 20px;">
+    <h1 class="text-center" style="margin-bottom: 40px;">Onde Ficar</h1>
+    <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1em; color: #666;">
+        Selecionamos as melhores opções de hospedagem em Alter do Chão para você relaxar e aproveitar o paraíso.
+    </p>
 
-        .hotel-img {
-            object-fit: cover;
-            height: 200px;
-        }
+    <div class="hotels-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
 
-        .hotel-title {
-            color: #007bff;
-        }
-
-        .hotel-description {
-            color: #555;
-        }
-
-        .footer {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            margin-top: 30px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Nossos Hotéis</h1>
-
-        <!-- Exemplo de um card de hotel -->
-        <div class="card hotel-card">
-            <img src="caminho_para_imagem_do_hotel.jpg" class="card-img-top hotel-img" alt="Nome do Hotel">
-            <div class="card-body">
-                <h5 class="card-title hotel-title">Nome do Hotel</h5>
-                <p class="card-text hotel-description">Descrição breve do hotel. Informações como localização,
-                    comodidades, etc.</p>
-                <a href="#" class="btn btn-primary">Ver Mais</a>
+        <!-- Hotel 1 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-hotel fa-4x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">Pousada do Tapajós</h3>
+                <p style="color: #666; margin-bottom: 15px;">Localização privilegiada de frente para o rio. Quartos
+                    confortáveis com ar-condicionado e café da manhã regional.</p>
+                <div style="margin-bottom: 15px;">
+                    <span
+                        style="background: #e8f4fd; color: #3498db; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; margin-right: 5px;">Wi-Fi
+                        Grátis</span>
+                    <span
+                        style="background: #e8f4fd; color: #3498db; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; margin-right: 5px;">Piscina</span>
+                </div>
+                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
+                    style="display: block; text-align: center; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Ver
+                    Disponibilidade</a>
             </div>
         </div>
 
-        <!-- Repita o card acima para cada hotel -->
+        <!-- Hotel 2 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-bed fa-4x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">Hotel Mirante da Ilha</h3>
+                <p style="color: #666; margin-bottom: 15px;">Vista panorâmica para a Ilha do Amor. Restaurante próprio e
+                    atendimento de excelência.</p>
+                <div style="margin-bottom: 15px;">
+                    <span
+                        style="background: #e8f4fd; color: #3498db; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; margin-right: 5px;">Vista
+                        Rio</span>
+                    <span
+                        style="background: #e8f4fd; color: #3498db; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; margin-right: 5px;">Restaurante</span>
+                </div>
+                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
+                    style="display: block; text-align: center; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Ver
+                    Disponibilidade</a>
+            </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="card"
+            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div
+                style="height: 200px; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #888;">
+                <i class="fas fa-home fa-4x"></i>
+            </div>
+            <div class="card-body" style="padding: 20px;">
+                <h3 style="margin-top: 0;">Chalés da Floresta</h3>
+                <p style="color: #666; margin-bottom: 15px;">Para quem busca sossego e contato com a natureza. Chalés
+                    privativos em meio à mata.</p>
+                <div style="margin-bottom: 15px;">
+                    <span
+                        style="background: #e8f4fd; color: #3498db; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; margin-right: 5px;">Pet
+                        Friendly</span>
+                    <span
+                        style="background: #e8f4fd; color: #3498db; padding: 5px 10px; border-radius: 15px; font-size: 0.8em; margin-right: 5px;">Ecológico</span>
+                </div>
+                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
+                    style="display: block; text-align: center; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Ver
+                    Disponibilidade</a>
+            </div>
+        </div>
 
     </div>
-
-    <div class="footer">
-        © 2024 Guia de Alter. Todos os direitos reservados.
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+</div>
+{% endblock %}

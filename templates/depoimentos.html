@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Depoimentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,47 +14,173 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #f7fafc;
-            padding: 30px;
-        }
-
-        .testimonial {
-            background: white;
-            border-radius: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: transparent;
+            /* Transparente para integrar com o fundo da página pai se necessário */
             padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
-        .author {
-            font-weight: 600;
-            color: #667eea;
-            margin-top: 10px;
+        .testimonials-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .testimonials-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            min-width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .rating {
-            color: #fbbf24;
+            color: #f1c40f;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .text {
+            color: #555;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
             font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .author-info span {
+            font-size: 0.85rem;
+            color: #999;
         }
     </style>
 </head>
 
 <body>
-    <div class="testimonial">
-        <div class="rating">⭐⭐⭐⭐⭐</div>
-        <p>"Experiência incrível! Alter do Chão é realmente o Caribe Amazônico."</p>
-        <div class="author">- Maria Silva</div>
-    </div>
-    <div class="testimonial">
-        <div class="rating">⭐⭐⭐⭐⭐</div>
-        <p>"Passeios maravilhosos e guias muito atenciosos. Recomendo!"</p>
-        <div class="author">- João Santos</div>
-    </div>
-    <div class="testimonial">
-        <div class="rating">⭐⭐⭐⭐⭐</div>
-        <p>"Lugar paradisíaco! Voltarei com certeza."</p>
-        <div class="author">- Ana Costa</div>
+    <div class="testimonials-container">
+        <!-- Depoimento 1 -->
+        <div class="testimonial-card">
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="text">"Simplesmente inesquecível! O passeio pelo Lago Verde foi o ponto alto da nossa viagem. A
+                equipe do Guia de Alter foi super atenciosa."</p>
+            <div class="author">
+                <div class="author-avatar">MS</div>
+                <div class="author-info">
+                    <h4>Maria Silva</h4>
+                    <span>São Paulo, SP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Depoimento 2 -->
+        <div class="testimonial-card">
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="text">"Alter do Chão é um paraíso. Fiquei impressionado com a organização dos passeios e a beleza
+                das praias. Recomendo a todos!"</p>
+            <div class="author">
+                <div class="author-avatar">JO</div>
+                <div class="author-info">
+                    <h4>João Oliveira</h4>
+                    <span>Rio de Janeiro, RJ</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Depoimento 3 -->
+        <div class="testimonial-card">
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">"A culinária local é fantástica e as pessoas são muito acolhedoras. O Guia de Alter nos
+                ajudou a encontrar os melhores lugares."</p>
+            <div class="author">
+                <div class="author-avatar">AC</div>
+                <div class="author-info">
+                    <h4>Ana Costa</h4>
+                    <span>Belo Horizonte, MG</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Depoimento 4 -->
+        <div class="testimonial-card">
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="text">"Experiência única de contato com a natureza. O pôr do sol na Ilha do Amor é algo que vou
+                guardar para sempre na memória."</p>
+            <div class="author">
+                <div class="author-avatar">PR</div>
+                <div class="author-info">
+                    <h4>Pedro Rocha</h4>
+                    <span>Curitiba, PR</span>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

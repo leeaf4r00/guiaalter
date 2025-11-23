@@ -15,10 +15,23 @@
 
         <div class="login-nav">
             <ul class="nav-itens">
+                <!-- Search Bar -->
+                <li class="search-item">
+                    <form action="{{ url_for('routes.busca') }}" method="get" class="search-form"
+                        style="display: flex; align-items: center; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 10px;">
+                        <input type="text" name="q" placeholder="Buscar passeios..."
+                            style="border: none; background: transparent; color: white; outline: none; padding: 5px; width: 150px;">
+                        <button type="submit" style="background: none; border: none; color: white; cursor: pointer;"><i
+                                class="fas fa-search"></i></button>
+                    </form>
+                </li>
+
                 {% if current_user.is_authenticated %}
                 <li class="user-greeting">
-                    <i class="fas fa-user-circle"></i>
-                    Olá, {{ current_user.username }}
+                    <a href="{{ url_for('routes.perfil') }}" style="color: white; text-decoration: none;">
+                        <i class="fas fa-user-circle"></i>
+                        Olá, {{ current_user.username }}
+                    </a>
                 </li>
                 {% if current_user.is_admin %}
                 <li>
