@@ -401,6 +401,121 @@ def api_create_user():
         return jsonify({"error": f"Erro ao criar usuário: {str(e)}"}), 500
 
 
+# ==================== PARTNER APPROVALS ====================
+
+@routes_mobile_admin.route('/api/partners/pending')
+@admin_required
+def api_pending_partners():
+    """Lista de parceiros aguardando aprovação"""
+    try:
+        from app.models.partner import Partner
+        
+        # Busca usuários com status pending e role partner
+        pending_users = User.query.filter_by(status='pending', role='partner').order_by(User.created_at.desc()).all()
+        
+        partners_data = []
+        for user in pending_users:
+            user_dict = user.to_dict()
+            
+            # Adiciona informações do parceiro
+            partner = Partner.query.filter_by(user_id=user.id).first()
+            if partner:
+                user_dict['partner_info'] = partner.to_dict()
+            
+            partners_data.append(user_dict)
+        
+        return jsonify({
+            "pending_partners": partners_data,
+            "total": len(partners_data)
+        }), 200
+    except Exception as e:
+        return jsonify({"error": f"Erro ao buscar parceiros pendentes: {str(e)}"}), 500
+
+
+@routes_mobile_admin.route('/api/partners/<int:user_id>/approve', methods=['POST'])
+@admin_required
+def api_approve_partner(user_id):
+    """Aprovar parceiro"""
+    user = User.query.get_or_404(user_id)
+    
+    if user.role != 'partner':
+        return jsonify({"error": "Usuário não é um parceiro"}), 400
+    
+    if user.status != 'pending':
+        return jsonify({"error": "Usuário não está pendente"}), 400
+    
+    try:
+        # Atualiza status para active
+        user.status = 'active'
+        
+        # Marca parceiro como verificado
+        from app.models.partner import Partner
+        partner = Partner.query.filter_by(user_id=user.id).first()
+        if partner:
+            partner.verified = True
+            partner.verification_date = datetime.utcnow()
+            partner.verified_by = current_user.id
+        
+        db.session.commit()
+        
+        # Log
+        log_action(current_user.id, 'approve_partner', 
+                  target=user.username,
+                  details=f"Partner type: {partner.partner_type if partner else 'unknown'}",
+                  ip_address=request.remote_addr)
+        
+        return jsonify({
+            "success": True, 
+            "message": "Parceiro aprovado com sucesso",
+            "user": user.to_dict()
+        }), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Erro ao aprovar parceiro: {str(e)}"}), 500
+
+
+@routes_mobile_admin.route('/api/partners/<int:user_id>/reject', methods=['POST'])
+@admin_required
+def api_reject_partner(user_id):
+    """Rejeitar/Deletar parceiro pendente"""
+    user = User.query.get_or_404(user_id)
+    
+    if user.role != 'partner':
+        return jsonify({"error": "Usuário não é um parceiro"}), 400
+    
+    if user.status != 'pending':
+        return jsonify({"error": "Usuário não está pendente"}), 400
+    
+    try:
+        data = request.get_json() or {}
+        reason = data.get('reason', 'Não especificado')
+        
+        username = user.username
+        
+        # Deleta parceiro e usuário
+        from app.models.partner import Partner
+        partner = Partner.query.filter_by(user_id=user.id).first()
+        if partner:
+            db.session.delete(partner)
+        
+        db.session.delete(user)
+        db.session.commit()
+        
+        # Log
+        log_action(current_user.id, 'reject_partner', 
+                  target=username,
+                  details=f"Reason: {reason}",
+                  ip_address=request.remote_addr)
+        
+        return jsonify({
+            "success": True, 
+            "message": "Parceiro rejeitado"
+        }), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Erro ao rejeitar parceiro: {str(e)}"}), 500
+
+
 # ==================== IP BLOCKING ====================
 
 @routes_mobile_admin.route('/api/blocked-ips')

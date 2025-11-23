@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00ACC1">
+    <meta name="description" content="{{ tour.description[:150] if tour.description else 'Tour em Alter do Chão' }}">
+    <title>{{ tour.title }} | Alter do Chão</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #00ACC1, #00838F);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #00838F;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Tour Header */
+        .tour-header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .tour-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .tour-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .meta-icon {
+            font-size: 20px;
+        }
+
+        .tour-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: #00ACC1;
+            margin-bottom: 10px;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Tour Content */
+        .tour-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00ACC1;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tour-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            white-space: pre-line;
+        }
+
+        .tour-highlights {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tour-highlights li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tour-highlights li:last-child {
+            border-bottom: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #00ACC1, #00838F);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 172, 193, 0.3);
+        }
+
+        .cta-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cta-text {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #00ACC1;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Share Section */
+        .share-section {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
+        }
+
+        .share-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: #f0f0f0;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .share-btn:hover {
+            background: #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .tour-title {
+                font-size: 24px;
+            }
+
+            .tour-price {
+                font-size: 28px;
+            }
+
+            .tour-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-image {
+                height: 200px;
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>🗺️ Detalhes do Tour</h1>
+            <a href="/portal/tours" class="back-btn">← Voltar</a>
+        </div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="hero-image">
+        {% if tour.image_url %}
+        <img src="{{ tour.image_url }}" alt="{{ tour.title }}">
+        {% else %}
+        🏖️
+        {% endif %}
+        {% if tour.category %}
+        <div class="category-badge">{{ tour.category }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Tour Header -->
+        <div class="tour-header">
+            <h1 class="tour-title">{{ tour.title }}</h1>
+
+            <div class="tour-meta">
+                {% if tour.duration %}
+                <div class="meta-item">
+                    <span class="meta-icon">⏱️</span>
+                    <span>{{ tour.duration }}</span>
+                </div>
+                {% endif %}
+                {% if tour.difficulty %}
+                <div class="meta-item">
+                    <span class="meta-icon">💪</span>
+                    <span>{{ tour.difficulty }}</span>
+                </div>
+                {% endif %}
+                {% if tour.max_people %}
+                <div class="meta-item">
+                    <span class="meta-icon">👥</span>
+                    <span>Até {{ tour.max_people }} pessoas</span>
+                </div>
+                {% endif %}
+                <div class="meta-item">
+                    <span class="meta-icon">✅</span>
+                    <span>Verificado</span>
+                </div>
+            </div>
+
+            {% if tour.price %}
+            <div class="tour-price">R$ {{ "%.2f"|format(tour.price) }}</div>
+            <div class="price-label">por pessoa</div>
+            {% endif %}
+        </div>
+
+        <!-- Description -->
+        <div class="tour-section">
+            <h2 class="section-title">📝 Sobre o Tour</h2>
+            <div class="tour-description">{{ tour.description or 'Descrição não disponível.' }}</div>
+        </div>
+
+        <!-- Highlights -->
+        {% if tour.highlights %}
+        <div class="tour-section">
+            <h2 class="section-title">⭐ Destaques</h2>
+            <ul class="tour-highlights">
+                {% for highlight in tour.highlights.split('\n') if highlight.strip() %}
+                <li>✓ {{ highlight.strip() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- Includes -->
+        {% if tour.includes %}
+        <div class="tour-section">
+            <h2 class="section-title">✅ O que está incluído</h2>
+            <ul class="tour-highlights">
+                {% for item in tour.includes.split('\n') if item.strip() %}
+                <li>✓ {{ item.strip() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- What to Bring -->
+        {% if tour.what_to_bring %}
+        <div class="tour-section">
+            <h2 class="section-title">🎒 O que levar</h2>
+            <ul class="tour-highlights">
+                {% for item in tour.what_to_bring.split('\n') if item.strip() %}
+                <li>• {{ item.strip() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Interessado neste tour?</h2>
+            <p class="cta-text">Entre em contato conosco para reservar ou tirar dúvidas</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5593999999999?text=Olá! Gostaria de saber mais sobre o tour: {{ tour.title }}"
+                    class="cta-btn" target="_blank">
+                    <span>💬</span>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="tel:+5593999999999" class="cta-btn">
+                    <span>📞</span>
+                    <span>Ligar Agora</span>
+                </a>
+                <a href="/portal/qr-tour/{{ tour.id }}" class="cta-btn cta-btn-secondary">
+                    <span>📱</span>
+                    <span>Ver QR Code</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Share -->
+        <div class="share-section">
+            <h3 class="share-title">Compartilhar este tour</h3>
+            <div class="share-buttons">
+                <a href="https://wa.me/?text=Olha que tour incrível: {{ request.url }}" class="share-btn"
+                    target="_blank">
+                    💬 WhatsApp
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url }}" class="share-btn"
+                    target="_blank">
+                    📘 Facebook
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ request.url }}&text={{ tour.title }}" class="share-btn"
+                    target="_blank">
+                    🐦 Twitter
+                </a>
+                <a href="#" class="share-btn" onclick="copyLink(); return false;">
+                    🔗 Copiar Link
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('✅ Link copiado para a área de transferência!');
+            }).catch(() => {
+                alert('❌ Erro ao copiar link');
+            });
+        }
+    </script>
+</body>
+
+</html>

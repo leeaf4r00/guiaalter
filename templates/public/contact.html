@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00ACC1">
+    <meta name="description" content="Entre em contato conosco - Portal Turístico de Alter do Chão">
+    <title>Contato | Portal Turístico Alter do Chão</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 172, 193, 0.9), rgba(0, 131, 143, 0.9));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .contact-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .contact-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .contact-action {
+            background: #00ACC1;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .contact-action:hover {
+            background: #00838F;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00ACC1;
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #00ACC1;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-button {
+            background: #00ACC1;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .form-button:hover {
+            background: #00838F;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00ACC1;
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 32px;
+            min-width: 40px;
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-section,
+            .info-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>📞 Contato</h1>
+            <a href="/portal/" class="back-btn">← Voltar</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1 class="hero-title">Entre em Contato</h1>
+        <p class="hero-subtitle">Estamos aqui para ajudar você a planejar sua viagem perfeita</p>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Contact Cards -->
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3 class="contact-title">WhatsApp</h3>
+                <p class="contact-text">
+                    Fale conosco diretamente pelo WhatsApp para respostas rápidas
+                </p>
+                <a href="https://wa.me/5593999999999?text=Olá! Gostaria de informações sobre Alter do Chão"
+                    class="contact-action" target="_blank">
+                    <span>Abrir WhatsApp</span>
+                </a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3 class="contact-title">E-mail</h3>
+                <p class="contact-text">
+                    Envie suas dúvidas por e-mail e responderemos em breve
+                </p>
+                <a href="mailto:contato@guiadealter.com.br" class="contact-action">
+                    <span>Enviar E-mail</span>
+                </a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3 class="contact-title">Telefone</h3>
+                <p class="contact-text">
+                    Ligue para falar diretamente com nossa equipe
+                </p>
+                <a href="tel:+5593999999999" class="contact-action">
+                    <span>Ligar Agora</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="form-section">
+            <h2 class="form-title">Envie uma Mensagem</h2>
+            <p class="form-subtitle">Preencha o formulário abaixo e entraremos em contato</p>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label class="form-label" for="name">Nome Completo *</label>
+                    <input type="text" id="name" class="form-input" required placeholder="Seu nome">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">E-mail *</label>
+                    <input type="email" id="email" class="form-input" required placeholder="seu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="phone">Telefone/WhatsApp</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="(00) 00000-0000">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="subject">Assunto *</label>
+                    <input type="text" id="subject" class="form-input" required placeholder="Sobre o que deseja falar?">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">Mensagem *</label>
+                    <textarea id="message" class="form-textarea" required
+                        placeholder="Digite sua mensagem aqui..."></textarea>
+                </div>
+
+                <button type="submit" class="form-button">Enviar Mensagem</button>
+            </form>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="info-section">
+            <h2 class="info-title">Informações Adicionais</h2>
+
+            <div class="info-item">
+                <div class="info-icon">🏢</div>
+                <div class="info-content">
+                    <div class="info-label">Endereço</div>
+                    <div class="info-value">Alter do Chão, Santarém - PA, Brasil</div>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">⏰</div>
+                <div class="info-content">
+                    <div class="info-label">Horário de Atendimento</div>
+                    <div class="info-value">Segunda a Sábado: 8h às 18h</div>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">🌐</div>
+                <div class="info-content">
+                    <div class="info-label">Redes Sociais</div>
+                    <div class="info-value">
+                        <a href="#" style="color: #00ACC1; text-decoration: none; margin-right: 15px;">Facebook</a>
+                        <a href="#" style="color: #00ACC1; text-decoration: none; margin-right: 15px;">Instagram</a>
+                        <a href="#" style="color: #00ACC1; text-decoration: none;">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">🤝</div>
+                <div class="info-content">
+                    <div class="info-label">Seja um Parceiro</div>
+                    <div class="info-value">
+                        <a href="/mobile-admin/register"
+                            style="color: #00ACC1; text-decoration: none; font-weight: 600;">
+                            Cadastre-se como parceiro →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Monta mensagem para WhatsApp
+            const whatsappMessage = `*Nova mensagem do site*\n\n` +
+                `*Nome:* ${name}\n` +
+                `*E-mail:* ${email}\n` +
+                `*Telefone:* ${phone || 'Não informado'}\n` +
+                `*Assunto:* ${subject}\n\n` +
+                `*Mensagem:*\n${message}`;
+
+            const whatsappUrl = `https://wa.me/5593999999999?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Abre WhatsApp
+            window.open(whatsappUrl, '_blank');
+
+            // Limpa formulário
+            this.reset();
+
+            // Feedback
+            alert('✅ Mensagem preparada! Você será redirecionado para o WhatsApp.');
+        });
+    </script>
+</body>
+
+</html>

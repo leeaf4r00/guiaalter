@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00ACC1">
+    <meta name="description" content="Busque tours, hotéis, restaurantes e guias em Alter do Chão">
+    <title>Buscar | Alter do Chão</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 30px 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .search-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 50px 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 18px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #00ACC1;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: #00ACC1;
+            color: white;
+            border: none;
+            padding: 11px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .search-box button:hover {
+            background: #00838F;
+        }
+
+        .search-hint {
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .results-header {
+            margin-bottom: 25px;
+        }
+
+        .results-query {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .results-count {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Results */
+        .results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .result-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .result-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .result-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .result-icon {
+            font-size: 40px;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .result-content {
+            flex: 1;
+        }
+
+        .result-type {
+            display: inline-block;
+            background: #e0f7fa;
+            color: #00838F;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .result-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .result-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .result-arrow {
+            font-size: 24px;
+            color: #00ACC1;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-state-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+
+        .empty-state-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .empty-state-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .empty-state-suggestions {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .suggestions-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .suggestions-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .suggestions-list li {
+            padding: 8px 0;
+            color: #666;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #00ACC1;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .result-header {
+                flex-direction: column;
+            }
+
+            .result-icon {
+                font-size: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>🔍 Buscar</h1>
+            <a href="/portal/" class="back-btn">← Voltar</a>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-content">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="O que você está procurando?" autofocus
+                    value="{{ query }}">
+                <button onclick="performSearch()">Buscar</button>
+            </div>
+            <div class="search-hint">
+                Busque por tours, hotéis, restaurantes, guias e muito mais
+            </div>
+        </div>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        <div id="resultsContainer">
+            {% if query %}
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Buscando...</p>
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-state-icon">🔍</div>
+                <div class="empty-state-title">Digite algo para buscar</div>
+                <div class="empty-state-text">Encontre tours, hotéis, restaurantes e guias em Alter do Chão</div>
+                <div class="empty-state-suggestions">
+                    <div class="suggestions-title">Sugestões de busca:</div>
+                    <ul class="suggestions-list">
+                        <li>🏖️ "praia" - Encontre tours de praia</li>
+                        <li>🚤 "barco" - Passeios de barco</li>
+                        <li>🏨 "hotel" - Hotéis e pousadas</li>
+                        <li>🍹 "restaurante" - Onde comer</li>
+                        <li>🚗 "guia" - Guias turísticos</li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const resultsContainer = document.getElementById('resultsContainer');
+
+        // Busca ao pressionar Enter
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Realiza busca
+        function performSearch() {
+            const query = searchInput.value.trim();
+
+            if (!query) {
+                showEmptyState();
+                return;
+            }
+
+            // Atualiza URL
+            const newUrl = `/portal/buscar?q=${encodeURIComponent(query)}`;
+            window.history.pushState({}, '', newUrl);
+
+            // Mostra loading
+            resultsContainer.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Buscando...</p>
+                </div>
+            `;
+
+            // Busca na API
+            fetch(`/portal/api/search?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data.results, query);
+                })
+                .catch(error => {
+                    console.error('Erro na busca:', error);
+                    resultsContainer.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">❌</div>
+                            <div class="empty-state-title">Erro ao buscar</div>
+                            <div class="empty-state-text">Tente novamente em alguns instantes</div>
+                        </div>
+                    `;
+                });
+        }
+
+        // Exibe resultados
+        function displayResults(results, query) {
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">😕</div>
+                        <div class="empty-state-title">Nenhum resultado encontrado</div>
+                        <div class="empty-state-text">Tente buscar com outras palavras-chave</div>
+                    </div>
+                `;
+                return;
+            }
+
+            const typeIcons = {
+                'tour': '🗺️',
+                'partner': '✅'
+            };
+
+            const typeLabels = {
+                'tour': 'Tour',
+                'partner': 'Parceiro'
+            };
+
+            resultsContainer.innerHTML = `
+                <div class="results-header">
+                    <div class="results-query">Resultados para "${query}"</div>
+                    <div class="results-count">${results.length} resultado${results.length !== 1 ? 's' : ''} encontrado${results.length !== 1 ? 's' : ''}</div>
+                </div>
+                <div class="results-list">
+                    ${results.map(result => `
+                        <a href="${result.url}" class="result-card">
+                            <div class="result-header">
+                                <div class="result-icon">${typeIcons[result.type] || '📄'}</div>
+                                <div class="result-content">
+                                    <div class="result-type">${typeLabels[result.type] || result.type}</div>
+                                    <div class="result-title">${result.title}</div>
+                                    <div class="result-description">${result.description || 'Sem descrição'}</div>
+                                </div>
+                                <div class="result-arrow">→</div>
+                            </div>
+                        </a>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Mostra estado vazio
+        function showEmptyState() {
+            resultsContainer.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">🔍</div>
+                    <div class="empty-state-title">Digite algo para buscar</div>
+                    <div class="empty-state-text">Encontre tours, hotéis, restaurantes e guias em Alter do Chão</div>
+                </div>
+            `;
+        }
+
+        // Busca automática se veio com query
+        {% if query %}
+        document.addEventListener('DOMContentLoaded', () => {
+            performSearch();
+        });
+        {% endif %}
+    </script>
+</body>
+
+</html>
