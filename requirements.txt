@@ -16,3 +16,6 @@ WTForms==3.1.2
 # Utilities
 python-dotenv==1.0.0
 gunicorn==21.2.0
+
+# Desktop Application
+pywebview==4.4.1
