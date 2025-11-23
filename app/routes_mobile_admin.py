@@ -412,19 +412,33 @@ def api_user_detail(user_id):
             return jsonify({"error": f"Erro ao atualizar usuário: {str(e)}"}), 500
     
     elif request.method == 'DELETE':
-        # Não pode deletar a si mesmo
-        if user.id == current_user.id:
-            return jsonify({"error": "Você não pode deletar sua própria conta"}), 400
-        
         try:
+            is_self_deletion = (user.id == current_user.id)
             username = user.username
+            
+            # Se for auto-exclusão, faz logout antes de confirmar a resposta (mas depois de deletar)
+            # Mas precisamos deletar primeiro
+            
             db.session.delete(user)
             db.session.commit()
             
-            # Log
-            log_action(current_user.id, 'delete_user', 
-                      target=username,
-                      ip_address=request.remote_addr)
+            # Log (se possível, mas o user já era)
+            # Tenta logar com ID nulo ou sistema
+            try:
+                log_action(None, 'delete_user', 
+                          target=username,
+                          details="Auto-exclusão" if is_self_deletion else f"Deletado por {current_user.username}",
+                          ip_address=request.remote_addr)
+            except:
+                pass
+
+            if is_self_deletion:
+                logout_user()
+                return jsonify({
+                    "success": True, 
+                    "message": "Sua conta foi excluída. O sistema será reiniciado.",
+                    "redirect": url_for('routes_mobile_admin.setup_master')
+                }), 200
             
             return jsonify({"success": True, "message": "Usuário deletado"}), 200
         except Exception as e:

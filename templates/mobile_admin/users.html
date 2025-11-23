@@ -464,25 +464,7 @@
             const id = document.getElementById('userId').value;
             if (!confirm('Tem certeza que deseja excluir este usuário?')) return;
 
-            try {
-                const response = await fetch(`/mobile-admin/api/users/${id}`, {
-                    method: 'DELETE'
-                });
 
-                if (response.ok) {
-                    closeModal();
-                    loadUsers();
-                    alert('Usuário excluído!');
-                } else {
-                    const data = await response.json();
-                    alert(data.error || 'Erro ao excluir');
-                }
-            } catch (error) {
-                alert('Erro de conexão');
-            }
-        }
-    </script>
+</body >
 
-</body>
-
-</html>
+</html >
