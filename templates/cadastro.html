@@ -1,63 +1,423 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Guia de Alter</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
+{% block title %}Cadastro - Guia de Alter{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .register-container {
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        max-width: 500px;
+        width: 100%;
+        animation: slideUp 0.6s ease-out;
+    }
+
+    .register-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px 30px;
+        text-align: center;
+        color: white;
+    }
+
+    .register-header i {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+        opacity: 0.95;
+    }
+
+    .register-header h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2rem;
+        margin: 0 0 10px;
+        font-weight: 700;
+    }
+
+    .register-header p {
+        margin: 0;
+        opacity: 0.9;
+        font-size: 0.95rem;
+    }
+
+    .register-body {
+        padding: 40px 35px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #2d3748;
+        font-size: 0.95rem;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-wrapper i {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #667eea;
+        font-size: 1.1rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 15px 15px 15px 50px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #f7fafc;
+        outline: none;
+    }
+
+    .form-control:focus {
+        border-color: #667eea;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .btn-register {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        margin-top: 10px;
+    }
+
+    .btn-register:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-register:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .alert {
+        padding: 15px 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        display: none;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .alert-danger {
+        background: #fee;
+        border: 1px solid #fcc;
+        color: #c33;
+    }
+
+    .alert-success {
+        background: #efe;
+        border: 1px solid #cfc;
+        color: #3c3;
+    }
+
+    .divider {
+        text-align: center;
+        margin: 30px 0;
+        position: relative;
+    }
+
+    .divider::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #e2e8f0;
+    }
+
+    .divider span {
+        background: white;
+        padding: 0 15px;
+        color: #718096;
+        font-size: 0.9rem;
+        position: relative;
+    }
+
+    .login-link {
+        text-align: center;
+        color: #4a5568;
+    }
+
+    .login-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    .login-link a:hover {
+        color: #764ba2;
+        text-decoration: underline;
+    }
+
+    .back-home {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .back-home a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .back-home a:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .container {
-            max-width: 400px;
-            margin-top: 5%;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
         }
 
-        h2 {
-            text-align: center;
-            color: #007bff;
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .register-container {
+            border-radius: 16px;
         }
 
-        .btn-primary {
-            width: 100%;
+        .register-header {
+            padding: 30px 25px;
         }
-    </style>
-</head>
 
-<body>
-    <div class="container">
-        <h2>Cadastro</h2>
-        <!-- Substitua action por url_for do Flask e remova o JavaScript de redirecionamento -->
-        <form id="signupForm" action="{{ url_for('routes.register') }}" method="post">
-            {{ form.hidden_tag() }}
-            <div class="mb-3">
-                {{ form.username.label(class="form-label") }}
-                {{ form.username(class="form-control") }}
-            </div>
-            <div class="mb-3">
-                {{ form.email.label(class="form-label") }}
-                {{ form.email(class="form-control") }}
-            </div>
-            <div class="mb-3">
-                {{ form.password.label(class="form-label") }}
-                {{ form.password(class="form-control") }}
-            </div>
-            <div class="mb-3">
-                {{ form.confirm_password.label(class="form-label") }}
-                {{ form.confirm_password(class="form-control") }}
-            </div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </form>
+        .register-header h2 {
+            font-size: 1.7rem;
+        }
+
+        .register-body {
+            padding: 30px 25px;
+        }
+    }
+
+    .site-header,
+    .main-nav,
+    .site-footer {
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-header">
+        <i class="fas fa-user-plus"></i>
+        <h2>Crie sua Conta</h2>
+        <p>Junte-se a nós e explore Alter do Chão</p>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <div class="register-body">
+        <form id="registerForm">
+            <div id="registerAlert" class="alert"></div>
 
-</html>
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" class="form-control" id="username" name="username"
+                        placeholder="Escolha um nome de usuário" required autocomplete="username" minlength="3">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com"
+                        required autocomplete="email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Crie uma senha segura" required autocomplete="new-password" minlength="6">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirmar Senha</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                        placeholder="Digite a senha novamente" required autocomplete="new-password" minlength="6">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-register">
+                <i class="fas fa-user-plus"></i> Criar Conta
+            </button>
+        </form>
+
+        <div class="divider">
+            <span>ou</span>
+        </div>
+
+        <p class="login-link">
+            Já tem uma conta? <a href="{{ url_for('routes.login') }}">Faça login</a>
+        </p>
+    </div>
+</div>
+
+<div class="back-home">
+    <a href="{{ url_for('routes.index') }}">
+        <i class="fas fa-arrow-left"></i> Voltar para o início
+    </a>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+        const registerAlert = document.getElementById('registerAlert');
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+
+        // Hide previous alerts
+        registerAlert.style.display = 'none';
+        registerAlert.className = 'alert';
+
+        // Validação de senha
+        if (password !== confirmPassword) {
+            registerAlert.className = 'alert alert-danger';
+            registerAlert.textContent = 'As senhas não coincidem!';
+            registerAlert.style.display = 'block';
+            return;
+        }
+
+        if (password.length < 6) {
+            registerAlert.className = 'alert alert-danger';
+            registerAlert.textContent = 'A senha deve ter no mínimo 6 caracteres!';
+            registerAlert.style.display = 'block';
+            return;
+        }
+
+        // Disable button and show loading
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Criando conta...';
+
+        const userData = {
+            username: username,
+            email: email,
+            password: password
+        };
+
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(response => {
+                if (response.status === 201 || response.status === 200) {
+                    // Success
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Conta criada!';
+                    registerAlert.className = 'alert alert-success';
+                    registerAlert.textContent = 'Conta criada com sucesso! Redirecionando...';
+                    registerAlert.style.display = 'block';
+
+                    setTimeout(() => {
+                        window.location.href = "{{ url_for('routes.login') }}";
+                    }, 1500);
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.message || 'Erro ao criar conta');
+                    });
+                }
+            })
+            .catch(error => {
+                registerAlert.className = 'alert alert-danger';
+                registerAlert.textContent = error.message;
+                registerAlert.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
+    });
+
+    // Real-time password match validation
+    document.getElementById('confirm_password').addEventListener('input', function () {
+        const password = document.getElementById('password').value;
+        const confirmPassword = this.value;
+
+        if (confirmPassword && password !== confirmPassword) {
+            this.style.borderColor = '#f56565';
+        } else {
+            this.style.borderColor = '#e2e8f0';
+        }
+    });
+</script>
+{% endblock %}
