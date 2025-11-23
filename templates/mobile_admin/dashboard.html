@@ -242,38 +242,23 @@
             transition: transform 0.2s;
             z-index: 50;
         }
-
-        .btn-refresh:active {
-            transform: scale(0.95);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .header {
+            padding: 15px;
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
+        .header h1 {
+            font-size: 18px;
+        }
 
-            .header {
-                padding: 15px;
-            }
+        .stat-card {
+            padding: 15px;
+        }
 
-            .header h1 {
-                font-size: 18px;
-            }
-
-            .stat-card {
-                padding: 15px;
-            }
-
-            .stat-value {
-                font-size: 24px;
-            }
+        .stat-value {
+            font-size: 24px;
+        }
         }
     </style>
 </head>
@@ -289,114 +274,100 @@
             <div style="display: flex; gap: 10px;">
                 <a href="/mobile-admin/connect" class="btn-logout" style="background: rgba(255,255,255,0.3);">📱
                     Conectar Celular</a>
-                <a href="/mobile-admin/logout" class="btn-logout">Sair</a>
-            </div>
-        </div>
-    </div>
 
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Stats Cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">👥</div>
-                <div class="stat-value" id="totalUsers">-</div>
-                <div class="stat-label">Usuários</div>
-            </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔑</div>
+                    <div class="stat-value" id="totalAdmins">-</div>
+                    <div class="stat-label">Admins</div>
+                </div>
 
-            <div class="stat-card">
-                <div class="stat-icon">🔑</div>
-                <div class="stat-value" id="totalAdmins">-</div>
-                <div class="stat-label">Admins</div>
-            </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🗺️</div>
+                    <div class="stat-value" id="totalTours">-</div>
+                    <div class="stat-label">Tours</div>
+                </div>
 
-            <div class="stat-card">
-                <div class="stat-icon">🗺️</div>
-                <div class="stat-value" id="totalTours">-</div>
-                <div class="stat-label">Tours</div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value" id="activeTours">-</div>
+                    <div class="stat-label">Ativos</div>
+                </div>
             </div>
 
-            <div class="stat-card">
-                <div class="stat-icon">✅</div>
-                <div class="stat-value" id="activeTours">-</div>
-                <div class="stat-label">Ativos</div>
+            <!-- Recent Users -->
+            <div class="section">
+                <div class="section-title">
+                    <span>👥</span>
+                    <span>Usuários Recentes</span>
+                </div>
+                <div id="usersList">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Carregando usuários...</p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Recent Users -->
-        <div class="section">
-            <div class="section-title">
-                <span>👥</span>
-                <span>Usuários Recentes</span>
-            </div>
-            <div id="usersList">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>Carregando usuários...</p>
+            <!-- Recent Tours -->
+            <div class="section">
+                <div class="section-title">
+                    <span>🗺️</span>
+                    <span>Tours Recentes</span>
+                </div>
+                <div id="toursList">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Carregando tours...</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Recent Tours -->
-        <div class="section">
-            <div class="section-title">
-                <span>🗺️</span>
-                <span>Tours Recentes</span>
-            </div>
-            <div id="toursList">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>Carregando tours...</p>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- Refresh Button -->
+        <button class="btn-refresh" onclick="loadAllData()" title="Atualizar">
+            🔄
+        </button>
 
-    <!-- Refresh Button -->
-    <button class="btn-refresh" onclick="loadAllData()" title="Atualizar">
-        🔄
-    </button>
+        <script>
+            // Load data on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                loadAllData();
+            });
 
-    <script>
-        // Load data on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            loadAllData();
-        });
-
-        async function loadAllData() {
-            await Promise.all([
-                loadStats(),
-                loadUsers(),
-                loadTours()
-            ]);
-        }
-
-        async function loadStats() {
-            try {
-                const response = await fetch('/mobile-admin/api/stats');
-                const data = await response.json();
-
-                if (response.ok) {
-                    document.getElementById('totalUsers').textContent = data.users.total;
-                    document.getElementById('totalAdmins').textContent = data.users.admins;
-                    document.getElementById('totalTours').textContent = data.tours.total;
-                    document.getElementById('activeTours').textContent = data.tours.active;
-                    document.getElementById('adminName').textContent = `Olá, ${data.system.admin_name}!`;
-                }
-            } catch (error) {
-                console.error('Erro ao carregar estatísticas:', error);
+            async function loadAllData() {
+                await Promise.all([
+                    loadStats(),
+                    loadUsers(),
+                    loadTours()
+                ]);
             }
-        }
 
-        async function loadUsers() {
-            const container = document.getElementById('usersList');
+            async function loadStats() {
+                try {
+                    const response = await fetch('/mobile-admin/api/stats');
+                    const data = await response.json();
 
-            try {
-                const response = await fetch('/mobile-admin/api/users?limit=5');
-                const data = await response.json();
+                    if (response.ok) {
+                        document.getElementById('totalUsers').textContent = data.users.total;
+                        document.getElementById('totalAdmins').textContent = data.users.admins;
+                        document.getElementById('totalTours').textContent = data.tours.total;
+                        document.getElementById('activeTours').textContent = data.tours.active;
+                        document.getElementById('adminName').textContent = `Olá, ${data.system.admin_name}!`;
+                    }
+                } catch (error) {
+                    console.error('Erro ao carregar estatísticas:', error);
+                }
+            }
 
-                if (response.ok && data.users.length > 0) {
-                    container.innerHTML = data.users.map(user => `
+            async function loadUsers() {
+                const container = document.getElementById('usersList');
+
+                try {
+                    const response = await fetch('/mobile-admin/api/users?limit=5');
+                    const data = await response.json();
+
+                    if (response.ok && data.users.length > 0) {
+                        container.innerHTML = data.users.map(user => `
                         <div class="list-item">
                             <div class="list-item-content">
                                 <div class="list-item-title">${user.username}</div>
@@ -405,76 +376,76 @@
                             ${user.is_admin ? '<span class="badge badge-admin">Admin</span>' : ''}
                         </div>
                     `).join('');
-                } else {
-                    container.innerHTML = `
+                    } else {
+                        container.innerHTML = `
                         <div class="empty-state">
                             <div class="empty-state-icon">👤</div>
                             <p>Nenhum usuário encontrado</p>
                         </div>
                     `;
-                }
-            } catch (error) {
-                container.innerHTML = `
+                    }
+                } catch (error) {
+                    container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon">⚠️</div>
                         <p>Erro ao carregar usuários</p>
                     </div>
                 `;
-                console.error('Erro ao carregar usuários:', error);
+                    console.error('Erro ao carregar usuários:', error);
+                }
             }
-        }
 
-        async function loadTours() {
-            const container = document.getElementById('toursList');
+            async function loadTours() {
+                const container = document.getElementById('toursList');
 
-            try {
-                const response = await fetch('/mobile-admin/api/tours?limit=5');
-                const data = await response.json();
+                try {
+                    const response = await fetch('/mobile-admin/api/tours?limit=5');
+                    const data = await response.json();
 
-                if (response.ok && data.tours.length > 0) {
-                    container.innerHTML = data.tours.map(tour => `
+                    if (response.ok && data.tours.length > 0) {
+                        container.innerHTML = data.tours.map(tour => `
                         <div class="list-item">
                             <div class="list-item-content">
                                 <div class="list-item-title">${tour.title}</div>
                                 <div class="list-item-subtitle">${tour.category || 'Sem categoria'}</div>
                             </div>
                             ${tour.is_active
-                            ? '<span class="badge badge-success">Ativo</span>'
-                            : '<span class="badge badge-warning">Inativo</span>'}
+                                ? '<span class="badge badge-success">Ativo</span>'
+                                : '<span class="badge badge-warning">Inativo</span>'}
                         </div>
                     `).join('');
-                } else {
-                    container.innerHTML = `
+                    } else {
+                        container.innerHTML = `
                         <div class="empty-state">
                             <div class="empty-state-icon">🗺️</div>
                             <p>Nenhum tour encontrado</p>
                         </div>
                     `;
-                }
-            } catch (error) {
-                container.innerHTML = `
+                    }
+                } catch (error) {
+                    container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon">⚠️</div>
                         <p>Erro ao carregar tours</p>
                     </div>
                 `;
-                console.error('Erro ao carregar tours:', error);
+                    console.error('Erro ao carregar tours:', error);
+                }
             }
-        }
 
-        // Pull to refresh simulation
-        let touchStartY = 0;
-        document.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        });
+            // Pull to refresh simulation
+            let touchStartY = 0;
+            document.addEventListener('touchstart', (e) => {
+                touchStartY = e.touches[0].clientY;
+            });
 
-        document.addEventListener('touchend', (e) => {
-            const touchEndY = e.changedTouches[0].clientY;
-            if (touchStartY < 50 && touchEndY - touchStartY > 100) {
-                loadAllData();
-            }
-        });
-    </script>
+            document.addEventListener('touchend', (e) => {
+                const touchEndY = e.changedTouches[0].clientY;
+                if (touchStartY < 50 && touchEndY - touchStartY > 100) {
+                    loadAllData();
+                }
+            });
+        </script>
 </body>
 
 </html>

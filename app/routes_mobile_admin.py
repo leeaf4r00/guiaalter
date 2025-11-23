@@ -227,16 +227,26 @@ def register():
 def connect_mobile():
     """Tela de conexão mobile com QR Codes"""
     local_ip = os.environ.get('LOCAL_IP', '127.0.0.1')
-    local_url = f"http://{local_ip}:5000/mobile-admin/login"
+    # URLs Locais
+    local_admin_url = f"http://{local_ip}:5000/mobile-admin/login"
+    local_site_url = f"http://{local_ip}:5000/"
     
-    # Tenta pegar URL do Cloudflare (pode demorar um pouco para aparecer)
-    public_url = os.environ.get('CLOUDFLARE_URL')
-    if public_url:
-        public_url = f"{public_url}/mobile-admin/login"
+    # URLs Públicas (Cloudflare)
+    public_site_url = None
+    public_admin_url = None
+    
+    public_base = os.environ.get('CLOUDFLARE_URL')
+    if public_base:
+        # Remove barra final se existir para evitar duplicação
+        public_base = public_base.rstrip('/')
+        public_site_url = f"{public_base}/"
+        public_admin_url = f"{public_base}/mobile-admin/login"
         
     return render_template('mobile_admin/connect.html', 
-                         local_url=local_url, 
-                         public_url=public_url)
+                         local_admin_url=local_admin_url,
+                         local_site_url=local_site_url,
+                         public_site_url=public_site_url,
+                         public_admin_url=public_admin_url)
 
 
 # ==================== DASHBOARD ====================

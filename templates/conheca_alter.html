@@ -134,80 +134,232 @@
 
         <div class="route-card">
             <div class="route-icon"><i class="fas fa-ship"></i></div>
-            <h4>Barco Regional</h4>
-            <p>Para os aventureiros vindo de Manaus ou Belém, a viagem pelo Rio Amazonas é uma experiência à parte.</p>
-        </div>
-    </div>
-</section>
+            {% extends "base.html" %}
 
-<!-- Dicas Importantes -->
-<section class="tips-section">
-    <div class="section-title">
-        <h2>Dicas do Guia</h2>
-        <p>Prepare-se para aproveitar ao máximo</p>
-    </div>
+            {% block title %}Conheça Alter do Chão - O Caribe Amazônico{% endblock %}
 
-    <div class="tips-grid">
-        <div class="tip-card">
-            <div class="tip-header">
-                <i class="fas fa-calendar-alt"></i>
-                <h4>Melhor Época</h4>
-            </div>
-            <p>Agosto a Dezembro é a época da seca, ideal para praias. Janeiro a Julho é a cheia, perfeita para passeios
-                de barco na floresta.</p>
-        </div>
+            {% block extra_css %}
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/conheca.css') }}">
+            <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+                rel="stylesheet">
+            {% endblock %}
 
-        <div class="tip-card">
-            <div class="tip-header">
-                <i class="fas fa-suitcase"></i>
-                <h4>O Que Levar</h4>
-            </div>
-            <p>Roupas leves, muito protetor solar, repelente, chapéu e óculos de sol. Dinheiro em espécie é recomendado
-                para pequenos comércios.</p>
-        </div>
+            {% block content %}
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-bg"
+                    style="background-image: url('{{ url_for('static', filename='img/alterdochao_hero.jpg') }}');">
+                </div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1>Alter do Chão</h1>
+                    <p class="subtitle">Onde a floresta encontra o mar de água doce</p>
+                    <a href="#about" class="btn-hero">
+                        <i class="fas fa-compass"></i> Comece a Jornada
+                    </a>
+                </div>
+            </section>
 
-        <div class="tip-card">
-            <div class="tip-header">
-                <i class="fas fa-utensils"></i>
-                <h4>Gastronomia</h4>
-            </div>
-            <p>Não deixe de provar o Tucunaré na manteiga, o Tacacá no fim da tarde e os sorvetes de frutas regionais
-                como Taperebá.</p>
-        </div>
-    </div>
-</section>
-{% block extra_scripts %}
-<script>
-    // Scroll Reveal Animation
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+            <!-- About Section -->
+            <section class="about" id="about">
+                <div class="section-title">
+                    <h2>O Caribe Amazônico</h2>
+                    <p>Um santuário ecológico de águas cristalinas e areias brancas</p>
+                </div>
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
+                <div
+                    style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8; font-size: 1.1rem; color: #57606f;">
+                    <p>Situada às margens do Rio Tapajós, Alter do Chão encanta visitantes do mundo todo. Eleita pelo
+                        jornal The
+                        Guardian como a praia de água doce mais bonita do mundo, este paraíso combina a exuberância da
+                        floresta
+                        amazônica com a tranquilidade de praias paradisíacas.</p>
+                </div>
 
-    document.querySelectorAll('.fact-item, .attraction-card, .route-card, .tip-card').forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) ${index * 0.1}s`;
-        observer.observe(el);
-    });
+                <div class="facts-grid">
+                    <div class="fact-item">
+                        <i class="fas fa-water"></i>
+                        <span>Águas Cristalinas</span>
+                    </div>
+                    <div class="fact-item">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <span>Praias de Areia Branca</span>
+                    </div>
+                    <div class="fact-item">
+                        <i class="fas fa-tree"></i>
+                        <span>Floresta Preservada</span>
+                    </div>
+                    <div class="fact-item">
+                        <i class="fas fa-sun"></i>
+                        <span>Pôr do Sol Único</span>
+                    </div>
+                </div>
+            </section>
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
-{% endblock %}
+            <!-- Principais Atrações -->
+            <section class="attractions-section">
+                <div class="section-title">
+                    <h2>Principais Atrações</h2>
+                    <p>Descubra os tesouros escondidos de Alter</p>
+                </div>
+
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <div class="card-image-wrapper">
+                            <img src="{{ url_for('static', filename='img/ilha_amor.jpg') }}" alt="Ilha do Amor"
+                                onerror="this.src='https://via.placeholder.com/400x300/3498db/ffffff?text=Ilha+do+Amor'">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="attraction-content">
+                            <h4><i class="fas fa-heart"></i> Ilha do Amor</h4>
+                            <p>O cartão postal de Alter. Uma língua de areia que surge na seca, perfeita para relaxar e
+                                apreciar a
+                                vista da vila.</p>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="card-image-wrapper">
+                            <img src="{{ url_for('static', filename='img/lago_verde.jpg') }}" alt="Lago Verde"
+                                onerror="this.src='https://via.placeholder.com/400x300/2ecc71/ffffff?text=Lago+Verde'">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="attraction-content">
+                            <h4><i class="fas fa-water"></i> Lago Verde</h4>
+                            <p>Conhecido como a Floresta Encantada das águas, suas águas mudam de cor ao longo do dia.
+                                Mágico e
+                                imperdível.</p>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card">
+                        <div class="card-image-wrapper">
+                            <img src="{{ url_for('static', filename='img/ponta_cururu.jpg') }}" alt="Ponta do Cururu"
+                                onerror="this.src='https://via.placeholder.com/400x300/f39c12/ffffff?text=Ponta+do+Cururu'">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="attraction-content">
+                            <h4><i class="fas fa-camera"></i> Ponta do Cururu</h4>
+                            <p>O palco do pôr do sol mais espetacular da região. Botos costumam aparecer para completar
+                                o cenário.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rotas e Como Chegar -->
+            <section class="routes-section">
+                <div class="section-title">
+                    <h2 style="color: white;">Como Chegar</h2>
+                    <p style="color: rgba(255,255,255,0.7);">Seu caminho para o paraíso</p>
+                </div>
+
+                <div class="routes-grid">
+                    <div class="route-card">
+                        <div class="route-icon"><i class="fas fa-plane"></i></div>
+                        <h4>Via Aérea</h4>
+                        <p>Voe até o Aeroporto Internacional de Santarém (STM). De lá, são apenas 35km até a vila de
+                            Alter do Chão.
+                        </p>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-icon"><i class="fas fa-car"></i></div>
+                        <h4>Transfer/Táxi</h4>
+                        <p>A estrada é asfaltada e segura. O trajeto leva cerca de 40 minutos e custa em média R$
+                            100-150.</p>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-icon"><i class="fas fa-bus"></i></div>
+                        <h4>Ônibus</h4>
+                        <p>Opção econômica saindo de Santarém. Viagens regulares durante todo o dia, conectando a cidade
+                            à vila.</p>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-icon"><i class="fas fa-ship"></i></div>
+                        <h4>Barco Regional</h4>
+                        <p>Para os aventureiros vindo de Manaus ou Belém, a viagem pelo Rio Amazonas é uma experiência à
+                            parte.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dicas Importantes -->
+            <section class="tips-section">
+                <div class="section-title">
+                    <h2>Dicas do Guia</h2>
+                    <p>Prepare-se para aproveitar ao máximo</p>
+                </div>
+
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h4>Melhor Época</h4>
+                        </div>
+                        <p>Agosto a Dezembro é a época da seca, ideal para praias. Janeiro a Julho é a cheia, perfeita
+                            para passeios
+                            de barco na floresta.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-header">
+                            <i class="fas fa-suitcase"></i>
+                            <h4>O Que Levar</h4>
+                        </div>
+                        <p>Roupas leves, muito protetor solar, repelente, chapéu e óculos de sol. Dinheiro em espécie é
+                            recomendado
+                            para pequenos comércios.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-header">
+                            <i class="fas fa-utensils"></i>
+                            <h4>Gastronomia</h4>
+                        </div>
+                        <p>Não deixe de provar o Tucunaré na manteiga, o Tacacá no fim da tarde e os sorvetes de frutas
+                            regionais
+                            como Taperebá.</p>
+                    </div>
+                </div>
+            </section>
+            {% endblock %}
+
+            {% block extra_scripts %}
+            <script>
+                // Scroll Reveal Animation
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.fact-item, .attraction-card, .route-card, .tip-card').forEach((el, index) => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = `all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) ${index * 0.1}s`;
+                    observer.observe(el);
+                });
+
+                // Smooth Scroll
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            </script>
+            {% endblock %}

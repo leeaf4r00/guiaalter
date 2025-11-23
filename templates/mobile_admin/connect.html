@@ -5,177 +5,297 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conectar Celular - Guia de Alter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2563eb;
+            --success: #16a34a;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f0f2f5;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
+            color: var(--text);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .header h1 {
-            color: #1a1a1a;
-            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: var(--text);
         }
 
         .header p {
-            color: #666;
+            color: var(--text-muted);
+            margin: 0;
         }
 
-        .container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-width: 900px;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
             width: 100%;
+            max-width: 900px;
         }
 
         .card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            flex: 1;
-            min-width: 300px;
-            max-width: 400px;
-        }
-
-        .card h2 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .card .badge {
-            display: inline-block;
-            padding: 5px 12px;
+            background: var(--card-bg);
             border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 999px;
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .badge-local {
-            background: #e3f2fd;
-            color: #1976d2;
+            background: #eff6ff;
+            color: var(--primary);
         }
 
         .badge-cloud {
-            background: #e8f5e9;
-            color: #2e7d32;
+            background: #f0fdf4;
+            color: var(--success);
+        }
+
+        .card h2 {
+            font-size: 20px;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0 0 25px 0;
+            text-align: center;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .qr-code {
             width: 200px;
             height: 200px;
-            margin: 0 auto 20px;
-            background: #f5f5f5;
+            object-fit: contain;
+            display: block;
+        }
+
+        .actions {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-group {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .action-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .btn-copy {
+            width: 100%;
+            padding: 10px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
+            gap: 8px;
+            transition: all 0.2s;
         }
 
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-        }
-
-        .url-box {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 14px;
-            color: #555;
-            word-break: break-all;
-            margin-bottom: 15px;
-            border: 1px solid #e0e0e0;
+        .btn-copy:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
         }
 
         .btn-back {
-            margin-top: 30px;
-            padding: 12px 25px;
-            background: #333;
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: var(--text);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 500;
-            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s;
         }
 
         .btn-back:hover {
-            background: #555;
+            opacity: 0.9;
         }
 
-        .loading {
-            color: #666;
-            font-style: italic;
+        .status-online {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--success);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: #dcfce7;
+            padding: 4px 12px;
+            border-radius: 99px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .loading-box {
+            height: 200px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
+
     <div class="header">
-        <h1>📱 Conectar Celular</h1>
-        <p>Escaneie o QR Code para acessar o dashboard no seu celular</p>
+        <h1>📱 Conectar Dispositivos</h1>
+        <p>Escolha como deseja acessar o sistema</p>
     </div>
 
-    <div class="container">
-        <!-- Local Connection -->
+    <div class="grid">
+        <!-- CARD LOCAL -->
         <div class="card">
             <span class="badge badge-local">🏠 Rede Wi-Fi (Local)</span>
-            <h2>Conexão Rápida</h2>
-            <p style="font-size: 13px; color: #666; margin-bottom: 15px;">
-                Celular e PC devem estar no mesmo Wi-Fi
-            </p>
+            <h2>Painel Administrativo</h2>
+            <p>Acesso rápido para gerenciar o sistema<br>dentro da padaria.</p>
 
-            <div class="qr-code">
-                <img src="/portal/qr/{{ local_url }}" alt="QR Code Local">
+            <div class="qr-container">
+                <img src="/portal/qr/{{ local_admin_url }}" class="qr-code" alt="QR Local">
             </div>
 
-            <div class="url-box">{{ local_url }}</div>
-        </div>
-
-        <!-- Cloud Connection -->
-        <div class="card">
-            <span class="badge badge-cloud">☁️ Internet (Cloudflare)</span>
-            <h2>Acesso Remoto</h2>
-            <p style="font-size: 13px; color: #666; margin-bottom: 15px;">
-                Funciona em qualquer lugar (4G/5G)
-            </p>
-
-            {% if public_url %}
-            <div class="qr-code">
-                <img src="/portal/qr/{{ public_url }}" alt="QR Code Cloud">
-            </div>
-            <div class="url-box">{{ public_url }}</div>
-            {% else %}
-            <div class="qr-code">
-                <div class="loading">
-                    Iniciando túnel...<br>
-                    Recarregue em 10s
+            <div class="actions">
+                <div class="action-group">
+                    <span class="action-label">Painel Admin</span>
+                    <button class="btn-copy" onclick="copyText('{{ local_admin_url }}')">
+                        📋 Copiar Link Admin
+                    </button>
                 </div>
             </div>
-            <p style="color: #f57c00; font-size: 13px;">
-                ⚠️ O túnel está iniciando. Aguarde alguns segundos e recarregue a página.
-            </p>
-            <button onclick="window.location.reload()"
-                style="padding: 8px 15px; border: 1px solid #ccc; background: white; border-radius: 5px; cursor: pointer; margin-top: 10px;">
-                🔄 Recarregar
-            </button>
+        </div>
+
+        <!-- CARD REMOTO -->
+        <div class="card">
+            <span class="badge badge-cloud">☁️ Internet (4G/5G)</span>
+            <h2>Site Público & Teste</h2>
+            <p>Acesse o site como um cliente ou<br>gerencie de qualquer lugar.</p>
+
+            {% if public_site_url %}
+            <div class="status-online">
+                <span class="dot"></span> Online
+            </div>
+
+            <div class="qr-container">
+                <!-- QR Code aponta para o SITE PÚBLICO (Home) -->
+                <img src="/portal/qr/{{ public_site_url }}" class="qr-code" alt="QR Cloud">
+            </div>
+
+            <div class="actions">
+                <div class="action-group">
+                    <span class="action-label">Site Público (Para Clientes)</span>
+                    <button class="btn-copy" onclick="copyText('{{ public_site_url }}')">
+                        🔗 Copiar Link do Site
+                    </button>
+                </div>
+
+                <div class="action-group">
+                    <span class="action-label">Painel Admin (Gerenciamento)</span>
+                    <button class="btn-copy" onclick="copyText('{{ public_admin_url }}')">
+                        🛡️ Copiar Link Admin
+                    </button>
+                </div>
+            </div>
+            {% else %}
+            <div class="qr-container">
+                <div class="loading-box">
+                    <p>Iniciando túnel...<br>Aguarde alguns segundos.</p>
+                    <button onclick="window.location.reload()" class="btn-copy" style="width: auto; margin-top: 10px;">
+                        🔄 Recarregar
+                    </button>
+                </div>
+            </div>
+            <p style="color: #f59e0b; font-size: 13px;">⚠️ O link externo está sendo gerado.</p>
             {% endif %}
         </div>
     </div>
@@ -183,6 +303,17 @@
     <a href="{{ url_for('routes_mobile_admin.dashboard') }}" class="btn-back">
         ⬅️ Voltar ao Dashboard
     </a>
+
+    <script>
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Link copiado!');
+            }).catch(err => {
+                prompt('Copie o link manualmente:', text);
+            });
+        }
+    </script>
+
 </body>
 
 </html>

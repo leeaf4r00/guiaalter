@@ -180,7 +180,11 @@ def generate_qr(url):
         )
         
         # Adiciona dados
-        full_url = request.host_url.rstrip('/') + '/' + url.lstrip('/')
+        if url.startswith('http://') or url.startswith('https://'):
+            full_url = url
+        else:
+            full_url = request.host_url.rstrip('/') + '/' + url.lstrip('/')
+            
         qr.add_data(full_url)
         qr.make(fit=True)
         

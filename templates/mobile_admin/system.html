@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sistema | Admin Guia de Alter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #9333ea;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding-bottom: 80px;
+            color: var(--text);
+        }
+
+        .header {
+            background: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 20px;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Toggle Switch */
+        .switch-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(22px);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        /* Backup List */
+        .backup-list {
+            margin-top: 15px;
+        }
+
+        .backup-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .backup-info {
+            font-size: 13px;
+        }
+
+        .backup-date {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .backup-size {
+            color: var(--text-muted);
+        }
+
+        .btn-restore {
+            padding: 6px 12px;
+            background: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #ffedd5;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Logs */
+        .log-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .log-item {
+            padding: 10px;
+            border-bottom: 1px solid var(--border);
+            font-size: 12px;
+        }
+
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            color: var(--text-muted);
+        }
+
+        .log-action {
+            font-weight: 600;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-title">
+            <a href="/mobile-admin/dashboard" class="btn-back">⬅️</a>
+            Sistema
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Maintenance Mode -->
+        <div class="card">
+            <div class="card-title">🚧 Modo Manutenção</div>
+            <div class="switch-container">
+                <p style="font-size: 13px; color: #64748b; margin: 0;">
+                    Impede acesso público ao site.
+                </p>
+                <label class="switch">
+                    <input type="checkbox" id="maintenanceToggle" onchange="toggleMaintenance()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Backups -->
+        <div class="card">
+            <div class="card-title">💾 Backup do Banco de Dados</div>
+            <button class="btn btn-primary" onclick="createBackup()" id="btnBackup">
+                Criar Novo Backup
+            </button>
+
+            <div class="backup-list" id="backupList">
+                <div style="text-align: center; padding: 20px; color: #999;">Carregando...</div>
+            </div>
+        </div>
+
+        <!-- Audit Logs -->
+        <div class="card">
+            <div class="card-title">📜 Logs de Auditoria</div>
+            <div class="log-list" id="logList">
+                <div style="text-align: center; padding: 20px; color: #999;">Carregando...</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMaintenanceStatus();
+            loadBackups();
+            loadLogs();
+        });
+
+        // Maintenance
+        async function loadMaintenanceStatus() {
+            try {
+                const response = await fetch('/mobile-admin/api/system/maintenance');
+                const data = await response.json();
+                document.getElementById('maintenanceToggle').checked = data.maintenance_mode;
+            } catch (error) {
+                console.error('Erro ao carregar status:', error);
+            }
+        }
+
+        async function toggleMaintenance() {
+            const enabled = document.getElementById('maintenanceToggle').checked;
+            try {
+                const response = await fetch('/mobile-admin/api/system/maintenance', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ enabled })
+                });
+                const data = await response.json();
+                alert(data.message);
+            } catch (error) {
+                alert('Erro ao alterar modo manutenção');
+                document.getElementById('maintenanceToggle').checked = !enabled;
+            }
+        }
+
+        // Backups
+        async function loadBackups() {
+            const container = document.getElementById('backupList');
+            try {
+                const response = await fetch('/mobile-admin/api/system/backups');
+                const data = await response.json();
+
+                if (data.backups.length === 0) {
+                    container.innerHTML = '<p style="text-align:center; color:#999; font-size:13px;">Nenhum backup encontrado</p>';
+                    return;
+                }
+
+                container.innerHTML = data.backups.map(backup => `
+                    <div class="backup-item">
+                        <div class="backup-info">
+                            <div class="backup-date">${new Date(backup.created_at).toLocaleString()}</div>
+                            <div class="backup-size">${(backup.size / 1024).toFixed(1)} KB</div>
+                        </div>
+                        <button class="btn-restore" onclick="restoreBackup('${backup.filename}')">Restaurar</button>
+                    </div>
+                `).join('');
+            } catch (error) {
+                container.innerHTML = '<p style="text-align:center; color:red;">Erro ao carregar backups</p>';
+            }
+        }
+
+        async function createBackup() {
+            const btn = document.getElementById('btnBackup');
+            btn.disabled = true;
+            btn.textContent = 'Criando...';
+
+            try {
+                const response = await fetch('/mobile-admin/api/system/backup', { method: 'POST' });
+                const data = await response.json();
+                if (response.ok) {
+                    alert('Backup criado com sucesso!');
+                    loadBackups();
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                alert('Erro ao criar backup');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Criar Novo Backup';
+            }
+        }
+
+        async function restoreBackup(filename) {
+            if (!confirm('⚠️ ATENÇÃO: Restaurar um backup substituirá todos os dados atuais. Deseja continuar?')) return;
+
+            try {
+                const response = await fetch(`/mobile-admin/api/system/restore/${filename}`, { method: 'POST' });
+                const data = await response.json();
+                if (response.ok) {
+                    alert(data.message + '\n' + data.warning);
+                    window.location.href = '/mobile-admin/login';
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                alert('Erro ao restaurar backup');
+            }
+        }
+
+        // Logs
+        async function loadLogs() {
+            const container = document.getElementById('logList');
+            try {
+                const response = await fetch('/mobile-admin/api/logs?limit=20');
+                const data = await response.json();
+
+                container.innerHTML = data.logs.map(log => `
+                    <div class="log-item">
+                        <div class="log-header">
+                            <span class="log-action">${log.action}</span>
+                            <span>${new Date(log.timestamp).toLocaleString()}</span>
+                        </div>
+                        <div style="color: #333;">${log.username || 'Sistema'} - ${log.target || ''}</div>
+                        <div style="color: #999; font-size: 11px;">${log.ip_address || ''}</div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                container.innerHTML = '<p style="text-align:center; color:red;">Erro ao carregar logs</p>';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

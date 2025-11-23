@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Usuários | Admin Guia de Alter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding-bottom: 80px;
+            color: var(--text);
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 20px;
+        }
+
+        /* Search Bar */
+        .search-container {
+            padding: 15px 20px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        /* User List */
+        .user-list {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .user-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .user-info p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .user-badges {
+            display: flex;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-admin {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-partner {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-user {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .badge-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-blocked {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .btn-edit {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 5px;
+        }
+
+        /* FAB (Floating Action Button) */
+        .fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-delete {
+            width: 100%;
+            padding: 14px;
+            background: white;
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-title">
+            <a href="/mobile-admin/dashboard" class="btn-back">⬅️</a>
+            Gerenciar Usuários
+        </div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Buscar por nome ou email..." id="searchInput">
+    </div>
+
+    <div class="user-list" id="userList">
+        <!-- Users will be loaded here -->
+        <div style="text-align: center; padding: 20px; color: #64748b;">Carregando...</div>
+    </div>
+
+    <button class="fab" onclick="openModal()">+</button>
+
+    <!-- Modal Create/Edit -->
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Novo Usuário</h2>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <form id="userForm">
+                <input type="hidden" id="userId">
+
+                <div class="form-group">
+                    <label>Nome de Usuário</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Senha (deixe em branco para manter)</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+
+                <div class="form-group">
+                    <label>Função</label>
+                    <select class="form-control" id="role">
+                        <option value="user">Usuário Comum</option>
+                        <option value="partner">Parceiro</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" id="status">
+                        <option value="active">Ativo</option>
+                        <option value="blocked">Bloqueado</option>
+                        <option value="pending">Pendente</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Salvar</button>
+                <button type="button" class="btn-delete" id="btnDelete" style="display: none;"
+                    onclick="deleteUser()">Excluir Usuário</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let users = [];
+
+        document.addEventListener('DOMContentLoaded', loadUsers);
+
+        // Search Filter
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = users.filter(u =>
+                u.username.toLowerCase().includes(term) ||
+                u.email.toLowerCase().includes(term)
+            );
+            renderUsers(filtered);
+        });
+
+        async function loadUsers() {
+            try {
+                const response = await fetch('/mobile-admin/api/users?limit=100');
+                const data = await response.json();
+                users = data.users;
+                renderUsers(users);
+            } catch (error) {
+                console.error('Erro:', error);
+                document.getElementById('userList').innerHTML = '<p style="text-align:center">Erro ao carregar usuários</p>';
+            }
+        }
+
+        function renderUsers(list) {
+            const container = document.getElementById('userList');
+            if (list.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color: #64748b;">Nenhum usuário encontrado</p>';
+                return;
+            }
+
+            container.innerHTML = list.map(user => `
+                <div class="user-card" onclick="editUser(${user.id})">
+                    <div class="user-info">
+                        <h3>${user.username}</h3>
+                        <p>${user.email}</p>
+                        <div class="user-badges">
+                            <span class="badge badge-${user.role}">${user.role}</span>
+                            <span class="badge badge-${user.status}">${user.status}</span>
+                        </div>
+                    </div>
+                    <button class="btn-edit">✏️</button>
+                </div>
+            `).join('');
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('userModal');
+        const form = document.getElementById('userForm');
+
+        function openModal() {
+            document.getElementById('modalTitle').textContent = 'Novo Usuário';
+            document.getElementById('userId').value = '';
+            document.getElementById('btnDelete').style.display = 'none';
+            form.reset();
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        function editUser(id) {
+            const user = users.find(u => u.id === id);
+            if (!user) return;
+
+            document.getElementById('modalTitle').textContent = 'Editar Usuário';
+            document.getElementById('userId').value = user.id;
+            document.getElementById('username').value = user.username;
+            document.getElementById('email').value = user.email;
+            document.getElementById('role').value = user.role;
+            document.getElementById('status').value = user.status;
+            document.getElementById('password').value = ''; // Clear password
+
+            document.getElementById('btnDelete').style.display = 'block';
+
+            modal.classList.add('active');
+        }
+
+        // Form Submit
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const id = document.getElementById('userId').value;
+            const isEdit = !!id;
+            const url = isEdit ? `/mobile-admin/api/users/${id}` : '/mobile-admin/api/users/create';
+            const method = isEdit ? 'PUT' : 'POST';
+
+            const data = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                role: document.getElementById('role').value,
+                status: document.getElementById('status').value
+            };
+
+            const password = document.getElementById('password').value;
+            if (password) data.password = password;
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    closeModal();
+                    loadUsers();
+                    alert(isEdit ? 'Usuário atualizado!' : 'Usuário criado!');
+                } else {
+                    alert(result.error || 'Erro ao salvar');
+                }
+            } catch (error) {
+                alert('Erro de conexão');
+            }
+        });
+
+        // Delete User
+        async function deleteUser() {
+            const id = document.getElementById('userId').value;
+            if (!confirm('Tem certeza que deseja excluir este usuário?')) return;
+
+            try {
+                const response = await fetch(`/mobile-admin/api/users/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    closeModal();
+                    loadUsers();
+                    alert('Usuário excluído!');
+                } else {
+                    const data = await response.json();
+                    alert(data.error || 'Erro ao excluir');
+                }
+            } catch (error) {
+                alert('Erro de conexão');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
