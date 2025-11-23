@@ -3,250 +3,338 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/tours.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Tours em Destaque - Alter do Chão</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px 20px;
+        }
+
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tour-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .tour-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tour-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tour-image.lago-verde {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .tour-image.ilha-amor {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .tour-image.rio-tapajos {
+            background: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
+        }
+
+        .tour-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .tour-content {
+            padding: 25px;
+        }
+
+        .tour-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tour-title i {
+            color: #667eea;
+        }
+
+        .tour-description {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .tour-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #4a5568;
+            background: #f7fafc;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .feature i {
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .tour-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .tour-price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .price-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tour-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tour-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .tours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <main>
-        <div class="container">
-            <div class="row" id="carousel">
-                <!-- Tour 1: Ponta da Valéria -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontadavaleria') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde/pontadavaleria.jpg') }}"
-                                alt="Ponta da Valéria">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta da Valéria</div>
-                            <a href="{{ url_for('routes_tours.pontadavaleria') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
+    <div class="tours-grid">
+        <!-- Card 1: Lago Verde -->
+        <div class="tour-card">
+            <div class="tour-image lago-verde">
+                <img src="/static/img/lagoverde/lagoverde1.jpg" alt="Lago Verde">
+                <div class="tour-badge">⭐ Mais Popular</div>
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">
+                    <i class="fas fa-water"></i>
+                    Lago Verde
+                </h3>
+                <p class="tour-description">
+                    Conheça o famoso Lago Verde, com suas águas cristalinas de cor esmeralda. Inclui visita à Ilha do
+                    Amor, a praia de água doce mais bonita do Brasil, e banho nas praias de areia branca.
+                </p>
+                <div class="tour-features">
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        4-5 horas
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-ship"></i>
+                        Barco regional
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-camera"></i>
+                        Fotos incluídas
+                    </div>
                 </div>
-
-                <!-- Tour 2: ponta Grande -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontagrande') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/rioarapiuns/pontagrande1.jpg') }}"
-                                alt="Ponta Grande">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta Grande</div>
-                            <a href="{{ url_for('routes_tours.pontagrande') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 3: Alter do Chão -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.alterdochaotour') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/alterdochao/alterdochao2.jpg') }}"
-                                alt="Alter do Chão">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Alter do Chão</div>
-                            <a href="{{ url_for('routes_tours.alterdochaotour') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 4: Lago Verde -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.lagoverdetour') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde/lagoverde5.jpg') }}"
-                                alt="Lago Verde">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Lago Verde</div>
-                            <a href="{{ url_for('routes_tours.lagoverdetour') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 5: Igarapé do Macaco -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.igarapedomacaco') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde/igarapedomacaco2.jpg') }}"
-                                alt="Igarapé do Macaco">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Igarapé do Macaco</div>
-                            <a href="{{ url_for('routes_tours.igarapedomacaco') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 6: Praia de Aramanaí -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.aramanai') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/subindoorio/aramanai1.jpg') }}"
-                                alt="Praia de Aramanaí">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Praia de Aramanaí</div>
-                            <a href="{{ url_for('routes_tours.aramanai') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 7: Ponta do Cururu -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontadocururu') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/descendoorio/pontadocururu2.jpg') }}"
-                                alt="Ponta do Cururu">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta do Cururu</div>
-                            <a href="{{ url_for('routes_tours.pontadocururu') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 8: Floresta Encantada -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.florestaencantada') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde/florestaencantada.jpg') }}"
-                                alt="Floresta Encantada">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Floresta Encantada</div>
-                            <a href="{{ url_for('routes_tours.florestaencantada') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 9: Praia de Pindobal -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pindobal') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/subindoorio/pindobal3.jpg') }}"
-                                alt="Praia do Pindobal">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Praia do Pindobal</div>
-                            <a href="{{ url_for('routes_tours.pindobal') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 10: Lago Preto -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.lagopreto') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/descendoorio/lagopreto2.jpg') }}"
-                                alt="Lago Preto">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Lago Preto</div>
-                            <a href="{{ url_for('routes_tours.lagopreto') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 11: Igarapé do Camarão -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.igarapedocamarao') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde/igarapecamarao.jpg') }}"
-                                alt="Igarapé do Camarão">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Igarapé do Camarão</div>
-                            <a href="{{ url_for('routes_tours.igarapedocamarao') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 12: Ponta de Pedras -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontadepedras') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/descendoorio/pontadepedras3.jpg') }}"
-                                alt="Ponta de Pedras">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta de Pedras</div>
-                            <a href="{{ url_for('routes_tours.pontadepedras') }}" class="btn btn-primary"
-                                target="_blank">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 13: falta -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.florestaencantada') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/lagoverde/florestaencantada.jpg') }}"
-                                alt="Floresta Encantada">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Floresta Encantada</div>
-                            <a href="{{ url_for('routes_tours.florestaencantada') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 14: Encontro das Águas -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.encontrodasaguas') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/descendoorio/encontrodasaguas1.jpg') }}"
-                                alt="Alter do Chão">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Encontro das Águas</div>
-                            <a href="{{ url_for('routes_tours.encontrodasaguas') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
+                <div class="tour-footer">
+                    <div class="tour-price">
+                        <span class="price-label">A partir de</span>
+                        <span class="price-value">R$ 150</span>
+                    </div>
+                    <button class="tour-button">
+                        <i class="fas fa-ticket-alt"></i> Reservar
+                    </button>
                 </div>
             </div>
         </div>
-    </main>
+
+        <!-- Card 2: Ilha do Amor -->
+        <div class="tour-card">
+            <div class="tour-image ilha-amor">
+                <img src="/static/img/lagoverde/alterdochao.jpg" alt="Ilha do Amor">
+                <div class="tour-badge">🏖️ Imperdível</div>
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">
+                    <i class="fas fa-umbrella-beach"></i>
+                    Ilha do Amor
+                </h3>
+                <p class="tour-description">
+                    A famosa Ilha do Amor, formação de areia que surge na época da seca (julho a dezembro). Considerada
+                    uma das praias de água doce mais belas do Brasil, perfeita para relaxar e curtir o pôr do sol.
+                </p>
+                <div class="tour-features">
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        3-4 horas
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-sun"></i>
+                        Melhor: Jul-Dez
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-umbrella-beach"></i>
+                        Praia privativa
+                    </div>
+                </div>
+                <div class="tour-footer">
+                    <div class="tour-price">
+                        <span class="price-label">A partir de</span>
+                        <span class="price-value">R$ 120</span>
+                    </div>
+                    <button class="tour-button">
+                        <i class="fas fa-ticket-alt"></i> Reservar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Rio Tapajós -->
+        <div class="tour-card">
+            <div class="tour-image rio-tapajos">
+                <img src="/static/img/lagoverde/florestaencantada.jpg" alt="Rio Tapajós">
+                <div class="tour-badge">🚤 Aventura</div>
+            </div>
+            <div class="tour-content">
+                <h3 class="tour-title">
+                    <i class="fas fa-ship"></i>
+                    Passeio pelo Rio Tapajós
+                </h3>
+                <p class="tour-description">
+                    Navegue pelas águas do Rio Tapajós, um dos rios mais limpos do mundo. Visite comunidades
+                    ribeirinhas, florestas alagadas e praias escondidas. Inclui paradas para banho e fotos panorâmicas.
+                </p>
+                <div class="tour-features">
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        6-7 horas
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-utensils"></i>
+                        Almoço incluso
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-fish"></i>
+                        Pesca opcional
+                    </div>
+                </div>
+                <div class="tour-footer">
+                    <div class="tour-price">
+                        <span class="price-label">A partir de</span>
+                        <span class="price-value">R$ 200</span>
+                    </div>
+                    <button class="tour-button">
+                        <i class="fas fa-ticket-alt"></i> Reservar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        var currentIndex = 0;
-        var tours = document.querySelectorAll(".col-md-4");
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.tour-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
 
-        function showTours() {
-            for (var i = 0; i < tours.length; i++) {
-                tours[i].style.display = "none";
-            }
-            for (var i = currentIndex; i < currentIndex + 3; i++) {
-                if (i < tours.length) {
-                    tours[i].style.display = "block";
-                }
-            }
-            currentIndex += 3;
-            if (currentIndex >= tours.length) {
-                currentIndex = 0;
-            }
-            setTimeout(showTours, 2000); // Altere o intervalo de troca aqui (em milissegundos)
-        }
-
-        showTours();
+            document.querySelectorAll('.tour-button').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const tourName = this.closest('.tour-card').querySelector('.tour-title').textContent.trim();
+                    alert(`Reserva para: ${tourName}\n\nEm breve você será redirecionado para o WhatsApp para finalizar sua reserva!`);
+                });
+            });
+        });
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

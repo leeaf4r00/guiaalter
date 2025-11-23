@@ -3,131 +3,162 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/tours.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Rio Arapiuns</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f7fafc;
+            padding: 20px 15px;
+        }
+
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .tour-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .tour-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .tour-content {
+            padding: 18px;
+        }
+
+        .tour-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tour-title i {
+            color: #667eea;
+        }
+
+        .tour-description {
+            color: #718096;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .tour-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .tour-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+
+        .tour-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tour-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+    </style>
 </head>
 
 <body>
-    <main>
-        <div class="container">
-            <div class="row" id="carousel">
-                <!-- Tour 1: Comunidade de Coroca - Criação de abelhas e tartarugas-->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.comunidadecoroca') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/rioarapiuns/comunidadecoroca1.jpg') }}"
-                                alt="comunidadecoroca">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Comunidade de Coroca </div>
-                            <a href="{{ url_for('routes_tours.comunidadecoroca') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
+    <div class="tours-grid">
+        <div class="tour-card">
+            <img src="/static/img/rioarapiuns/alterdochao.jpg" alt="Alter do Chão" class="tour-image"
+                onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
+            <div class="tour-content">
+                <h3 class="tour-title">
+                    <i class="fas fa-home"></i>
+                    Alter do Chão
+                </h3>
+                <p class="tour-description">
+                    Centro turístico principal
+                </p>
+                <div class="tour-footer">
+                    <div class="tour-price">R$ 100</div>
+                    <button class="tour-button">Ver Mais</button>
                 </div>
-
-                <!-- Tour 2: Icuxí -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.icuxi') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/rioarapiuns/icuxi2.jpg') }}" alt="Icuxí">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Icuxí</div>
-                            <a href="{{ url_for('routes_tours.icuxi') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 3: Meliponário -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.meliponario') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/rioarapiuns/meliponario1.jpg') }}"
-                                alt="Meliponário">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Meliponário</div>
-                            <a href="{{ url_for('routes_tours.meliponario') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 4: Ponta Grande -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontagrande') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/rioarapiuns/pontagrande1.jpg') }}"
-                                alt="Ponta Grande">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta Grande</div>
-                            <a href="{{ url_for('routes_tours.pontagrande') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 5: Ponta do Toronó -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontadotorono') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/rioarapiuns/pontadotorono1.jpg') }}"
-                                alt="Ponta do Toronó">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta do Toronó</div>
-                            <a href="{{ url_for('routes_tours.pontadotorono') }}" class="btn btn-primary">Ver mais</a>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Tour 6: Ponta do Caracaraí no rio Arapiuns, afluente do rio Tapajós. -->
-                <div class="col-md-4">
-                    <a href="{{ url_for('routes_tours.pontadocaracarai') }}" target="_blank">
-                        <div class="tour-box">
-                            <img src="{{ url_for('static', filename='img/rioarapiuns/pontadocaracarai2.jpg') }}"
-                                alt="Ponta do Caracaí">
-                        </div>
-                        <div class="tour-info">
-                            <div class="tour-name">Ponta do Caracaraí no rio Arapiuns</div>
-                            <a href="{{ url_for('routes_tours.pontadocaracarai') }}" class="btn btn-primary">Ver
-                                mais</a>
-                        </div>
-                    </a>
-                </div>
-
             </div>
         </div>
-    </main>
 
-    <script>
-        var currentIndex = 0;
-        var tours = document.querySelectorAll(".col-md-4");
+        <div class="tour-card">
+            <img src="/static/img/rioarapiuns/canaldojari.jpg" alt="Canal do Jari" class="tour-image"
+                onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
+            <div class="tour-content">
+                <h3 class="tour-title">
+                    <i class="fas fa-ship"></i>
+                    Comunidades Tradicionais
+                </h3>
+                <p class="tour-description">
+                    Conheça a cultura ribeirinha
+                </p>
+                <div class="tour-footer">
+                    <div class="tour-price">R$ 170</div>
+                    <button class="tour-button">Ver Mais</button>
+                </div>
+            </div>
+        </div>
 
-        function showTours() {
-            for (var i = 0; i < tours.length; i++) {
-                tours[i].style.display = "none";
-            }
-            for (var i = currentIndex; i < currentIndex + 3; i++) {
-                if (i < tours.length) {
-                    tours[i].style.display = "block";
-                }
-            }
-            currentIndex += 3;
-            if (currentIndex >= tours.length) {
-                currentIndex = 0;
-            }
-            setTimeout(showTours, 2000); // Altere o intervalo de troca aqui (em milissegundos)
-        }
-
-        showTours();
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="tour-card">
+            <img src="/static/img/rioarapiuns/flonatapajos.jpg" alt="Flona Tapajós" class="tour-image"
+                onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'">
+            <div class="tour-content">
+                <h3 class="tour-title">
+                    <i class="fas fa-tree"></i>
+                    Trilhas Ecológicas
+                </h3>
+                <p class="tour-description">
+                    Explore a floresta amazônica
+                </p>
+                <div class="tour-footer">
+                    <div class="tour-price">R$ 165</div>
+                    <button class="tour-button">Ver Mais</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

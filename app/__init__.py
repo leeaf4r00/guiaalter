@@ -13,7 +13,13 @@ login_manager = LoginManager()
 
 def create_app():
     """Factory pattern para criar a aplicação Flask"""
-    app = Flask(__name__)
+    # Define o caminho base como o diretório pai de 'app'
+    import os
+    basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    
+    app = Flask(__name__,
+                template_folder=os.path.join(basedir, 'templates'),
+                static_folder=os.path.join(basedir, 'static'))
     
     # Configurações
     app.config['DATABASE_PATH'] = 'database.db'

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conheça Alter do Chão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/conheca.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    {% block header %}{% include 'components/header.html' %}{% endblock %}
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"
+                style="background-image: url('{{ url_for('static', filename='img/alterdochao_hero.jpg') }}');"></div>
+            <div class="hero-content">
+                <h1>Conheça Alter do Chão</h1>
+                <p class="subtitle">O paraíso amazônico que encanta turistas de todo o Brasil.</p>
+                <a href="#merch" class="btn-primary"><i class="fas fa-shopping-bag"></i> Explore Merchandising</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>Sobre Alter do Chão</h2>
+            <p>Situada nas margens do Rio Tapajós, Alter do Chão é famosa por suas praias de água doce, lagoas
+                cristalinas e a exuberante Floresta Encantada. É o destino perfeito para quem busca contato com a
+                natureza, cultura local e aventuras inesquecíveis.</p>
+            <div class="facts-grid">
+                <div class="fact-item"><i class="fas fa-water"></i> <span>Lago Verde</span></div>
+                <div class="fact-item"><i class="fas fa-umbrella-beach"></i> <span>Ilha do Amor</span></div>
+                <div class="fact-item"><i class="fas fa-ship"></i> <span>Passeio de Barco</span></div>
+                <div class="fact-item"><i class="fas fa-tree"></i> <span>Floresta Encantada</span></div>
+            </div>
+        </section>
+
+        <!-- Merchandising Section -->
+        <section id="merch" class="merchandising">
+            <h2>Merchandising Oficial</h2>
+            <p>Leve um pedacinho de Alter do Chão para casa com nossos produtos exclusivos.</p>
+            <div class="merch-grid">
+                <div class="merch-card">
+                    <img src="{{ url_for('static', filename='img/merch/tshirt.jpg') }}" alt="Camiseta Alter">
+                    <h3>Camiseta "Alter"</h3>
+                    <p class="price">R$ 80</p>
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Comprar</button>
+                </div>
+                <div class="merch-card">
+                    <img src="{{ url_for('static', filename='img/merch/hat.jpg') }}" alt="Boné Alter">
+                    <h3>Boné "Amazônia"</h3>
+                    <p class="price">R$ 45</p>
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Comprar</button>
+                </div>
+                <div class="merch-card">
+                    <img src="{{ url_for('static', filename='img/merch/mug.jpg') }}" alt="Caneca Alter">
+                    <h3>Caneca "Rio Tapajós"</h3>
+                    <p class="price">R$ 35</p>
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Comprar</button>
+                </div>
+                <div class="merch-card">
+                    <img src="{{ url_for('static', filename='img/merch/poster.jpg') }}" alt="Poster Alter">
+                    <h3>Poster Fotográfico</h3>
+                    <p class="price">R$ 55</p>
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Comprar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% block footer %}{% include 'components/footer.html' %}{% endblock %}
+    <script>
+        // Simples efeito de scroll suave para a seção merch
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>
