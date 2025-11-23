@@ -16,8 +16,8 @@ def create_app():
     app = Flask(__name__)
     
     # Configurações
-    app.config['DATABASE_PATH'] = 'data/database.db'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/database.db'
+    app.config['DATABASE_PATH'] = 'database.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'leeafar:420')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     

@@ -1,33 +1,28 @@
-from flask import Blueprint, render_template, jsonify
-from app.database import db
+"""
+Admin Routes - Rotas administrativas
+"""
+from flask import render_template, Blueprint
+from flask_login import login_required, current_user
+from functools import wraps
 
-# Criando o Blueprint para administração
-routes_admin = Blueprint('routes_admin', __name__)
-
-# Definindo a rota para o painel de administração
+routes_admin = Blueprint('routes_admin', __name__, url_prefix='/admin')
 
 
-@routes_admin.route('/admin/painel')
-def painel_adm():
-    # Aqui você pode adicionar qualquer lógica específica que precisa ser executada antes de renderizar o template
+def admin_required(f):
+    """Decorator para verificar se o usuário é admin"""
+    @wraps(f)
+    @login_required
+    def decorated_function(*args, **kwargs):
+        if not current_user.is_admin:
+            from flask import abort
+            abort(403)
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+@routes_admin.route('/')
+@routes_admin.route('/painel')
+@admin_required
+def painel():
+    """Painel administrativo"""
     return render_template('admin/paineladm.html')
-
-# Rota para listar todos os usuários cadastrados
-
-
-@routes_admin.route('/admin/user_list')
-def user_list():
-    # Obter a lista de usuários do banco de dados
-    users = db.get_all_users()
-
-    # Verificar se a lista de usuários não é None
-    if users is not None:
-        # Converter a lista de usuários em um formato JSON
-        users_json = [{'id': user['id'], 'username': user['username'],
-                       'email': user['email']} for user in users]
-    else:
-        # Se users é None, retornar uma lista vazia
-        users_json = []
-
-    # Retornar os dados dos usuários em formato JSON
-    return jsonify({'users': users_json})
