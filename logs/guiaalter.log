@@ -63,3 +63,7 @@
 [2025-11-23 18:19:06,961] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 [2025-11-23 18:19:07,122] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 [2025-11-23 18:19:07,859] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 18:27:19,819] INFO in config: Logging configurado com sucesso
+[2025-11-23 18:27:19,820] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 18:27:20,148] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 18:27:20,157] INFO in __init__: Tabelas do banco de dados criadas/verificadas
