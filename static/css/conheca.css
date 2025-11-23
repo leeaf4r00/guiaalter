@@ -1,29 +1,40 @@
-/* Conheça Alter CSS */
+/* Conheça Alter CSS - Premium Design */
 
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --text-color: #333;
-    --light-bg: #f9f9f9;
+    --primary-color: #00a8ff;
+    --secondary-color: #0097e6;
+    --accent-color: #e1b12c;
+    --text-dark: #2f3640;
+    --text-light: #f5f6fa;
+    --bg-light: #f5f6fa;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.2);
+    --gradient-hero: linear-gradient(135deg, rgba(0, 168, 255, 0.8), rgba(140, 122, 230, 0.8));
+    --gradient-card: linear-gradient(135deg, #ffffff 0%, #f1f2f6 100%);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-color);
+    font-family: 'Outfit', 'Inter', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* Hero Section */
 .hero {
     position: relative;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: var(--text-light);
     overflow: hidden;
+    margin-bottom: 0;
 }
 
 .hero-bg {
@@ -34,142 +45,292 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.6);
+    filter: brightness(0.7);
+    transform: scale(1.1);
+    transition: transform 10s ease;
     z-index: -1;
+    margin-bottom: 60px;
+    position: relative;
 }
 
-.hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.section-title h2 {
+    font-size: 3rem;
+    color: var(--text-dark);
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
 }
 
-.hero-content .subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+.section-title h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-hero);
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
-.btn-primary {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
-}
-
-.btn-primary:hover {
-    background-color: #2980b9;
-    transform: translateY(-3px);
+.section-title p {
+    color: #7f8fa6;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* About Section */
 .about {
-    padding: 80px 20px;
-    text-align: center;
-    background-color: white;
-}
-
-.about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-}
-
-.about p {
-    max-width: 800px;
-    margin: 0 auto 40px;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    padding: 100px 20px;
+    background: white;
+    position: relative;
+    z-index: 1;
 }
 
 .facts-grid {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
-    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 60px auto 0;
 }
 
 .fact-item {
+    text-align: center;
+    padding: 30px;
+}
+
+.attractions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.attraction-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.attraction-card:hover {
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-image-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.attraction-card:hover .card-image-wrapper img {
+    transform: scale(1.1);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.attraction-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.attraction-content {
+    padding: 30px;
+}
+
+.attraction-content h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-dark);
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 10px;
+}
+
+.attraction-content h4 i {
+    color: var(--primary-color);
     font-size: 1.2rem;
-    font-weight: bold;
-    color: #555;
 }
 
-.fact-item i {
-    font-size: 2.5rem;
-    color: var(--secondary-color);
+.attraction-content p {
+    color: #7f8fa6;
+    line-height: 1.6;
+    margin-bottom: 0;
 }
 
-/* Merchandising Section */
-.merchandising {
-    padding: 80px 20px;
-    background-color: var(--light-bg);
-    text-align: center;
+/* Routes Section */
+.routes-section {
+    padding: 100px 20px;
+    background: #2f3640;
+    color: white;
+    position: relative;
+    overflow: hidden;
 }
 
-.merchandising h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+.routes-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+    animation: rotate 60s linear infinite;
 }
 
-.merch-grid {
+.routes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     max-width: 1200px;
-    margin: 40px auto 0;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
-.merch-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-    padding-bottom: 20px;
+.route-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
-.merch-card:hover {
-    transform: translateY(-10px);
+.route-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
-.merch-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+.route-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-hero);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.3);
 }
 
-.merch-card h3 {
-    margin: 15px 0 5px;
-    font-size: 1.2rem;
-}
-
-.merch-card .price {
+.route-card h4 {
     font-size: 1.3rem;
-    color: var(--primary-color);
-    font-weight: bold;
     margin-bottom: 15px;
+    font-weight: 600;
 }
 
-.btn-buy {
-    padding: 10px 25px;
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s;
+.route-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
-.btn-buy:hover {
-    background-color: #27ae60;
+/* Tips Section */
+.tips-section {
+    padding: 100px 20px;
+    background: white;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tip-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(10px);
+}
+
+.tip-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tip-header i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.tip-header h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+
+    .about,
+    .attractions-section,
+    .routes-section,
+    .tips-section {
+        padding: 60px 20px;
+    }
 }
