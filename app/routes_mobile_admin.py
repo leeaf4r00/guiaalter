@@ -106,6 +106,56 @@ def logout():
     return redirect(url_for('routes_mobile_admin.login'))
 
 
+# ==================== SETUP WIZARD ====================
+
+@routes_mobile_admin.route('/setup', methods=['GET', 'POST'])
+def setup_master():
+    """Configuração inicial: Criar Usuário Mestre"""
+    # Verifica se já existem usuários
+    if User.query.first():
+        return redirect(url_for('routes_mobile_admin.login'))
+        
+    if request.method == 'GET':
+        return render_template('mobile_admin/setup.html')
+        
+    # POST - Criar Mestre
+    data = request.get_json() if request.is_json else request.form
+    
+    username = data.get('username')
+    password = data.get('password')
+    full_name = data.get('full_name')
+    email = data.get('email')
+    
+    if not all([username, password, full_name, email]):
+        return jsonify({"error": "Todos os campos são obrigatórios"}), 400
+        
+    try:
+        user = User(
+            username=username,
+            email=email,
+            password=generate_password_hash(password),
+            role='admin',
+            is_admin=True,
+            status='active',
+            full_name=full_name
+        )
+        
+        db.session.add(user)
+        db.session.commit()
+        
+        # Loga automaticamente
+        login_user(user)
+        
+        return jsonify({
+            "success": True,
+            "redirect": url_for('routes_mobile_admin.dashboard'),
+            "message": "Usuário Mestre criado com sucesso!"
+        })
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"Erro ao criar usuário: {str(e)}"}), 500
+
+
 # ==================== PUBLIC REGISTRATION ====================
 
 @routes_mobile_admin.route('/register', methods=['GET', 'POST'])
@@ -169,6 +219,24 @@ def register():
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": f"Erro ao criar cadastro: {str(e)}"}), 500
+
+
+# ==================== CONNECTION INFO ====================
+
+@routes_mobile_admin.route('/connect')
+def connect_mobile():
+    """Tela de conexão mobile com QR Codes"""
+    local_ip = os.environ.get('LOCAL_IP', '127.0.0.1')
+    local_url = f"http://{local_ip}:5000/mobile-admin/login"
+    
+    # Tenta pegar URL do Cloudflare (pode demorar um pouco para aparecer)
+    public_url = os.environ.get('CLOUDFLARE_URL')
+    if public_url:
+        public_url = f"{public_url}/mobile-admin/login"
+        
+    return render_template('mobile_admin/connect.html', 
+                         local_url=local_url, 
+                         public_url=public_url)
 
 
 # ==================== DASHBOARD ====================

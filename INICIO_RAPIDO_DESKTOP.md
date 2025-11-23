@@ -15,26 +15,20 @@ Isso irá:
 
 ---
 
-### Opção 2: Linha de Comando
+## 🎯 Primeiro Acesso (Configuração Inicial)
 
-```bash
-# 1. Instalar pywebview (apenas primeira vez)
-pip install pywebview
+Se for a primeira vez que você abre o sistema (ou se o banco de dados estiver vazio):
 
-# 2. Executar aplicação desktop
-python run_desktop.py
-```
+1. A janela abrirá na tela de **"Configuração Inicial"**
+2. Preencha seus dados para criar o **Usuário Mestre** (Admin Principal)
+3. Clique em **"Criar Usuário Mestre"**
+4. Você será logado automaticamente!
 
 ---
 
-## 🎯 Login
+## 🔐 Login (Acessos Seguintes)
 
-Quando a janela abrir, use:
-
-- **Usuário:** `admin`
-- **Senha:** `admin123`
-
-⚠️ **Altere a senha após o primeiro login!**
+Nas próximas vezes, use o usuário e senha que você criou.
 
 ---
 
@@ -52,18 +46,13 @@ Uma **janela nativa do Windows** com:
 
 ---
 
-## 🆚 Diferença dos Modos
+## 🔧 Solução de Problemas
 
-| Arquivo | Modo | Quando Usar |
-|---------|------|-------------|
-| `run-desktop.bat` | 🪟 Janela Windows | Uso local, aparência profissional |
-| `run.py` | 🌐 Navegador Web | Acesso remoto, celular |
-
----
-
-## 📖 Documentação Completa
-
-Veja: `DESKTOP_APP.md`
+Se der erro de banco de dados (`no such column`):
+1. Execute o script de correção:
+   ```bash
+   .venv\Scripts\python.exe fix_db.py
+   ```
 
 ---
 
