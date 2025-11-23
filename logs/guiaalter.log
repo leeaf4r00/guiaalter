@@ -834,3 +834,11 @@ jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was loo
 [2025-11-23 19:11:41,129] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 [2025-11-23 19:11:41,943] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 [2025-11-23 19:11:42,053] WARNING in __init__: Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-11-23 19:12:13,531] INFO in config: Logging configurado com sucesso
+[2025-11-23 19:12:13,531] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 19:12:13,678] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 19:12:13,684] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-11-23 19:15:28,065] INFO in config: Logging configurado com sucesso
+[2025-11-23 19:15:28,070] INFO in __init__: Iniciando aplicação em modo: development
+[2025-11-23 19:15:28,483] INFO in __init__: Blueprints registrados com sucesso
+[2025-11-23 19:15:28,489] INFO in __init__: Tabelas do banco de dados criadas/verificadas
