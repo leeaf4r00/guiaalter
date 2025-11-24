@@ -15,7 +15,7 @@ WTForms==3.1.2
 
 # Utilities
 python-dotenv==1.0.0
-gunicorn==21.2.0
+gunicorn==22.0.0
 
 # QR Code Generation
 qrcode==7.4.2
