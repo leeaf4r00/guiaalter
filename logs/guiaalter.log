@@ -1043,3 +1043,7 @@ jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was loo
 [2025-12-05 14:31:47,976] INFO in __init__: Iniciando aplicação em modo: development
 [2025-12-05 14:31:48,057] INFO in __init__: Blueprints registrados com sucesso
 [2025-12-05 14:31:48,061] INFO in __init__: Tabelas do banco de dados criadas/verificadas
+[2025-12-05 16:17:49,279] INFO in config: Logging configurado com sucesso
+[2025-12-05 16:17:49,279] INFO in __init__: Iniciando aplicação em modo: development
+[2025-12-05 16:17:49,548] INFO in __init__: Blueprints registrados com sucesso
+[2025-12-05 16:17:49,552] INFO in __init__: Tabelas do banco de dados criadas/verificadas
