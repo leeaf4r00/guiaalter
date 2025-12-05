@@ -2,85 +2,291 @@
 
 {% block title %}Veículos e Transporte - Guia de Alter{% endblock %}
 
+{% block extra_css %}
+<style>
+    .veiculos-hero {
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url("{{ url_for('static', filename='img/alterdochao_hero.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        padding: 80px 20px;
+        text-align: center;
+        color: white;
+        margin-bottom: 60px;
+    }
+    .veiculos-hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: 15px;
+    }
+    .veiculos-hero p {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.95;
+    }
+
+    .vehicle-section {
+        margin-bottom: 70px;
+        padding: 0 20px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .vehicle-section h2 {
+        color: #2c3e50;
+        border-left: 5px solid #667eea;
+        padding-left: 15px;
+        margin-bottom: 30px;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    .vehicles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+
+    .vehicle-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInCard 0.6s ease forwards;
+    }
+
+    .vehicle-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+    
+    .vehicle-card:hover .vehicle-image {
+        transform: scale(1.05);
+    }
+
+    .vehicle-image-wrapper {
+        overflow: hidden;
+        height: 220px;
+    }
+
+    .vehicle-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .vehicle-content {
+        padding: 25px;
+    }
+
+    .vehicle-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #2c3e50;
+    }
+
+    .vehicle-description {
+        color: #7f8c8d;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        min-height: 70px;
+    }
+
+    .vehicle-price {
+        font-size: 1.6rem;
+        color: #27ae60;
+        font-weight: 800;
+        margin-bottom: 20px;
+        display: block;
+    }
+    .vehicle-price small {
+        font-size: 0.55em;
+        color: #95a5a6;
+        font-weight: 500;
+    }
+
+    .features-list {
+        list-style: none;
+        padding: 15px;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #f8f9fa, #eef1f5);
+        border-radius: 12px;
+    }
+
+    .features-list li {
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .features-list li:last-child {
+        margin-bottom: 0;
+    }
+
+    .features-list i {
+        color: #667eea;
+        width: 18px;
+    }
+
+    .btn-reservar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #25D366, #20ba5a);
+        color: white;
+        text-align: center;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-reservar:hover {
+        background: linear-gradient(135deg, #20ba5a, #25D366);
+        transform: scale(1.03);
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        color: white;
+    }
+
+    .no-items {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 50px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        color: #7f8c8d;
+    }
+    
+    @keyframes fadeInCard {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .veiculos-hero { padding: 60px 15px; }
+        .vehicle-section { padding: 0 15px; margin-bottom: 50px; }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container" style="padding: 40px 20px;">
-    <h1 class="text-center" style="margin-bottom: 40px;">Transporte e Veículos</h1>
-    <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1em; color: #666;">
-        Encontre as melhores opções de transporte para se locomover em Alter do Chão e região. De lanchas rápidas a
-        transfers confortáveis.
-    </p>
+<!-- Hero -->
+<section class="veiculos-hero">
+    <h1>🚤 Transporte em Alter</h1>
+    <p>Lanchas, barcos regionais e transfers confortáveis para sua aventura pela Amazônia.</p>
+</section>
 
-    <div class="vehicles-grid"
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+    <!-- Seção Lanchas -->
+    <div class="vehicle-section">
+        <h2><i class="fas fa-ship"></i> Lanchas Rápidas</h2>
+        <div class="vehicles-grid">
+            {% for item in lanchas %}
+            <div class="vehicle-card">
+                <img src="{{ item.image_url }}" alt="{{ item.title }}" class="vehicle-image">
+                <div class="vehicle-content">
+                    <h3 class="vehicle-title">{{ item.title }}</h3>
+                    <p class="vehicle-description">{{ item.description }}</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Marinheiro Experiente</li>
+                        <li><i class="fas fa-check-circle"></i> Combustível Incluso</li>
+                        <li><i class="fas fa-check-circle"></i> Som Bluetooth & Cooler</li>
+                    </ul>
 
-        <!-- Lanchas -->
-        <div class="card"
-            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <div
-                style="height: 200px; background-color: #3498db; display: flex; align-items: center; justify-content: center; color: white;">
-                <i class="fas fa-ship fa-4x"></i>
+                    <span class="vehicle-price">R$ {{ "%.2f"|format(item.price) }} <small style="font-size:0.5em; color: #999">/diária</small></span>
+                    
+                    <a href="https://wa.me/5593991160523?text={{ item.whatsapp_message }}" target="_blank" class="btn-reservar">
+                        <i class="fab fa-whatsapp"></i> Reservar Agora
+                    </a>
+                </div>
             </div>
-            <div class="card-body" style="padding: 20px;">
-                <h3 style="margin-top: 0;">Lanchas Rápidas</h3>
-                <p>Ideais para passeios privativos e deslocamento rápido entre as praias. Capacidade para até 8 pessoas.
-                </p>
-                <ul style="list-style: none; padding: 0; margin-top: 15px; color: #555;">
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Piloto experiente</li>
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Colete salva-vidas</li>
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Som bluetooth</li>
-                </ul>
-                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
-                    style="display: block; text-align: center; margin-top: 20px; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Solicitar
-                    Orçamento</a>
+            {% else %}
+            <div class="no-items">
+                <i class="fas fa-info-circle fa-2x" style="margin-bottom: 10px;"></i><br>
+                Nenhuma lancha disponível no momento.
             </div>
+            {% endfor %}
         </div>
+    </div>
 
-        <!-- Barcos Regionais -->
-        <div class="card"
-            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <div
-                style="height: 200px; background-color: #e67e22; display: flex; align-items: center; justify-content: center; color: white;">
-                <i class="fas fa-anchor fa-4x"></i>
+    <!-- Seção Barcos Regionais -->
+    <div class="vehicle-section">
+        <h2><i class="fas fa-anchor"></i> Barcos Regionais</h2>
+        <div class="vehicles-grid">
+            {% for item in barcos %}
+            <div class="vehicle-card">
+                <img src="{{ item.image_url }}" alt="{{ item.title }}" class="vehicle-image">
+                <div class="vehicle-content">
+                    <h3 class="vehicle-title">{{ item.title }}</h3>
+                    <p class="vehicle-description">{{ item.description }}</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-users"></i> Ideal para Grupos</li>
+                        <li><i class="fas fa-umbrella-beach"></i> Área Coberta</li>
+                        <li><i class="fas fa-utensils"></i> Cozinha a Bordo</li>
+                    </ul>
+
+                    <span class="vehicle-price">R$ {{ "%.2f"|format(item.price) }} <small style="font-size:0.5em; color: #999">/diária</small></span>
+                    
+                    <a href="https://wa.me/5593991160523?text={{ item.whatsapp_message }}" target="_blank" class="btn-reservar">
+                        <i class="fab fa-whatsapp"></i> Reservar Agora
+                    </a>
+                </div>
             </div>
-            <div class="card-body" style="padding: 20px;">
-                <h3 style="margin-top: 0;">Barcos Regionais</h3>
-                <p>Para quem busca uma experiência autêntica e tranquila. Perfeito para grupos maiores e passeios de dia
-                    inteiro.</p>
-                <ul style="list-style: none; padding: 0; margin-top: 15px; color: #555;">
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Capacidade até 20
-                        pessoas</li>
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Área coberta</li>
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Banheiro a bordo</li>
-                </ul>
-                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
-                    style="display: block; text-align: center; margin-top: 20px; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Solicitar
-                    Orçamento</a>
+            {% else %}
+            <div class="no-items">
+                Nenhum barco regional disponível no momento.
             </div>
+            {% endfor %}
         </div>
+    </div>
 
-        <!-- Transfers -->
-        <div class="card"
-            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <div
-                style="height: 200px; background-color: #2ecc71; display: flex; align-items: center; justify-content: center; color: white;">
-                <i class="fas fa-car fa-4x"></i>
+    <!-- Seção Transfers -->
+    <div class="vehicle-section">
+        <h2><i class="fas fa-car"></i> Transfers e Táxis</h2>
+        <div class="vehicles-grid">
+            {% for item in transfers %}
+            <div class="vehicle-card">
+                <img src="{{ item.image_url }}" alt="{{ item.title }}" class="vehicle-image">
+                <div class="vehicle-content">
+                    <h3 class="vehicle-title">{{ item.title }}</h3>
+                    <p class="vehicle-description">{{ item.description }}</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-snowflake"></i> Ar Condicionado</li>
+                        <li><i class="fas fa-suitcase"></i> Porta-malas Espaçoso</li>
+                        <li><i class="fas fa-clock"></i> Pontualidade</li>
+                    </ul>
+
+                    <span class="vehicle-price">R$ {{ "%.2f"|format(item.price) }} <small style="font-size:0.5em; color: #999">/trecho</small></span>
+                    
+                    <a href="https://wa.me/5593991160523?text={{ item.whatsapp_message }}" target="_blank" class="btn-reservar">
+                        <i class="fab fa-whatsapp"></i> Agendar Transfer
+                    </a>
+                </div>
             </div>
-            <div class="card-body" style="padding: 20px;">
-                <h3 style="margin-top: 0;">Transfers e Táxis</h3>
-                <p>Translado aeroporto-hotel e passeios terrestres. Carros com ar-condicionado e motoristas
-                    credenciados.</p>
-                <ul style="list-style: none; padding: 0; margin-top: 15px; color: #555;">
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Aeroporto de Santarém
-                    </li>
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Passeios na cidade</li>
-                    <li><i class="fas fa-check" style="color: #2ecc71; margin-right: 5px;"></i> Disponibilidade 24h</li>
-                </ul>
-                <a href="{{ url_for('routes.contato') }}" class="btn btn-primary"
-                    style="display: block; text-align: center; margin-top: 20px; padding: 10px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Solicitar
-                    Orçamento</a>
+            {% else %}
+            <div class="no-items">
+                Nenhum transfer disponível no momento.
             </div>
+            {% endfor %}
         </div>
-
     </div>
 </div>
 {% endblock %}

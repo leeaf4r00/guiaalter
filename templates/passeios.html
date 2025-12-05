@@ -2,84 +2,200 @@
 
 {% block title %}Passeios em Alter do Chão - Guia de Alter{% endblock %}
 
+{% block extra_css %}
+<style>
+    .passeios-hero {
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url("{{ url_for('static', filename='img/alterdochao_hero.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        padding: 80px 20px;
+        text-align: center;
+        color: white;
+        margin-bottom: 60px;
+    }
+    .passeios-hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .passeios-hero p {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.95;
+    }
+
+    .tours-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+    }
+
+    .tour-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+    }
+    .tour-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+    .tour-card:hover .card-image i {
+        transform: scale(1.15) rotate(5deg);
+    }
+    .tour-card:hover .card-image {
+        filter: brightness(1.1);
+    }
+
+    .card-image {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.4s ease;
+        position: relative;
+    }
+    .card-image i {
+        font-size: 4rem;
+        transition: all 0.4s ease;
+        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+    }
+    .card-image.lago-verde { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+    .card-image.arapiuns { background: linear-gradient(135deg, #e67e22, #d35400); }
+    .card-image.subindo { background: linear-gradient(135deg, #3498db, #2980b9); }
+    .card-image.descendo { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+
+    .card-body {
+        padding: 25px;
+    }
+    .card-body h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 12px;
+    }
+    .card-body p {
+        color: #7f8c8d;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .btn-tour {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    .btn-tour:hover {
+        transform: translateX(5px);
+        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Animation on scroll */
+    .tour-card {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInCard 0.6s ease forwards;
+    }
+    .tour-card:nth-child(1) { animation-delay: 0.1s; }
+    .tour-card:nth-child(2) { animation-delay: 0.2s; }
+    .tour-card:nth-child(3) { animation-delay: 0.3s; }
+    .tour-card:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes fadeInCard {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .passeios-hero { padding: 60px 15px; }
+        .tours-grid { padding: 0 15px 60px; }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container" style="padding: 40px 20px;">
-    <h1 class="text-center" style="margin-bottom: 40px;">Explore Nossos Passeios</h1>
-    <p class="text-center" style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1em; color: #666;">
-        Descubra as belezas de Alter do Chão e região com nossos roteiros exclusivos. Do Lago Verde ao Rio Arapiuns,
-        temos a aventura perfeita para você.
-    </p>
+<!-- Hero -->
+<section class="passeios-hero">
+    <h1>🌴 Explore Nossos Passeios</h1>
+    <p>Descubra as belezas de Alter do Chão e região. Do Lago Verde ao Rio Arapiuns, a aventura perfeita te espera.</p>
+</section>
 
-    <div class="tours-grid"
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+<!-- Grid de Passeios -->
+<div class="tours-grid">
 
-        <!-- Lago Verde -->
-        <div class="card"
-            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
-            <div
-                style="height: 200px; background-color: #2ecc71; display: flex; align-items: center; justify-content: center; color: white;">
-                <i class="fas fa-leaf fa-4x"></i>
-            </div>
-            <div class="card-body" style="padding: 20px;">
-                <h3 style="margin-top: 0;">Lago Verde</h3>
-                <p>Conhecido como a Floresta Encantada, o Lago Verde é um dos cartões postais de Alter. Águas
-                    cristalinas e igapós misteriosos.</p>
-                <a href="{{ url_for('routes.lagoverde') }}" class="btn btn-primary"
-                    style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Ver
-                    Detalhes</a>
-            </div>
+    <!-- Lago Verde -->
+    <div class="tour-card">
+        <div class="card-image lago-verde">
+            <i class="fas fa-leaf"></i>
         </div>
-
-        <!-- Rio Arapiuns -->
-        <div class="card"
-            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
-            <div
-                style="height: 200px; background-color: #e67e22; display: flex; align-items: center; justify-content: center; color: white;">
-                <i class="fas fa-sun fa-4x"></i>
-            </div>
-            <div class="card-body" style="padding: 20px;">
-                <h3 style="margin-top: 0;">Rio Arapiuns</h3>
-                <p>Praias de areia branca, comunidades tradicionais e artesanato. Um mergulho na cultura e natureza da
-                    Amazônia.</p>
-                <a href="{{ url_for('routes.rioarapiuns') }}" class="btn btn-primary"
-                    style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Ver
-                    Detalhes</a>
-            </div>
+        <div class="card-body">
+            <h3>Lago Verde</h3>
+            <p>Conhecido como a Floresta Encantada, o Lago Verde é um dos cartões postais de Alter. Águas cristalinas e igapós misteriosos.</p>
+            <a href="{{ url_for('routes.lagoverde') }}" class="btn-tour">
+                <i class="fas fa-arrow-right"></i> Ver Detalhes
+            </a>
         </div>
-
-        <!-- Subindo o Rio -->
-        <div class="card"
-            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
-            <div
-                style="height: 200px; background-color: #3498db; display: flex; align-items: center; justify-content: center; color: white;">
-                <i class="fas fa-water fa-4x"></i>
-            </div>
-            <div class="card-body" style="padding: 20px;">
-                <h3 style="margin-top: 0;">Subindo o Rio</h3>
-                <p>Explore as belezas rio acima, com paradas em bancos de areia e observação da fauna e flora local.</p>
-                <a href="{{ url_for('routes.subindoorio') }}" class="btn btn-primary"
-                    style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Ver
-                    Detalhes</a>
-            </div>
-        </div>
-
-        <!-- Descendo o Rio -->
-        <div class="card"
-            style="border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
-            <div
-                style="height: 200px; background-color: #9b59b6; display: flex; align-items: center; justify-content: center; color: white;">
-                <i class="fas fa-ship fa-4x"></i>
-            </div>
-            <div class="card-body" style="padding: 20px;">
-                <h3 style="margin-top: 0;">Descendo o Rio</h3>
-                <p>Navegue em direção ao encontro das águas e descubra paisagens deslumbrantes ao longo do Rio Tapajós.
-                </p>
-                <a href="{{ url_for('routes.descendoorio') }}" class="btn btn-primary"
-                    style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px;">Ver
-                    Detalhes</a>
-            </div>
-        </div>
-
     </div>
+
+    <!-- Rio Arapiuns -->
+    <div class="tour-card">
+        <div class="card-image arapiuns">
+            <i class="fas fa-sun"></i>
+        </div>
+        <div class="card-body">
+            <h3>Rio Arapiuns</h3>
+            <p>Praias de areia branca, comunidades tradicionais e artesanato. Um mergulho na cultura e natureza da Amazônia.</p>
+            <a href="{{ url_for('routes.rioarapiuns') }}" class="btn-tour">
+                <i class="fas fa-arrow-right"></i> Ver Detalhes
+            </a>
+        </div>
+    </div>
+
+    <!-- Subindo o Rio -->
+    <div class="tour-card">
+        <div class="card-image subindo">
+            <i class="fas fa-water"></i>
+        </div>
+        <div class="card-body">
+            <h3>Subindo o Rio</h3>
+            <p>Explore as belezas rio acima, com paradas em bancos de areia e observação da fauna e flora local.</p>
+            <a href="{{ url_for('routes.subindoorio') }}" class="btn-tour">
+                <i class="fas fa-arrow-right"></i> Ver Detalhes
+            </a>
+        </div>
+    </div>
+
+    <!-- Descendo o Rio -->
+    <div class="tour-card">
+        <div class="card-image descendo">
+            <i class="fas fa-ship"></i>
+        </div>
+        <div class="card-body">
+            <h3>Descendo o Rio</h3>
+            <p>Navegue em direção ao encontro das águas e descubra paisagens deslumbrantes ao longo do Rio Tapajós.</p>
+            <a href="{{ url_for('routes.descendoorio') }}" class="btn-tour">
+                <i class="fas fa-arrow-right"></i> Ver Detalhes
+            </a>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

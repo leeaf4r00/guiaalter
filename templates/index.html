@@ -13,8 +13,10 @@ para explorar o Caribe Amazônico.{% endblock %}
     }
 
     .hero-banner {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 60px 20px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ url_for('static', filename='img/alterdochao_hero.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        padding: 100px 20px;
         text-align: center;
         color: white;
         margin-bottom: 40px;

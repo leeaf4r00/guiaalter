@@ -3,52 +3,350 @@
 {% block title %}Mapa de Rotas - Guia de Alter{% endblock %}
 
 {% block extra_css %}
-<!-- Incluindo o CSS do Leaflet -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
 <style>
-    #mapid {
-        height: 600px;
+    /* Layout Container */
+    .map-container-wrapper {
+        position: relative;
+        height: 80vh;
         width: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+        display: flex; /* Para sidebar do routing */
+    }
+
+    #mapid {
+        flex: 1;
+        height: 100%;
+        z-index: 1;
+    }
+
+    /* Floating Detail Card */
+    .destination-card {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 350px;
+        background: white;
+        border-radius: 15px;
+        padding: 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: none;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+    }
+
+    .destination-card.active {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-close {
+        cursor: pointer;
+        color: #95a5a6;
+        transition: color 0.2s;
+    }
+
+    .card-close:hover {
+        color: #e74c3c;
+    }
+
+    .card-desc {
+        color: #7f8c8d;
+        font-weight: 600;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+    }
+
+    .card-details {
+        color: #34495e;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        font-size: 0.9rem;
+    }
+
+    .btn-directions {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background: #3498db;
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.2s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-directions:hover {
+        background: #2980b9;
+        color: white;
+    }
+
+    /* Customização do Leaflet Routing Machine */
+    .leaflet-routing-container {
+        background-color: white;
+        padding: 15px !important;
         border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+        max-height: 80vh;
+        overflow-y: auto;
+        font-family: 'Poppins', sans-serif;
+        border: none !important;
+        margin: 20px !important;
+    }
+    
+    .leaflet-routing-container h2 {
+        font-size: 1.2rem;
+        color: #2c3e50;
+        margin-bottom: 15px;
+    }
+    
+    .leaflet-routing-alt {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Pulse animation for markers */
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+        .map-container-wrapper {
+            height: 70vh;
+            flex-direction: column;
+        }
+        
+        .destination-card {
+            top: auto;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            border-radius: 20px 20px 0 0;
+            transform: translateY(100%);
+        }
+        
+        .destination-card.active {
+            transform: translateY(0);
+        }
+        
+        /* Esconder container de rota no mobile se atrapalhar muito, ou ajustar */
+        .leaflet-routing-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            max-height: 40vh;
+            margin: 0 !important;
+            border-radius: 20px 20px 0 0;
+            z-index: 2000;
+        }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container" style="padding: 40px 20px;">
-    <h1 class="text-center" style="margin-bottom: 30px;">Mapa de Rotas</h1>
-    <p class="text-center" style="margin-bottom: 40px;">Explore as principais rotas e pontos turísticos de Alter do
-        Chão.</p>
+<div class="container" style="padding: 20px;">
+    <div class="text-center" style="margin-bottom: 30px;">
+        <h1 style="color: #2c3e50;">Explorar Mapa</h1>
+        <p style="color: #7f8c8d;">Clique nos marcadores para traçar sua rota até o paraíso</p>
+    </div>
 
-    <div id="mapid"></div>
+    <div class="map-container-wrapper">
+        <div id="mapid"></div>
+        
+        <!-- Template do Card (será preenchido via JS) -->
+        <div id="detailCard" class="destination-card">
+            <img id="cardImg" src="" alt="Destino" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">
+                    <span id="cardTitle">Título</span>
+                    <i class="fas fa-times card-close" onclick="closeCard()"></i>
+                </h3>
+                <p id="cardDesc" class="card-desc">Descrição curta</p>
+                <p id="cardDetails" class="card-details">Detalhes completos sobre o local.</p>
+                
+                <!-- Botão alterado para chamar função interna -->
+                <button id="btnRoute" class="btn-directions" onclick="startNavigation()">
+                    <i class="fas fa-location-arrow"></i> Traçar Rota (GPS)
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
 {% block extra_scripts %}
-<!-- Incluindo o JavaScript do Leaflet -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
 <script>
-    // Inicializando o mapa e configurando as coordenadas e o nível de zoom
-    var mymap = L.map('mapid').setView([-2.50381, -54.95145], 13);
+    // Dados injetados pelo Flask
+    const destinos = {{ destinos | tojson }};
+    let currentRoutingControl = null;
+    let selectedDest = null;
+    let userMarker = null;
 
-    // Adicionando os tiles do OpenStreetMap ao mapa
+    // Inicializando o mapa
+    var mymap = L.map('mapid', {
+        zoomControl: false
+    }).setView([-2.5031, -54.9554], 13);
+    
+    L.control.zoom({ position: 'bottomleft' }).addTo(mymap);
+
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '© Contribuições do OpenStreetMap'
+        attribution: '© OpenStreetMap'
     }).addTo(mymap);
 
-    // Adicionando um marcador no mapa
-    var marker = L.marker([-2.50381, -54.95145]).addTo(mymap);
-    marker.bindPopup("<b>Alter do Chão</b><br>O Caribe Amazônico.").openPopup();
+    // Ícone padrão
+    var defaultIcon = L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
 
-    // Adicionando mais marcadores (Exemplos)
-    var lagoVerde = L.marker([-2.495, -54.955]).addTo(mymap);
-    lagoVerde.bindPopup("<b>Lago Verde</b><br>Floresta Encantada.");
+    // Adiciona marcadores
+    destinos.forEach(local => {
+        var marker = L.marker(local.coords, {icon: defaultIcon}).addTo(mymap);
+        marker.on('click', function() {
+            selectedDest = local; // Salva destino selecionado
+            showCard(local);
+            
+            // Remove rota anterior se houver, mas mantém estado limpo
+            if (currentRoutingControl) {
+                // Opcional: remover rota ao selecionar outro? Por enquanto não, só ao clicar em traçar.
+            }
 
-    var ilhaDoAmor = L.marker([-2.500, -54.953]).addTo(mymap);
-    ilhaDoAmor.bindPopup("<b>Ilha do Amor</b><br>Praia mais famosa.");
+            mymap.setView(local.coords, 14, { animate: true });
+        });
+    });
+
+    function showCard(local) {
+        const card = document.getElementById('detailCard');
+        document.getElementById('cardImg').src = local.img || 'https://via.placeholder.com/350x200';
+        document.getElementById('cardTitle').innerText = local.name;
+        document.getElementById('cardDesc').innerText = local.desc;
+        document.getElementById('cardDetails').innerText = local.details;
+        
+        // Exibe o card
+        card.classList.add('active');
+        
+        // Se já tiver uma rota ativa para OUTRO lugar, removemos? 
+        // Vamos deixar o usuário decidir clicar em "Traçar Rota" novamente.
+    }
+
+    function closeCard() {
+        document.getElementById('detailCard').classList.remove('active');
+    }
+
+    // Função principal de navegação
+    function startNavigation() {
+        if (!selectedDest) return;
+
+        // Fecha o card para dar espaço
+        closeCard();
+
+        if (!navigator.geolocation) {
+            alert("Seu navegador não suporta geolocalização.");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const userLat = position.coords.latitude;
+                const userLng = position.coords.longitude;
+                const userLatLng = L.latLng(userLat, userLng);
+
+                // Remove rota anterior
+                if (currentRoutingControl) {
+                    mymap.removeControl(currentRoutingControl);
+                }
+                
+                // Remove marcador do usuário anterior
+                if (userMarker) {
+                    mymap.removeLayer(userMarker);
+                }
+
+                // Adiciona marcador do usuário
+                userMarker = L.marker(userLatLng, {
+                    icon: L.icon({
+                        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+                        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                        popupAnchor: [1, -34],
+                        shadowSize: [41, 41]
+                    })
+                }).addTo(mymap).bindPopup("Você está aqui").openPopup();
+
+                // Cria rota (Estilo Google Maps: Linha Azul e Painel)
+                currentRoutingControl = L.Routing.control({
+                    waypoints: [
+                        userLatLng,
+                        L.latLng(selectedDest.coords)
+                    ],
+                    routeWhileDragging: false,
+                    language: 'pt-br', // Instruções em PT-BR
+                    lineOptions: {
+                        styles: [{color: '#3498db', opacity: 0.8, weight: 6}] // Linha azul estilo Google
+                    },
+                    createMarker: function() { return null; }, // Não cria marcadores extras nos pontos
+                    show: true // Mostra painel de instruções
+                }).addTo(mymap);
+
+                // Ajusta zoom para caber a rota
+                // O routing machine faz isso automatico, mas podemos forçar se precisar
+            },
+            (error) => {
+                console.error(error);
+                alert("Erro ao obter localização. Verifique se o GPS está ativo.");
+            }
+        );
+    }
+    
+    // Fecha card ao clicar no mapa
+    mymap.on('click', function(e) {
+        // closeCard(); // Opcional, as vezes atrapalha se clicar sem querer
+    });
 
 </script>
 {% endblock %}

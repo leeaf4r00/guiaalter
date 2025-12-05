@@ -155,7 +155,10 @@ def contato():
 
 @routes.route('/veiculos')
 def veiculos():
-    return render_template('veiculos.html')
+    lanchas = Tour.query.filter_by(category='veiculo_lancha', is_active=True).all()
+    barcos = Tour.query.filter_by(category='veiculo_barco', is_active=True).all()
+    transfers = Tour.query.filter_by(category='veiculo_transfer', is_active=True).all()
+    return render_template('veiculos.html', lanchas=lanchas, barcos=barcos, transfers=transfers)
 
 
 @routes.route('/sobrenos')
@@ -180,7 +183,90 @@ def sejanossoparceiro():
 
 @routes.route('/rotas')
 def rotas_page():
-    return render_template('rotas.html')
+    destinos = [
+        {
+            "id": "vila",
+            "name": "Vila de Alter do Chão",
+            "coords": [-2.5031, -54.9554],
+            "desc": "O ponto de partida para todas as aventuras.",
+            "details": "A vila é o coração de Alter. Aqui você encontra a orla, restaurantes, lojas de artesanato e o terminal de barcos.",
+            "img": "/static/img/alterdochao.jpg",
+            "type": "cidade"
+        },
+        {
+            "id": "ilhadoamor",
+            "name": "Ilha do Amor",
+            "coords": [-2.5015, -54.9575],
+            "desc": "O cartão postal mais famoso.",
+            "details": "Uma faixa de areia branca banhada pelo Rio Tapajós de um lado e pelo Lago Verde do outro. Acesso via catraia (R$ 5-10).",
+            "img": "/static/img/alterdochao_hero.jpg",
+            "type": "praia"
+        },
+        {
+            "id": "piraoca",
+            "name": "Morro da Piraoca",
+            "coords": [-2.4960, -54.9600],
+            "desc": "A melhor vista panorâmica da região.",
+            "details": "Uma caminhada de 40 minutos leva ao topo, de onde se vê o Rio Tapajós, o Lago Verde e a imensidão da floresta.",
+            "img": "/static/img/topo1.jpg",
+            "type": "natureza"
+        },
+        {
+            "id": "lagoverde",
+            "name": "Lago Verde (Floresta Encantada)",
+            "coords": [-2.5100, -54.9450],
+            "desc": "Águas mágicas que mudam de cor.",
+            "details": "Lar da Floresta Encantada, onde árvores ficam submersas. Ideal para passeios de canoa e caiaque.",
+            "img": "/static/img/lagoverde/florestaencantada.jpg",
+            "type": "natureza"
+        },
+        {
+            "id": "pontacururu",
+            "name": "Ponta do Cururu",
+            "coords": [-2.4700, -54.9700],
+            "desc": "O melhor pôr do sol.",
+            "details": "Uma ponta de areia que entra no rio, famosa pela aparição de botos e pelo espetáculo do sol se pondo.",
+            "img": "/static/img/descendoorio/pontadocururu1.jpg",
+            "type": "praia"
+        },
+        {
+            "id": "pindobal",
+            "name": "Praia do Pindobal",
+            "coords": [-2.5550, -54.9650],
+            "desc": "Tranquilidade e restaurantes.",
+            "details": "Praia com boa infraestrutura, águas calmas e restaurantes que servem peixes frescos na beira do rio.",
+            "img": "/static/img/subindoorio/pindobal1.jpg",
+            "type": "praia"
+        },
+        {
+            "id": "pontadepedras",
+            "name": "Ponta de Pedras",
+            "coords": [-2.3900, -54.8900],
+            "desc": "Formações rochosas únicas.",
+            "details": "Diferente das outras praias, aqui as pedras compõem o cenário, criando piscinas naturais dependendo do nível do rio.",
+            "img": "/static/img/descendoorio/pontadepedras1.jpg",
+            "type": "praia"
+        },
+        {
+            "id": "canaldojari",
+            "name": "Canal do Jari",
+            "coords": [-2.4300, -55.0500],
+            "desc": "Jardim das Vitórias-Régias.",
+            "details": "Um canal estreito rico em biodiversidade. Veja preguiças, macacos, pássaros e o jardim de vitórias-régias.",
+            "img": "/static/img/canaldojari.jpg",
+            "type": "natureza"
+        },
+        {
+            "id": "flona",
+            "name": "Flona do Tapajós",
+            "coords": [-2.8500, -55.0300],
+            "desc": "A imponência da Amazônia.",
+            "details": "Floresta Nacional com árvores centenárias como a Sumaúma. Trilhas guiadas por comunitários locais.",
+            "img": "/static/img/flonadotapajos.jpg",
+            "type": "natureza"
+        }
+    ]
+    return render_template('rotas.html', destinos=destinos)
 
 
 @routes.route('/top10para')
