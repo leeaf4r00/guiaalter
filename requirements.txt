@@ -23,3 +23,5 @@ Pillow==10.2.0
 
 # Desktop Application
 pywebview==4.4.1
+customtkinter==5.2.2
+psutil==5.9.8
