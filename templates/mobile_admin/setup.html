@@ -165,6 +165,32 @@
                 transform: rotate(360deg);
             }
         }
+
+        .password-strength {
+            height: 4px;
+            background: #e0e0e0;
+            margin-top: 5px;
+            border-radius: 2px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            background: #e0e0e0;
+            transition: width 0.3s, background-color 0.3s;
+        }
+
+        .password-feedback {
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .password-feedback.weak { color: #f44336; }
+        .password-feedback.medium { color: #ff9800; }
+        .password-feedback.strong { color: #4caf50; }
     </style>
 </head>
 
@@ -195,7 +221,16 @@
 
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="password" id="password" name="password" placeholder="Crie uma senha forte" required>
+                <input type="password" id="password" name="password" placeholder="Crie uma senha forte (mín 8 caracters)" required>
+                <div class="password-strength">
+                    <div class="password-strength-bar" id="strengthBar"></div>
+                </div>
+                <div class="password-feedback" id="strengthText"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirmar Senha</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Repita a senha" required>
             </div>
 
             <button type="submit" class="btn-login" id="btnSubmit">
@@ -217,6 +252,10 @@
         const btnSubmit = document.getElementById('btnSubmit');
         const loading = document.getElementById('loading');
         const alert = document.getElementById('alert');
+        const passwordInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirm_password');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
 
         function showAlert(message, type = 'error') {
             alert.className = `alert alert-${type}`;
@@ -228,12 +267,59 @@
             alert.style.display = 'none';
         }
 
+        // Validação de senha
+        passwordInput.addEventListener('input', function() {
+            const val = this.value;
+            let strength = 0;
+            let status = '';
+
+            if (val.length >= 8) strength += 1;
+            if (val.match(/[A-Z]/)) strength += 1;
+            if (val.match(/[0-9]/)) strength += 1;
+            if (val.match(/[^A-Za-z0-9]/)) strength += 1;
+
+            if (val.length < 8) {
+                status = 'Muito curta (mín 8)';
+                strengthBar.style.width = '20%';
+                strengthBar.style.backgroundColor = '#f44336';
+                strengthText.className = 'password-feedback weak';
+            } else if (strength < 3) {
+                status = 'Fraca';
+                strengthBar.style.width = '50%';
+                strengthBar.style.backgroundColor = '#ff9800';
+                strengthText.className = 'password-feedback medium';
+            } else {
+                status = 'Forte';
+                strengthBar.style.width = '100%';
+                strengthBar.style.backgroundColor = '#4caf50';
+                strengthText.className = 'password-feedback strong';
+            }
+
+            strengthText.textContent = val.length > 0 ? status : '';
+            strengthText.style.display = val.length > 0 ? 'block' : 'none';
+        });
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             hideAlert();
 
+            const password = passwordInput.value;
+            const confirm = confirmInput.value;
+
+            if (password.length < 8) {
+                showAlert('A senha deve ter no mínimo 8 caracteres');
+                return;
+            }
+
+            if (password !== confirm) {
+                showAlert('As senhas não coincidem');
+                return;
+            }
+
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
+            // Remove o campo de confirmação antes de enviar
+            delete data.confirm_password;
 
             btnSubmit.disabled = true;
             btnSubmit.textContent = 'Criando...';
