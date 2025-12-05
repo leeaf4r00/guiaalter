@@ -1,14 +1,25 @@
 """
 Routes - Rotas principais da aplicação
 """
-from flask import render_template, request, redirect, url_for, flash, Blueprint, jsonify
+from flask import render_template, request, redirect, url_for, flash, Blueprint, jsonify, send_from_directory
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from app import db
 from app.models.users import User, get_user_by_username, get_user_by_email, create_user
 from app.models.tours import Tour
+import os
 
 routes = Blueprint('routes', __name__)
+
+
+@routes.route('/favicon.ico')
+def favicon():
+    """Serve o favicon"""
+    return send_from_directory(
+        os.path.join(routes.root_path, '..', 'static'),
+        'favicon.ico',
+        mimetype='image/x-icon'
+    )
 
 
 @routes.route('/')
