@@ -156,7 +156,8 @@ class FlaskServer:
             ip = s.getsockname()[0]
             s.close()
             return ip
-        except:
+        except Exception as e:
+            logger.warning(f"Não foi possível obter IP local: {e}")
             return "127.0.0.1"
 
     def start(self):
@@ -179,7 +180,7 @@ class FlaskServer:
                 urllib.request.urlopen(f'http://127.0.0.1:{self.port}/')
                 logger.info("✅ Servidor Flask pronto e respondendo!")
                 return True
-            except:
+            except Exception:
                 time.sleep(0.5)
         logger.error("❌ Timeout aguardando servidor Flask iniciar")
         return False

@@ -113,7 +113,8 @@ class ControlPanel(ctk.CTk):
                     try:
                         second_octet = int(ip.split('.')[1])
                         if 16 <= second_octet <= 31: is_private = True
-                    except: pass
+                    except ValueError:
+                        pass
                 
                 if is_private: candidates.append(ip)
             
@@ -130,7 +131,7 @@ class ControlPanel(ctk.CTk):
             ip = s.getsockname()[0]
             s.close()
             return ip
-        except:
+        except Exception:
             return "127.0.0.1"
 
     def check_server_running(self):
@@ -141,7 +142,7 @@ class ControlPanel(ctk.CTk):
             result = sock.connect_ex(('127.0.0.1', 5000))
             sock.close()
             return result == 0
-        except:
+        except Exception:
             return False
 
     def wait_for_server_start(self, timeout=30):
@@ -220,7 +221,8 @@ class ControlPanel(ctk.CTk):
                     for conn in proc.connections(kind='inet'):
                         if conn.laddr.port == 5000:
                             proc.terminate()
-                except: pass
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    pass
             
             self._mostrar_tela_principal()
             
@@ -343,7 +345,8 @@ class ControlPanel(ctk.CTk):
         for proc in psutil.process_iter(['name']):
             if 'cloudflared' in proc.info['name'].lower():
                 try: proc.terminate() 
-                except: pass
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    pass
                 
         self.cloudflare_url = None
         self._mostrar_tela_principal()

@@ -1,52 +1,116 @@
-2025-11-23 18:11:48,557 - Launcher - INFO - === INICIANDO GUIA DE ALTER DESKTOP ===
-2025-11-23 18:11:48,558 - Launcher - INFO - 🚀 Iniciando servidor Flask...
-2025-11-23 18:11:48,618 - app - INFO - Logging configurado com sucesso
-2025-11-23 18:11:48,619 - app - INFO - Iniciando aplicação em modo: development
-2025-11-23 18:11:48,768 - app - INFO - Blueprints registrados com sucesso
-2025-11-23 18:11:48,775 - app - INFO - Tabelas do banco de dados criadas/verificadas
-2025-11-23 18:11:49,699 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-11-30 16:40:17,769 - Launcher - INFO - === INICIANDO GUIA DE ALTER DESKTOP ===
+2025-11-30 16:40:17,769 - Launcher - INFO - 🚀 Iniciando servidor Flask...
+2025-11-30 16:40:17,790 - app - INFO - Logging configurado com sucesso
+2025-11-30 16:40:17,791 - app - INFO - Iniciando aplicação em modo: development
+2025-11-30 16:40:17,858 - app - INFO - Blueprints registrados com sucesso
+2025-11-30 16:40:17,893 - app - INFO - Tabelas do banco de dados criadas/verificadas
+2025-11-30 16:40:17,908 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
- * Running on http://192.168.0.102:5000
-2025-11-23 18:11:49,699 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-11-23 18:11:50,163 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:11:50] "GET / HTTP/1.1" 200 -
-2025-11-23 18:11:50,164 - Launcher - INFO - ✅ Servidor Flask pronto e respondendo!
-2025-11-23 18:11:50,166 - Launcher - INFO - ☁️ Iniciando Cloudflare Tunnel...
-2025-11-23 18:11:50,167 - Launcher - INFO - 🪟 Abrindo janela em: http://127.0.0.1:5000/mobile-admin/setup
-2025-11-23 18:11:50,945 - Launcher - INFO - [CF] 2025-11-23T21:11:50Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
-2025-11-23 18:11:50,972 - Launcher - INFO - [CF] 2025-11-23T21:11:50Z INF Requesting new quick Tunnel on trycloudflare.com...
-2025-11-23 18:11:53,143 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:11:53] "GET /mobile-admin/setup HTTP/1.1" 200 -
-2025-11-23 18:11:53,261 - app - WARNING - Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-2025-11-23 18:11:53,269 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:11:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-2025-11-23 18:11:55,757 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF +--------------------------------------------------------------------------------------------+
-2025-11-23 18:11:55,757 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
-2025-11-23 18:11:55,757 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF |  https://marion-physical-tunes-mortgages.trycloudflare.com                                 |
-2025-11-23 18:11:55,758 - Launcher - INFO - ✅ URL PÚBLICA ENCONTRADA: https://marion-physical-tunes-mortgages.trycloudflare.com
-2025-11-23 18:11:55,758 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF +--------------------------------------------------------------------------------------------+
-2025-11-23 18:11:55,772 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF Cannot determine default configuration path. No file [config.yml config.yaml] in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp]
-2025-11-23 18:11:55,772 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF Version 2025.11.1 (Checksum 413f9b24dc6e61a455564651524f167b8ce29ac4ccd40703dea7af93cd37ed39)
-2025-11-23 18:11:55,772 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF GOOS: windows, GOVersion: go1.24.9, GoArch: amd64
-2025-11-23 18:11:55,773 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF Settings: map[ha-connections:1 protocol:quic url:http://localhost:5000]
-2025-11-23 18:11:55,776 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF cloudflared will not automatically update on Windows systems.
-2025-11-23 18:11:55,833 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF Generated Connector ID: 76e75061-2dd8-4b9d-9044-572b836506ff
-2025-11-23 18:11:55,899 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF Initial protocol quic
-2025-11-23 18:11:55,900 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF ICMP proxy will use 192.168.0.102 as source for IPv4
-2025-11-23 18:11:55,926 - Launcher - INFO - [CF] 2025-11-23T21:11:55Z INF ICMP proxy will use fdfd::1abd:914e in zone Radmin VPN as source for IPv6
-2025-11-23 18:11:56,011 - Launcher - INFO - [CF] 2025-11-23T21:11:56Z ERR Cannot determine default origin certificate path. No file cert.pem in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp]. You need to specify the origin certificate path by specifying the origincert option in the configuration file, or set TUNNEL_ORIGIN_CERT environment variable originCertPath=
-2025-11-23 18:11:56,011 - Launcher - INFO - [CF] 2025-11-23T21:11:56Z INF cloudflared does not support loading the system root certificate pool on Windows. Please use --origin-ca-pool <PATH> to specify the path to the certificate pool
-2025-11-23 18:11:56,014 - Launcher - INFO - [CF] 2025-11-23T21:11:56Z INF ICMP proxy will use 192.168.0.102 as source for IPv4
-2025-11-23 18:11:56,018 - Launcher - INFO - [CF] 2025-11-23T21:11:56Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.73
-2025-11-23 18:11:56,047 - Launcher - INFO - [CF] 2025-11-23T21:11:56Z INF ICMP proxy will use fdfd::1abd:914e in zone Radmin VPN as source for IPv6
-2025-11-23 18:11:56,048 - Launcher - INFO - [CF] 2025-11-23T21:11:56Z INF Starting metrics server on 127.0.0.1:20243/metrics
-2025-11-23 18:11:56,895 - Launcher - INFO - [CF] 2025-11-23T21:11:56Z INF Registered tunnel connection connIndex=0 connection=317812f3-c39a-49f5-8967-c5447a14cfbb event=0 ip=198.41.200.73 location=gig10 protocol=quic
-2025-11-23 18:12:27,697 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:12:27] "POST /mobile-admin/setup HTTP/1.1" 200 -
-2025-11-23 18:12:28,734 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:12:28] "GET /mobile-admin/dashboard HTTP/1.1" 200 -
-2025-11-23 18:12:28,853 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:12:28] "GET /mobile-admin/api/users?limit=5 HTTP/1.1" 200 -
-2025-11-23 18:12:28,879 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:12:28] "GET /mobile-admin/api/tours?limit=5 HTTP/1.1" 200 -
-2025-11-23 18:12:28,892 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:12:28] "GET /mobile-admin/api/stats HTTP/1.1" 200 -
-2025-11-23 18:12:34,644 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:12:34] "GET /mobile-admin/api/users?limit=5 HTTP/1.1" 200 -
-2025-11-23 18:12:34,651 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:12:34] "GET /mobile-admin/api/tours?limit=5 HTTP/1.1" 200 -
-2025-11-23 18:12:34,658 - werkzeug - INFO - 127.0.0.1 - - [23/Nov/2025 18:12:34] "GET /mobile-admin/api/stats HTTP/1.1" 200 -
-2025-11-23 18:12:39,121 - Launcher - INFO - 👋 Janela fechada. Encerrando aplicação...
-2025-11-23 18:12:39,123 - Launcher - INFO - 🛑 Parando Cloudflare Tunnel...
-2025-11-23 18:12:39,136 - Launcher - INFO - 🛑 Parando Cloudflare Tunnel...
+ * Running on http://192.168.1.7:5000
+2025-11-30 16:40:17,908 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-30 16:40:18,308 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:18] "GET / HTTP/1.1" 200 -
+2025-11-30 16:40:18,309 - Launcher - INFO - ✅ Servidor Flask pronto e respondendo!
+2025-11-30 16:40:18,310 - Launcher - INFO - ☁️ Iniciando Cloudflare Tunnel...
+2025-11-30 16:40:18,310 - Launcher - INFO - 🪟 Abrindo janela em: http://127.0.0.1:5000/mobile-admin/setup
+2025-11-30 16:40:18,409 - Launcher - INFO - [CF] 2025-11-30T19:40:18Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
+2025-11-30 16:40:18,409 - Launcher - INFO - [CF] 2025-11-30T19:40:18Z INF Requesting new quick Tunnel on trycloudflare.com...
+2025-11-30 16:40:19,819 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:19] "GET /mobile-admin/setup HTTP/1.1" 200 -
+2025-11-30 16:40:20,006 - app - WARNING - Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-11-30 16:40:20,015 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-30 16:40:22,746 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF +--------------------------------------------------------------------------------------------+
+2025-11-30 16:40:22,746 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+2025-11-30 16:40:22,746 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF |  https://seq-burning-dow-fda.trycloudflare.com                                             |
+2025-11-30 16:40:22,746 - Launcher - INFO - ✅ URL PÚBLICA ENCONTRADA: https://seq-burning-dow-fda.trycloudflare.com
+2025-11-30 16:40:22,747 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF +--------------------------------------------------------------------------------------------+
+2025-11-30 16:40:22,747 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF Cannot determine default configuration path. No file [config.yml config.yaml] in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp]
+2025-11-30 16:40:22,747 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF Version 2025.11.1 (Checksum 413f9b24dc6e61a455564651524f167b8ce29ac4ccd40703dea7af93cd37ed39)
+2025-11-30 16:40:22,747 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF GOOS: windows, GOVersion: go1.24.9, GoArch: amd64
+2025-11-30 16:40:22,747 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF Settings: map[ha-connections:1 protocol:quic url:http://localhost:5000]
+2025-11-30 16:40:22,747 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF cloudflared will not automatically update on Windows systems.
+2025-11-30 16:40:22,748 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF Generated Connector ID: 32f8b25b-afba-40c5-a88d-617f431a8eb1
+2025-11-30 16:40:22,822 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF Initial protocol quic
+2025-11-30 16:40:22,822 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF ICMP proxy will use 192.168.1.7 as source for IPv4
+2025-11-30 16:40:22,837 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF ICMP proxy will use 2804:3ab4:70cb:3400:5a2e:3e9f:7596:e23a in zone Ethernet as source for IPv6
+2025-11-30 16:40:22,900 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z ERR Cannot determine default origin certificate path. No file cert.pem in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp]. You need to specify the origin certificate path by specifying the origincert option in the configuration file, or set TUNNEL_ORIGIN_CERT environment variable originCertPath=
+2025-11-30 16:40:22,902 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF cloudflared does not support loading the system root certificate pool on Windows. Please use --origin-ca-pool <PATH> to specify the path to the certificate pool
+2025-11-30 16:40:22,903 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF ICMP proxy will use 192.168.1.7 as source for IPv4
+2025-11-30 16:40:22,904 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.63
+2025-11-30 16:40:22,919 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF ICMP proxy will use 2804:3ab4:70cb:3400:5a2e:3e9f:7596:e23a in zone Ethernet as source for IPv6
+2025-11-30 16:40:22,919 - Launcher - INFO - [CF] 2025-11-30T19:40:22Z INF Starting metrics server on 127.0.0.1:20241/metrics
+2025-11-30 16:40:24,125 - Launcher - INFO - [CF] 2025-11-30T19:40:24Z INF Registered tunnel connection connIndex=0 connection=d774a200-06fa-4e4f-bf99-3003d9ff735a event=0 ip=198.41.200.63 location=gig10 protocol=quic
+2025-11-30 16:40:38,553 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:38] "POST /mobile-admin/setup HTTP/1.1" 200 -
+2025-11-30 16:40:39,593 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:39] "GET /mobile-admin/dashboard HTTP/1.1" 200 -
+2025-11-30 16:40:39,620 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:39] "GET /mobile-admin/api/tours?limit=5 HTTP/1.1" 200 -
+2025-11-30 16:40:39,620 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:39] "GET /mobile-admin/api/users?limit=5 HTTP/1.1" 200 -
+2025-11-30 16:40:39,635 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:39] "GET /mobile-admin/api/stats HTTP/1.1" 200 -
+2025-11-30 16:40:44,069 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:44] "GET /mobile-admin/connect HTTP/1.1" 200 -
+2025-11-30 16:40:44,142 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:44] "GET /portal/qr/http://192.168.1.7:5000/mobile-admin/login HTTP/1.1" 200 -
+2025-11-30 16:40:44,143 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:44] "GET /portal/qr/https://seq-burning-dow-fda.trycloudflare.com/ HTTP/1.1" 200 -
+2025-11-30 16:40:52,241 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:52] "GET / HTTP/1.1" 200 -
+2025-11-30 16:40:52,921 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:52] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-11-30 16:40:54,015 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:54] "GET / HTTP/1.1" 200 -
+2025-11-30 16:40:55,519 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:40:55] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-11-30 16:41:05,047 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:05] "GET / HTTP/1.1" 200 -
+2025-11-30 16:41:05,420 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:05] "GET /static/css/main.css HTTP/1.1" 200 -
+2025-11-30 16:41:05,478 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:05] "GET /static/css/navbar.css HTTP/1.1" 200 -
+2025-11-30 16:41:05,483 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:05] "GET /static/img/logo.png HTTP/1.1" 200 -
+2025-11-30 16:41:05,730 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:05] "GET /static/css/footer.css HTTP/1.1" 200 -
+2025-11-30 16:41:05,789 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:05] "GET /static/css/header.css HTTP/1.1" 200 -
+2025-11-30 16:41:05,865 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:05] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-11-30 16:41:05,869 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:05] "GET /static/js/user.js HTTP/1.1" 200 -
+2025-11-30 16:41:06,215 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:06] "GET /static/img/alterdochao.jpg HTTP/1.1" 200 -
+2025-11-30 16:41:06,363 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:06] "GET /tourdestaques HTTP/1.1" 200 -
+2025-11-30 16:41:06,367 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:06] "GET /descendoorio HTTP/1.1" 200 -
+2025-11-30 16:41:06,441 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:06] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-11-30 16:41:06,464 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:06] "GET /lagoverde HTTP/1.1" 200 -
+2025-11-30 16:41:06,524 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:06] "GET /rioarapiuns HTTP/1.1" 200 -
+2025-11-30 16:41:06,883 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:06] "GET /subindoorio HTTP/1.1" 200 -
+2025-11-30 16:41:08,628 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:08] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-11-30 16:41:08,846 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:08] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2025-11-30 16:41:10,692 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:10] "GET / HTTP/1.1" 200 -
+2025-11-30 16:41:10,928 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:10] "GET /static/css/header.css HTTP/1.1" 200 -
+2025-11-30 16:41:11,085 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:11] "GET /static/js/user.js HTTP/1.1" 200 -
+2025-11-30 16:41:11,086 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:11] "GET /static/css/footer.css HTTP/1.1" 200 -
+2025-11-30 16:41:11,094 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:11] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-11-30 16:41:11,119 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:11] "GET /static/css/navbar.css HTTP/1.1" 200 -
+2025-11-30 16:41:11,353 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:11] "GET /static/img/logo.png HTTP/1.1" 200 -
+2025-11-30 16:41:11,382 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:11] "GET /static/css/main.css HTTP/1.1" 200 -
+2025-11-30 16:41:12,762 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:12] "GET /static/img/alterdochao.jpg HTTP/1.1" 200 -
+2025-11-30 16:41:13,801 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:13] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-11-30 16:41:26,434 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:26] "GET / HTTP/1.1" 200 -
+2025-11-30 16:41:27,909 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:27] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-11-30 16:41:38,587 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:41:38] "GET /mobile-admin/login HTTP/1.1" 200 -
+2025-11-30 16:42:04,883 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:04] "GET /mobile-admin/login HTTP/1.1" 200 -
+2025-11-30 16:42:05,162 - app - WARNING - Página não encontrada: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-11-30 16:42:05,163 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-30 16:42:06,442 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:06] "GET / HTTP/1.1" 200 -
+2025-11-30 16:42:07,454 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:07] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-11-30 16:42:29,726 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:29] "GET / HTTP/1.1" 200 -
+2025-11-30 16:42:30,894 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:30] "GET /static/css/navbar.css HTTP/1.1" 200 -
+2025-11-30 16:42:30,896 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:30] "GET /static/css/main.css HTTP/1.1" 200 -
+2025-11-30 16:42:30,948 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:30] "GET /static/css/header.css HTTP/1.1" 200 -
+2025-11-30 16:42:31,045 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:31] "GET /static/css/footer.css HTTP/1.1" 200 -
+2025-11-30 16:42:32,013 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /static/img/logo.png HTTP/1.1" 200 -
+2025-11-30 16:42:32,386 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-11-30 16:42:32,389 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /static/img/alterdochao.jpg HTTP/1.1" 200 -
+2025-11-30 16:42:32,393 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /tourdestaques HTTP/1.1" 200 -
+2025-11-30 16:42:32,393 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /static/js/user.js HTTP/1.1" 200 -
+2025-11-30 16:42:32,456 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /subindoorio HTTP/1.1" 200 -
+2025-11-30 16:42:32,516 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /rioarapiuns HTTP/1.1" 200 -
+2025-11-30 16:42:32,517 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /lagoverde HTTP/1.1" 200 -
+2025-11-30 16:42:32,523 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:32] "GET /descendoorio HTTP/1.1" 200 -
+2025-11-30 16:42:36,033 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:42:36] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-11-30 16:43:48,679 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:43:48] "GET /mobile-admin/login HTTP/1.1" 200 -
+2025-11-30 16:44:07,372 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:44:07] "POST /mobile-admin/login HTTP/1.1" 200 -
+2025-11-30 16:44:08,200 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:44:08] "GET /mobile-admin/dashboard HTTP/1.1" 200 -
+2025-11-30 16:44:08,609 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:44:08] "GET /mobile-admin/api/stats HTTP/1.1" 200 -
+2025-11-30 16:44:08,670 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:44:08] "GET /mobile-admin/api/users?limit=5 HTTP/1.1" 200 -
+2025-11-30 16:44:08,671 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:44:08] "GET /mobile-admin/api/tours?limit=5 HTTP/1.1" 200 -
+2025-11-30 16:46:19,545 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:46:19] "GET /mobile-admin/dashboard HTTP/1.1" 200 -
+2025-11-30 16:46:19,565 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:46:19] "GET /mobile-admin/api/users?limit=5 HTTP/1.1" 200 -
+2025-11-30 16:46:19,566 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:46:19] "GET /mobile-admin/api/tours?limit=5 HTTP/1.1" 200 -
+2025-11-30 16:46:19,573 - werkzeug - INFO - 127.0.0.1 - - [30/Nov/2025 16:46:19] "GET /mobile-admin/api/stats HTTP/1.1" 200 -
+2025-11-30 16:47:04,868 - Launcher - INFO - 👋 Janela fechada. Encerrando aplicação...
+2025-11-30 16:47:04,869 - Launcher - INFO - 🛑 Parando Cloudflare Tunnel...
+2025-11-30 16:47:04,874 - Launcher - INFO - 🛑 Parando Cloudflare Tunnel...

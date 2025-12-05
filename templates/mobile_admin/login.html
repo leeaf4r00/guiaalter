@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -25,7 +26,7 @@
         .login-container {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             padding: 40px 30px;
             width: 100%;
             max-width: 400px;
@@ -37,6 +38,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -138,6 +140,26 @@
             font-size: 13px;
         }
 
+        .setup-link {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .setup-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .setup-link a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
         .loading {
             display: none;
             text-align: center;
@@ -155,8 +177,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Mobile optimizations */
@@ -176,6 +203,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="logo">
@@ -188,27 +216,14 @@
         <form id="loginForm">
             <div class="form-group">
                 <label for="username">Usuário</label>
-                <input 
-                    type="text" 
-                    id="username" 
-                    name="username" 
-                    placeholder="Digite seu usuário"
-                    autocomplete="username"
-                    required
-                    autofocus
-                >
+                <input type="text" id="username" name="username" placeholder="Digite seu usuário"
+                    autocomplete="username" required autofocus>
             </div>
 
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    placeholder="Digite sua senha"
-                    autocomplete="current-password"
-                    required
-                >
+                <input type="password" id="password" name="password" placeholder="Digite sua senha"
+                    autocomplete="current-password" required>
             </div>
 
             <button type="submit" class="btn-login" id="btnLogin">
@@ -223,6 +238,10 @@
         <div class="footer">
             <p>Acesso restrito a administradores</p>
         </div>
+
+        <div class="setup-link">
+            <a href="/mobile-admin/setup">🚀 Primeiro acesso? Criar usuário mestre</a>
+        </div>
     </div>
 
     <script>
@@ -235,7 +254,7 @@
             alert.className = `alert alert-${type}`;
             alert.textContent = message;
             alert.style.display = 'block';
-            
+
             if (type === 'success') {
                 setTimeout(() => {
                     alert.style.display = 'none';
@@ -300,4 +319,5 @@
         });
     </script>
 </body>
+
 </html>

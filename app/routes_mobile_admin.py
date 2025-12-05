@@ -429,8 +429,9 @@ def api_user_detail(user_id):
                           target=username,
                           details="Auto-exclusão" if is_self_deletion else f"Deletado por {current_user.username}",
                           ip_address=request.remote_addr)
-            except:
-                pass
+            except Exception as e:
+                import logging
+                logging.getLogger(__name__).warning(f"Erro ao registrar log de exclusão: {e}")
 
             if is_self_deletion:
                 logout_user()
@@ -640,7 +641,7 @@ def api_block_ip():
     if expires_at:
         try:
             expires_at = datetime.fromisoformat(expires_at)
-        except:
+        except (ValueError, TypeError):
             expires_at = None
     
     success = block_ip(ip_address, reason, current_user.id, expires_at)
