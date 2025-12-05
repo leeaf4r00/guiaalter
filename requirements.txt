@@ -1,27 +1,27 @@
 # Flask Core
-Flask==3.0.1
-Werkzeug==3.0.1
+Flask>=3.0.1
+Werkzeug>=3.0.1
 
 # Database
-Flask-SQLAlchemy==3.1.1
-SQLAlchemy==2.0.25
+Flask-SQLAlchemy>=3.1.1
+SQLAlchemy>=2.0.25
 
 # Authentication
-Flask-Login==0.6.3
+Flask-Login>=0.6.3
 
 # Forms
-Flask-WTF==1.2.1
-WTForms==3.1.2
+Flask-WTF>=1.2.1
+WTForms>=3.1.2
 
 # Utilities
-python-dotenv==1.0.0
-gunicorn==21.2.0
+python-dotenv>=1.0.0
+gunicorn>=21.2.0
 
 # QR Code Generation
-qrcode==7.4.2
-Pillow==10.2.0
+qrcode>=7.4.2
+Pillow>=11.0.0
 
 # Desktop Application
-pywebview==4.4.1
-customtkinter==5.2.2
-psutil==5.9.8
+pywebview>=4.4.1
+customtkinter>=5.2.2
+psutil>=5.9.8
