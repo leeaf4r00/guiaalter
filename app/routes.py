@@ -182,7 +182,7 @@ def sejanossoparceiro():
 
 
 @routes.route('/rotas')
-def rotas_page():
+def rotas():
     destinos = [
         {
             "id": "vila",

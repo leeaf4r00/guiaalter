@@ -241,15 +241,18 @@
     }
 
     .login-nav .nav-itens {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
     }
 
     .login-nav .nav-itens a,
     .user-greeting {
-        width: 100%;
+        width: auto;
         justify-content: center;
-        padding: 10px 20px;
+        padding: 8px 20px;
+        font-size: 0.9rem;
     }
 }
 
